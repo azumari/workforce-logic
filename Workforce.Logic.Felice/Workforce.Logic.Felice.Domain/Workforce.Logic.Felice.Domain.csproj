@@ -40,11 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainModels\AddressDto.cs" />
     <Compile Include="DomainModels\AssociateDto.cs" />
-    <Compile Include="DomainModels\BatchDto.cs" />
-    <Compile Include="DomainModels\GenderDto.cs" />
-    <Compile Include="DomainModels\InstructorDto.cs" />
     <Compile Include="LogicHelper.cs" />
     <Compile Include="LogicMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
