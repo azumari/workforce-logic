@@ -18,7 +18,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       {
         ActiveBit = false,
         Address = "123 fake st",
-        HotelID = 1,
+        
         IsHotel = false,
         Name = "THIS IS A FAKE NAME",
         PhoneNumber = "956-793-3185"
