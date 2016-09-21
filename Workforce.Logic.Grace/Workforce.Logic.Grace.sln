@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workforce.Logic.Grace.Domai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workforce.Logic.Grace.Rest", "Workforce.Logic.Grace.Rest\Workforce.Logic.Grace.Rest.csproj", "{767724F1-CA3E-4BB9-9C5C-E36C9CA7C9D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workforce.Logic.Grace.Tests", "Workforce.Logic.Grace.Tests\Workforce.Logic.Grace.Tests.csproj", "{F165860C-FD17-4520-ACC1-54E3C91E24A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{767724F1-CA3E-4BB9-9C5C-E36C9CA7C9D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{767724F1-CA3E-4BB9-9C5C-E36C9CA7C9D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{767724F1-CA3E-4BB9-9C5C-E36C9CA7C9D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F165860C-FD17-4520-ACC1-54E3C91E24A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F165860C-FD17-4520-ACC1-54E3C91E24A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F165860C-FD17-4520-ACC1-54E3C91E24A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F165860C-FD17-4520-ACC1-54E3C91E24A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
