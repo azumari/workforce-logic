@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workforce.Logic.Felice.Doma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workforce.Logic.Felice.Rest", "Workforce.Logic.Felice.Rest\Workforce.Logic.Felice.Rest.csproj", "{7B00065C-9295-4D05-B8E0-477ABC4F71E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workforce.Logic.Felice.Tests", "Workforce.Logic.Felice.Tests\Workforce.Logic.Felice.Tests.csproj", "{727688C0-2665-431A-B82F-2F322FF2960C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7B00065C-9295-4D05-B8E0-477ABC4F71E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B00065C-9295-4D05-B8E0-477ABC4F71E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B00065C-9295-4D05-B8E0-477ABC4F71E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{727688C0-2665-431A-B82F-2F322FF2960C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{727688C0-2665-431A-B82F-2F322FF2960C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{727688C0-2665-431A-B82F-2F322FF2960C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{727688C0-2665-431A-B82F-2F322FF2960C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
