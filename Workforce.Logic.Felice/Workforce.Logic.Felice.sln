@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workforce.Logic.Felice.Domain", "Workforce.Logic.Felice.Domain\Workforce.Logic.Felice.Domain.csproj", "{33172E4F-54E7-4409-BF2D-C616F2971A84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workforce.Logic.Felice.Rest", "Workforce.Logic.Felice.Rest\Workforce.Logic.Felice.Rest.csproj", "{7B00065C-9295-4D05-B8E0-477ABC4F71E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{33172E4F-54E7-4409-BF2D-C616F2971A84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33172E4F-54E7-4409-BF2D-C616F2971A84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33172E4F-54E7-4409-BF2D-C616F2971A84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B00065C-9295-4D05-B8E0-477ABC4F71E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B00065C-9295-4D05-B8E0-477ABC4F71E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B00065C-9295-4D05-B8E0-477ABC4F71E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B00065C-9295-4D05-B8E0-477ABC4F71E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
