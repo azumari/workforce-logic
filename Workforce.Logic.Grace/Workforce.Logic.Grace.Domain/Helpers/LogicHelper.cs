@@ -22,7 +22,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
         IsHotel = false,
         Name = "THIS IS A FAKE NAME",
         PhoneNumber = "956-793-3185"
-      };
+      }; 
       hotaps.Add(toDelete);
       return hotaps;
     }
