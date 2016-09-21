@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Workforce.Logic.Felice.Domain
 {
-   class LogicMapper
+   public class LogicMapper
    {
 
    }
