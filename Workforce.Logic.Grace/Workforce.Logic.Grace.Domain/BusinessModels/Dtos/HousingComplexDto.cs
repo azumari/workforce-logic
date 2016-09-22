@@ -8,7 +8,7 @@ namespace Workforce.Logic.Grace.Domain.BusinessModels.Dtos
 {
   public class HousingComplexDto
   {
-    public int HotelId { get; set; }
+    public int HousingComplexId { get; set; }
     public string Name { get; set; }
     public string Address { get; set; }
     public bool IsHotel { get; set; }
