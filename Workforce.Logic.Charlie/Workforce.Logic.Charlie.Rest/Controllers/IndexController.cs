@@ -16,7 +16,7 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
         public HttpResponseMessage Get()
         {
             var options = new Dictionary<string, string>();
-            options.Add("get all locations", "api/location/Get/1/all");
+            options.Add("get all locations", "api/location/get/1/all");
             return Request.CreateResponse(HttpStatusCode.OK, options);
         }
 
