@@ -12,12 +12,29 @@ namespace Workforce.Logic.Felice.Rest
 {
   public class EmailService : IIdentityMessageService
   {
+    /// <summary>
+    /// This method will call the
+    /// configSendEmailasync method
+    /// so that an email can be sent
+    /// to the designated person(s)
+    /// </summary>
+    /// <param name="message"></param>
+    /// <returns></returns>
     public async Task SendAsync(IdentityMessage message)
     {
       await configSendEmailasync(message);
     }
 
 
+    /// <summary>
+    /// Email method to send emails to the
+    /// designated person(s) using the
+    /// Gmail settings we have in the Web.Config
+    /// Class is private as only the SendAsync
+    /// method needs to call/use it
+    /// </summary>
+    /// <param name="message"></param>
+    /// <returns></returns>
     private Task configSendEmailasync(IdentityMessage message)
     {
       var email = new MailMessage();
