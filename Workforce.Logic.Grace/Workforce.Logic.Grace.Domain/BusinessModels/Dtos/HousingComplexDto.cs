@@ -16,3 +16,4 @@ namespace Workforce.Logic.Grace.Domain.BusinessModels.Dtos
     public bool ActiveBit { get; set; }
   }
 }
+ 
