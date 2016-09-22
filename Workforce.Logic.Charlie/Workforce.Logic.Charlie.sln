@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workforce.Logic.Charlie.Domain", "Workforce.Logic.Charlie.Domain\Workforce.Logic.Charlie.Domain.csproj", "{0A8E0F32-390B-4113-B79C-C824A7EA4101}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workforce.Logic.Charlie.Rest", "Workforce.Logic.Charlie.Rest\Workforce.Logic.Charlie.Rest.csproj", "{BFF77839-F587-4180-9206-FA6BFF2D4BBF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workforce.Logic.Charlie.Tests", "Workforce.Logic.Charlie.Tests\Workforce.Logic.Charlie.Tests.csproj", "{0607690B-288B-47EC-B48D-CD0812B37FF7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{602DA493-BD74-46B9-B803-712E5FC0EBED}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
