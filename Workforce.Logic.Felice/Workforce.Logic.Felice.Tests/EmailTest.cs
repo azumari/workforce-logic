@@ -9,5 +9,6 @@ namespace Workforce.Logic.Felice.Tests
 {
   public class EmailTest
   {
+
   }
 }
