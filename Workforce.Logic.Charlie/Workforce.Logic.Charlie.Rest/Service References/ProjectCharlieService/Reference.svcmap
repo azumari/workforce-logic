@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="701dc519-4ffd-4899-b861-aa745cf5e8e5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CharlieService.wsdl" MetadataType="Wsdl" ID="58be1854-4401-494c-b432-4137e789113b" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc?wsdl" />
+    <MetadataFile FileName="CharlieService.disco" MetadataType="Disco" ID="34ecece3-5bfe-4d0b-a119-bff7d1a02d43" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc?disco" />
+    <MetadataFile FileName="CharlieService.xsd" MetadataType="Schema" ID="679c3dbd-b2ad-4917-9eaf-53f55a40fe3e" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
