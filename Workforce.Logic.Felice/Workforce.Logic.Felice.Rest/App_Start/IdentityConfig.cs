@@ -8,7 +8,7 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Workforce.Logic.Felice.Rest
+namespace Workforce.Logic.Felice.Rest.App_Start
 {
   public class EmailService : IIdentityMessageService
   {
