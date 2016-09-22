@@ -15,7 +15,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       /// </summary>
       public HttpResponseMessage Get()
       {
-         return Request.CreateResponse(HttpStatusCode.OK);
+         return Request.CreateResponse(HttpStatusCode.OK, "Hello World!! The associate controller works!");
       } 
    }
 }
