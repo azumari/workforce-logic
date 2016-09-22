@@ -113,6 +113,12 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <None Include="Service References\ProjectCharlieService\CharlieService.disco" />
+    <None Include="Service References\ProjectCharlieService\CharlieService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProjectCharlieService\CharlieService11.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ProjectCharlieService\configuration91.svcinfo" />
     <None Include="Service References\ProjectCharlieService\configuration.svcinfo" />
     <None Include="Service References\ProjectCharlieService\Reference.svcmap">
@@ -143,6 +149,9 @@
     <None Include="Service References\ProjectCharlieService\CharlieService.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Service References\ProjectCharlieService\Workforce.Logic.Charlie.Rest.ProjectCharlieService.LocationDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -23,6 +23,8 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="CharlieService.wsdl" MetadataType="Wsdl" ID="d60cf612-e48c-4976-aa96-8ebc40a91eb9" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc?wsdl" />
+    <MetadataFile FileName="CharlieService1.xsd" MetadataType="Schema" ID="d2fbb396-951b-4777-8f2b-5803525e97dd" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CharlieService11.xsd" MetadataType="Schema" ID="876d3b39-556f-421d-86fa-db9f6fb8def3" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc?xsd=xsd2" />
     <MetadataFile FileName="CharlieService.disco" MetadataType="Disco" ID="b4223c69-38b1-43dc-b993-e31ad21f15e4" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc?disco" />
     <MetadataFile FileName="CharlieService.xsd" MetadataType="Schema" ID="df1951fd-1190-4263-9ffe-94403883b8a0" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc?xsd=xsd0" />
   </Metadata>

@@ -92,6 +92,15 @@
     <None Include="Service References\ProjectCharlieService\CharlieService.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ProjectCharlieService\CharlieService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProjectCharlieService\CharlieService11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProjectCharlieService\Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Web.config" />
     <None Include="packages.config" />
   </ItemGroup>

@@ -9,6 +9,7 @@ namespace Workforce.Logic.Charlie.Domain
 {
     public class LogicHelper
     {
+        ProjectCharlieService.CharlieServiceClient client = new ProjectCharlieService.CharlieServiceClient();
 
         /// <summary>
         /// Retreive all active meetup locations.
@@ -17,12 +18,18 @@ namespace Workforce.Logic.Charlie.Domain
         public async Task<List<LocationDto>> GetAllLocations()
         {
             var locs = new List<LocationDto>();
-            var dummy = new LocationDto();
-            dummy.Name = "Nowhere";
-            dummy.Address = "123 Fictitious Dr, Herndon, VA";
-            dummy.Latitude = 40.5;
-            dummy.Longitude = 40.5;
-            locs.Add(dummy);
+            var source = await client.GetLocationsAsync();
+
+            foreach (var item in source)
+            {
+                var newLoc = new LocationDto();
+                newLoc.LocationId = item.LocationId;
+                newLoc.Address = item.Address;
+                newLoc.Name = item.Name;
+                newLoc.Latitude = item.Latitude;
+                newLoc.Longitude = item.Longitude;
+                locs.Add(newLoc);
+            }
             return locs;
         }
 
