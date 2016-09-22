@@ -19,10 +19,10 @@ namespace Workforce.Logic.Grace.Rest.Controllers
     public HttpResponseMessage Get()
     {
       var options = new Dictionary<string, string>();
-      options.Add("get all apartments", "api/Apartment");
-      options.Add("get all housing complexes", "api/HousingComplex");
-      options.Add("get all housing data", "api/HousingData");
-      options.Add("get all statuses", "api/Status");
+      options.Add("getAllApartments", "api/Apartment");
+      options.Add("getAllHousingComplexes", "api/HousingComplex");
+      options.Add("getAllHousingData", "api/HousingData");
+      options.Add("getAllStatuses", "api/Status");
 
       return Request.CreateResponse(HttpStatusCode.OK, options);
     }
