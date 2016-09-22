@@ -19,22 +19,13 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
         /// </summary>
         /// <param name="option"></param>
         /// <returns></returns>
-        public async Task<HttpResponseMessage> Get(int id1, string id2)
+        public async Task<HttpResponseMessage> Get()
         {
-            if (id1 == 1)
-            {
                 return Request.CreateResponse(HttpStatusCode.OK, await logHelp.GetAllLocations());
-            }
-            if (id1 == 2)
-            {
-                return Request.CreateResponse(HttpStatusCode.OK, "this will be some other option");
-            }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.OK, "invalid request");
-            }
             
         }
+
+
 
     }
 }
