@@ -7,9 +7,8 @@ using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Configuration;
 
-namespace Workforce.Logic.Felice.Rest.App_Start
+namespace Workforce.Logic.Felice.Domain
 {
   public class EmailService
   {
@@ -65,9 +64,8 @@ namespace Workforce.Logic.Felice.Rest.App_Start
       //  Credentials = new NetworkCredential(ConfigurationManager.AppSettings["GmailUserName"], ConfigurationManager.AppSettings["GmailPassword"])
 
       //};
-
-      var host = WebConfigurationManager.AppSettings;
-      var x = 100;
+      //var host = ConfigurationManager.AppSettings["GmailHost"];
+      //var x = 100;
       return Task.Run(() => smtp.SendMailAsync(email));
     }
   }

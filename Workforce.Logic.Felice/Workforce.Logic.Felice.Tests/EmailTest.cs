@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
-using Workforce.Logic.Felice.Rest.App_Start;
+using Workforce.Logic.Felice.Domain;
 using Xunit;
 
 namespace Workforce.Logic.Felice.Tests
