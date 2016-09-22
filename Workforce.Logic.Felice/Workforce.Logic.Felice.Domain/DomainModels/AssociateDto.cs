@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Workforce.Logic.Felice.Domain.DomainModels
 {
-   public class AssociateDto //troubleshooting 'fail'
+   public class AssociateDto
    {
-      public int TraineeID { get; set; }
+      public int AssociateID { get; set; }
       public string FirstName { get; set; }
       public string LastName { get; set; }
       public string Gender { get; set; }  //set to string to hold Gender.Name
