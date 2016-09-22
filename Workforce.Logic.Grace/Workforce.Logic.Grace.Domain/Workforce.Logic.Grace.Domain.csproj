@@ -73,10 +73,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessModels\Dtos\ApartmentDto.cs" />
-    <Compile Include="BusinessModels\Dtos\HousingComplexDto.cs" />
-    <Compile Include="BusinessModels\Dtos\HousingDataDto.cs" />
-    <Compile Include="BusinessModels\Dtos\StatusDto.cs" />
+    <Compile Include="TransferModels\Dtos\ApartmentDto.cs" />
+    <Compile Include="TransferModels\Dtos\HousingComplexDto.cs" />
+    <Compile Include="TransferModels\Dtos\HousingDataDto.cs" />
+    <Compile Include="TransferModels\Dtos\StatusDto.cs" />
     <Compile Include="Helpers\LogicHelper.cs" />
     <Compile Include="Mapper\BusinessMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
