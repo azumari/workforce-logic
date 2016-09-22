@@ -64,7 +64,7 @@ namespace Workforce.Logic.Felice.Domain.DomainModels
          get { return _StartDate; }
          set
          {
-            if (!DateTime.TryParse(value.ToString(), out _StartDate))
+            if (!DateTime.TryParse(value.ToString(), out _StartDate) && value >= DateTime.UtcNow)
                throw new ArgumentException("The Start Date is invalid");
             else _StartDate = value;
          }
@@ -76,8 +76,8 @@ namespace Workforce.Logic.Felice.Domain.DomainModels
          get { return _EndDate; }
          set
          {
-            if (!DateTime.TryParse(value.ToString(), out _EndDate))
-               throw new ArgumentException("The Start Date is invalid");
+            if (!DateTime.TryParse(value.ToString(), out _EndDate) && value >= DateTime.UtcNow)
+               throw new ArgumentException("The End Date is invalid");
             else _StartDate = value;
          }
       }
