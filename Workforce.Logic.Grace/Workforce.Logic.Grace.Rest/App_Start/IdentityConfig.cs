@@ -8,7 +8,7 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Workforce.Logic.Grace.Rest
+namespace Workforce.Logic.Grace.Rest.App_Start
 {
   public class EmailService : IIdentityMessageService
   {
