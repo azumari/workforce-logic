@@ -10,7 +10,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
   public class LogicHelper
   {
      
-
+     
     /// <summary>
     /// This method calls the soap service and awaits on the get
     /// </summary>
