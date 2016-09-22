@@ -5,12 +5,12 @@ using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 
-namespace Workforce.Logic.Grace.Rest
+namespace Workforce.Logic.Grace.Domain.Services
 {
-  public class EmailService : IIdentityMessageService
+  public class EmailService
   {
     /// <summary>
     /// This method will call the
@@ -20,11 +20,15 @@ namespace Workforce.Logic.Grace.Rest
     /// </summary>
     /// <param name="message"></param>
     /// <returns></returns>
-    public async Task SendAsync(IdentityMessage message)
+    public Task SendAsync(string Destination, string emailMessage, string subject)
     {
-      await configSendEmailasync(message);
+      IdentityMessage message = new IdentityMessage();
+      message.Destination = Destination;
+      message.Body = emailMessage;
+      message.Subject = subject;
+      return Task.Run(() => configSendEmailasync(message));
     }
-
+    
 
     /// <summary>
     /// Email method to send emails to the
@@ -39,12 +43,15 @@ namespace Workforce.Logic.Grace.Rest
     {
       var email = new MailMessage();
 
+      //formatting the email to be sent
       email.To.Add(message.Destination);
-      email.From = new System.Net.Mail.MailAddress("revature.projectliberate@gmail.com", "Revature");
+      email.From = new System.Net.Mail.MailAddress("revature@projectliberate.com", "Revature");
       email.Subject = message.Subject;
       email.Body = message.Body;
       email.IsBodyHtml = true;
 
+      //smtp settings that we pull
+      //from the app.config file
       System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient
       {
         Host = ConfigurationManager.AppSettings["GmailHost"],
@@ -55,6 +62,8 @@ namespace Workforce.Logic.Grace.Rest
         Credentials = new NetworkCredential(ConfigurationManager.AppSettings["GmailUserName"], ConfigurationManager.AppSettings["GmailPassword"])
 
       };
+      
+      //sends the email
       return Task.Run(() => smtp.SendMailAsync(email));
     }
   }
