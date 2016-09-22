@@ -13,7 +13,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// This method calls the soap service and awaits on the get
     /// </summary>
     /// <returns>  List<ApartmentDto> apartments  </returns>
-    public async Task<List<ApartmentDto>> GetApartments()
+    public async Task<List<ApartmentDto>> ApartmentsGetAll()
     {
       List<ApartmentDto> apartments = new List<ApartmentDto>();
       ApartmentDto toDelete = new ApartmentDto()
@@ -32,7 +32,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// This method calls the soap service and awaits on the get
     /// </summary>
     /// <returns> List<HousingComplexDto> </returns>
-    public async Task<List<HousingComplexDto>> GetHousingComplexs()
+    public async Task<List<HousingComplexDto>> HousingComplexsGetAll()
     {
       List<HousingComplexDto> complexes = new List<HousingComplexDto>();
       HousingComplexDto toDelete = new HousingComplexDto()
@@ -51,7 +51,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     ///  This method calls the soap service and awaits on the get
     /// </summary>
     /// <returns>  List<HousingDataDto> </returns>
-    public async Task<List<HousingDataDto>> GetHousingData()
+    public async Task<List<HousingDataDto>> HousingDataGetAll()
     {
       List<HousingDataDto> temp = new List<HousingDataDto>();
       HousingDataDto toDelete = new HousingDataDto()
@@ -70,7 +70,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// This method calls the soap service and awaits on the get
     /// </summary>
     /// <returns> List<StatusDto> </returns>
-    public async Task<List<StatusDto>> GetStatuses()
+    public async Task<List<StatusDto>> StatusesGetAll()
     {
       List<StatusDto> temp = new List<StatusDto>();
       StatusDto toDelete = new StatusDto()

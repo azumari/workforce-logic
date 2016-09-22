@@ -73,6 +73,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Apartment.cs" />
+    <Compile Include="Models\HousingComplex.cs" />
+    <Compile Include="Models\HousingData.cs" />
+    <Compile Include="Models\Status.cs" />
     <Compile Include="TransferModels\Dtos\ApartmentDto.cs" />
     <Compile Include="TransferModels\Dtos\HousingComplexDto.cs" />
     <Compile Include="TransferModels\Dtos\HousingDataDto.cs" />
