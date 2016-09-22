@@ -16,13 +16,13 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
         public HttpResponseMessage Get()
         {
             var options = new Dictionary<string, string>();
-            options.Add("get all locations", "api/location");
-            options.Add("get all rides", "api/ride/findall");
-            options.Add("get all requests", "api/request/findall");
-            options.Add("get rides by departure location id", "api/ride/findbydeparture/{id}");
-            options.Add("get requests by departure location id", "api/request/findbydeparture/{id}");
-            options.Add("get rides by destination location id", "api/ride/findbydestination/{id}");
-            options.Add("get requests by destination location id", "api/request/findbydestination/{id}");
+            options.Add("getAllLocations", "api/location");
+            options.Add("getAllRides", "api/ride/findall");
+            options.Add("getAllRequests", "api/request/findall");
+            options.Add("getRidesByDepartureLocationId", "api/ride/findbydeparture/{id}");
+            options.Add("getRequestsByDepartureLocationId", "api/request/findbydeparture/{id}");
+            options.Add("getRidesByDestinationLocationId", "api/ride/findbydestination/{id}");
+            options.Add("getRequestsByDestinationLocationId", "api/request/findbydestination/{id}");
             return Request.CreateResponse(HttpStatusCode.OK, options);
         }
 
