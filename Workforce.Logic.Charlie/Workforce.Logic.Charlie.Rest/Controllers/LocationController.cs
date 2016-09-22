@@ -15,22 +15,17 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
         LogicHelper logHelp = new LogicHelper();
 
         /// <summary>
-        /// Get locations filtered according to input parameter (still a stub)
+        /// Get locations filtered according to input parameter 
         /// </summary>
         /// <param name="option"></param>
         /// <returns></returns>
-        public async Task<HttpResponseMessage> Get(int option)
+        public async Task<HttpResponseMessage> Get()
         {
-            if (option == 1)
-            {
                 return Request.CreateResponse(HttpStatusCode.OK, await logHelp.GetAllLocations());
-            }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.OK, await logHelp.GetAllLocations());
-            }
             
         }
+
+
 
     }
 }
