@@ -24,17 +24,15 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       /// </summary>
       public HttpResponseMessage Get()
       {
-         Type[] typelist = GetTypesInNamespace(Assembly.GetExecutingAssembly)
+         Type[] typelist = GetTypesInNamespace(Assembly.GetExecutingAssembly(), "MyNamespace");
          var options = new Dictionary<string, string>();
 
-         foreach ()
+         for (int i = 0; i < typelist.Length; i++)
          {
-            options.Add(, "api/{controller}");
+            options.Add("", typelist[i].Name);
          }
 
          return Request.CreateResponse(HttpStatusCode.OK, options);
       }
-
-
    }
 }
