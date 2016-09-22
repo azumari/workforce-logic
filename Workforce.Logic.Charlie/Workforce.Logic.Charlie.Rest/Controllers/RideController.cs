@@ -15,6 +15,7 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
         /// Get all active rides  
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public HttpResponseMessage FindAll()
         {
             return Request.CreateResponse(HttpStatusCode.OK, "return all active rides");
@@ -25,6 +26,7 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
         public HttpResponseMessage FindByDeparture(int id)
         {
             return Request.CreateResponse(HttpStatusCode.OK, "return all active rides with departure location id " + id);
@@ -35,6 +37,7 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
         public HttpResponseMessage FindByDestination(int id)
         {
             return Request.CreateResponse(HttpStatusCode.OK, "return all active rides with destination location id " + id);
