@@ -12,15 +12,8 @@ namespace Workforce.Logic.Felice.Domain
       /// <summary>
       /// Validates the data coming in from the data layer
       /// </summary>
-      public bool ValidateData(/*AssociateDao associate*/)
-      {/*
-         if (String.IsNullOrWhiteSpace(associate.FirstName) || String.IsNullOrWhiteSpace(associate.LastName))
-            return false;
-         else if (associate.GenderID <= 0 || associate.BatchID)
-            return false;
-         else if (associate.HasCar != typeof(bool) || associate.HasKeys != typeof(bool) || associate.IsComing != typeof(bool)) 
-            return false;
-         else*/
+      public bool ValidateData()
+      {
             return true;
       }
 
