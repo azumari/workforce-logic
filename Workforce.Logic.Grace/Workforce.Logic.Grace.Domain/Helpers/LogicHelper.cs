@@ -18,7 +18,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       List<ApartmentDto> apartments = new List<ApartmentDto>();
       ApartmentDto toDelete = new ApartmentDto()
       {
-        ActiveBit = true,
+        
         CurrentCapacity = 4,
         GenderID = 1,
         RoomID = 2,
@@ -37,7 +37,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       List<HousingComplexDto> complexes = new List<HousingComplexDto>();
       HousingComplexDto toDelete = new HousingComplexDto()
       {
-        ActiveBit = false,
+        
         Address = "123 fake st",
 
         IsHotel = false,
