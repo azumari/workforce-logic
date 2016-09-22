@@ -13,11 +13,15 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       /// This is the base 'Get' method for Index
       /// The primary purpose of Index will be to provide the available "Menu" when an Api call is made to Felice.Rest
       /// </summary>
-      public Dictionary<string, string> Get()
+      public HttpResponseMessage Get()
       {
          var options = new Dictionary<string, string>();
-         options.Add("getAllComplexes", "api/HousingComplex");
-         return options;
+
+         options.Add("Get Associates", "api/associate/");
+
+         return Request.CreateResponse(HttpStatusCode.OK, options);
       }
+
+
    }
 }
