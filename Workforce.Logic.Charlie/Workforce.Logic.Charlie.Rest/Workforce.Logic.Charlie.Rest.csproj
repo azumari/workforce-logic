@@ -105,6 +105,12 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Workforce.Logic.Charlie.Domain\Workforce.Logic.Charlie.Domain.csproj">
+      <Project>{0A8E0F32-390B-4113-B79C-C824A7EA4101}</Project>
+      <Name>Workforce.Logic.Charlie.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
