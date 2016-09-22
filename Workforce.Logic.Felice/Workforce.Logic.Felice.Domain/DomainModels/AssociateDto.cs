@@ -23,6 +23,5 @@ namespace Workforce.Logic.Felice.Domain.DomainModels
       public bool HasCar { get; set; }
       public bool HasKeys { get; set; }
       public bool? IsComing { get; set; }
-      public bool Active { get; set; }
    }
 }
