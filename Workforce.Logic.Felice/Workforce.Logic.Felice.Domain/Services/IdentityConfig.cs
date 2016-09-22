@@ -8,9 +8,9 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Workforce.Logic.Felice.Rest
+namespace Workforce.Logic.Felice.Domain
 {
-  public class EmailService : IIdentityMessageService
+  public class EmailService
   {
     /// <summary>
     /// This method will call the
@@ -20,11 +20,15 @@ namespace Workforce.Logic.Felice.Rest
     /// </summary>
     /// <param name="message"></param>
     /// <returns></returns>
-    public async Task SendAsync(IdentityMessage message)
+    public Task SendAsync(string Destination, string emailMessage, string subject)
     {
-      await configSendEmailasync(message);
+      IdentityMessage message = new IdentityMessage();
+      message.Destination = Destination;
+      message.Body = emailMessage;
+      message.Subject = subject;
+      return Task.Run(() => configSendEmailasync(message));
     }
-
+    
 
     /// <summary>
     /// Email method to send emails to the
@@ -39,12 +43,15 @@ namespace Workforce.Logic.Felice.Rest
     {
       var email = new MailMessage();
 
+      //formatting the email to be sent
       email.To.Add(message.Destination);
-      email.From = new System.Net.Mail.MailAddress("revature.projectliberate@gmail.com", "Revature");
+      email.From = new System.Net.Mail.MailAddress("revature@projectliberate.com", "Revature");
       email.Subject = message.Subject;
       email.Body = message.Body;
       email.IsBodyHtml = true;
 
+      //smtp settings that we pull
+      //from the app.config file
       System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient
       {
         Host = ConfigurationManager.AppSettings["GmailHost"],
@@ -55,6 +62,8 @@ namespace Workforce.Logic.Felice.Rest
         Credentials = new NetworkCredential(ConfigurationManager.AppSettings["GmailUserName"], ConfigurationManager.AppSettings["GmailPassword"])
 
       };
+      
+      //sends the email
       return Task.Run(() => smtp.SendMailAsync(email));
     }
   }
