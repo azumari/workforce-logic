@@ -28,7 +28,7 @@ namespace Workforce.Logic.Felice.Domain
       message.Subject = subject;
       return Task.Run(() => configSendEmailasync(message));
     }
-
+    
 
     /// <summary>
     /// Email method to send emails to the
@@ -43,29 +43,27 @@ namespace Workforce.Logic.Felice.Domain
     {
       var email = new MailMessage();
 
+      //formatting the email to be sent
       email.To.Add(message.Destination);
       email.From = new System.Net.Mail.MailAddress("revature@projectliberate.com", "Revature");
       email.Subject = message.Subject;
       email.Body = message.Body;
       email.IsBodyHtml = true;
 
-      System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.gmail.com");
-      smtp.Credentials = new NetworkCredential("revature.projectliberate@gmail.com", "reveroni");
-      smtp.Port = 587;
-      smtp.UseDefaultCredentials = false;
-      smtp.EnableSsl = true;
+      //smtp settings that we pull
+      //from the app.config file
+      System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient
+      {
+        Host = ConfigurationManager.AppSettings["GmailHost"],
+        Port = Int32.Parse(ConfigurationManager.AppSettings["GmailPort"]),
+        EnableSsl = true,
+        DeliveryMethod = SmtpDeliveryMethod.Network,
+        UseDefaultCredentials = false,
+        Credentials = new NetworkCredential(ConfigurationManager.AppSettings["GmailUserName"], ConfigurationManager.AppSettings["GmailPassword"])
 
-      //{
-      //  Host = ConfigurationManager.AppSettings["GmailHost"],
-      //  Port = Int32.Parse(ConfigurationManager.AppSettings["GmailPort"]),
-      //  EnableSsl = true,
-      //  DeliveryMethod = SmtpDeliveryMethod.Network,
-      //  UseDefaultCredentials = false,
-      //  Credentials = new NetworkCredential(ConfigurationManager.AppSettings["GmailUserName"], ConfigurationManager.AppSettings["GmailPassword"])
-
-      //};
-      //var host = ConfigurationManager.AppSettings["GmailHost"];
-      //var x = 100;
+      };
+      
+      //sends the email
       return Task.Run(() => smtp.SendMailAsync(email));
     }
   }
