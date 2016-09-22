@@ -16,8 +16,8 @@ namespace Workforce.Logic.Charlie.Rest
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{action}/{id1}/{id2}",
-                defaults: new { controller = "index", action = "get", id1 = RouteParameter.Optional, id2 = RouteParameter.Optional}
+                routeTemplate: "api/{controller}/{action}/{id}",
+                defaults: new { controller = "index", id = RouteParameter.Optional}
             );
         }
     }

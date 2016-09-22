@@ -12,29 +12,32 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
     {
 
         /// <summary>
-        /// Get rides filtered according to input parameter 
+        /// Get all active rides  
         /// </summary>
-        /// <param name="option"></param>
         /// <returns></returns>
-        public HttpResponseMessage Get(int id1, int id2)
+        public HttpResponseMessage FindAll()
         {
-            if (id1 == 1)
-            {
-                return Request.CreateResponse(HttpStatusCode.OK, "return all active rides");
-            }
-            if (id1 == 2)
-            {
-                return Request.CreateResponse(HttpStatusCode.OK, "return rides with departure location id " + id2);
-            }
-            if (id1 == 3)
-            {
-                return Request.CreateResponse(HttpStatusCode.OK, "return rides with destination location id " + id2);
-            }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.OK, "invalid parameter");
-            }
+            return Request.CreateResponse(HttpStatusCode.OK, "return all active rides");
+        }
 
+        /// <summary>
+        /// Get all active rides with given departure location id  
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public HttpResponseMessage FindByDeparture(int id)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, "return all active rides with departure location id " + id);
+        }
+
+        /// <summary>
+        /// Get all active rides with given destination location id  
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public HttpResponseMessage FindByDestination(int id)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, "return all active rides with destination location id " + id);
         }
 
     }
