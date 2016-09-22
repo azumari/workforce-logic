@@ -11,11 +11,15 @@ namespace Workforce.Logic.Grace.Rest.Controllers
 {
   public class HousingComplexController : ApiController
   {
-    private readonly LogicHelper biz = new LogicHelper();
+    private readonly LogicHelper logicHelper = new LogicHelper();
 
+    /// <summary>
+    /// CRUD: Read calls logicHelper to get all housingComplexes from service
+    /// </summary>
+    /// <returns>Task<HttpResponseMessage></returns>
     public async Task<HttpResponseMessage> Get()
     {
-      return Request.CreateResponse(HttpStatusCode.OK, await biz.GetHousingComplexs());
+      return Request.CreateResponse(HttpStatusCode.OK, await logicHelper.GetHousingComplexs());
     }
   }
 }
