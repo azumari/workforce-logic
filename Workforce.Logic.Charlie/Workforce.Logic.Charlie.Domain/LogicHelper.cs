@@ -23,7 +23,6 @@ namespace Workforce.Logic.Charlie.Domain
             var locs = new List<LocationDto>();
             var source = await client.GetLocationsAsync();
             
-
             foreach (var item in source)
             {
                 if (locModel.ValidateDao(item))
