@@ -45,4 +45,28 @@ namespace Workforce.Logic.Felice.Rest.Models
     [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
     public string ConfirmPassword { get; set; }
   }
+
+  /// <summary>
+  /// The model that we will be using
+  /// to change a user's password
+  /// </summary>
+  public class ChangePasswordBindingModel
+  {
+    [Required]
+    [DataType(DataType.Password)]
+    [Display(Name = "Current Password")]
+    public string OldPassword { get; set; }
+
+    [Required]
+    [StringLength(100, ErrorMessage="The {0} must be at least {2} characters long.", MinimumLength = 6)]
+    [DataType(DataType.Password)]
+    [Display(Name = "New Password")]
+    public string NewPassword { get; set; }
+
+    [Required]
+    [DataType(DataType.Password)]
+    [Display(Name = "Confirm Password")]
+    [Compare("NewPassword", ErrorMessage = "Your passwords do not match. Please check to make sure that they match.")]
+    public string ConfirmPassword { get; set; }
+  }
 }
