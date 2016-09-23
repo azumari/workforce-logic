@@ -107,10 +107,102 @@ namespace Workforce.Logic.Felice.Rest.Controllers
         return GetErrorResult(addUserResult);
       }
 
+      //This will have the token that is valid for 6 hours only when we call this method
+      string code = await this.AppUserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+
+      var callbackUrl = new Uri(Url.Link("ConfirmEmailRoute", new { userId = user.Id, code = code }));
+
+      await this.AppUserManager.SendEmailAsync(user.Id, "Confirm Your Account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
       Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
 
       //returns the created user
       return Created(locationHeader, TheModelFactory.Create(user));
+    }
+
+    [HttpGet]
+    [Route("ConfirmEmail", Name="ConfirmEmailRoute")]
+    public async Task<IHttpActionResult> ConfirmEmail(string userId = "", string code = "")
+    {
+      if(string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(code))
+      {
+        ModelState.AddModelError("", "User Id and Code are required");
+        return BadRequest(ModelState);
+      }
+
+      //If email is opened and user clicks the link
+      //as long as the token is still active 
+      //the result will have a successful value.
+      IdentityResult result = await this.AppUserManager.ConfirmEmailAsync(userId, code);
+
+      if(result.Succeeded)
+      {
+        return Ok();
+      }
+
+      else
+      {
+        return GetErrorResult(result);
+      }
+    }
+
+    /// <summary>
+    /// This will be used to help the user change their password
+    /// if they ever decide that they want to change it.
+    /// This will check their id so that the correct person is 
+    /// changing his/her password. If the user ID cannot be found,
+    /// They will be notified that they have made a possible mistake
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    [Route("ChangePassword")]
+    public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
+    {
+      if(!ModelState.IsValid)
+      {
+        return BadRequest(ModelState);
+      }
+
+      IdentityResult result = await this.AppUserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword); //test to see
+
+      if(!result.Succeeded)
+      {
+        return GetErrorResult(result);
+      }
+
+      return Ok();
+    }
+
+    /// <summary>
+    /// This method will Delete a user by 
+    /// using the HTTP DELETE request
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [Route("user/{id:guid}")]
+    public async Task<IHttpActionResult> DeleteUser(string id)
+    {
+      //Only admin can delete users
+
+      var appUser = await this.AppUserManager.FindByIdAsync(id);
+
+      //If user is found, the user will be deleted
+      if(appUser != null)
+      {
+        IdentityResult result = await this.AppUserManager.DeleteAsync(appUser);
+
+        if(!result.Succeeded)
+        {
+          return GetErrorResult(result);
+        }
+
+        return Ok();
+      }
+
+      //If user is not found,
+      //client will be notified
+      //that they are not found
+      return NotFound();
     }
   }
 }

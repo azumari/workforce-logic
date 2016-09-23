@@ -16,7 +16,7 @@
     <RootNamespace>Workforce.Logic.Felice.Rest</RootNamespace>
     <AssemblyName>Workforce.Logic.Felice.Rest</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -180,6 +180,12 @@
       <DependentUpon>201609222340263_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Workforce.Logic.Felice.Domain\Workforce.Logic.Felice.Domain.csproj">
+      <Project>{33172e4f-54e7-4409-bf2d-c616f2971a84}</Project>
+      <Name>Workforce.Logic.Felice.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -193,7 +199,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>56332</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/workforce-felice-rest/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

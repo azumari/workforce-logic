@@ -10,7 +10,7 @@ using System.Web;
 
 namespace Workforce.Logic.Felice.Domain
 {
-  public class EmailService
+  public class EmailService : IIdentityMessageService
   {
     /// <summary>
     /// This method will call the
@@ -20,13 +20,10 @@ namespace Workforce.Logic.Felice.Domain
     /// </summary>
     /// <param name="message"></param>
     /// <returns></returns>
-    public Task SendAsync(string Destination, string emailMessage, string subject)
+    public async Task SendAsync(IdentityMessage message)
     {
-      IdentityMessage message = new IdentityMessage();
-      message.Destination = Destination;
-      message.Body = emailMessage;
-      message.Subject = subject;
-      return Task.Run(() => configSendEmailasync(message));
+      await configSendEmailasync(message);
+      //return Task.Run(() => configSendEmailasync(message));
     }
     
 
@@ -39,7 +36,7 @@ namespace Workforce.Logic.Felice.Domain
     /// </summary>
     /// <param name="message"></param>
     /// <returns></returns>
-    private Task configSendEmailasync(IdentityMessage message)
+    private async Task configSendEmailasync(IdentityMessage message)
     {
       var email = new MailMessage();
 
@@ -64,7 +61,7 @@ namespace Workforce.Logic.Felice.Domain
       };
       
       //sends the email
-      return Task.Run(() => smtp.SendMailAsync(email));
+      await smtp.SendMailAsync(email);
     }
   }
 }
