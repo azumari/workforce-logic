@@ -35,6 +35,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,8 +63,26 @@
   <ItemGroup>
     <Compile Include="EmailTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\WorkforceServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="TestDomain.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao.datasource" />
+    <None Include="Service References\WorkforceServiceReference\FeliceService.wsdl" />
+    <None Include="Service References\WorkforceServiceReference\FeliceService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\FeliceService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\FeliceService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -74,6 +94,27 @@
       <Project>{33172e4f-54e7-4409-bf2d-c616f2971a84}</Project>
       <Name>Workforce.Logic.Felice.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WorkforceServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WorkforceServiceReference\FeliceService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WorkforceServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WorkforceServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WorkforceServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

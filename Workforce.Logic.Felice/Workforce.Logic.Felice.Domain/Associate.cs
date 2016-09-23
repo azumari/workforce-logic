@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,28 +18,15 @@ namespace Workforce.Logic.Felice.Domain
       /// <summary>
       /// Validates the data coming in from the data layer
       /// </summary>
-      public bool ValidateData(AssociateDao associate)
+      public bool ValidateSoapData(AssociateDao associate)
       {
-         DateTime _BirthDate;
-
-         if (String.IsNullOrWhiteSpace(associate.FirstName) || String.IsNullOrWhiteSpace(associate.LastName))
-            return false;
-         else if (String.IsNullOrWhiteSpace(associate.PhoneNumber) || String.IsNullOrWhiteSpace(associate.Email))
-            return false;
-         else if (associate.BatchID <= 0 || associate.GenderID <= 0)
-            return false;
-         else if (associate.Car.GetType() != typeof(bool) || associate.HasKeys.GetType() != typeof(bool))
-            return false;
-         else if (!DateTime.TryParse(associate.DateOfBirth.ToString(), out _BirthDate))
-            return false;
-         else
-            return true;
+         return true;
       }
 
       /// <summary>
       /// After successful validation, this method will map the data from the Data Layer to the Dto
       /// </summary>
-      public AssociateDto MapToSoap(AssociateDao a)
+      public AssociateDto MapToRest(AssociateDao a)
       {
          var mapper = associateMapper.CreateMapper();
          return mapper.Map<AssociateDto>(a);
@@ -49,16 +37,10 @@ namespace Workforce.Logic.Felice.Domain
       /// </summary>
       public bool ValidateClient(AssociateDto associate)
       {
-         if (String.IsNullOrWhiteSpace(associate.FirstName) || String.IsNullOrWhiteSpace(associate.LastName) || String.IsNullOrWhiteSpace(associate.Gender))
-            return false;
-         else if (String.IsNullOrWhiteSpace(associate.PhoneNumber) || String.IsNullOrWhiteSpace(associate.Email))
-            return false;
-         else if (associate.BatchID <= 0)
-            return false;
-         else if (associate.HasCar.GetType() != typeof(bool) || associate.HasKeys.GetType() != typeof(bool) || associate.IsComing.GetType() != typeof(bool))
-            return false;
-         else
-            return true;
+         var context = new ValidationContext(associate, items: null);
+         var results = new List<ValidationResult>();
+
+         return Validator.TryValidateObject(associate, context, results);
       }
 
       /// <summary>
