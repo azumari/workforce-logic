@@ -107,10 +107,40 @@ namespace Workforce.Logic.Felice.Rest.Controllers
         return GetErrorResult(addUserResult);
       }
 
+      //This will have the token that is valid for 6 hours only when we call this method
+      string code = await this.AppUserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+
+      var callbackUrl = new Uri(Url.Link("ConfirmEmailRoute", new { userId = user.Id, code = code }));
+
+      await this.AppUserManager.SendEmailAsync(user.Id, "Confirm Your Account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
       Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
 
       //returns the created user
       return Created(locationHeader, TheModelFactory.Create(user));
+    }
+
+    [HttpGet]
+    [Route("ConfirmEmail", Name="ConfirmEmailRoute")]
+    public async Task<IHttpActionResult> ConfirmEmail(string userId = "", string code = "")
+    {
+      if(string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(code))
+      {
+        ModelState.AddModelError("", "User Id and Code are required");
+        return BadRequest(ModelState);
+      }
+
+      IdentityResult result = await this.AppUserManager.ConfirmEmailAsync(userId, code);
+
+      if(result.Succeeded)
+      {
+        return Ok();
+      }
+
+      else
+      {
+        return GetErrorResult(result);
+      }
     }
   }
 }

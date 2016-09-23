@@ -38,6 +38,17 @@ namespace Workforce.Logic.Felice.Rest.Infrastructure
       var appDbContext = context.Get<ApplicationDbContext>();
       var appUserManager = new ApplicationUserManager(new UserStore<ApplicationUser>(appDbContext));
 
+      appUserManager.EmailService = new Workforce.Logic.Felice.Domain.EmailService();
+      var dataProtectionProvider = options.DataProtectionProvider;
+      if(dataProtectionProvider != null)
+      {
+        appUserManager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"))
+        {
+          //Code for email confirmation and reset password lifetime
+          TokenLifespan = TimeSpan.FromHours(6)
+        };
+      }
+
       return appUserManager;
     }
   }
