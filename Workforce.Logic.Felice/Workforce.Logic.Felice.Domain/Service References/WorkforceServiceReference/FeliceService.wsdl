@@ -3,24 +3,26 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-felice-soap/FeliceService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-felice-soap/FeliceService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-felice-soap/FeliceService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Workforce.Data.Felice.Soap.ServiceModels" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IFeliceService_DoWork_InputMessage">
-    <wsdl:part name="parameters" element="tns:DoWork" />
+  <wsdl:message name="IFeliceService_GetAssociates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssociates" />
   </wsdl:message>
-  <wsdl:message name="IFeliceService_DoWork_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  <wsdl:message name="IFeliceService_GetAssociates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssociatesResponse" />
   </wsdl:message>
   <wsdl:portType name="IFeliceService">
-    <wsdl:operation name="DoWork">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/DoWork" message="tns:IFeliceService_DoWork_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/DoWorkResponse" message="tns:IFeliceService_DoWork_OutputMessage" />
+    <wsdl:operation name="GetAssociates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/GetAssociates" message="tns:IFeliceService_GetAssociates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/GetAssociatesResponse" message="tns:IFeliceService_GetAssociates_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IFeliceService" type="tns:IFeliceService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="DoWork">
-      <soap:operation soapAction="http://tempuri.org/IFeliceService/DoWork" style="document" />
+    <wsdl:operation name="GetAssociates">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/GetAssociates" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
