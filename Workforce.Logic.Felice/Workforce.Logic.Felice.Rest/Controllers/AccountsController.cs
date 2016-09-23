@@ -130,6 +130,9 @@ namespace Workforce.Logic.Felice.Rest.Controllers
         return BadRequest(ModelState);
       }
 
+      //If email is opened and user clicks the link
+      //as long as the token is still active 
+      //the result will have a successful value.
       IdentityResult result = await this.AppUserManager.ConfirmEmailAsync(userId, code);
 
       if(result.Succeeded)
