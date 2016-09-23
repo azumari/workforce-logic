@@ -154,7 +154,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
         return BadRequest(ModelState);
       }
 
-      IdentityResult result = await this.AppUserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+      IdentityResult result = await this.AppUserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword); //test to see
 
       if(!result.Succeeded)
       {
