@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Workforce.Logic.Charlie.Domain.BusinessModels;
 using Workforce.Logic.Charlie.Domain.Models;
+using Workforce.Logic.Charlie.Domain.WorkforceService;
 
 namespace Workforce.Logic.Charlie.Domain
 {
     public class LogicHelper
     {
-        WorkforceService.CharlieServiceClient client = new WorkforceService.CharlieServiceClient();
+        CharlieServiceClient client = new CharlieServiceClient();
         Location locModel = new Location();
 
         /// <summary>

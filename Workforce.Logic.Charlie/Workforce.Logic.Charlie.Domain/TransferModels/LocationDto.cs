@@ -16,6 +16,6 @@ namespace Workforce.Logic.Charlie.Domain.BusinessModels
         [StringLength(100),Required]
         public string Address { get; set; }
         [StringLength(50),Required]
-        public string Name { get; set; }
+        public string StopName { get; set; }
     }
 }

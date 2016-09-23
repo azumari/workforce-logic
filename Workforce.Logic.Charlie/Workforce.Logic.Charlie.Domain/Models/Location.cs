@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,11 @@ namespace Workforce.Logic.Charlie.Domain.Models
 {
     public class Location
     {
+
+        CharlieServiceClient client = new CharlieServiceClient();
+
+        private readonly MapperConfiguration mapperLocation = new MapperConfiguration(l => l.CreateMap<LocationDao, LocationDto>());
+        private readonly MapperConfiguration mapperLocation2 = new MapperConfiguration(l => l.CreateMap<LocationDto, LocationDao>());
 
         /// <summary>
         /// Check that a Dao describes a valid location
@@ -38,8 +44,8 @@ namespace Workforce.Logic.Charlie.Domain.Models
         /// <returns></returns>
         public LocationDao MapToSoap (LocationDto loc)
         {
-            var result = new LocationDao();
-            return result;
+            var mapper = mapperLocation2.CreateMapper();
+            return mapper.Map<LocationDao>(loc);
         }
 
         /// <summary>
@@ -49,8 +55,8 @@ namespace Workforce.Logic.Charlie.Domain.Models
         /// <returns></returns>
         public LocationDto MapToRest(LocationDao loc)
         {
-            var result = new LocationDto();
-            return result;
+            var mapper = mapperLocation.CreateMapper();
+            return mapper.Map<LocationDto>(loc);
         }
 
 
