@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="OqmiB1L6pslJ7qVfkeU3C4WPFxU=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="5g1/BoxcwRfvhZqgekisaxPV4Ro=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_ICharlieService">
       <properties>
@@ -112,7 +112,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_ICharlieService" contract="ProjectCharlieService.ICharlieService" bindingType="basicHttpBinding" address="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc" bindingConfiguration="BasicHttpBinding_ICharlieService">
+    <endpoint name="BasicHttpBinding_ICharlieService" contract="WorkforceService.ICharlieService" bindingType="basicHttpBinding" address="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc" bindingConfiguration="BasicHttpBinding_ICharlieService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc</serializedValue>
@@ -127,7 +127,7 @@
           <serializedValue>BasicHttpBinding_ICharlieService</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ProjectCharlieService.ICharlieService</serializedValue>
+          <serializedValue>WorkforceService.ICharlieService</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>

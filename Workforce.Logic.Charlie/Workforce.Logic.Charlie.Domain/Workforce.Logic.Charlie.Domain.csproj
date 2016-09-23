@@ -76,7 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Location.cs" />
-    <Compile Include="Service References\ProjectCharlieService\Reference.cs">
+    <Compile Include="Service References\WorkforceService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -88,40 +88,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Service References\ProjectCharlieService\CharlieService.wsdl" />
-    <None Include="Service References\ProjectCharlieService\CharlieService.xsd">
+    <None Include="Service References\WorkforceService\CharlieService.wsdl" />
+    <None Include="Service References\WorkforceService\CharlieService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProjectCharlieService\CharlieService1.xsd">
+    <None Include="Service References\WorkforceService\CharlieService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProjectCharlieService\CharlieService11.xsd">
+    <None Include="Service References\WorkforceService\CharlieService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProjectCharlieService\Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao.datasource">
+    <None Include="Service References\WorkforceService\Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Web.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WorkforceService\" />
+  </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ProjectCharlieService\" />
+    <None Include="Service References\WorkforceService\CharlieService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ProjectCharlieService\CharlieService.disco" />
+    <None Include="Service References\WorkforceService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ProjectCharlieService\configuration91.svcinfo" />
+    <None Include="Service References\WorkforceService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ProjectCharlieService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProjectCharlieService\Reference.svcmap">
+    <None Include="Service References\WorkforceService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

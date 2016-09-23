@@ -9,7 +9,7 @@ namespace Workforce.Logic.Charlie.Domain
 {
     public class LogicHelper
     {
-        ProjectCharlieService.CharlieServiceClient client = new ProjectCharlieService.CharlieServiceClient();
+        WorkforceService.CharlieServiceClient client = new WorkforceService.CharlieServiceClient();
 
         /// <summary>
         /// Retreive all active meetup locations.

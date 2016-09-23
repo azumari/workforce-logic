@@ -8,27 +8,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Workforce.Logic.Charlie.Rest.ProjectCharlieService {
+namespace Workforce.Logic.Charlie.Rest.WorkforceService {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProjectCharlieService.ICharlieService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WorkforceService.ICharlieService")]
     public interface ICharlieService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/GetLocations", ReplyAction="http://tempuri.org/ICharlieService/GetLocationsResponse")]
-        Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao[] GetLocations();
+        Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao[] GetLocations();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/GetLocations", ReplyAction="http://tempuri.org/ICharlieService/GetLocationsResponse")]
-        System.Threading.Tasks.Task<Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao[]> GetLocationsAsync();
+        System.Threading.Tasks.Task<Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao[]> GetLocationsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ICharlieServiceChannel : Workforce.Logic.Charlie.Rest.ProjectCharlieService.ICharlieService, System.ServiceModel.IClientChannel {
+    public interface ICharlieServiceChannel : Workforce.Logic.Charlie.Rest.WorkforceService.ICharlieService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class CharlieServiceClient : System.ServiceModel.ClientBase<Workforce.Logic.Charlie.Rest.ProjectCharlieService.ICharlieService>, Workforce.Logic.Charlie.Rest.ProjectCharlieService.ICharlieService {
+    public partial class CharlieServiceClient : System.ServiceModel.ClientBase<Workforce.Logic.Charlie.Rest.WorkforceService.ICharlieService>, Workforce.Logic.Charlie.Rest.WorkforceService.ICharlieService {
         
         public CharlieServiceClient() {
         }
@@ -49,11 +49,11 @@ namespace Workforce.Logic.Charlie.Rest.ProjectCharlieService {
                 base(binding, remoteAddress) {
         }
         
-        public Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao[] GetLocations() {
+        public Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao[] GetLocations() {
             return base.Channel.GetLocations();
         }
         
-        public System.Threading.Tasks.Task<Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao[]> GetLocationsAsync() {
+        public System.Threading.Tasks.Task<Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao[]> GetLocationsAsync() {
             return base.Channel.GetLocationsAsync();
         }
     }

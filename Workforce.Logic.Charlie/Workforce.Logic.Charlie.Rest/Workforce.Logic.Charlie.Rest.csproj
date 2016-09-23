@@ -113,16 +113,13 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao.datasource" />
-    <None Include="Service References\ProjectCharlieService\CharlieService.disco" />
-    <None Include="Service References\ProjectCharlieService\CharlieService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProjectCharlieService\CharlieService11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProjectCharlieService\configuration91.svcinfo" />
-    <None Include="Service References\ProjectCharlieService\configuration.svcinfo" />
-    <None Include="Service References\ProjectCharlieService\Reference.svcmap">
+    <Content Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao1.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao2.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao.datasource" />
+    <None Include="Service References\WorkforceService\CharlieService.disco" />
+    <None Include="Service References\WorkforceService\configuration91.svcinfo" />
+    <None Include="Service References\WorkforceService\configuration.svcinfo" />
+    <None Include="Service References\WorkforceService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -138,7 +135,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\ProjectCharlieService\Reference.cs">
+    <Compile Include="Service References\WorkforceService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -146,8 +143,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Service References\ProjectCharlieService\CharlieService.wsdl" />
-    <None Include="Service References\ProjectCharlieService\CharlieService.xsd">
+    <None Include="Service References\WorkforceService\CharlieService.wsdl" />
+    <None Include="Service References\WorkforceService\CharlieService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WorkforceService\CharlieService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WorkforceService\CharlieService2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Web.Debug.config">
@@ -171,7 +174,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ProjectCharlieService\" />
+    <WCFMetadataStorage Include="Service References\WorkforceService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
