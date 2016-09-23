@@ -9,129 +9,17 @@
 //------------------------------------------------------------------------------
 
 namespace Workforce.Logic.Charlie.Rest.ProjectCharlieService {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="LocationDao", Namespace="http://schemas.datacontract.org/2004/07/Workforce.Data.Charlie.Soap.ServiceModels" +
-        "")]
-    [System.SerializableAttribute()]
-    public partial class LocationDao : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double LatitudeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int LocationIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double LongitudeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Address {
-            get {
-                return this.AddressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AddressField, value) != true)) {
-                    this.AddressField = value;
-                    this.RaisePropertyChanged("Address");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Latitude {
-            get {
-                return this.LatitudeField;
-            }
-            set {
-                if ((this.LatitudeField.Equals(value) != true)) {
-                    this.LatitudeField = value;
-                    this.RaisePropertyChanged("Latitude");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int LocationId {
-            get {
-                return this.LocationIdField;
-            }
-            set {
-                if ((this.LocationIdField.Equals(value) != true)) {
-                    this.LocationIdField = value;
-                    this.RaisePropertyChanged("LocationId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Longitude {
-            get {
-                return this.LongitudeField;
-            }
-            set {
-                if ((this.LongitudeField.Equals(value) != true)) {
-                    this.LongitudeField = value;
-                    this.RaisePropertyChanged("Longitude");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProjectCharlieService.ICharlieService")]
     public interface ICharlieService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/GetLocations", ReplyAction="http://tempuri.org/ICharlieService/GetLocationsResponse")]
-        Workforce.Logic.Charlie.Rest.ProjectCharlieService.LocationDao[] GetLocations();
+        Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao[] GetLocations();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/GetLocations", ReplyAction="http://tempuri.org/ICharlieService/GetLocationsResponse")]
-        System.Threading.Tasks.Task<Workforce.Logic.Charlie.Rest.ProjectCharlieService.LocationDao[]> GetLocationsAsync();
+        System.Threading.Tasks.Task<Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao[]> GetLocationsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -161,11 +49,11 @@ namespace Workforce.Logic.Charlie.Rest.ProjectCharlieService {
                 base(binding, remoteAddress) {
         }
         
-        public Workforce.Logic.Charlie.Rest.ProjectCharlieService.LocationDao[] GetLocations() {
+        public Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao[] GetLocations() {
             return base.Channel.GetLocations();
         }
         
-        public System.Threading.Tasks.Task<Workforce.Logic.Charlie.Rest.ProjectCharlieService.LocationDao[]> GetLocationsAsync() {
+        public System.Threading.Tasks.Task<Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao[]> GetLocationsAsync() {
             return base.Channel.GetLocationsAsync();
         }
     }
