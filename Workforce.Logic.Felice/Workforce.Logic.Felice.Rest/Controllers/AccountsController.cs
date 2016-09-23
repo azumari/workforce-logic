@@ -146,6 +146,15 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       }
     }
 
+    /// <summary>
+    /// This will be used to help the user change their password
+    /// if they ever decide that they want to change it.
+    /// This will check their id so that the correct person is 
+    /// changing his/her password. If the user ID cannot be found,
+    /// They will be notified that they have made a possible mistake
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
     [Route("ChangePassword")]
     public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
     {
