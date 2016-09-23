@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4875a2d1-15df-4865-bbb8-950881aa521b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CharlieService.wsdl" MetadataType="Wsdl" ID="7f002680-a267-49ef-82bd-a843073c1046" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc?wsdl" />
+    <MetadataFile FileName="CharlieService.xsd" MetadataType="Schema" ID="287c41ae-388a-4d07-9ab6-85d4583b25cb" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CharlieService1.xsd" MetadataType="Schema" ID="7d45d4eb-12d0-4f23-b742-e4aef8627cc0" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CharlieService.disco" MetadataType="Disco" ID="30d89441-9a92-4122-a155-4d0c792a2064" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc?disco" />
+    <MetadataFile FileName="CharlieService2.xsd" MetadataType="Schema" ID="d418f639-7376-4609-93a1-f63a1750c253" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-charlie-soap/CharlieService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
