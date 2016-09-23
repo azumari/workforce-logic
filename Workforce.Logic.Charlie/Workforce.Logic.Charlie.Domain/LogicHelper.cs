@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Workforce.Logic.Charlie.Domain.BusinessModels;
+using Workforce.Logic.Charlie.Domain.Models;
 
 namespace Workforce.Logic.Charlie.Domain
 {
     public class LogicHelper
     {
         WorkforceService.CharlieServiceClient client = new WorkforceService.CharlieServiceClient();
+        Location locModel = new Location();
 
         /// <summary>
         /// Retreive all active meetup locations.
@@ -22,13 +24,11 @@ namespace Workforce.Logic.Charlie.Domain
 
             foreach (var item in source)
             {
-                var newLoc = new LocationDto();
-                newLoc.LocationId = item.LocationId;
-                newLoc.Address = item.Address;
-                newLoc.Name = item.Name;
-                newLoc.Latitude = item.Latitude;
-                newLoc.Longitude = item.Longitude;
-                locs.Add(newLoc);
+                if (locModel.ValidateDao(item))
+                {
+                    var newLoc = locModel.MapToRest(item);
+                    locs.Add(newLoc);
+                }
             }
             return locs;
         }
