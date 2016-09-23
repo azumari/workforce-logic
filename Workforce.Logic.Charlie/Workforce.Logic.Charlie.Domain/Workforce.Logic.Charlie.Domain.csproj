@@ -63,6 +63,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -87,7 +88,6 @@
     <Compile Include="Services\IdentityConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Service References\WorkforceService\CharlieService.wsdl" />
     <None Include="Service References\WorkforceService\CharlieService.xsd">
       <SubType>Designer</SubType>
