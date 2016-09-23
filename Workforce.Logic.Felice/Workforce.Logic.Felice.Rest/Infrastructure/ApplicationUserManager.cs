@@ -49,6 +49,22 @@ namespace Workforce.Logic.Felice.Rest.Infrastructure
         };
       }
 
+      //configure validation logic so that emails are unqiue
+      appUserManager.UserValidator = new UserValidator<ApplicationUser>(appUserManager)
+      {
+        RequireUniqueEmail = true
+      };
+
+      //password requirements, can change later for more security purposes
+      appUserManager.PasswordValidator = new PasswordValidator
+      {
+        RequiredLength = 6,
+        RequireLowercase = false,
+        RequireUppercase = false,
+        RequireNonLetterOrDigit = false,
+        RequireDigit = false
+      };
+
       return appUserManager;
     }
   }
