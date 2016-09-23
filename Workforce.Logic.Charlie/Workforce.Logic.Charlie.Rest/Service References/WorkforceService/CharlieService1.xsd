@@ -12,7 +12,7 @@
       <xs:element minOccurs="0" name="Latitude" type="xs:double" />
       <xs:element minOccurs="0" name="LocationId" type="xs:int" />
       <xs:element minOccurs="0" name="Longitude" type="xs:double" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StopName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="LocationDao" nillable="true" type="tns:LocationDao" />
