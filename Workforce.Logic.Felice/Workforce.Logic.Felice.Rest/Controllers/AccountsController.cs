@@ -163,5 +163,37 @@ namespace Workforce.Logic.Felice.Rest.Controllers
 
       return Ok();
     }
+
+    /// <summary>
+    /// This method will Delete a user by 
+    /// using the HTTP DELETE request
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [Route("user/{id:guid}")]
+    public async Task<IHttpActionResult> DeleteUser(string id)
+    {
+      //Only admin can delete users
+
+      var appUser = await this.AppUserManager.FindByIdAsync(id);
+
+      //If user is found, the user will be deleted
+      if(appUser != null)
+      {
+        IdentityResult result = await this.AppUserManager.DeleteAsync(appUser);
+
+        if(!result.Succeeded)
+        {
+          return GetErrorResult(result);
+        }
+
+        return Ok();
+      }
+
+      //If user is not found,
+      //client will be notified
+      //that they are not found
+      return NotFound();
+    }
   }
 }
