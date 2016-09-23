@@ -6,6 +6,10 @@ using System.Web;
 
 namespace Workforce.Logic.Felice.Rest.Models
 {
+  /// <summary>
+  /// The model that we will use
+  /// to create a user. 
+  /// </summary>
   public class CreateUserBindingModel
   {
     [Required]

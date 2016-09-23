@@ -64,14 +64,25 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       return NotFound();
     }
 
+    /// <summary>
+    /// Creates the new user
+    /// </summary>
+    /// <param name="createUserModel"></param>
+    /// <returns></returns>
     [Route("create")]
     public async Task<IHttpActionResult> CreateUser(CreateUserBindingModel createUserModel)
     {
+      //If the model is valid,
+      //We will use it to create
+      //a new instance of ApplicationUser
       if(!ModelState.IsValid)
       {
         return BadRequest(ModelState);
       }
 
+      //The user's credentials
+      //By default, the user
+      //will always be level 3
       var user = new ApplicationUser
       {
         UserName = createUserModel.Username,
@@ -82,8 +93,15 @@ namespace Workforce.Logic.Felice.Rest.Controllers
         JoinDate = DateTime.Now.Date
       };
 
+      //This will do the work for us to create the user
+      //It will validate if the username or email has been used before
+      //and will let us know if the password matches the policy we have set forth
+      //If the request is valid, the user will be added to our table in
+      //the database and return a successful result
       IdentityResult addUserResult = await this.AppUserManager.CreateAsync(user, createUserModel.Password);
 
+
+      //If the creation failed
       if(!addUserResult.Succeeded)
       {
         return GetErrorResult(addUserResult);
@@ -91,6 +109,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
 
       Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
 
+      //returns the created user
       return Created(locationHeader, TheModelFactory.Create(user));
     }
   }

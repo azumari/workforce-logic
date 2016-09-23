@@ -8,6 +8,14 @@ using Workforce.Logic.Felice.Rest.Infrastructure;
 
 namespace Workforce.Logic.Felice.Rest.Models
 {
+
+  /// <summary>
+  /// This class will contain all the functions
+  /// that are needed to shape the response object.
+  /// 
+  /// This will help us to not leak any sensitive
+  /// information over to the client such as the password hash
+  /// </summary>
   public class ModelFactory
   {
     private UrlHelper urlHelper;
@@ -21,6 +29,9 @@ namespace Workforce.Logic.Felice.Rest.Models
 
     public UserReturnModel Create(ApplicationUser appUser)
     {
+      //Will return the properties needed 
+      //for the object graph from the
+      //class below this method
       return new UserReturnModel
         {
           Url = urlHelper.Link("GetUserById", new { id = appUser.Id }),
@@ -37,6 +48,14 @@ namespace Workforce.Logic.Felice.Rest.Models
         };
     }
 
+    /// <summary>
+    /// properties that we can/will use
+    /// to help create the users and displaye
+    /// information. Password Hash is not
+    /// shown because it is not needed
+    /// and because we don't want to leak that
+    /// information over to the client by mistake
+    /// </summary>
     public class UserReturnModel
     {
       public string Url { get; set; }
