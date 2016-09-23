@@ -23,7 +23,7 @@ namespace Workforce.Logic.Felice.Domain
       /// <summary>
       /// After validation has occurred, this method will map the data passed through the Data Layer to the Dto
       /// </summary>
-      public void MapToDomain()
+      public void MapToRest()
       {
 
       }
@@ -44,7 +44,7 @@ namespace Workforce.Logic.Felice.Domain
       /// <summary>
       /// After validation has occurred, this method will map the data passed through the Dto back to the Data Layer
       /// </summary>
-      public void MapToData()
+      public void MapToSoap()
       {
 
       }
