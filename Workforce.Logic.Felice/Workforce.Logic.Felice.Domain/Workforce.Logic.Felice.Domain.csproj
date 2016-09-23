@@ -84,6 +84,8 @@
     <Compile Include="Batch.cs" />
     <Compile Include="DomainModels\AssociateDto.cs" />
     <Compile Include="DomainModels\BatchDto.cs" />
+    <Compile Include="DomainModels\InstructorDto.cs" />
+    <Compile Include="Instructor.cs" />
     <Compile Include="Service References\WorkforceServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
