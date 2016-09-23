@@ -4,11 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Workforce.Logic.Grace.Domain.BusinessModels.Dtos;
+using Workforce.Logic.Grace.Domain.Models;
 
 namespace Workforce.Logic.Grace.Domain.Helpers
 {
   public class LogicHelper
   {
+
+    Apartment apartmentVnM = new Apartment();
+    HousingComplex housingComplexVnM = new HousingComplex();
+    HousingData housingDataVnM = new HousingData();
+    Status statusVnM = new Status();
+
+
     /// <summary>
     /// This method calls the soap service and awaits on the get
     /// </summary>
