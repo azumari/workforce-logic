@@ -36,7 +36,7 @@ namespace Workforce.Logic.Charlie.Domain.WorkforceService {
         private double LongitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
+        private string StopNameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -101,14 +101,14 @@ namespace Workforce.Logic.Charlie.Domain.WorkforceService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
+        public string StopName {
             get {
-                return this.NameField;
+                return this.StopNameField;
             }
             set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
+                if ((object.ReferenceEquals(this.StopNameField, value) != true)) {
+                    this.StopNameField = value;
+                    this.RaisePropertyChanged("StopName");
                 }
             }
         }
