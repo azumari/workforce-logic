@@ -5,7 +5,7 @@ Project Workforce is a collaboration project that combines three smaller project
 cohesive application. 
 
 Project Felice is the heart of the project and focuses primarily upon the base 'On Boarding' 
-process at Revature LLC. The base 'On Boarding' process primary purpose is to record and manage
+process at Revature LLC. The base 'On Boarding' process' primary purpose is to record and manage
 all new associates that are just joining Revature or even old associates that are returning or
 still presently a part of Revature. Felice communicates this data to both Project Charlie and
 Project Grace.
@@ -19,23 +19,9 @@ Project Charlie is the final piece that allows associates to setup a 'Ride Share
 other. Associates can log into the application to either offer a ride that others can request to
 join or seek out nearby ride offers that are presently available.
 
-This particular aspect of Workforce focuses on the BLL of the three collaborative projects.
+This particular aspect of Workforce focuses on the Business Logic Layer (BLL) of the three 
+collaborative projects.
 
-## Developing
-
-Here's a brief intro about what a developer must do in order to start developing
-the project further:
-
-```shell
-git clone https://github.com/apticity/workforce-logic.git
-cd workforce-logic/
-packagemanager install
-```
-
-### Deploying / Publishing
-
-In order to Deploy / Publish anything, you must first be authorized by the project
-manager.
 
 ## Features
 
@@ -48,12 +34,3 @@ What's all the bells and whistles this project can perform?
 
 Here you should write what are all of the configurations a user can enter when
 using the project.
-
-
-## Contributing
-
-This section is reserved for any contributing information
-
-## Licensing
-
-This section is reserve for any Licensing
