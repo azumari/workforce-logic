@@ -14,6 +14,8 @@ namespace Workforce.Logic.Grace.Domain.Helpers
      
     private readonly GraceServiceClient graceService = new GraceServiceClient();
 
+    #region GetAlls()
+
     /// <summary>
     /// This method calls the soap service and awaits on the get
     /// </summary>
@@ -69,5 +71,60 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       //STILL NEED TO VALIDATE
       return dtoStatuses;
     }
+
+    #endregion
+
+
+    #region Insert methods for all models
+    public async Task AddApartment(ApartmentDto newApt)
+    {
+      Apartment apartmentVnM = new Apartment();
+
+      //validate the incoming DTO first before converting into DAO
+      //STILL NEED TO VALIDATE
+
+      ApartmentDao daoMappedApt = apartmentVnM.MapToDao(newApt);
+
+      await graceService.InsertApartmentAsync(daoMappedApt);
+
+    }
+
+    public async Task AddHousingComplex(HousingComplexDto newComplex)
+    {
+      HousingComplex housingComplexVnM = new HousingComplex();
+
+      //validate the incoming DTO first before converting into DAO
+      //STILL NEED TO VALIDATE
+
+      HousingComplexDao daoMappedComp = housingComplexVnM.MapToDao(newComplex);
+
+      await graceService.InsertHousingComplexAsync(daoMappedComp);
+    }
+
+
+    public async Task AddHousingData(HousingDataDto newData)
+    {
+      HousingData housingDataVnM = new HousingData();
+
+      //validate the incoming DTO first before converting into DAO
+      //STILL NEED TO VALIDATE
+
+
+    }
+
+
+    public async Task AddStatus(StatusDto newStatus)
+    {
+      Status statusVnM = new Status();
+
+      //validate the incoming DTO first before converting into DAO
+      //STILL NEED TO VALIDATE
+
+
+    }
+
+
+    #endregion
+
   }
 }

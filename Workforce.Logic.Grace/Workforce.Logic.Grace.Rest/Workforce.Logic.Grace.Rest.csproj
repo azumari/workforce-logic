@@ -113,6 +113,9 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Properties\DataSources\Workforce.Logic.Grace.Domain.GraceServiceReference.HousingComplexDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Grace.Domain.GraceServiceReference.ApartmentDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Grace.Domain.GraceServiceReference.HousingDataDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao.datasource" />
     <None Include="Service References\GraceServiceReference\GraceService.disco" />
     <None Include="Service References\GraceServiceReference\configuration91.svcinfo" />
     <None Include="Service References\GraceServiceReference\configuration.svcinfo" />
