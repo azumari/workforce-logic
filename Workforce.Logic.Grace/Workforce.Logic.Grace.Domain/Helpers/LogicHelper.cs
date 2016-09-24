@@ -122,7 +122,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
       //validate the incoming DTO first before converting into DAO
       //STILL NEED TO VALIDATE
-
+       
       await graceService.InsertStatusAsync(statusVnM.MapToDao(newStatus));
     }
 
