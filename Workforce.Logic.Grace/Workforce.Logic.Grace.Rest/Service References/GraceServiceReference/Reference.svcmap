@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0c532ba7-95b2-4565-8128-c6bccc4b2c94" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-grace-soap/GraceService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="GraceService.xsd" MetadataType="Schema" ID="8a3d293a-5211-4d0c-b718-3514543abe09" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-grace-soap/GraceService.svc?xsd=xsd1" />
+    <MetadataFile FileName="GraceService1.xsd" MetadataType="Schema" ID="e1af3de0-cb11-4698-8d7f-f0124f6e8816" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-grace-soap/GraceService.svc?xsd=xsd2" />
+    <MetadataFile FileName="GraceService2.xsd" MetadataType="Schema" ID="838b7f37-7b4b-41ad-939e-9687ff9ba730" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-grace-soap/GraceService.svc?xsd=xsd0" />
+    <MetadataFile FileName="GraceService.wsdl" MetadataType="Wsdl" ID="d6350a59-b72c-4f9e-873e-2d626d545454" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-grace-soap/GraceService.svc?wsdl" />
+    <MetadataFile FileName="GraceService.disco" MetadataType="Disco" ID="5e2d6cb4-1833-4c50-b271-190976f4e5a3" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-grace-soap/GraceService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

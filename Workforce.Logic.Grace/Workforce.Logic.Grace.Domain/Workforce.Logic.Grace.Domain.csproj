@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
       <Private>True</Private>
@@ -65,6 +69,8 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -77,6 +83,11 @@
     <Compile Include="Models\HousingComplex.cs" />
     <Compile Include="Models\HousingData.cs" />
     <Compile Include="Models\Status.cs" />
+    <Compile Include="Service References\GraceServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="TransferModels\Dtos\ApartmentDto.cs" />
     <Compile Include="TransferModels\Dtos\HousingComplexDto.cs" />
     <Compile Include="TransferModels\Dtos\HousingDataDto.cs" />
@@ -87,8 +98,51 @@
     <Compile Include="Services\IdentityConfig.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\GraceServiceReference\GraceService.wsdl" />
+    <None Include="Service References\GraceServiceReference\GraceService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GraceServiceReference\GraceService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GraceServiceReference\GraceService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GraceServiceReference\Workforce.Logic.Grace.Domain.GraceServiceReference.ApartmentDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GraceServiceReference\Workforce.Logic.Grace.Domain.GraceServiceReference.HousingComplexDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GraceServiceReference\Workforce.Logic.Grace.Domain.GraceServiceReference.HousingDataDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GraceServiceReference\Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Web.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\GraceServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GraceServiceReference\GraceService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GraceServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GraceServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GraceServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
