@@ -13,9 +13,7 @@ namespace Workforce.Logic.Charlie.Domain.BusinessModels
         public int LocationId { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        [StringLength(100),Required]
         public string Address { get; set; }
-        [StringLength(50),Required]
-        public string Name { get; set; }
+        public string StopName { get; set; }
     }
 }

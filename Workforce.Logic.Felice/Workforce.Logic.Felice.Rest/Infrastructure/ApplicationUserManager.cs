@@ -38,6 +38,33 @@ namespace Workforce.Logic.Felice.Rest.Infrastructure
       var appDbContext = context.Get<ApplicationDbContext>();
       var appUserManager = new ApplicationUserManager(new UserStore<ApplicationUser>(appDbContext));
 
+      appUserManager.EmailService = new Workforce.Logic.Felice.Domain.EmailService();
+      var dataProtectionProvider = options.DataProtectionProvider;
+      if(dataProtectionProvider != null)
+      {
+        appUserManager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"))
+        {
+          //Code for email confirmation and reset password lifetime
+          TokenLifespan = TimeSpan.FromHours(6)
+        };
+      }
+
+      //configure validation logic so that emails are unqiue
+      appUserManager.UserValidator = new UserValidator<ApplicationUser>(appUserManager)
+      {
+        RequireUniqueEmail = true
+      };
+
+      //password requirements, can change later for more security purposes
+      appUserManager.PasswordValidator = new PasswordValidator
+      {
+        RequiredLength = 6,
+        RequireLowercase = false,
+        RequireUppercase = false,
+        RequireNonLetterOrDigit = false,
+        RequireDigit = false
+      };
+
       return appUserManager;
     }
   }
