@@ -18,7 +18,7 @@ namespace Workforce.Logic.Grace.Domain.Models
 
     //private readonly GraceServiceClient f = new GraceServiceClient();
     private readonly MapperConfiguration complexMapper = new MapperConfiguration(m => m.CreateMap<HousingComplexDao, HousingComplexDto>().ReverseMap());
- 
+
 
     private bool validate(IEnumerable<HousingComplexDao> temp)
     {
@@ -29,7 +29,7 @@ namespace Workforce.Logic.Grace.Domain.Models
     /// </summary>
     /// <param name="complex"></param>
     /// <returns>HousingComplexDto</returns>
-    private HousingComplexDto MapToDto(HousingComplexDao complex)
+    public HousingComplexDto MapToDto(HousingComplexDao complex)
     {
       var mapper = complexMapper.CreateMapper();
       return mapper.Map<HousingComplexDto>(complex);
@@ -40,26 +40,42 @@ namespace Workforce.Logic.Grace.Domain.Models
     /// </summary>
     /// <param name="complex"></param>
     /// <returns>HousingComplexDao</returns>
-    private HousingComplexDao MapToDao(HousingComplexDto complex)
+    public HousingComplexDao MapToDao(HousingComplexDto complex)
     {
       var mapper = complexMapper.CreateMapper();
       return mapper.Map<HousingComplexDao>(complex);
-    }     
+    }
     /// <summary>
-    /// This method recieves an IEnumerable<HousginComplexDao>  and converts it
+    /// This method recieves an IEnumerable<HousginComplexDao>  and maps it
     /// into a list of List<HousingComplexDto>
     /// </summary>
     /// <param name="daos"></param>
     /// <returns>List<HousingComplexDto></returns>
     public List<HousingComplexDto> getDtoList(IEnumerable<HousingComplexDao> daos)
     {
-      var hotaps = new List<HousingComplexDto>();
+      var complexes = new List<HousingComplexDto>();
       foreach (var item in daos)
       {
         var temp = MapToDto(item);
-        hotaps.Add(temp);
+        complexes.Add(temp);
       }
-      return hotaps;
+      return complexes;
+    }
+    /// <summary>
+    /// This method recieves an IEnumerable<HousingComplexDto> and maps it
+    /// into a list of List<HousingComplexDao>
+    /// </summary>
+    /// <param name="dtos"></param>
+    /// <returns> List<HousingComplexDao> </returns>
+    public List<HousingComplexDao> getDaoList(IEnumerable<HousingComplexDto> dtos)
+    {
+      var complexes = new List<HousingComplexDao>();
+      foreach (var item in dtos)
+      {
+        var temp = MapToDao(item);
+        complexes.Add(temp);
+      }
+      return complexes;
     }
 
   }
