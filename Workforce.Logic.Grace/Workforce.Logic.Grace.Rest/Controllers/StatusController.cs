@@ -18,7 +18,7 @@ namespace Workforce.Logic.Grace.Rest.Controllers
     /// <returns>Task<HttpResponseMessage></returns>
     public async Task<HttpResponseMessage> Get()
     {
-      return Request.CreateResponse(HttpStatusCode.OK, await logicHelper.GetStatuses());
+      return Request.CreateResponse(HttpStatusCode.OK, await logicHelper.StatusesGetAll());
     }
   }
 }
