@@ -75,5 +75,39 @@ namespace Workforce.Logic.Charlie.Domain
             return reqs;
         }
 
+        /// <summary>
+        /// insert new location
+        /// </summary>
+        /// <param name="loc"></param>
+        /// <returns></returns>
+        public async Task<bool> InsertLocation(LocationDto loc)
+        {
+            //validate locationdto
+            var toAdd = locModel.MapToSoap(loc);
+            return true;
+
+        }
+
+        /// <summary>
+        /// insert new ride
+        /// </summary>
+        /// <param name="ride"></param>
+        /// <returns></returns>
+        public async Task<bool> InsertRide(RideDto ride)
+        {
+            //validate ridedto
+            var toAdd = rideModel.MapToSoap(ride);
+            return true;
+
+        }
+
+        public async Task<bool> InsertRequest(RequestDto req)
+        {
+            //validate locationdto
+            var toAdd = reqModel.MapToSoap(req);
+            return true;
+
+        }
+
     }
 }
