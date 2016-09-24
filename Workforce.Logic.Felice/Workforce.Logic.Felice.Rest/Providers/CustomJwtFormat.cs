@@ -1,10 +1,13 @@
-﻿using Microsoft.Owin.Security;
+﻿//using Microsoft.IdentityModel.Tokens;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataHandler.Encoder;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Text;
 using System.Web;
 using Thinktecture.IdentityModel.Tokens;
 
@@ -25,18 +28,15 @@ namespace Workforce.Logic.Felice.Rest.Providers
       {
         throw new ArgumentNullException("data");
       }
-
-      string audienceId = ConfigurationManager.AppSettings["AudienceId"];
-      string symmetricKey = ConfigurationManager.AppSettings["AudienceSecret"];
-      var keyByteArray = TextEncodings.Base64Url.Decode(symmetricKey);
-      var signKey = new HmacSigningCredentials(keyByteArray);
+      string plaintext = ConfigurationManager.AppSettings["AudienceSecret"] + DateTime.Now;
+      var secKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Encoding.Default.GetBytes(plaintext));
+      var signKey = new Microsoft.IdentityModel.Tokens.SigningCredentials(secKey, SecurityAlgorithms.HmacSha256Signature);
       var issued = data.Properties.IssuedUtc;
       var expires = data.Properties.ExpiresUtc;
-      //var token = new JwtSecurityToken(issuer, audienceId, data.Identity.Claims, issued.Value.UtcDateTime, expires.Value.UtcDateTime, signKey);
+      var token = new JwtSecurityToken(issuer, plaintext, data.Identity.Claims, issued.Value.UtcDateTime, expires.Value.UtcDateTime, signKey);
       var handler = new JwtSecurityTokenHandler();
-      //var jwt = handler.WriteToken(token);
-      //return jwt;
-      return "hello";
+      var jwt = handler.WriteToken(token);
+      return jwt;
     }
 
     public AuthenticationTicket Unprotect(string protectedText)
