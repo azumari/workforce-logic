@@ -16,4 +16,51 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="LocationDao" nillable="true" type="tns:LocationDao" />
+  <xs:complexType name="ArrayOfRequestDao">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RequestDao" nillable="true" type="tns:RequestDao" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRequestDao" nillable="true" type="tns:ArrayOfRequestDao" />
+  <xs:complexType name="RequestDao">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Associate" type="xs:int" />
+      <xs:element minOccurs="0" name="RequestID" type="xs:int" />
+      <xs:element minOccurs="0" name="Schedule" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestDao" nillable="true" type="tns:RequestDao" />
+  <xs:complexType name="ArrayOfScheduleDao">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ScheduleDao" nillable="true" type="tns:ScheduleDao" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfScheduleDao" nillable="true" type="tns:ArrayOfScheduleDao" />
+  <xs:complexType name="ScheduleDao">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DepartureLoc" type="xs:int" />
+      <xs:element minOccurs="0" name="DepartureTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DestinationLoc" type="xs:int" />
+      <xs:element minOccurs="0" name="ScheduleID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScheduleDao" nillable="true" type="tns:ScheduleDao" />
+  <xs:complexType name="ArrayOfRideDao">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RideDao" nillable="true" type="tns:RideDao" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRideDao" nillable="true" type="tns:ArrayOfRideDao" />
+  <xs:complexType name="RideDao">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Associate" type="xs:int" />
+      <xs:element minOccurs="0" name="RideID" type="xs:int" />
+      <xs:element minOccurs="0" name="Schedule" type="xs:int" />
+      <xs:element minOccurs="0" name="SeatsAvailable" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RideDao" nillable="true" type="tns:RideDao" />
 </xs:schema>
