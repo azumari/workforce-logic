@@ -123,6 +123,320 @@ namespace Workforce.Logic.Charlie.Domain.WorkforceService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RequestDao", Namespace="http://schemas.datacontract.org/2004/07/Workforce.Data.Charlie.Soap.ServiceModels" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class RequestDao : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AssociateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RequestIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ScheduleField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Active {
+            get {
+                return this.ActiveField;
+            }
+            set {
+                if ((this.ActiveField.Equals(value) != true)) {
+                    this.ActiveField = value;
+                    this.RaisePropertyChanged("Active");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Associate {
+            get {
+                return this.AssociateField;
+            }
+            set {
+                if ((this.AssociateField.Equals(value) != true)) {
+                    this.AssociateField = value;
+                    this.RaisePropertyChanged("Associate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RequestID {
+            get {
+                return this.RequestIDField;
+            }
+            set {
+                if ((this.RequestIDField.Equals(value) != true)) {
+                    this.RequestIDField = value;
+                    this.RaisePropertyChanged("RequestID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Schedule {
+            get {
+                return this.ScheduleField;
+            }
+            set {
+                if ((this.ScheduleField.Equals(value) != true)) {
+                    this.ScheduleField = value;
+                    this.RaisePropertyChanged("Schedule");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ScheduleDao", Namespace="http://schemas.datacontract.org/2004/07/Workforce.Data.Charlie.Soap.ServiceModels" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class ScheduleDao : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DepartureLocField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DepartureTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DestinationLocField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ScheduleIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Active {
+            get {
+                return this.ActiveField;
+            }
+            set {
+                if ((this.ActiveField.Equals(value) != true)) {
+                    this.ActiveField = value;
+                    this.RaisePropertyChanged("Active");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DepartureLoc {
+            get {
+                return this.DepartureLocField;
+            }
+            set {
+                if ((this.DepartureLocField.Equals(value) != true)) {
+                    this.DepartureLocField = value;
+                    this.RaisePropertyChanged("DepartureLoc");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DepartureTime {
+            get {
+                return this.DepartureTimeField;
+            }
+            set {
+                if ((this.DepartureTimeField.Equals(value) != true)) {
+                    this.DepartureTimeField = value;
+                    this.RaisePropertyChanged("DepartureTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DestinationLoc {
+            get {
+                return this.DestinationLocField;
+            }
+            set {
+                if ((this.DestinationLocField.Equals(value) != true)) {
+                    this.DestinationLocField = value;
+                    this.RaisePropertyChanged("DestinationLoc");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ScheduleID {
+            get {
+                return this.ScheduleIDField;
+            }
+            set {
+                if ((this.ScheduleIDField.Equals(value) != true)) {
+                    this.ScheduleIDField = value;
+                    this.RaisePropertyChanged("ScheduleID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RideDao", Namespace="http://schemas.datacontract.org/2004/07/Workforce.Data.Charlie.Soap.ServiceModels" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class RideDao : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AssociateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RideIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ScheduleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SeatsAvailableField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Active {
+            get {
+                return this.ActiveField;
+            }
+            set {
+                if ((this.ActiveField.Equals(value) != true)) {
+                    this.ActiveField = value;
+                    this.RaisePropertyChanged("Active");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Associate {
+            get {
+                return this.AssociateField;
+            }
+            set {
+                if ((this.AssociateField.Equals(value) != true)) {
+                    this.AssociateField = value;
+                    this.RaisePropertyChanged("Associate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RideID {
+            get {
+                return this.RideIDField;
+            }
+            set {
+                if ((this.RideIDField.Equals(value) != true)) {
+                    this.RideIDField = value;
+                    this.RaisePropertyChanged("RideID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Schedule {
+            get {
+                return this.ScheduleField;
+            }
+            set {
+                if ((this.ScheduleField.Equals(value) != true)) {
+                    this.ScheduleField = value;
+                    this.RaisePropertyChanged("Schedule");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SeatsAvailable {
+            get {
+                return this.SeatsAvailableField;
+            }
+            set {
+                if ((this.SeatsAvailableField.Equals(value) != true)) {
+                    this.SeatsAvailableField = value;
+                    this.RaisePropertyChanged("SeatsAvailable");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WorkforceService.ICharlieService")]
     public interface ICharlieService {
@@ -132,6 +446,24 @@ namespace Workforce.Logic.Charlie.Domain.WorkforceService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/GetLocations", ReplyAction="http://tempuri.org/ICharlieService/GetLocationsResponse")]
         System.Threading.Tasks.Task<Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao[]> GetLocationsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/GetRequest", ReplyAction="http://tempuri.org/ICharlieService/GetRequestResponse")]
+        Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao[] GetRequest();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/GetRequest", ReplyAction="http://tempuri.org/ICharlieService/GetRequestResponse")]
+        System.Threading.Tasks.Task<Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao[]> GetRequestAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/GetSchedule", ReplyAction="http://tempuri.org/ICharlieService/GetScheduleResponse")]
+        Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao[] GetSchedule();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/GetSchedule", ReplyAction="http://tempuri.org/ICharlieService/GetScheduleResponse")]
+        System.Threading.Tasks.Task<Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao[]> GetScheduleAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/GetRide", ReplyAction="http://tempuri.org/ICharlieService/GetRideResponse")]
+        Workforce.Logic.Charlie.Domain.WorkforceService.RideDao[] GetRide();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/GetRide", ReplyAction="http://tempuri.org/ICharlieService/GetRideResponse")]
+        System.Threading.Tasks.Task<Workforce.Logic.Charlie.Domain.WorkforceService.RideDao[]> GetRideAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -167,6 +499,30 @@ namespace Workforce.Logic.Charlie.Domain.WorkforceService {
         
         public System.Threading.Tasks.Task<Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao[]> GetLocationsAsync() {
             return base.Channel.GetLocationsAsync();
+        }
+        
+        public Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao[] GetRequest() {
+            return base.Channel.GetRequest();
+        }
+        
+        public System.Threading.Tasks.Task<Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao[]> GetRequestAsync() {
+            return base.Channel.GetRequestAsync();
+        }
+        
+        public Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao[] GetSchedule() {
+            return base.Channel.GetSchedule();
+        }
+        
+        public System.Threading.Tasks.Task<Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao[]> GetScheduleAsync() {
+            return base.Channel.GetScheduleAsync();
+        }
+        
+        public Workforce.Logic.Charlie.Domain.WorkforceService.RideDao[] GetRide() {
+            return base.Channel.GetRide();
+        }
+        
+        public System.Threading.Tasks.Task<Workforce.Logic.Charlie.Domain.WorkforceService.RideDao[]> GetRideAsync() {
+            return base.Channel.GetRideAsync();
         }
     }
 }

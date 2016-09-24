@@ -13,4 +13,40 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetRequest">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Workforce.Data.Charlie.Soap.ServiceModels" minOccurs="0" name="GetRequestResult" nillable="true" type="q2:ArrayOfRequestDao" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSchedule">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetScheduleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Workforce.Data.Charlie.Soap.ServiceModels" minOccurs="0" name="GetScheduleResult" nillable="true" type="q3:ArrayOfScheduleDao" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRide">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRideResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Workforce.Data.Charlie.Soap.ServiceModels" minOccurs="0" name="GetRideResult" nillable="true" type="q4:ArrayOfRideDao" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
