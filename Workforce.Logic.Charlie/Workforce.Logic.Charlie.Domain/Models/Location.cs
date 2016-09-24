@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Workforce.Logic.Charlie.Domain.BusinessModels;
+using Workforce.Logic.Charlie.Domain.Validation;
 using Workforce.Logic.Charlie.Domain.WorkforceService;
 
 namespace Workforce.Logic.Charlie.Domain.Models
@@ -17,23 +19,29 @@ namespace Workforce.Logic.Charlie.Domain.Models
         private readonly MapperConfiguration mapperLocation = new MapperConfiguration(l => l.CreateMap<LocationDao, LocationDto>());
         private readonly MapperConfiguration mapperLocation2 = new MapperConfiguration(l => l.CreateMap<LocationDto, LocationDao>());
 
-        /// <summary>
-        /// Check that a Dao describes a valid location
-        /// </summary>
-        /// <param name="loc"></param>
-        /// <returns></returns>
-        public bool ValidateDao (LocationDao loc)
-        {
-            return true;
-        }
+        public delegate bool Ruling(object o);
 
         /// <summary>
-        /// Check that a Dto describes a valid location
+        /// Check that a valid location is described
         /// </summary>
         /// <param name="loc"></param>
         /// <returns></returns>
-        public bool ValidateDto (LocationDto loc)
+        public bool Validate (ICollection<System.Reflection.MethodInfo> d, object o)
         {
+            //foreach(var item in d)
+            //{
+            //    if (item.GetType() == typeof(Ruling))
+            //    {
+            //        var locRule = new LocationRules();
+            //        var param = new object[1];
+            //        param[0] = o;
+            //        var result = Convert.ToBoolean(item.Invoke(locRule, param));
+            //        if (!result)
+            //        { 
+            //            return false;
+            //        }
+            //    }
+            //}
             return true;
         }
 
