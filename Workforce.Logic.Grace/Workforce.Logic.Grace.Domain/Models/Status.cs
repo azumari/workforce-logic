@@ -29,7 +29,7 @@ namespace Workforce.Logic.Grace.Domain.Models
     /// </summary>
     /// <param name="status"></param>
     /// <returns>StatusDto</returns> 
-    private StatusDto MapToDto(StatusDao status)
+    public  StatusDto MapToDto(StatusDao status)
     {
       var mapper = statusMapper.CreateMapper();
       return mapper.Map<StatusDto>(status);
@@ -40,7 +40,7 @@ namespace Workforce.Logic.Grace.Domain.Models
     /// </summary>
     /// <param name="status"></param>
     /// <returns>StatusDao</returns>
-    private StatusDao MapToDao(StatusDto status)
+    public StatusDao MapToDao(StatusDto status)
     {
       var mapper = statusMapper.CreateMapper();
       return mapper.Map<StatusDao>(status);

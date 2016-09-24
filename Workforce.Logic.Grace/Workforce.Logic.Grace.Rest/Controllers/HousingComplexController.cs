@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Workforce.Logic.Grace.Domain.BusinessModels.Dtos;
 using Workforce.Logic.Grace.Domain.Helpers;
 
 namespace Workforce.Logic.Grace.Rest.Controllers
@@ -20,6 +22,13 @@ namespace Workforce.Logic.Grace.Rest.Controllers
     public async Task<HttpResponseMessage> Get()
     {
       return Request.CreateResponse(HttpStatusCode.OK, await logicHelper.HousingComplexsGetAll());
+    }
+
+    public async Task<HttpResponseMessage> Post([FromBody]object o)
+    {
+      var newHousingComDto = JsonConvert.DeserializeObject<HousingComplexDto>(o.ToString());
+      await logicHelper.AddHousingComplex(newHousingComDto);
+      return Request.CreateResponse(HttpStatusCode.OK);
     }
   }
 }

@@ -83,9 +83,10 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       //validate the incoming DTO first before converting into DAO
       //STILL NEED TO VALIDATE
 
-      ApartmentDao daoMappedApt = apartmentVnM.MapToDao(newApt);
+      //ApartmentDao daoMappedApt = apartmentVnM.MapToDao(newApt);
 
-      await graceService.InsertApartmentAsync(daoMappedApt);
+      //await graceService.InsertApartmentAsync(daoMappedApt);
+      await graceService.InsertApartmentAsync(apartmentVnM.MapToDao(newApt));
 
     }
 
@@ -109,6 +110,8 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       //validate the incoming DTO first before converting into DAO
       //STILL NEED TO VALIDATE
 
+      await graceService.InsertHousingDataAsync(housingDataVnM.MapToDao(newData));
+
 
     }
 
@@ -120,7 +123,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       //validate the incoming DTO first before converting into DAO
       //STILL NEED TO VALIDATE
 
-
+      await graceService.InsertStatusAsync(statusVnM.MapToDao(newStatus));
     }
 
 
