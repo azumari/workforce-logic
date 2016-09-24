@@ -8,7 +8,7 @@ namespace Workforce.Logic.Charlie.Domain.TransferModels
 {
     public class RequestDto
     {
-        public int RideId { get; set; }
+        public int RequestId { get; set; }
         public string VolunteerFirst { get; set; }
         public string VolunteerLast { get; set; }
         public string VolunteerEmail { get; set; }

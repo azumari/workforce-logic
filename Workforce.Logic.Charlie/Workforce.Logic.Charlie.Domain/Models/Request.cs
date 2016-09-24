@@ -25,6 +25,8 @@ namespace Workforce.Logic.Charlie.Domain.Models
         public RequestDao MapToSoap(RequestDto req)
         {
             var mapper = mapperReq2.CreateMapper();
+            var dao = mapper.Map<RequestDao>(req);
+            dao.RequestID = req.RequestId;
             return mapper.Map<RequestDao>(req);
         }
 
@@ -36,6 +38,8 @@ namespace Workforce.Logic.Charlie.Domain.Models
         public RequestDto MapToRest(RequestDao req)
         {
             var mapper = mapperReq.CreateMapper();
+            var dto = mapper.Map<RequestDto>(req);
+            dto.RequestId = req.RequestID;
             return mapper.Map<RequestDto>(req);
         }
 
