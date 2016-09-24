@@ -18,7 +18,7 @@ namespace Workforce.Logic.Charlie.Domain.Models
         private readonly MapperConfiguration mapperReq2 = new MapperConfiguration(l => l.CreateMap<RequestDto, RequestDao>());
 
         /// <summary>
-        /// map a ride Dto to a Dao
+        /// map a request Dto to a Dao
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
@@ -29,7 +29,7 @@ namespace Workforce.Logic.Charlie.Domain.Models
         }
 
         /// <summary>
-        /// map a ride Dao to a Dto
+        /// map a request Dao to a Dto
         /// </summary>
         /// <param name="ride"></param>
         /// <returns></returns>
