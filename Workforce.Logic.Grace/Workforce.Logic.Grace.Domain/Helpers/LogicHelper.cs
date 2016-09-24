@@ -4,18 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Workforce.Logic.Grace.Domain.BusinessModels.Dtos;
+using Workforce.Logic.Grace.Domain.GraceServiceReference;
 using Workforce.Logic.Grace.Domain.Models;
 
 namespace Workforce.Logic.Grace.Domain.Helpers
 {
   public class LogicHelper
   {
-
-    Apartment apartmentVnM = new Apartment();
-    HousingComplex housingComplexVnM = new HousingComplex();
-    HousingData housingDataVnM = new HousingData();
-    Status statusVnM = new Status();
-
+     
+    private readonly GraceServiceClient graceService = new GraceServiceClient();
 
     /// <summary>
     /// This method calls the soap service and awaits on the get
@@ -23,18 +20,12 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// <returns>  List<ApartmentDto> apartments  </returns>
     public async Task<List<ApartmentDto>> ApartmentsGetAll()
     {
-      List<ApartmentDto> apartments = new List<ApartmentDto>();
-      ApartmentDto toDelete = new ApartmentDto()
-      {
-        
-        CurrentCapacity = 4,
-        GenderID = 1,
-        RoomID = 2,
-        MaxCapacity = 10,
-        RoomNumber = 1432
-      };
-      apartments.Add(toDelete);
-      return apartments;
+      Apartment apartmentVnM = new Apartment();
+      var daoApartments= await graceService.GetApartmentsAsync();
+      var dtoApartments = apartmentVnM.getDtoList(daoApartments);
+      
+      //STILL NEED TO VALIDATE
+      return dtoApartments;
     }
     /// <summary>
     /// This method calls the soap service and awaits on the get
@@ -42,18 +33,14 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// <returns> List<HousingComplexDto> </returns>
     public async Task<List<HousingComplexDto>> HousingComplexsGetAll()
     {
-      List<HousingComplexDto> complexes = new List<HousingComplexDto>();
-      HousingComplexDto toDelete = new HousingComplexDto()
-      {
-        
-        Address = "123 fake st",
+      HousingComplex housingComplexVnM = new HousingComplex();
+      var daoComplexes = await graceService.GetComplexesAsync();      
+      var dtoComplexes = housingComplexVnM.getDtoList(daoComplexes);
+            
+      //STILL NEED TO VALIDATE
+      return dtoComplexes;
 
-        IsHotel = false,
-        Name = "THIS IS A FAKE NAME",
-        PhoneNumber = "956-793-3185"
-      };
-      complexes.Add(toDelete);
-      return complexes;
+
     }
     /// <summary>
     ///  This method calls the soap service and awaits on the get
@@ -61,6 +48,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// <returns>  List<HousingDataDto> </returns>
     public async Task<List<HousingDataDto>> HousingDataGetAll()
     {
+      HousingData housingDataVnM = new HousingData();
       List<HousingDataDto> temp = new List<HousingDataDto>();
       HousingDataDto toDelete = new HousingDataDto()
       {
@@ -80,6 +68,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// <returns> List<StatusDto> </returns>
     public async Task<List<StatusDto>> StatusesGetAll()
     {
+      Status statusVnM = new Status();
       List<StatusDto> temp = new List<StatusDto>();
       StatusDto toDelete = new StatusDto()
       {
