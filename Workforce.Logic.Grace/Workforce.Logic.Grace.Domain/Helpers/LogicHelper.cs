@@ -49,17 +49,11 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     public async Task<List<HousingDataDto>> HousingDataGetAll()
     {
       HousingData housingDataVnM = new HousingData();
-      List<HousingDataDto> temp = new List<HousingDataDto>();
-      HousingDataDto toDelete = new HousingDataDto()
-      {
-        AssociateID = 1,
-        RoomID = 2,
-        MoveInDate = DateTime.Now,
-        MoveOutDate = DateTime.Now,
-        StatusID = 3
-      };
-      temp.Add(toDelete);
-      return temp;
+      var daoDatas = await graceService.GetHousingDataAsync();
+      var dtoDatas = housingDataVnM.getDtoList(daoDatas);
+
+      //STILL NEED TO VALIDATE
+      return dtoDatas;
     }
 
     /// <summary>
@@ -69,15 +63,11 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     public async Task<List<StatusDto>> StatusesGetAll()
     {
       Status statusVnM = new Status();
-      List<StatusDto> temp = new List<StatusDto>();
-      StatusDto toDelete = new StatusDto()
-      {
-        StatusColor = "Yellow",
-        StatusID = 44,
-        StatusMessage = "Missing Keys"
-      };
-      temp.Add(toDelete);
-      return temp;
+      var daoStatuses = await graceService.GetStatusesAsync();
+      var dtoStatuses = statusVnM.getDtoList(daoStatuses);
+
+      //STILL NEED TO VALIDATE
+      return dtoStatuses;
     }
   }
 }
