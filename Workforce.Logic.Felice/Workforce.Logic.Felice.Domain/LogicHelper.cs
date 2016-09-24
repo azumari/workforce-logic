@@ -11,7 +11,7 @@ namespace Workforce.Logic.Felice.Domain
    public class LogicHelper
    {
       private readonly FeliceServiceClient client = new FeliceServiceClient();
-      private readonly Associate associatelogic = new Associate();
+      private readonly Associate associateLogic = new Associate();
 
       public async Task<List<AssociateDto>> GetAllAssociates()
       {
@@ -20,9 +20,9 @@ namespace Workforce.Logic.Felice.Domain
 
          foreach (var item in serviceAssociates)
          {
-            if (associatelogic.ValidateSoapData(item))
+            if (associateLogic.ValidateSoapData(item))
             {
-               associate.Add(associatelogic.MapToRest(item));
+               associate.Add(associateLogic.MapToRest(item));
             }
          }
          return associate;

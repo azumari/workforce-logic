@@ -20,6 +20,7 @@ namespace Workforce.Logic.Felice.Domain
       /// </summary>
       public bool ValidateSoapData(AssociateDao associate)
       {
+         //reserved for validating information coming from the Data Layer
          return true;
       }
 
@@ -37,7 +38,7 @@ namespace Workforce.Logic.Felice.Domain
       /// </summary>
       public bool ValidateClient(AssociateDto associate)
       {
-         var context = new ValidationContext(associate, items: null);
+         var context = new ValidationContext(associate);
          var results = new List<ValidationResult>();
 
          return Validator.TryValidateObject(associate, context, results);
