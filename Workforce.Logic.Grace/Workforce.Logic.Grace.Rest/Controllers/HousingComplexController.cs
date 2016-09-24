@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿ 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,11 +24,18 @@ namespace Workforce.Logic.Grace.Rest.Controllers
       return Request.CreateResponse(HttpStatusCode.OK, await logicHelper.HousingComplexsGetAll());
     }
 
-    public async Task<HttpResponseMessage> Post([FromBody]object o)
-    {
-      var newHousingComDto = JsonConvert.DeserializeObject<HousingComplexDto>(o.ToString());
-      await logicHelper.AddHousingComplex(newHousingComDto);
-      return Request.CreateResponse(HttpStatusCode.OK);
+    /// <summary>
+    /// post method to insert a new complex
+    /// </summary>
+    /// <param name="newHousingComDto"></param>
+    /// <returns></returns>
+    public async Task<HttpResponseMessage> Post([FromBody]HousingComplexDto newHousingComDto)
+    { 
+      if(await logicHelper.AddHousingComplex(newHousingComDto))
+      {
+        return Request.CreateResponse(HttpStatusCode.OK, "successful insert");
+      }
+      return Request.CreateResponse(HttpStatusCode.OK, "failed to insert");
     }
   }
 }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿ 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,11 +23,18 @@ namespace Workforce.Logic.Grace.Rest.Controllers
       return Request.CreateResponse(HttpStatusCode.OK, await logicHelper.StatusesGetAll());
     }
 
-    public async Task<HttpResponseMessage> Post([FromBody]object o)
-    {
-      var newStatus = JsonConvert.DeserializeObject<StatusDto>(o.ToString());
-      await logicHelper.AddStatus(newStatus);
-      return Request.CreateResponse(HttpStatusCode.OK);
+    /// <summary>
+    /// post method for inserting new status
+    /// </summary>
+    /// <param name="newStatus"></param>
+    /// <returns></returns>
+    public async Task<HttpResponseMessage> Post([FromBody]StatusDto newStatus)
+    {     
+      if(await logicHelper.AddStatus(newStatus))
+      {
+        return Request.CreateResponse(HttpStatusCode.OK, "successful insert");
+      }
+      return Request.CreateResponse(HttpStatusCode.OK, "failed to insert");
     }
   }
 }

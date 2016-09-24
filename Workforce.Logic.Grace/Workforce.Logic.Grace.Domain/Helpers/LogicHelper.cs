@@ -76,21 +76,31 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
 
     #region Insert methods for all models
-    public async Task AddApartment(ApartmentDto newApt)
+
+    /// <summary>
+    /// this method inserts a new apartment by calling on the soap service. 
+    /// The "graceService.insert" returns a bool value so we just return 
+    /// that since it depends on its pass or fail
+    /// </summary>
+    /// <param name="newApt"></param>
+    /// <returns></returns>
+    public async Task<bool> AddApartment(ApartmentDto newApt)
     {
       Apartment apartmentVnM = new Apartment();
 
       //validate the incoming DTO first before converting into DAO
       //STILL NEED TO VALIDATE
-
-      //ApartmentDao daoMappedApt = apartmentVnM.MapToDao(newApt);
-
-      //await graceService.InsertApartmentAsync(daoMappedApt);
-      await graceService.InsertApartmentAsync(apartmentVnM.MapToDao(newApt));
-
+           
+      return await graceService.InsertApartmentAsync(apartmentVnM.MapToDao(newApt));      
     }
-
-    public async Task AddHousingComplex(HousingComplexDto newComplex)
+    /// <summary>
+    /// this method inserts a new complex by calling on the soap service. 
+    /// The "graceService.insert" returns a bool value so we just return 
+    /// that since it depends on its pass or fail
+    /// </summary>
+    /// <param name="newComplex"></param>
+    /// <returns>Task<bool></returns>
+    public async Task<bool> AddHousingComplex(HousingComplexDto newComplex)
     {
       HousingComplex housingComplexVnM = new HousingComplex();
 
@@ -99,31 +109,39 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
       HousingComplexDao daoMappedComp = housingComplexVnM.MapToDao(newComplex);
 
-      await graceService.InsertHousingComplexAsync(daoMappedComp);
+      return await graceService.InsertHousingComplexAsync(daoMappedComp);     
     }
-
-
-    public async Task AddHousingData(HousingDataDto newData)
+    /// <summary>
+    /// this method inserts a new housingData by calling on the soap service. 
+    /// The "graceService.insert" returns a bool value so we just return 
+    /// that since it depends on its pass or fail
+    /// </summary>
+    /// <param name="newData"></param>
+    /// <returns>Task<bool></returns>
+    public async Task<bool> AddHousingData(HousingDataDto newData)
     {
       HousingData housingDataVnM = new HousingData();
 
       //validate the incoming DTO first before converting into DAO
       //STILL NEED TO VALIDATE
 
-      await graceService.InsertHousingDataAsync(housingDataVnM.MapToDao(newData));
-
-
+      return await graceService.InsertHousingDataAsync(housingDataVnM.MapToDao(newData));
     }
-
-
-    public async Task AddStatus(StatusDto newStatus)
+    /// <summary>
+    /// this method inserts a new status by calling on the soap service. 
+    /// The "graceService.insert" returns a bool value so we just return 
+    /// that since it depends on its pass or fail
+    /// </summary>
+    /// <param name="newStatus"></param>
+    /// <returns>Task<bool></returns>
+    public async Task<bool> AddStatus(StatusDto newStatus)
     {
       Status statusVnM = new Status();
 
       //validate the incoming DTO first before converting into DAO
       //STILL NEED TO VALIDATE
        
-      await graceService.InsertStatusAsync(statusVnM.MapToDao(newStatus));
+      return await graceService.InsertStatusAsync(statusVnM.MapToDao(newStatus));   
     }
 
 
