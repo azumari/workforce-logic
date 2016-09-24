@@ -83,6 +83,7 @@ namespace Workforce.Logic.Charlie.Domain
         public async Task<bool> InsertLocation(LocationDto loc)
         {
             //validate locationdto
+            //implement exception catching
             var toAdd = locModel.MapToSoap(loc);
             return true;
 
@@ -96,6 +97,7 @@ namespace Workforce.Logic.Charlie.Domain
         public async Task<bool> InsertRide(RideDto ride)
         {
             //validate ridedto
+            //implement exception catching
             var toAdd = rideModel.MapToSoap(ride);
             return true;
 
@@ -104,6 +106,7 @@ namespace Workforce.Logic.Charlie.Domain
         public async Task<bool> InsertRequest(RequestDto req)
         {
             //validate locationdto
+            //implement exception catching
             var toAdd = reqModel.MapToSoap(req);
             return true;
 

@@ -5,20 +5,24 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Workforce.Logic.Charlie.Domain;
+using Workforce.Logic.Charlie.Domain.TransferModels;
 
 namespace Workforce.Logic.Charlie.Rest.Controllers
 {
     public class RideController : ApiController
     {
 
+        LogicHelper logHelp = new LogicHelper();
+
         /// <summary>
         /// Get all active rides  
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public HttpResponseMessage FindAll()
+        public async Task<HttpResponseMessage> FindAll()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, "return all active rides");
+            return Request.CreateResponse(HttpStatusCode.OK, await logHelp.GetAllRides());
         }
 
         /// <summary>
@@ -41,6 +45,24 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
         public HttpResponseMessage FindByDestination(int id)
         {
             return Request.CreateResponse(HttpStatusCode.OK, "return all active rides with destination location id " + id);
+        }
+
+        /// <summary>
+        /// insert new ride 
+        /// </summary>
+        /// <param name="ride"></param>
+        /// <returns></returns>
+        public async Task<HttpResponseMessage> Post([FromBody]RideDto ride)
+        {
+            if (await logHelp.InsertRide(ride))
+            {
+                //email confirmation
+                return Request.CreateResponse(HttpStatusCode.OK, "success!");
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "failed to insert");
+            }
         }
 
     }

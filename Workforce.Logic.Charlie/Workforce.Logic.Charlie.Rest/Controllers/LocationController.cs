@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Workforce.Logic.Charlie.Domain;
+using Workforce.Logic.Charlie.Domain.BusinessModels;
 
 namespace Workforce.Logic.Charlie.Rest.Controllers
 {
@@ -21,11 +22,27 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
         /// <returns></returns>
         public async Task<HttpResponseMessage> Get()
         {
-                return Request.CreateResponse(HttpStatusCode.OK, await logHelp.GetAllLocations());
-            
+            return Request.CreateResponse(HttpStatusCode.OK, await logHelp.GetAllLocations());
         }
 
-
+        /// <summary>
+        /// Insert new location
+        /// </summary>
+        /// <param name="loc"></param>
+        /// <returns></returns>
+        public async Task<HttpResponseMessage> Post([FromBody]LocationDto loc)
+        {
+            var success = await logHelp.InsertLocation(loc);
+            if (success)
+            {
+                //email confirmation
+                return Request.CreateResponse(HttpStatusCode.OK, "success!");
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "failed to insert");
+            }
+        }
 
     }
 }
