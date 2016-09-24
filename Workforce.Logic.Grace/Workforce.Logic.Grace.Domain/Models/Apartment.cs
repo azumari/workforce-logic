@@ -27,32 +27,55 @@ namespace Workforce.Logic.Grace.Domain.Models
     }
 
 
+
+    #region methods to map a single dao-dto  dto-dao
     /// <summary>
     /// This method maps from a ApartmentDao to a ApartmentDto
     /// </summary>
     /// <param name="apt"></param>
     /// <returns>ApartmentDto</returns>
-    private ApartmentDto MapToDto(ApartmentDao apt)
+    public ApartmentDto MapToDto(ApartmentDao apt)
     {
 
       var mapper = apartmentMapper.CreateMapper();
       return mapper.Map<ApartmentDto>(apt);
     }
-
     /// <summary>
     /// This method maps from a ApartmentDto to a ApartmentDao
     /// </summary>
     /// <param name="apt"></param>
     /// <returns>ApartmentDao</returns>
-    private ApartmentDao MapToDao(ApartmentDto apt)
+    public ApartmentDao MapToDao(ApartmentDto apt)
     {
       var mapper = apartmentMapper.CreateMapper();
       return mapper.Map<ApartmentDao>(apt);
     }
+    #endregion
 
-     
+    #region convert list dto-dao dto-dao with mapping
+    /// <summary>
+    /// This method recieves an IEnumerable<ApartmentDto>  and maps it
+    /// into a list of List<ApartmentDao>
+    /// </summary>
+    /// <param name="dtos"></param>
+    /// <returns>List<ApartmentDao></returns>
+    public List<ApartmentDao> getDaoList(IEnumerable<ApartmentDto> dtos)
+    {
+      var apts = new List<ApartmentDao>();
+      foreach (var item in dtos)
+      {
+        var temp = MapToDao(item);
+        apts.Add(temp);
+      }
+      return apts;
+    }
 
-
+    /// <summary>
+    /// This method recieves an IEnumerable<ApartmentDao>  and maps it
+    /// into a list of List<ApartmentDto>
+    /// </summary>
+    /// <param name="daos"></param>
+    /// <returns>List<ApartmentDto></returns>
     public List<ApartmentDto> getDtoList(IEnumerable<ApartmentDao> daos)
     {
       var apts = new List<ApartmentDto>();
@@ -63,6 +86,7 @@ namespace Workforce.Logic.Grace.Domain.Models
       }
       return apts;
     }
+    #endregion
 
   }
 }

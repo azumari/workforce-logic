@@ -13,16 +13,73 @@
   <wsdl:message name="ICharlieService_GetLocations_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetLocationsResponse" />
   </wsdl:message>
+  <wsdl:message name="ICharlieService_GetRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRequest" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_GetRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_GetSchedule_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSchedule" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_GetSchedule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_GetRide_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRide" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_GetRide_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRideResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICharlieService">
     <wsdl:operation name="GetLocations">
       <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/GetLocations" message="tns:ICharlieService_GetLocations_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/GetLocationsResponse" message="tns:ICharlieService_GetLocations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/GetRequest" message="tns:ICharlieService_GetRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/GetRequestResponse" message="tns:ICharlieService_GetRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSchedule">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/GetSchedule" message="tns:ICharlieService_GetSchedule_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/GetScheduleResponse" message="tns:ICharlieService_GetSchedule_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRide">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/GetRide" message="tns:ICharlieService_GetRide_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/GetRideResponse" message="tns:ICharlieService_GetRide_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICharlieService" type="tns:ICharlieService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetLocations">
       <soap:operation soapAction="http://tempuri.org/ICharlieService/GetLocations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRequest">
+      <soap:operation soapAction="http://tempuri.org/ICharlieService/GetRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchedule">
+      <soap:operation soapAction="http://tempuri.org/ICharlieService/GetSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRide">
+      <soap:operation soapAction="http://tempuri.org/ICharlieService/GetRide" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

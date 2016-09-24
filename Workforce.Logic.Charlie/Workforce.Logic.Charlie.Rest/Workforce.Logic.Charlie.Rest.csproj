@@ -153,6 +153,15 @@
     <None Include="Service References\WorkforceService\CharlieService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Service References\WorkforceService\Workforce.Logic.Charlie.Rest.WorkforceService.RequestDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WorkforceService\Workforce.Logic.Charlie.Rest.WorkforceService.RideDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WorkforceService\Workforce.Logic.Charlie.Rest.WorkforceService.ScheduleDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
