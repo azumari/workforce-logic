@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json.Serialization;
+﻿using Microsoft.Owin;
+using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json.Serialization;
 using Owin;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,7 @@ using System.Net.Http.Formatting;
 using System.Web;
 using System.Web.Http;
 using Workforce.Logic.Felice.Rest.Infrastructure;
+using Workforce.Logic.Felice.Rest.Providers;
 
 namespace Workforce.Logic.Felice.Rest
 {
@@ -42,6 +45,17 @@ namespace Workforce.Logic.Felice.Rest
       app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
 
       //Plug in the OAuth bearer JSON web token
+      OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
+      {
+        //development purposes only. Set to false for production
+        AllowInsecureHttp = true,
+        TokenEndpointPath = new PathString("/oauth/token"),
+        AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+        Provider = new CustomOAuthProvider(),
+        AccessTokenFormat = new CustomJwtFormat("http://localhost/workforce-felice-rest/")
+      };
+
+      app.UseOAuthAuthorizationServer(OAuthServerOptions);
     }
 
     private void ConfigureWebApi(HttpConfiguration config)
