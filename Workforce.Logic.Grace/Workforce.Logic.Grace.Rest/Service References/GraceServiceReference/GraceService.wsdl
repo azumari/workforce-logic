@@ -55,6 +55,30 @@
   <wsdl:message name="IGraceService_InsertStatus_OutputMessage">
     <wsdl:part name="parameters" element="tns:InsertStatusResponse" />
   </wsdl:message>
+  <wsdl:message name="IGraceService_DeleteApartment_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteApartment" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_DeleteApartment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteApartmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_DeleteHousingData_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteHousingData" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_DeleteHousingData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteHousingDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_DeleteHousingComplex_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteHousingComplex" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_DeleteHousingComplex_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteHousingComplexResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_DeleteStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStatus" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_DeleteStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStatusResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGraceService">
     <wsdl:operation name="GetComplexes">
       <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/GetComplexes" message="tns:IGraceService_GetComplexes_InputMessage" />
@@ -87,6 +111,22 @@
     <wsdl:operation name="InsertStatus">
       <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/InsertStatus" message="tns:IGraceService_InsertStatus_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/InsertStatusResponse" message="tns:IGraceService_InsertStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteApartment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/DeleteApartment" message="tns:IGraceService_DeleteApartment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/DeleteApartmentResponse" message="tns:IGraceService_DeleteApartment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteHousingData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/DeleteHousingData" message="tns:IGraceService_DeleteHousingData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/DeleteHousingDataResponse" message="tns:IGraceService_DeleteHousingData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteHousingComplex">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/DeleteHousingComplex" message="tns:IGraceService_DeleteHousingComplex_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/DeleteHousingComplexResponse" message="tns:IGraceService_DeleteHousingComplex_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/DeleteStatus" message="tns:IGraceService_DeleteStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/DeleteStatusResponse" message="tns:IGraceService_DeleteStatus_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGraceService" type="tns:IGraceService">
@@ -156,6 +196,42 @@
     </wsdl:operation>
     <wsdl:operation name="InsertStatus">
       <soap:operation soapAction="http://tempuri.org/IGraceService/InsertStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteApartment">
+      <soap:operation soapAction="http://tempuri.org/IGraceService/DeleteApartment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteHousingData">
+      <soap:operation soapAction="http://tempuri.org/IGraceService/DeleteHousingData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteHousingComplex">
+      <soap:operation soapAction="http://tempuri.org/IGraceService/DeleteHousingComplex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStatus">
+      <soap:operation soapAction="http://tempuri.org/IGraceService/DeleteStatus" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

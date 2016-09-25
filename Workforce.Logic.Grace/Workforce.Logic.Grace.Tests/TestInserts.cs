@@ -65,9 +65,9 @@ namespace Workforce.Logic.Grace.Tests
     {
       StatusDto statusDto = new StatusDto()
       {
-         StatusColor = "Pink",
-          StatusID = 2 ,
-           StatusMessage = "YOUR FIRED"
+        StatusColor = "Pink",
+        StatusID = 2,
+        StatusMessage = "YOUR FIRED"
       };
       bool passed = await logicHelper.AddStatus(statusDto);
       Assert.True(passed);

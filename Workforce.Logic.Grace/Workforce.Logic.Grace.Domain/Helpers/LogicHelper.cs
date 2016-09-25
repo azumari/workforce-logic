@@ -147,7 +147,11 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
     #region delete methods for each and all models
 
-
+    /// <summary>
+    /// This method recieves an ApartmentDto model that we expect to delete based off of the primary key
+    /// </summary>
+    /// <param name="oldApartment"></param>
+    /// <returns>Task<bool></returns>
     public async Task<bool> DeleteApartment(ApartmentDto oldApartment)
     {
       Apartment ApartmentVnM = new Apartment();
@@ -157,9 +161,11 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
       return await graceService.DeleteApartmentAsync(ApartmentVnM.MapToDao(oldApartment));
     }
-
-
-
+    /// <summary>
+    /// This method recieves an HousingComlexDto model that we expect to delete based off of the primary key
+    /// </summary>
+    /// <param name="oldComplex"></param>
+    /// <returns>Task<bool></returns>
     public async Task<bool> DeleteComplex(HousingComplexDto oldComplex)
     {
       HousingComplex housingComplexVnM = new HousingComplex();
@@ -169,7 +175,11 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
       return await graceService.DeleteHousingComplexAsync(housingComplexVnM.MapToDao(oldComplex));
     }
-
+    /// <summary>
+    /// This method recieves an HousingDataDto model that we expect to delete based off of the primary key
+    /// </summary>
+    /// <param name="oldData"></param>
+    /// <returns>Task<bool></returns>
     public async Task<bool> DeleteHousingData(HousingDataDto oldData)
     {
       HousingData housingDataVnM = new HousingData();
@@ -179,7 +189,11 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
       return await graceService.DeleteHousingDataAsync(housingDataVnM.MapToDao(oldData));
     }
-
+    /// <summary>
+    /// This method recieves an StatusDto model that we expect to delete based off of the primary key
+    /// </summary>
+    /// <param name="oldStatus"></param>
+    /// <returns>Task<bool></returns>
     public async Task<bool> DeleteStatus(StatusDto oldStatus)
     {
       Status statusVnM = new Status();

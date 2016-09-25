@@ -14,9 +14,9 @@ namespace Workforce.Logic.Grace.Tests
 
     private readonly LogicHelper logicHelper = new LogicHelper();
 
-    [Fact] 
+    [Fact]
     public async Task Test_DeleteApartment()
-    { 
+    {
       ApartmentDto aptDto = new ApartmentDto()
       {
         RoomNumber = 71
@@ -24,5 +24,41 @@ namespace Workforce.Logic.Grace.Tests
       bool passed = await logicHelper.DeleteApartment(aptDto);
       Assert.True(passed);
     }
+
+    [Fact]
+    public async Task Test_DeleteComplex()
+    {
+      HousingComplexDto complexDto = new HousingComplexDto()
+      {
+        HousingComplexId = 1
+      };
+      bool passed = await logicHelper.DeleteComplex(complexDto);
+      Assert.True(passed);
+    }
+
+    [Fact]
+    public async Task Test_DeleteHousingData()
+    {
+      HousingDataDto dataDto = new HousingDataDto()
+      {
+        RoomID = 1
+      };
+      bool passed = await logicHelper.DeleteHousingData(dataDto);
+      Assert.True(passed);
+    }
+
+    [Fact]
+    public async Task Test_DeleteStatus()
+    {
+      StatusDto statusDto = new StatusDto()
+      {
+        StatusID = 4
+      };
+      bool passed = await logicHelper.DeleteStatus(statusDto);
+      Assert.True(passed);
+
+    }
+
+
   }
-} 
+}
