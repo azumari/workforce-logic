@@ -52,8 +52,11 @@ namespace Workforce.Logic.Charlie.Domain
 
             foreach (var item in source)
             { 
-                    var newRide = rideModel.MapToRest(item);
+                if (item.Active)
+                {
+                    var newRide = await rideModel.MapToRest(item);
                     rides.Add(newRide);
+                }
             }
             return rides;
         }
