@@ -13,13 +13,12 @@ namespace Workforce.Logic.Grace.Tests
   {
 
     private readonly LogicHelper logicHelper = new LogicHelper();
- 
-    
+
+
 
     [Fact]
     public async Task Test_InsertApartment()
     {
-      
       ApartmentDto aptDto = new ApartmentDto()
       {
         CurrentCapacity = 2,
@@ -28,9 +27,21 @@ namespace Workforce.Logic.Grace.Tests
         MaxCapacity = 10,
         RoomNumber = 8460
       };
-
       bool passed = await logicHelper.AddApartment(aptDto);
+      Assert.True(passed);
+    }
 
+    [Fact]
+    public async Task Test_InsertHousingComplex()
+    {
+      HousingComplexDto comlexDto = new HousingComplexDto()
+      {
+        Address = "ha ha ha" , 
+        IsHotel = true,
+        Name = "2 star motel",
+        PhoneNumber = "1-800-123-4567"
+      };
+      bool passed = await logicHelper.AddHousingComplex(comlexDto);
       Assert.True(passed);
     }
 

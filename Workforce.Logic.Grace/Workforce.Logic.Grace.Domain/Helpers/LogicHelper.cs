@@ -107,9 +107,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       //validate the incoming DTO first before converting into DAO
       //STILL NEED TO VALIDATE
 
-      HousingComplexDao daoMappedComp = housingComplexVnM.MapToDao(newComplex);
-
-      return await graceService.InsertHousingComplexAsync(daoMappedComp);     
+      return await graceService.InsertHousingComplexAsync(housingComplexVnM.MapToDao(newComplex));     
     }
     /// <summary>
     /// this method inserts a new housingData by calling on the soap service. 
