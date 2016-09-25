@@ -68,6 +68,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="TestDeletes.cs" />
     <Compile Include="TestInserts.cs" />
   </ItemGroup>
   <ItemGroup>

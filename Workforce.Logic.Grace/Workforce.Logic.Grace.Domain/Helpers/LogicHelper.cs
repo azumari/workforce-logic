@@ -145,5 +145,54 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
     #endregion
 
+    #region delete methods for each and all models
+
+
+    public async Task<bool> DeleteApartment(ApartmentDto oldApartment)
+    {
+      Apartment ApartmentVnM = new Apartment();
+
+      //validate the incoming DTO first before converting into DAO
+      //STILL NEED TO VALIDATE
+
+      return await graceService.DeleteApartmentAsync(ApartmentVnM.MapToDao(oldApartment));
+    }
+
+
+
+    public async Task<bool> DeleteComplex(HousingComplexDto oldComplex)
+    {
+      HousingComplex housingComplexVnM = new HousingComplex();
+
+      //validate the incoming DTO first before converting into DAO
+      //STILL NEED TO VALIDATE
+
+      return await graceService.DeleteHousingComplexAsync(housingComplexVnM.MapToDao(oldComplex));
+    }
+
+    public async Task<bool> DeleteHousingData(HousingDataDto oldData)
+    {
+      HousingData housingDataVnM = new HousingData();
+
+      //validate the incoming DTO first before converting into DAO
+      //STILL NEED TO VALIDATE
+
+      return await graceService.DeleteHousingDataAsync(housingDataVnM.MapToDao(oldData));
+    }
+
+    public async Task<bool> DeleteStatus(StatusDto oldStatus)
+    {
+      Status statusVnM = new Status();
+
+      //validate the incoming DTO first before converting into DAO
+      //STILL NEED TO VALIDATE
+
+      return await graceService.DeleteStatusAsync(statusVnM.MapToDao(oldStatus));
+    }
+
+
+
+
+    #endregion
   }
 }
