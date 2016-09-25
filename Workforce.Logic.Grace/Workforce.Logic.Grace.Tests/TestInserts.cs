@@ -60,5 +60,19 @@ namespace Workforce.Logic.Grace.Tests
       Assert.True(passed);
     }
 
+    [Fact]
+    public async Task Test_InsertStatus()
+    {
+      StatusDto statusDto = new StatusDto()
+      {
+         StatusColor = "Pink",
+          StatusID = 2 ,
+           StatusMessage = "YOUR FIRED"
+      };
+      bool passed = await logicHelper.AddStatus(statusDto);
+      Assert.True(passed);
+
+    }
+
   }
 }
