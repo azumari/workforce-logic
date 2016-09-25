@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e80a10d1-864a-4bd0-813f-f2fca28745cb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-felice-soap/FeliceService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FeliceService.xsd" MetadataType="Schema" ID="9f635a35-0ca6-4e2d-a6fc-79becbd60871" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-felice-soap/FeliceService.svc?xsd=xsd2" />
+    <MetadataFile FileName="FeliceService1.xsd" MetadataType="Schema" ID="1a9434e6-b484-429e-92ef-57b88eb1c242" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-felice-soap/FeliceService.svc?xsd=xsd1" />
+    <MetadataFile FileName="FeliceService.disco" MetadataType="Disco" ID="21fde76e-63a8-4be0-a2c1-c05d22258ee4" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-felice-soap/FeliceService.svc?disco" />
+    <MetadataFile FileName="FeliceService.wsdl" MetadataType="Wsdl" ID="1bcd377f-3b38-407f-aef9-62ee6607c49b" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-felice-soap/FeliceService.svc?wsdl" />
+    <MetadataFile FileName="FeliceService2.xsd" MetadataType="Schema" ID="406ee79e-3ed2-4c1f-b0d9-3b49c88d2b8a" SourceId="1" SourceUrl="http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-felice-soap/FeliceService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

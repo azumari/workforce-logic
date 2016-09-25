@@ -84,6 +84,8 @@
     <Compile Include="Batch.cs" />
     <Compile Include="DomainModels\AssociateDto.cs" />
     <Compile Include="DomainModels\BatchDto.cs" />
+    <Compile Include="DomainModels\InstructorDto.cs" />
+    <Compile Include="Instructor.cs" />
     <Compile Include="Service References\WorkforceServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -94,10 +96,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Service References\WorkforceServiceReference\FeliceService.wsdl" />
     <None Include="Service References\WorkforceServiceReference\FeliceService.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\FeliceService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\FeliceService11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Web.config" />
     <None Include="packages.config" />
