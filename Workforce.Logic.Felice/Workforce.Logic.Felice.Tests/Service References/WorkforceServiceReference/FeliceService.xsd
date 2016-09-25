@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Workforce.Data.Felice.Soap.ServiceModels" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Workforce.Data.Felice.Soap.ServiceModels" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfAssociateDao">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AssociateDao" nillable="true" type="tns:AssociateDao" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssociateDao" nillable="true" type="tns:ArrayOfAssociateDao" />
+  <xs:complexType name="AssociateDao">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AssociateID" type="xs:int" />
+      <xs:element minOccurs="0" name="BatchID" type="xs:int" />
+      <xs:element minOccurs="0" name="Car" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GenderID" type="xs:int" />
+      <xs:element minOccurs="0" name="HasKeys" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isComing" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssociateDao" nillable="true" type="tns:AssociateDao" />
+</xs:schema>
