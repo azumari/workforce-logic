@@ -71,7 +71,6 @@
     <Compile Include="TestDomain.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Properties\DataSources\Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao.datasource" />
     <None Include="Service References\WorkforceServiceReference\FeliceService.wsdl" />
     <None Include="Service References\WorkforceServiceReference\FeliceService.xsd">
