@@ -15,7 +15,10 @@ namespace Workforce.Logic.Grace.Tests
     private readonly LogicHelper logicHelper = new LogicHelper();
 
 
-
+    /// <summary>
+    ///  Test method to Insert Apartment
+    /// </summary>
+    /// <returns></returns>
     [Fact]
     public async Task Test_InsertApartment()
     {
@@ -31,6 +34,10 @@ namespace Workforce.Logic.Grace.Tests
       Assert.True(passed);
     }
 
+    /// <summary>
+    /// Test method to Insert HousingComplex
+    /// </summary>
+    /// <returns></returns>
     [Fact]
     public async Task Test_InsertHousingComplex()
     {
@@ -45,6 +52,10 @@ namespace Workforce.Logic.Grace.Tests
       Assert.True(passed);
     }
 
+    /// <summary>
+    /// Test method to Insert HousingData
+    /// </summary>
+    /// <returns></returns>
     [Fact]
     public async Task Test_InsertHousingData()
     {
@@ -60,6 +71,10 @@ namespace Workforce.Logic.Grace.Tests
       Assert.True(passed);
     }
 
+    /// <summary>
+    /// Test method to Insert Status
+    /// </summary>
+    /// <returns></returns>
     [Fact]
     public async Task Test_InsertStatus()
     {

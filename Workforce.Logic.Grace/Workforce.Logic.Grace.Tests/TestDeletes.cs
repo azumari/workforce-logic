@@ -14,6 +14,10 @@ namespace Workforce.Logic.Grace.Tests
 
     private readonly LogicHelper logicHelper = new LogicHelper();
 
+    /// <summary>
+    /// Test method to delete apartment
+    /// </summary>
+    /// <returns></returns>
     [Fact]
     public async Task Test_DeleteApartment()
     {
@@ -25,6 +29,10 @@ namespace Workforce.Logic.Grace.Tests
       Assert.True(passed);
     }
 
+    /// <summary>
+    ///  Test method to delete HousingComplex
+    /// </summary>
+    /// <returns></returns>
     [Fact]
     public async Task Test_DeleteComplex()
     {
@@ -36,6 +44,10 @@ namespace Workforce.Logic.Grace.Tests
       Assert.True(passed);
     }
 
+    /// <summary>
+    ///  Test method to delete HousingData
+    /// </summary>
+    /// <returns></returns>
     [Fact]
     public async Task Test_DeleteHousingData()
     {
@@ -47,6 +59,10 @@ namespace Workforce.Logic.Grace.Tests
       Assert.True(passed);
     }
 
+    /// <summary>
+    ///  Test method to delete Status
+    /// </summary>
+    /// <returns></returns>
     [Fact]
     public async Task Test_DeleteStatus()
     {
