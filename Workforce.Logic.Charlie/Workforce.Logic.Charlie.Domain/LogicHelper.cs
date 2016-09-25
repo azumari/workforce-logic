@@ -18,8 +18,6 @@ namespace Workforce.Logic.Charlie.Domain
         Ride rideModel = new Ride();
         Request reqModel = new Request();
 
-        LocationRules lr = new LocationRules();
-
         /// <summary>
         /// Retreive all active meetup locations.
         /// </summary>
@@ -28,11 +26,10 @@ namespace Workforce.Logic.Charlie.Domain
         {
             var locs = new List<LocationDto>();
             var source = await client.GetLocationsAsync();
-            var tests = lr.GetType().GetMethods();
 
             foreach (var item in source)
             {
-                if (locModel.Validate(tests, item))
+                if (locModel.ValidateDao(item))
                 {
                     var newLoc = locModel.MapToRest(item);
                     locs.Add(newLoc);
