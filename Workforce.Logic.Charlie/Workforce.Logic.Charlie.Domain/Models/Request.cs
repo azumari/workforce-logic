@@ -35,12 +35,49 @@ namespace Workforce.Logic.Charlie.Domain.Models
         /// </summary>
         /// <param name="ride"></param>
         /// <returns></returns>
-        public RequestDto MapToRest(RequestDao req)
+        public async Task<RequestDto> MapToRest(RequestDao req)
         {
             var mapper = mapperReq.CreateMapper();
             var dto = mapper.Map<RequestDto>(req);
             dto.RequestId = req.RequestID;
-            return mapper.Map<RequestDto>(req);
+            var sched = await ScheduleById(req.Schedule);
+            if (sched == null)
+            {
+                dto.DestinationLoc = "no destination";
+                dto.DepartureLoc = "no departure location";
+                dto.DepartureTime = new DateTime(2063, 4, 5, 0, 0, 0);
+            }
+            else
+            {
+                var deptloc = await LocationById(sched.DepartureLoc);
+                dto.DepartureLoc = deptloc.StopName;
+                var destloc = await LocationById(sched.DestinationLoc);
+                dto.DestinationLoc = destloc.StopName;
+                dto.DepartureTime = sched.DepartureTime;
+            }
+            return dto;
+        }
+
+        /// <summary>
+        /// Returns the schedule with the given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<ScheduleDao> ScheduleById(int id)
+        {
+            var scheds = await client.GetScheduleAsync();
+            return Array.Find(scheds, sc => sc.ScheduleID == id);
+        }
+
+        /// <summary>
+        /// Returns the location with the given id 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<LocationDao> LocationById(int id)
+        {
+            var locs = await client.GetLocationsAsync();
+            return Array.Find(locs, lc => lc.LocationId == id);
         }
 
 

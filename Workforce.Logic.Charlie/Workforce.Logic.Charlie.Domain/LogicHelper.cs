@@ -62,6 +62,31 @@ namespace Workforce.Logic.Charlie.Domain
         }
 
         /// <summary>
+        /// Return all active rides with the given departure and destination locations
+        /// </summary>
+        /// <param name="dept"></param>
+        /// <param name="dest"></param>
+        /// <returns></returns>
+        public async Task<List<RideDto>> RidesByEndpoints(string dept, string dest)
+        {
+            var rides = new List<RideDto>();
+            var source = await client.GetRideAsync();
+
+            foreach (var item in source)
+            {
+                if (item.Active)
+                {
+                    var newRide = await rideModel.MapToRest(item);
+                    if (newRide.DepartureLoc == dept && newRide.DestinationLoc == dest)
+                    {
+                        rides.Add(newRide);
+                    }
+                }
+            }
+            return rides;
+        }
+
+        /// <summary>
         /// Retreive all active requests.
         /// </summary>
         /// <returns></returns>
@@ -72,8 +97,31 @@ namespace Workforce.Logic.Charlie.Domain
 
             foreach (var item in source)
             {
-                    var newReq = reqModel.MapToRest(item);
+                    var newReq = await reqModel.MapToRest(item);
                     reqs.Add(newReq);
+            }
+            return reqs;
+        }
+
+
+        /// <summary>
+        /// Return all requests with the given departure and destination locations
+        /// </summary>
+        /// <param name="dept"></param>
+        /// <param name="dest"></param>
+        /// <returns></returns>
+        public async Task<List<RequestDto>> RequestsByEndpoints (string dept, string dest)
+        {
+            var reqs = new List<RequestDto>();
+            var source = await client.GetRequestAsync();
+
+            foreach (var item in source)
+            {
+                var newReq = await reqModel.MapToRest(item);
+                if (newReq.DepartureLoc == dept && newReq.DestinationLoc == dest)
+                {
+                    reqs.Add(newReq);
+                }
             }
             return reqs;
         }

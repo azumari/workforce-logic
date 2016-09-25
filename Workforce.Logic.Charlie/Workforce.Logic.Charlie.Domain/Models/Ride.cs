@@ -57,12 +57,22 @@ namespace Workforce.Logic.Charlie.Domain.Models
             return dto;
         }
 
+        /// <summary>
+        /// Returns the schedule with the given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<ScheduleDao> ScheduleById(int id)
         {
             var scheds = await client.GetScheduleAsync();
             return Array.Find(scheds, sc => sc.ScheduleID == id);
         }
 
+        /// <summary>
+        /// Returns the location with the given id 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<LocationDao> LocationById(int id)
         {
             var locs = await client.GetLocationsAsync();

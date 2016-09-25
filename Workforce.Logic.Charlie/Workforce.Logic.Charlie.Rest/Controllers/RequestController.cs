@@ -26,25 +26,14 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
         }
 
         /// <summary>
-        /// Get all active requests with given departure location id  
+        /// Get all active requests with given departure and destination locations
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public HttpResponseMessage FindByDeparture(int id)
+        public async Task<HttpResponseMessage> FindByEndpoints(string dept, string dest)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, "return all active requests with departure location id " + id);
-        }
-
-        /// <summary>
-        /// Get all active requests with given destination location id  
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet]
-        public HttpResponseMessage FindByDestination(int id)
-        {
-            return Request.CreateResponse(HttpStatusCode.OK, "return all active requests with destination location id " + id);
+            return Request.CreateResponse(HttpStatusCode.OK, await logHelp.RequestsByEndpoints(dept, dest));
         }
 
         /// <summary>
