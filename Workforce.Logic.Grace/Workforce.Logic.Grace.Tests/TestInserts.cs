@@ -36,12 +36,27 @@ namespace Workforce.Logic.Grace.Tests
     {
       HousingComplexDto comlexDto = new HousingComplexDto()
       {
-        Address = "ha ha ha" , 
+        Address = "ha ha ha",
         IsHotel = true,
         Name = "2 star motel",
         PhoneNumber = "1-800-123-4567"
       };
       bool passed = await logicHelper.AddHousingComplex(comlexDto);
+      Assert.True(passed);
+    }
+
+    [Fact]
+    public async Task Test_InsertHousingData()
+    {
+      HousingDataDto dataDto = new HousingDataDto()
+      {
+        AssociateID = 20,
+        MoveInDate = DateTime.Now,
+        MoveOutDate = DateTime.Now,
+        RoomID = 2,
+        StatusID = 2
+      };
+      bool passed = await logicHelper.AddHousingData(dataDto);
       Assert.True(passed);
     }
 
