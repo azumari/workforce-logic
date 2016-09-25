@@ -3,43 +3,55 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
+using Workforce.Logic.Charlie.Domain;
+using Workforce.Logic.Charlie.Domain.TransferModels;
 
 namespace Workforce.Logic.Charlie.Rest.Controllers
 {
     public class RequestController : ApiController
     {
 
+        LogicHelper logHelp = new LogicHelper();
+
         /// <summary>
         /// Get all active requests  
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public HttpResponseMessage FindAll()
+        public async Task<HttpResponseMessage> FindAll()
         {
-                return Request.CreateResponse(HttpStatusCode.OK, "return all active requests");
+            return Request.CreateResponse(HttpStatusCode.OK, await logHelp.GetAllRequests());
         }
 
         /// <summary>
-        /// Get all active requests with given departure location id  
+        /// Get all active requests with given departure and destination locations
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public HttpResponseMessage FindByDeparture(int id)
+        public async Task<HttpResponseMessage> FindByEndpoints(string dept, string dest)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, "return all active requests with departure location id " + id);
+            return Request.CreateResponse(HttpStatusCode.OK, await logHelp.RequestsByEndpoints(dept, dest));
         }
 
         /// <summary>
-        /// Get all active requests with given destination location id  
+        /// Insert new request
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="req"></param>
         /// <returns></returns>
-        [HttpGet]
-        public HttpResponseMessage FindByDestination(int id)
+        public async Task<HttpResponseMessage> Post([FromBody]RequestDto req)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, "return all active requests with destination location id " + id);
+            if (await logHelp.InsertRequest(req))
+            {
+                //email confirmation
+                return Request.CreateResponse(HttpStatusCode.OK, "success!");
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "failed to insert");
+            }
         }
 
     }
