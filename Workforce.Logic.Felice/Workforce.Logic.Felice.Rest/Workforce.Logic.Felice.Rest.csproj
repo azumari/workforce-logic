@@ -166,6 +166,7 @@
     <Compile Include="Infrastructure\ApplicationDbContext.cs" />
     <Compile Include="Infrastructure\ApplicationUser.cs" />
     <Compile Include="Infrastructure\ApplicationUserManager.cs" />
+    <Compile Include="Infrastructure\RoleManager.cs" />
     <Compile Include="Migrations\201609222340263_InitialCreate.cs" />
     <Compile Include="Migrations\201609222340263_InitialCreate.Designer.cs">
       <DependentUpon>201609222340263_InitialCreate.cs</DependentUpon>

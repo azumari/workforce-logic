@@ -49,6 +49,7 @@ namespace Workforce.Logic.Felice.Rest
       
       app.CreatePerOwinContext(ApplicationDbContext.Create);
       app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+      app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
 
       //Plug in the OAuth bearer JSON web token
       OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
