@@ -19,30 +19,33 @@ namespace Workforce.Logic.Charlie.Domain.Models
         private readonly MapperConfiguration mapperLocation = new MapperConfiguration(l => l.CreateMap<LocationDao, LocationDto>());
         private readonly MapperConfiguration mapperLocation2 = new MapperConfiguration(l => l.CreateMap<LocationDto, LocationDao>());
 
-        public delegate bool Ruling(object o);
+        public delegate bool RulingDao(LocationDao loc);
+        public delegate bool RulingDto(LocationDto loc);
+
+        public ICollection<System.Reflection.MethodInfo> methods;
 
         /// <summary>
         /// Check that a valid location is described
         /// </summary>
         /// <param name="loc"></param>
         /// <returns></returns>
-        public bool Validate (ICollection<System.Reflection.MethodInfo> d, object o)
+        public bool ValidateDao (LocationDao loc)
         {
-            //foreach(var item in d)
-            //{
-            //    if (item.GetType() == typeof(Ruling))
-            //    {
-            //        var locRule = new LocationRules();
-            //        var param = new object[1];
-            //        param[0] = o;
-            //        var result = Convert.ToBoolean(item.Invoke(locRule, param));
-            //        if (!result)
-            //        { 
-            //            return false;
-            //        }
-            //    }
-            //}
-            return true;
+            var locRule = new LocationRules();
+            methods = locRule.GetType().GetMethods();
+            foreach(var item in methods)
+            {
+                if (item.GetType() == typeof(RulingDao))
+                {
+                    var del = Delegate.CreateDelegate(typeof(RulingDao),loc,item,false);
+                    RulingDao result = (RulingDao)del;
+                    if (result != null)
+                    {
+                        return result(loc);
+                    }
+                }
+            }
+            return false;
         }
 
         /// <summary>
