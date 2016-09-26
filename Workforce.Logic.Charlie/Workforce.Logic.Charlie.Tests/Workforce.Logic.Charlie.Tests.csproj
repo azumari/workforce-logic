@@ -71,7 +71,6 @@
     <Compile Include="TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao.datasource" />
     <None Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao.datasource" />
     <None Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.WorkforceService.RideDao.datasource" />
