@@ -159,6 +159,50 @@ namespace Workforce.Logic.Charlie.Tests
             Assert.True(!passed);
         }
 
+        /// <summary>
+        /// test method to delete request (positive)
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public async Task Test_DeleteRequest()
+        {
+            var reqDto = new RequestDto()
+            {
+                RequestId = 34,
+                AssociateEmail = "",
+                AssociateFirst = "",
+                AssociateLast = "",
+                DepartureLoc = 0,
+                DestinationLoc = 0,
+                DepartureTime = new DateTime(2000, 1, 1)
+
+            };
+            bool passed = await logicHelper.DeleteRequest(reqDto);
+            Assert.True(passed);
+        }
+
+        /// <summary>
+        /// test method to delete request (negative)
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public async Task Test_DeleteRequest2()
+        {
+            var reqDto = new RequestDto()
+            {
+                RequestId = 90,
+                AssociateEmail = "",
+                AssociateFirst = "",
+                AssociateLast = "",
+                DepartureLoc = 0,
+                DestinationLoc = 0,
+                DepartureTime = new DateTime(2000,1,1)
+
+            };
+            bool passed = await logicHelper.DeleteRequest(reqDto);
+            Assert.True(!passed);
+        }
+
         #endregion
 
     }

@@ -54,5 +54,23 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete given request
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public async Task<HttpResponseMessage> Delete([FromBody]RequestDto req)
+        {
+            if (await logHelp.DeleteRequest(req))
+            {
+                //email confirmation
+                return Request.CreateResponse(HttpStatusCode.OK, "success!");
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "failed to insert");
+            }
+        }
+
     }
 }

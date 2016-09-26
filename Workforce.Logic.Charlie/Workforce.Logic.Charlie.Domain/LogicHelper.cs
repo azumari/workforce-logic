@@ -136,10 +136,18 @@ namespace Workforce.Logic.Charlie.Domain
         public async Task<bool> InsertLocation(LocationDto loc)
         {
             //validate locationdto
-            var toAdd = locModel.MapToSoap(loc);
-            toAdd.Active = true;
-            return await client.InsertLocationAsync(toAdd);
-        }
+            try
+            {
+                var toAdd = locModel.MapToSoap(loc);
+                toAdd.Active = true;
+                return await client.InsertLocationAsync(toAdd);
+
+            }
+            catch
+            {
+                return false;
+            }
+         }
 
         /// <summary>
         /// insert new ride
@@ -178,7 +186,7 @@ namespace Workforce.Logic.Charlie.Domain
                         return false;
                     }
                 }
-                catch(Exception e)
+                catch
                 {
                     return false;
                 }
@@ -223,7 +231,7 @@ namespace Workforce.Logic.Charlie.Domain
                         return false;
                     }
                 }
-                catch(Exception e)
+                catch
                 {
                     return false;
                 }
@@ -244,7 +252,28 @@ namespace Workforce.Logic.Charlie.Domain
                 var toNix = locModel.MapToSoap(loc);
                 return await client.DeleteLocationAsync(toNix);
             }
-            catch (Exception e)
+            catch 
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Delete the given request
+        /// assignment of Schedule compensates for difference between dao, dto forms
+        /// only the id will be checked in the db
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteRequest(RequestDto req)
+        {
+            try
+            {
+                var toNix = reqModel.MapToSoap(req);
+                toNix.Schedule = 20; 
+                return await client.DeleteRequestAsync(toNix);
+            }
+            catch
             {
                 return false;
             }
