@@ -12,5 +12,6 @@ namespace Workforce.Logic.Grace.Domain.BusinessModels.Dtos
     public int StatusID { get; set; }
     public string StatusColor { get; set; }
     public string StatusMessage { get; set; }
+    public bool ActiveBit { get; set; }
   }
 }

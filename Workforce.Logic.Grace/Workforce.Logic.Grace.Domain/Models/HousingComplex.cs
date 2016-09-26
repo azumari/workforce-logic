@@ -17,8 +17,9 @@ namespace Workforce.Logic.Grace.Domain.Models
 
 
     //private readonly GraceServiceClient f = new GraceServiceClient();
-    private readonly MapperConfiguration complexMapper = new MapperConfiguration(m => m.CreateMap<HousingComplexDao, HousingComplexDto>().ReverseMap());
-
+    //private readonly MapperConfiguration complexMapper = new MapperConfiguration(m => m.CreateMap<HousingComplexDao, HousingComplexDto>().ReverseMap());
+    private readonly MapperConfiguration complexMapper = new MapperConfiguration(m => m.CreateMap<HousingComplexDao, HousingComplexDto>().ReverseMap()
+         .ForMember(dest => dest.HotelID, opt => opt.MapFrom(src => src.HousingComplexId)));
 
     private bool validate(IEnumerable<HousingComplexDao> temp)
     {

@@ -13,7 +13,9 @@ namespace Workforce.Logic.Grace.Domain.BusinessModels.Dtos
     public string Address { get; set; }
     public bool IsHotel { get; set; }
     public string PhoneNumber { get; set; }
-  
+    public int HotelID { get; set; }
+    public bool ActiveBit { get; set; }
+
   }
 }
  
