@@ -5,11 +5,13 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Workforce.Logic.Charlie.Domain;
 using Workforce.Logic.Charlie.Domain.TransferModels;
 
 namespace Workforce.Logic.Charlie.Rest.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class RideController : ApiController
     {
 
