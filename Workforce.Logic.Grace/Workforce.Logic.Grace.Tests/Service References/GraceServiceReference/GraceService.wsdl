@@ -55,6 +55,30 @@
   <wsdl:message name="IGraceService_InsertStatus_OutputMessage">
     <wsdl:part name="parameters" element="tns:InsertStatusResponse" />
   </wsdl:message>
+  <wsdl:message name="IGraceService_UpdateApartment_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateApartment" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_UpdateApartment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateApartmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_UpdateHousingData_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateHousingData" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_UpdateHousingData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateHousingDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_UpdateHousingComplex_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateHousingComplex" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_UpdateHousingComplex_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateHousingComplexResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_UpdateStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStatus" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_UpdateStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStatusResponse" />
+  </wsdl:message>
   <wsdl:message name="IGraceService_DeleteApartment_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteApartment" />
   </wsdl:message>
@@ -111,6 +135,22 @@
     <wsdl:operation name="InsertStatus">
       <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/InsertStatus" message="tns:IGraceService_InsertStatus_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/InsertStatusResponse" message="tns:IGraceService_InsertStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateApartment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/UpdateApartment" message="tns:IGraceService_UpdateApartment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/UpdateApartmentResponse" message="tns:IGraceService_UpdateApartment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHousingData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/UpdateHousingData" message="tns:IGraceService_UpdateHousingData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/UpdateHousingDataResponse" message="tns:IGraceService_UpdateHousingData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHousingComplex">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/UpdateHousingComplex" message="tns:IGraceService_UpdateHousingComplex_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/UpdateHousingComplexResponse" message="tns:IGraceService_UpdateHousingComplex_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/UpdateStatus" message="tns:IGraceService_UpdateStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/UpdateStatusResponse" message="tns:IGraceService_UpdateStatus_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteApartment">
       <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/DeleteApartment" message="tns:IGraceService_DeleteApartment_InputMessage" />
@@ -196,6 +236,42 @@
     </wsdl:operation>
     <wsdl:operation name="InsertStatus">
       <soap:operation soapAction="http://tempuri.org/IGraceService/InsertStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateApartment">
+      <soap:operation soapAction="http://tempuri.org/IGraceService/UpdateApartment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHousingData">
+      <soap:operation soapAction="http://tempuri.org/IGraceService/UpdateHousingData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHousingComplex">
+      <soap:operation soapAction="http://tempuri.org/IGraceService/UpdateHousingComplex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStatus">
+      <soap:operation soapAction="http://tempuri.org/IGraceService/UpdateStatus" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
