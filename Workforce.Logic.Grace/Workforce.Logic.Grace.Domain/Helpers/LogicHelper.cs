@@ -107,9 +107,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       //validate the incoming DTO first before converting into DAO
       //STILL NEED TO VALIDATE
 
-      HousingComplexDao daoMappedComp = housingComplexVnM.MapToDao(newComplex);
-
-      return await graceService.InsertHousingComplexAsync(daoMappedComp);     
+      return await graceService.InsertHousingComplexAsync(housingComplexVnM.MapToDao(newComplex));     
     }
     /// <summary>
     /// this method inserts a new housingData by calling on the soap service. 
@@ -147,5 +145,68 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
     #endregion
 
+    #region delete methods for each and all models
+
+    /// <summary>
+    /// This method recieves an ApartmentDto model that we expect to delete based off of the primary key
+    /// </summary>
+    /// <param name="oldApartment"></param>
+    /// <returns>Task<bool></returns>
+    public async Task<bool> DeleteApartment(ApartmentDto oldApartment)
+    {
+      Apartment ApartmentVnM = new Apartment();
+
+      //validate the incoming DTO first before converting into DAO
+      //STILL NEED TO VALIDATE
+
+      return await graceService.DeleteApartmentAsync(ApartmentVnM.MapToDao(oldApartment));
+    }
+    /// <summary>
+    /// This method recieves an HousingComlexDto model that we expect to delete based off of the primary key
+    /// </summary>
+    /// <param name="oldComplex"></param>
+    /// <returns>Task<bool></returns>
+    public async Task<bool> DeleteComplex(HousingComplexDto oldComplex)
+    {
+      HousingComplex housingComplexVnM = new HousingComplex();
+
+      //validate the incoming DTO first before converting into DAO
+      //STILL NEED TO VALIDATE
+
+      return await graceService.DeleteHousingComplexAsync(housingComplexVnM.MapToDao(oldComplex));
+    }
+    /// <summary>
+    /// This method recieves an HousingDataDto model that we expect to delete based off of the primary key
+    /// </summary>
+    /// <param name="oldData"></param>
+    /// <returns>Task<bool></returns>
+    public async Task<bool> DeleteHousingData(HousingDataDto oldData)
+    {
+      HousingData housingDataVnM = new HousingData();
+
+      //validate the incoming DTO first before converting into DAO
+      //STILL NEED TO VALIDATE
+
+      return await graceService.DeleteHousingDataAsync(housingDataVnM.MapToDao(oldData));
+    }
+    /// <summary>
+    /// This method recieves an StatusDto model that we expect to delete based off of the primary key
+    /// </summary>
+    /// <param name="oldStatus"></param>
+    /// <returns>Task<bool></returns>
+    public async Task<bool> DeleteStatus(StatusDto oldStatus)
+    {
+      Status statusVnM = new Status();
+
+      //validate the incoming DTO first before converting into DAO
+      //STILL NEED TO VALIDATE
+
+      return await graceService.DeleteStatusAsync(statusVnM.MapToDao(oldStatus));
+    }
+
+
+
+
+    #endregion
   }
 }

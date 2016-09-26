@@ -516,6 +516,30 @@ namespace Workforce.Logic.Grace.Domain.GraceServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/InsertStatus", ReplyAction="http://tempuri.org/IGraceService/InsertStatusResponse")]
         System.Threading.Tasks.Task<bool> InsertStatusAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao newstatus);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/DeleteApartment", ReplyAction="http://tempuri.org/IGraceService/DeleteApartmentResponse")]
+        bool DeleteApartment(Workforce.Logic.Grace.Domain.GraceServiceReference.ApartmentDao apt);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/DeleteApartment", ReplyAction="http://tempuri.org/IGraceService/DeleteApartmentResponse")]
+        System.Threading.Tasks.Task<bool> DeleteApartmentAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.ApartmentDao apt);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/DeleteHousingData", ReplyAction="http://tempuri.org/IGraceService/DeleteHousingDataResponse")]
+        bool DeleteHousingData(Workforce.Logic.Grace.Domain.GraceServiceReference.HousingDataDao hdata);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/DeleteHousingData", ReplyAction="http://tempuri.org/IGraceService/DeleteHousingDataResponse")]
+        System.Threading.Tasks.Task<bool> DeleteHousingDataAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.HousingDataDao hdata);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/DeleteHousingComplex", ReplyAction="http://tempuri.org/IGraceService/DeleteHousingComplexResponse")]
+        bool DeleteHousingComplex(Workforce.Logic.Grace.Domain.GraceServiceReference.HousingComplexDao hcomplex);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/DeleteHousingComplex", ReplyAction="http://tempuri.org/IGraceService/DeleteHousingComplexResponse")]
+        System.Threading.Tasks.Task<bool> DeleteHousingComplexAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.HousingComplexDao hcomplex);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/DeleteStatus", ReplyAction="http://tempuri.org/IGraceService/DeleteStatusResponse")]
+        bool DeleteStatus(Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/DeleteStatus", ReplyAction="http://tempuri.org/IGraceService/DeleteStatusResponse")]
+        System.Threading.Tasks.Task<bool> DeleteStatusAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao status);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -607,6 +631,38 @@ namespace Workforce.Logic.Grace.Domain.GraceServiceReference {
         
         public System.Threading.Tasks.Task<bool> InsertStatusAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao newstatus) {
             return base.Channel.InsertStatusAsync(newstatus);
+        }
+        
+        public bool DeleteApartment(Workforce.Logic.Grace.Domain.GraceServiceReference.ApartmentDao apt) {
+            return base.Channel.DeleteApartment(apt);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteApartmentAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.ApartmentDao apt) {
+            return base.Channel.DeleteApartmentAsync(apt);
+        }
+        
+        public bool DeleteHousingData(Workforce.Logic.Grace.Domain.GraceServiceReference.HousingDataDao hdata) {
+            return base.Channel.DeleteHousingData(hdata);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteHousingDataAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.HousingDataDao hdata) {
+            return base.Channel.DeleteHousingDataAsync(hdata);
+        }
+        
+        public bool DeleteHousingComplex(Workforce.Logic.Grace.Domain.GraceServiceReference.HousingComplexDao hcomplex) {
+            return base.Channel.DeleteHousingComplex(hcomplex);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteHousingComplexAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.HousingComplexDao hcomplex) {
+            return base.Channel.DeleteHousingComplexAsync(hcomplex);
+        }
+        
+        public bool DeleteStatus(Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao status) {
+            return base.Channel.DeleteStatus(status);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteStatusAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao status) {
+            return base.Channel.DeleteStatusAsync(status);
         }
     }
 }
