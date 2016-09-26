@@ -19,10 +19,8 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
             options.Add("getAllLocations", "api/location");
             options.Add("getAllRides", "api/ride/findall");
             options.Add("getAllRequests", "api/request/findall");
-            options.Add("getRidesByDepartureLocationId", "api/ride/findbydeparture/{id}");
-            options.Add("getRequestsByDepartureLocationId", "api/request/findbydeparture/{id}");
-            options.Add("getRidesByDestinationLocationId", "api/ride/findbydestination/{id}");
-            options.Add("getRequestsByDestinationLocationId", "api/request/findbydestination/{id}");
+            options.Add("getRidesByDepartureAndDestinationName", "api/ride/findbyendpoints/{dept}/{dest}");
+            options.Add("getRequestsByDepartureAndDestinationName", "api/request/findbyendpoints/{dept}/{dest}");
             return Request.CreateResponse(HttpStatusCode.OK, options);
         }
 
