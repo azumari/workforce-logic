@@ -11,10 +11,19 @@ using Workforce.Logic.Felice.Rest.Models;
 
 namespace Workforce.Logic.Felice.Rest.Controllers
 {
+  /// <summary>
+  /// This entire controller is strictly
+  /// for the admin users in this app
+  /// </summary>
   [Authorize(Roles="Admin")]
   [RoutePrefix("api/roles")]
   public class RolesController : BaseApiController
   {
+    /// <summary>
+    /// This will get the role by its id
+    /// </summary>
+    /// <param name="Id"></param>
+    /// <returns></returns>
     [Route("{id:guid}", Name="GetRoleById")]
     public async Task<IHttpActionResult> GetRole(string Id)
     {
@@ -28,6 +37,11 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       return NotFound();
     }
 
+    /// <summary>
+    /// This will get all roles so you know
+    /// which roles are existing
+    /// </summary>
+    /// <returns></returns>
     [Route("", Name="GetAllRoles")]
     public IHttpActionResult GetAllRoles()
     {
@@ -36,6 +50,11 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       return Ok(roles);
     }
 
+    /// <summary>
+    /// This will be to help create a role
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
     [Route("create")]
     public async Task<IHttpActionResult> Create(CreateRoleBindingModel model)
     {
@@ -57,6 +76,12 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       return Created(locationHeader, TheModelFactory.Create(role));
     }
 
+
+    /// <summary>
+    /// This will be used to help delete a role
+    /// </summary>
+    /// <param name="Id"></param>
+    /// <returns></returns>
     [Route("{id:guid}")]
     public async Task<IHttpActionResult> DeleteRole(string Id)
     {
@@ -79,6 +104,11 @@ namespace Workforce.Logic.Felice.Rest.Controllers
 
     }
 
+    /// <summary>
+    /// This will find a user in a given role
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
     [Route("ManageUsersInRole")]
     public async Task<IHttpActionResult> ManageUsersInRole(UsersInRoleModel model)
     {
@@ -90,6 +120,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
         return BadRequest(ModelState);
       }
 
+      //will provide all the users in the role
       foreach (string user in model.ActiveUsers)
       {
         var appUser = await this.AppUserManager.FindByIdAsync(user);
@@ -112,6 +143,9 @@ namespace Workforce.Logic.Felice.Rest.Controllers
         }
       }
 
+      //This will give all the users
+      //who were once in that role but
+      //are not removed from that role
       foreach (string user in model.RemovedUsers)
       {
         var appUser = await this.AppUserManager.FindByIdAsync(user);

@@ -74,7 +74,11 @@ namespace Workforce.Logic.Felice.Rest.Models
       public IList<System.Security.Claims.Claim> Claims { get; set; }
     }
 
-    public RoleReturnModel Create(IdentityRole appRole) {
+    //Will return the properties needed 
+    //for the object graph from the
+    //class below this method    
+    public RoleReturnModel Create(IdentityRole appRole) 
+    {
       return new RoleReturnModel
       {
         Url = urlHelper.Link("GetRoleById", new { id = appRole.Id }),
@@ -82,13 +86,17 @@ namespace Workforce.Logic.Felice.Rest.Models
         Name = appRole.Name
       };
     }
-}
- 
+  }
+
+
+  /// <summary>
+  /// Properties that we will use to help create
+  /// the roles and displayed information for them
+  /// </summary>
   public class RoleReturnModel
   {
     public string Url { get; set; }
     public string Id { get; set; }
     public string Name { get; set; }
   }
-  
 }

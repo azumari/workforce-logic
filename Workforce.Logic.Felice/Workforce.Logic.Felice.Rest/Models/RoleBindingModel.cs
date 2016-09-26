@@ -6,6 +6,9 @@ using System.Web;
 
 namespace Workforce.Logic.Felice.Rest.Models
 {
+  /// <summary>
+  /// The model for creating the roles
+  /// </summary>
   public class CreateRoleBindingModel
   {
     [Required]
@@ -15,6 +18,12 @@ namespace Workforce.Logic.Felice.Rest.Models
 
   }
 
+  /// <summary>
+  /// The model for seeing
+  /// the users in a given role
+  /// and the users who have been
+  /// removed from those roles
+  /// </summary>
   public class UsersInRoleModel
   {
     public string Id { get; set; }
