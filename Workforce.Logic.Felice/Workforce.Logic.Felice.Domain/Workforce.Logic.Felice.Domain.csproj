@@ -98,7 +98,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Service References\WorkforceServiceReference\FeliceService.wsdl" />
     <None Include="Service References\WorkforceServiceReference\FeliceService.xsd">
       <SubType>Designer</SubType>
