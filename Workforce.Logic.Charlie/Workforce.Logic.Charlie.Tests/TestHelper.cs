@@ -117,5 +117,49 @@ namespace Workforce.Logic.Charlie.Tests
         }
         #endregion
 
+        #region test deletes
+
+        /// <summary>
+        /// test method to delete location (positive)
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public async Task Test_DeleteLocation()
+        {
+            var locDto = new LocationDto()
+            {
+                LocationId = 37,
+                Latitude = 0,
+                Longitude = 0,
+                Address = "",
+                StopName = ""
+
+            };
+            bool passed = await logicHelper.DeleteLocation(locDto);
+            Assert.True(passed);
+        }
+
+        /// <summary>
+        /// test method to delete location (negative)
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public async Task Test_DeleteLocation2()
+        {
+            var locDto = new LocationDto()
+            {
+                LocationId = 370,
+                Latitude = 0,
+                Longitude = 0,
+                Address = "",
+                StopName = ""
+
+            };
+            bool passed = await logicHelper.DeleteLocation(locDto);
+            Assert.True(!passed);
+        }
+
+        #endregion
+
     }
 }

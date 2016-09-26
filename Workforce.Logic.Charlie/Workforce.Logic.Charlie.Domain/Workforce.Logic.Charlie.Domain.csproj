@@ -98,6 +98,7 @@
     <Compile Include="Validation\RideRules.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Service References\WorkforceService\CharlieService.wsdl" />
     <None Include="Service References\WorkforceService\CharlieService.xsd">
       <SubType>Designer</SubType>

@@ -44,5 +44,24 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Delete given location
+        /// </summary>
+        /// <param name="loc"></param>
+        /// <returns></returns>
+        public async Task<HttpResponseMessage> Delete([FromBody]LocationDto loc)
+        {
+            var success = await logHelp.DeleteLocation(loc);
+            if (success)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "success!");
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "failed to delete");
+            }
+        }
+
     }
 }
