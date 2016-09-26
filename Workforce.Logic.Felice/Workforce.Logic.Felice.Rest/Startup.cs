@@ -1,9 +1,13 @@
 ﻿using Microsoft.Owin;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.DataHandler.Encoder;
+using Microsoft.Owin.Security.Jwt;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using Owin;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http.Formatting;
 using System.Web;
@@ -26,6 +30,8 @@ namespace Workforce.Logic.Felice.Rest
       HttpConfiguration httpConfig = new HttpConfiguration();
 
       ConfigureOAuthTokenGeneration(app);
+
+      ConfigureOAuthTokenConsumption(app);
 
       ConfigureWebApi(httpConfig);
 
@@ -64,6 +70,25 @@ namespace Workforce.Logic.Felice.Rest
 
       var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
       jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+    }
+
+    private void ConfigureOAuthTokenConsumption(IAppBuilder app)
+    {
+      var issuer = "http://localhost/workforce-felice-rest/";
+      string audienceId = ConfigurationManager.AppSettings["AudienceID"];
+      byte[] audienceSecret = TextEncodings.Base64Url.Decode(ConfigurationManager.AppSettings["AudienceSecret"]);
+
+      //Api controllers with an [Authorize] attribute will be validated with JWT
+      app.UseJwtBearerAuthentication(
+        new JwtBearerAuthenticationOptions
+        {
+          AuthenticationMode = AuthenticationMode.Active,
+          AllowedAudiences = new[] { audienceId },
+          IssuerSecurityTokenProviders = new IIssuerSecurityTokenProvider[]
+          {
+            new SymmetricKeyIssuerSecurityTokenProvider(issuer, audienceSecret)
+          }
+        });
     }
   }
 }

@@ -25,7 +25,7 @@ namespace Workforce.Logic.Felice.Rest.Providers
       {
         throw new ArgumentNullException("data");
       }
-      string plaintext = ConfigurationManager.AppSettings["AudienceID"] + DateTime.Now;
+      string plaintext = ConfigurationManager.AppSettings["AudienceID"];
       string secretText = ConfigurationManager.AppSettings["AudienceSecret"];
       var keyByteArray = TextEncodings.Base64Url.Decode(secretText);      
       var signKey = new HmacSigningCredentials(keyByteArray);
