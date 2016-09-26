@@ -14,7 +14,7 @@ namespace Workforce.Logic.Felice.Domain
       private readonly Associate associateLogic = new Associate();
       private readonly Address addressLogic = new Address();
       private readonly Batch batchLogic = new Batch();
-      //private readonly Gender genderLogic = new Gender();
+      //private readonly Gender genderLogic = new Gender(); -- to be implemented in a future branch
       private readonly Instructor instructorLogic = new Instructor();
 
       #region All methods related to Associate
