@@ -13,12 +13,9 @@ namespace Workforce.Logic.Grace.Domain.Models
   {
     //have a method here to mapToDao and mapToDto
     //Have a method here to validate both the DAO's and DTO's
-
-
-
-    //private readonly GraceServiceClient f = new GraceServiceClient();
+     
     private readonly MapperConfiguration complexMapper = new MapperConfiguration(m => m.CreateMap<HousingComplexDao, HousingComplexDto>().ReverseMap());
-
+ 
 
     private bool validate(IEnumerable<HousingComplexDao> temp)
     {
