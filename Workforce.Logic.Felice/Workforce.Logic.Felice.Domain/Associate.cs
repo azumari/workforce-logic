@@ -36,7 +36,7 @@ namespace Workforce.Logic.Felice.Domain
       /// <summary>
       /// Validates the data stored in the Dto being passed through from the Client side
       /// </summary>
-      public bool ValidateClient(AssociateDto associate)
+      public bool ValidateRestData(AssociateDto associate)
       {
          var context = new ValidationContext(associate);
          var results = new List<ValidationResult>();

@@ -9,12 +9,12 @@ namespace Workforce.Logic.Charlie.Domain.TransferModels
     public class RequestDto
     {
         public int RequestId { get; set; }
-        public string VolunteerFirst { get; set; }
-        public string VolunteerLast { get; set; }
-        public string VolunteerEmail { get; set; }
+        public string AssociateFirst { get; set; }
+        public string AssociateLast { get; set; }
+        public string AssociateEmail { get; set; }
         public DateTime DepartureTime { get; set; }
-        public string DepartureLoc { get; set; }
-        public string DestinationLoc { get; set; }
+        public int DepartureLoc { get; set; }
+        public int DestinationLoc { get; set; }
 
     }
 }

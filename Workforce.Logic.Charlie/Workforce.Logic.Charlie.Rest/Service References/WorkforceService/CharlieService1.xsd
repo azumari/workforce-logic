@@ -8,6 +8,7 @@
   <xs:element name="ArrayOfLocationDao" nillable="true" type="tns:ArrayOfLocationDao" />
   <xs:complexType name="LocationDao">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
       <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Latitude" type="xs:double" />
       <xs:element minOccurs="0" name="LocationId" type="xs:int" />

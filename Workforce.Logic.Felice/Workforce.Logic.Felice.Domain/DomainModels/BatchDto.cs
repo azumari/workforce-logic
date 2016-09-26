@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Workforce.Logic.Felice.Domain.DomainModels
 {
-   class BatchDto
+   public class BatchDto
    {
       public int BatchID { get; set; }
       [StringLength(50), Required]
