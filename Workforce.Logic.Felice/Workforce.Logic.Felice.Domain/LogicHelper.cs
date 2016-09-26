@@ -17,6 +17,10 @@ namespace Workforce.Logic.Felice.Domain
       //private readonly Gender genderLogic = new Gender();
       private readonly Instructor instructorLogic = new Instructor();
 
+      #region All Associate Related Methods
+      /// <summary>
+      /// Basic 'Get' method that retrieves all associates regardless of active status
+      /// </summary>
       public async Task<List<AssociateDto>> GetAllAssociates()
       {
          var associate = new List<AssociateDto>();
@@ -35,13 +39,27 @@ namespace Workforce.Logic.Felice.Domain
          }
          return associate;
       }
-      /*
-      public AssociateDto AddNewAssociate()
+     
+      /// <summary>
+      /// Attempts to add a new associate after ensuring the data being entered is valid
+      /// </summary>
+      public async Task<bool> AddNewAssociate(AssociateDto newAssociate)
       {
-         var associate = new AssociateDto();
-         return ;
-      }*/
+         if (associateLogic.ValidateRestData(newAssociate))
+         {
+            return await client.InsertAssociateAsync(associateLogic.MapToSoap(newAssociate));
+         }
+         else
+         {
+            return false;
+         }
+      }
+      #endregion
 
+      #region All methods related to Address
+      /// <summary>
+      /// Basic 'Get' method that retrieves all addresses regardless of active status
+      /// </summary>
       public async Task<List<AddressDto>> GetAllAddresses()
       {
          var address = new List<AddressDto>();
@@ -56,7 +74,12 @@ namespace Workforce.Logic.Felice.Domain
          }
          return address;
       }
+      #endregion
 
+      #region All methods related to Batch
+      /// <summary>
+      /// Basic 'Get' method that retrieves all batches regardless of active status
+      /// </summary>
       public async Task<List<BatchDto>> GetAllBatches()
       {
          var batches = new List<BatchDto>();
@@ -71,5 +94,6 @@ namespace Workforce.Logic.Felice.Domain
          }
          return batches;
       }
+      #endregion
    }
 }
