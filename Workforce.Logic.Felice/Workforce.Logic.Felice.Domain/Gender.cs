@@ -10,15 +10,15 @@ using Workforce.Logic.Felice.Domain.WorkforceServiceReference;
 
 namespace Workforce.Logic.Felice.Domain
 {
-   public class Batch
+   public class Gender
    {
-      private readonly MapperConfiguration batchMapper = new MapperConfiguration(b => b.CreateMap<BatchDao, BatchDto>());
-      private readonly MapperConfiguration batchReverseMapper = new MapperConfiguration(b => b.CreateMap<BatchDto, BatchDao>());
+      private readonly MapperConfiguration genderMapper = new MapperConfiguration(g => g.CreateMap<GenderDao, GenderDto>());
+      private readonly MapperConfiguration genderReverseMapper = new MapperConfiguration(g => g.CreateMap<GenderDto, GenderDao>());
 
       /// <summary>
       /// Validates the data coming in from the data layer
       /// </summary>
-      public bool ValidateSoapData(BatchDao batch)
+      public bool ValidateSoapData(GenderDao batch)
       {
          //reserved for validating information coming from the Data Layer
          return true;
@@ -27,30 +27,30 @@ namespace Workforce.Logic.Felice.Domain
       /// <summary>
       /// After successful validation, this method will map the data from the Data Layer to the Dto
       /// </summary>
-      public BatchDto MapToRest(BatchDao b)
+      public GenderDto MapToRest(GenderDao g)
       {
-         var mapper = batchMapper.CreateMapper();
-         return mapper.Map<BatchDto>(b);
+         var mapper = genderMapper.CreateMapper();
+         return mapper.Map<GenderDto>(g);
       }
 
       /// <summary>
       /// Validates the data stored in the Dto being passed through from the Client side
       /// </summary>
-      public bool ValidateRestData(BatchDto batch)
+      public bool ValidateRestData(GenderDto gender)
       {
-         var context = new ValidationContext(batch);
+         var context = new ValidationContext(gender);
          var results = new List<ValidationResult>();
 
-         return Validator.TryValidateObject(batch, context, results);
+         return Validator.TryValidateObject(gender, context, results);
       }
 
       /// <summary>
       /// After validation, this method will Map the data within the Dto to the Data Layer
       /// </summary>
-      public BatchDao MapToSoap(BatchDto b)
+      public GenderDao MapToSoap(GenderDto g)
       {
-         var mapper = batchReverseMapper.CreateMapper();
-         return mapper.Map<BatchDao>(b);
+         var mapper = genderReverseMapper.CreateMapper();
+         return mapper.Map<GenderDao>(g);
       }
    }
 }

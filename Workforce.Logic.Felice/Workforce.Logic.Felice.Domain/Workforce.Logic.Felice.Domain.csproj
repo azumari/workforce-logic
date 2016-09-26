@@ -86,7 +86,9 @@
     <Compile Include="DomainModels\AddressDto.cs" />
     <Compile Include="DomainModels\AssociateDto.cs" />
     <Compile Include="DomainModels\BatchDto.cs" />
+    <Compile Include="DomainModels\GenderDto.cs" />
     <Compile Include="DomainModels\InstructorDto.cs" />
+    <Compile Include="Gender.cs" />
     <Compile Include="Instructor.cs" />
     <Compile Include="Service References\WorkforceServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
