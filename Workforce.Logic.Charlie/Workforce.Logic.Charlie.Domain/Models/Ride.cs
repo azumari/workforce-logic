@@ -26,6 +26,8 @@ namespace Workforce.Logic.Charlie.Domain.Models
             var mapper = mapperRide2.CreateMapper();
             var dao =  mapper.Map<RideDao>(ride);
             dao.RideID = ride.RideId;
+            //change this when we can consume Associates! 
+            dao.Associate = 5;
             return dao;
         }
 

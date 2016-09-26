@@ -29,7 +29,7 @@ namespace Workforce.Logic.Charlie.Domain
 
             foreach (var item in source)
             {
-                if (locModel.ValidateDao(item))
+                if (item.Active && locModel.ValidateDao(item))
                 {
                     var newLoc = locModel.MapToRest(item);
                     locs.Add(newLoc);
@@ -94,12 +94,14 @@ namespace Workforce.Logic.Charlie.Domain
 
             foreach (var item in source)
             {
+                if (item.Active)
+                {
                     var newReq = await reqModel.MapToRest(item);
                     reqs.Add(newReq);
+                }
             }
             return reqs;
         }
-
 
         /// <summary>
         /// Return all requests with the given departure and destination locations
@@ -114,10 +116,13 @@ namespace Workforce.Logic.Charlie.Domain
 
             foreach (var item in source)
             {
-                var newReq = await reqModel.MapToRest(item);
-                if (newReq.DepartureLoc == dept && newReq.DestinationLoc == dest)
+                if (item.Active)
                 {
-                    reqs.Add(newReq);
+                    var newReq = await reqModel.MapToRest(item);
+                    if (newReq.DepartureLoc == dept && newReq.DestinationLoc == dest)
+                    {
+                        reqs.Add(newReq);
+                    }
                 }
             }
             return reqs;
@@ -132,6 +137,7 @@ namespace Workforce.Logic.Charlie.Domain
         {
             //validate locationdto
             var toAdd = locModel.MapToSoap(loc);
+            toAdd.Active = true;
             return await client.InsertLocationAsync(toAdd);
         }
 
@@ -148,6 +154,7 @@ namespace Workforce.Logic.Charlie.Domain
             sched.DepartureLoc = await LocIdByName(ride.DepartureLoc);
             sched.DepartureTime = ride.DepartureTime;
             sched.DestinationLoc = await LocIdByName(ride.DestinationLoc);
+            sched.Active = true;
             if (sched.DepartureLoc == 0 || sched.DestinationLoc == 0)
             {
                 return false;
@@ -161,6 +168,7 @@ namespace Workforce.Logic.Charlie.Domain
                                             sc.DepartureTime == sched.DepartureTime &&
                                             sc.DestinationLoc == sched.DestinationLoc).ScheduleID;
                     toAdd.Schedule = scId;
+                    toAdd.Active = true;
                     return await client.InsertRideAsync(toAdd);
                 }
                 else
@@ -183,6 +191,7 @@ namespace Workforce.Logic.Charlie.Domain
             sched.DepartureLoc = await LocIdByName(req.DepartureLoc);
             sched.DepartureTime = req.DepartureTime;
             sched.DestinationLoc = await LocIdByName(req.DestinationLoc);
+            sched.Active = true;
             if (sched.DepartureLoc == 0 || sched.DestinationLoc == 0)
             {
                 return false;
@@ -196,6 +205,7 @@ namespace Workforce.Logic.Charlie.Domain
                                             sc.DepartureTime == sched.DepartureTime &&
                                             sc.DestinationLoc == sched.DestinationLoc).ScheduleID;
                     toAdd.Schedule = scId;
+                    toAdd.Active = true;
                     return await client.InsertRequestAsync(toAdd);
                 }
                 else
@@ -215,7 +225,7 @@ namespace Workforce.Logic.Charlie.Domain
         {
             var locs = await client.GetLocationsAsync();
             var result = Array.Find(locs, lc => lc.StopName == name);
-            if(result != null)
+            if(result != null && result.Active)
             {
                 return result.LocationId;
             }
