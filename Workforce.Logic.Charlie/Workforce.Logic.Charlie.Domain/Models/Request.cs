@@ -29,7 +29,7 @@ namespace Workforce.Logic.Charlie.Domain.Models
             dao.RequestID = req.RequestId;
             //change when we can consume Associate!!
             dao.Associate = 6;
-            return mapper.Map<RequestDao>(req);
+            return dao;
         }
 
         /// <summary>

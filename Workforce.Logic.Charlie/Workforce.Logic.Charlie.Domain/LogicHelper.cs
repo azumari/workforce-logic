@@ -136,10 +136,18 @@ namespace Workforce.Logic.Charlie.Domain
         public async Task<bool> InsertLocation(LocationDto loc)
         {
             //validate locationdto
-            var toAdd = locModel.MapToSoap(loc);
-            toAdd.Active = true;
-            return await client.InsertLocationAsync(toAdd);
-        }
+            try
+            {
+                var toAdd = locModel.MapToSoap(loc);
+                toAdd.Active = true;
+                return await client.InsertLocationAsync(toAdd);
+
+            }
+            catch
+            {
+                return false;
+            }
+         }
 
         /// <summary>
         /// insert new ride
@@ -178,7 +186,7 @@ namespace Workforce.Logic.Charlie.Domain
                         return false;
                     }
                 }
-                catch(Exception e)
+                catch
                 {
                     return false;
                 }
@@ -223,7 +231,7 @@ namespace Workforce.Logic.Charlie.Domain
                         return false;
                     }
                 }
-                catch(Exception e)
+                catch
                 {
                     return false;
                 }
@@ -231,6 +239,67 @@ namespace Workforce.Logic.Charlie.Domain
             }
 
         }
+
+        /// <summary>
+        /// Delete the given location
+        /// </summary>
+        /// <param name="loc"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteLocation(LocationDto loc)
+        {
+            try
+            {
+                var toNix = locModel.MapToSoap(loc);
+                return await client.DeleteLocationAsync(toNix);
+            }
+            catch 
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Delete the given request
+        /// assignment of Schedule compensates for difference between dao, dto forms
+        /// only the id will be checked in the db
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteRequest(RequestDto req)
+        {
+            try
+            {
+                var toNix = reqModel.MapToSoap(req);
+                toNix.Schedule = 20; 
+                return await client.DeleteRequestAsync(toNix);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Delete the given ride
+        /// assignment of Schedule compensates for difference between dao, dto forms
+        /// only the id will be checked in the db
+        /// </summary>
+        /// <param name="ride"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteRide(RideDto ride)
+        {
+            try
+            {
+                var toNix = rideModel.MapToSoap(ride);
+                toNix.Schedule = 20;
+                return await client.DeleteRideAsync(toNix);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
         /// <summary>
         /// Returns the location id corresponding to given stop name
