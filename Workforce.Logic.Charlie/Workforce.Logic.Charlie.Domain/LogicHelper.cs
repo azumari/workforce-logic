@@ -315,7 +315,27 @@ namespace Workforce.Logic.Charlie.Domain
 
         //match ride to request
 
-        //match request to ride
+        /// <summary>
+        /// Match a new request to join an existing ride 
+        /// </summary>
+        /// <param name="ride"></param>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public async Task<bool> JoinRide(RideDto ride, RequestDto req)
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// Create a new ride to answer an existing request
+        /// </summary>
+        /// <param name="req"></param>
+        /// <param name="ride"></param>
+        /// <returns></returns>
+        public async Task<bool> InviteToRide(RequestDto req, RideDto ride)
+        {
+            return true;
+        }
 
         //update location 
 

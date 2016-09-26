@@ -56,6 +56,26 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
             }
         }
 
+
+        /// <summary>
+        /// create a ride corresponding to an existing request 
+        /// </summary>
+        /// <param name="req"></param>
+        /// <param name="ride"></param>
+        /// <returns></returns>
+        public async Task<HttpResponseMessage> Put([FromBody]RequestDto req,[FromBody]RideDto ride)
+        {
+            if (await logHelp.InviteToRide(req,ride))
+            {
+                //email confirmation
+                return Request.CreateResponse(HttpStatusCode.OK, "success!");
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "failed to insert");
+            }
+        }
+
         /// <summary>
         /// Delete given request
         /// </summary>
