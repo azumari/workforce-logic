@@ -4,13 +4,11 @@
 Project Workforce is an enterprise web application handling the onboarding, housing, and 
 transportation of Revature associates. 
 
-Project Felice focuses primarily upon the onboarding process 
-at Revature LLC. It provides a portal for adding incoming associates to the system and managing 
-records related to existing associates.
+Project Felice provides a portal for adding incoming associates to the system and managing 
+records related to existing associates (the "onboarding" process).
 
-Project Grace allows management of the associates' housing. An HR user may view existing room 
-assignments and organize incoming associates' assignments by batch. 
-group incoming batches together. 
+Project Grace manages associates' placement into hotels and apartment complexes. An HR user 
+may view existing room assignments and organize incoming associates' assignments by batch.  
 
 Project Charlie is a rideshare application for Revature associates. Users may offer or request 
 rides to or from defined meetup locations in the Reston and Herndon areas, in addition to 
