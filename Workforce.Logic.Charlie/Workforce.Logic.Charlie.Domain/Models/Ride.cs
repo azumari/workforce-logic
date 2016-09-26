@@ -44,16 +44,14 @@ namespace Workforce.Logic.Charlie.Domain.Models
             var sched = await ScheduleById(ride.Schedule);
             if (sched == null)
             {
-                dto.DestinationLoc = "no destination";
-                dto.DepartureLoc = "no departure location";
+                dto.DestinationLoc = 0;
+                dto.DepartureLoc = 0;
                 dto.DepartureTime = new DateTime(2063, 4, 5, 0, 0, 0);
             }
             else
             {
-                var deptloc = await LocationById(sched.DepartureLoc);
-                dto.DepartureLoc = deptloc.StopName;
-                var destloc = await LocationById(sched.DestinationLoc);
-                dto.DestinationLoc = destloc.StopName;
+                dto.DepartureLoc = sched.DepartureLoc;
+                dto.DestinationLoc = sched.DestinationLoc;
                 dto.DepartureTime = sched.DepartureTime;
             }
             return dto;

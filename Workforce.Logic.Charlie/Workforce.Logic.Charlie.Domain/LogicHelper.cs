@@ -64,7 +64,7 @@ namespace Workforce.Logic.Charlie.Domain
         /// <param name="dept"></param>
         /// <param name="dest"></param>
         /// <returns></returns>
-        public async Task<List<RideDto>> RidesByEndpoints(string dept, string dest)
+        public async Task<List<RideDto>> RidesByEndpoints(int dept, int dest)
         {
             var rides = new List<RideDto>();
             var source = await client.GetRideAsync();
@@ -109,7 +109,7 @@ namespace Workforce.Logic.Charlie.Domain
         /// <param name="dept"></param>
         /// <param name="dest"></param>
         /// <returns></returns>
-        public async Task<List<RequestDto>> RequestsByEndpoints (string dept, string dest)
+        public async Task<List<RequestDto>> RequestsByEndpoints (int dept, int dest)
         {
             var reqs = new List<RequestDto>();
             var source = await client.GetRequestAsync();
@@ -151,9 +151,9 @@ namespace Workforce.Logic.Charlie.Domain
             //validate ridedto
             var toAdd = rideModel.MapToSoap(ride);
             var sched = new ScheduleDao();
-            sched.DepartureLoc = await LocIdByName(ride.DepartureLoc);
+            sched.DepartureLoc = ride.DepartureLoc;
             sched.DepartureTime = ride.DepartureTime;
-            sched.DestinationLoc = await LocIdByName(ride.DestinationLoc);
+            sched.DestinationLoc = ride.DestinationLoc;
             sched.Active = true;
             if (sched.DepartureLoc == 0 || sched.DestinationLoc == 0)
             {
@@ -161,20 +161,28 @@ namespace Workforce.Logic.Charlie.Domain
             }
             else
             {
-                if (await client.InsertScheduleAsync(sched))
+                try
                 {
-                    var allSched = await client.GetScheduleAsync();
-                    var scId = allSched.Last(sc => sc.DepartureLoc == sched.DepartureLoc &&
-                                            sc.DepartureTime == sched.DepartureTime &&
-                                            sc.DestinationLoc == sched.DestinationLoc).ScheduleID;
-                    toAdd.Schedule = scId;
-                    toAdd.Active = true;
-                    return await client.InsertRideAsync(toAdd);
+                    if (await client.InsertScheduleAsync(sched))
+                    {
+                        var allSched = await client.GetScheduleAsync();
+                        var scId = allSched.Last(sc => sc.DepartureLoc == sched.DepartureLoc &&
+                                                sc.DepartureTime == sched.DepartureTime &&
+                                                sc.DestinationLoc == sched.DestinationLoc).ScheduleID;
+                        toAdd.Schedule = scId;
+                        toAdd.Active = true;
+                        return await client.InsertRideAsync(toAdd);
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
-                else
+                catch(Exception e)
                 {
                     return false;
                 }
+                
             }
         }
 
@@ -188,9 +196,9 @@ namespace Workforce.Logic.Charlie.Domain
             //validate requestdto
             var toAdd = reqModel.MapToSoap(req);
             var sched = new ScheduleDao();
-            sched.DepartureLoc = await LocIdByName(req.DepartureLoc);
+            sched.DepartureLoc = req.DepartureLoc;
             sched.DepartureTime = req.DepartureTime;
-            sched.DestinationLoc = await LocIdByName(req.DestinationLoc);
+            sched.DestinationLoc = req.DestinationLoc;
             sched.Active = true;
             if (sched.DepartureLoc == 0 || sched.DestinationLoc == 0)
             {
@@ -198,20 +206,28 @@ namespace Workforce.Logic.Charlie.Domain
             }
             else
             {
-                if (await client.InsertScheduleAsync(sched))
+                try
                 {
-                    var allSched = await client.GetScheduleAsync();
-                    var scId = allSched.Last(sc => sc.DepartureLoc == sched.DepartureLoc &&
-                                            sc.DepartureTime == sched.DepartureTime &&
-                                            sc.DestinationLoc == sched.DestinationLoc).ScheduleID;
-                    toAdd.Schedule = scId;
-                    toAdd.Active = true;
-                    return await client.InsertRequestAsync(toAdd);
+                    if (await client.InsertScheduleAsync(sched))
+                    {
+                        var allSched = await client.GetScheduleAsync();
+                        var scId = allSched.Last(sc => sc.DepartureLoc == sched.DepartureLoc &&
+                                                sc.DepartureTime == sched.DepartureTime &&
+                                                sc.DestinationLoc == sched.DestinationLoc).ScheduleID;
+                        toAdd.Schedule = scId;
+                        toAdd.Active = true;
+                        return await client.InsertRequestAsync(toAdd);
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
-                else
+                catch(Exception e)
                 {
                     return false;
                 }
+                
             }
 
         }

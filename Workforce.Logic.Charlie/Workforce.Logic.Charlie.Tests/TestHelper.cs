@@ -43,12 +43,12 @@ namespace Workforce.Logic.Charlie.Tests
         {
             var rideDto = new RideDto()
             {
-                DepartureLoc = "Narnia",
-                DestinationLoc = "Camden Station",
+                DepartureLoc = 19,
+                DestinationLoc = 20,
                 DepartureTime = new DateTime(2016,9,27,15,45,0),
-                VolunteerEmail = "me@iamsocool.com",
-                VolunteerFirst = "David",
-                VolunteerLast = "Bowie",
+                AssociateEmail = "me@iamsocool.com",
+                AssociateFirst = "David",
+                AssociateLast = "Bowie",
                 SeatsAvailable = 3
             };
             bool passed = await logicHelper.InsertRide(rideDto);
@@ -64,12 +64,12 @@ namespace Workforce.Logic.Charlie.Tests
         {
             var rideDto = new RideDto()
             {
-                DepartureLoc = "Funkytown",
-                DestinationLoc = "Camden Station",
+                DepartureLoc = 300,
+                DestinationLoc = 30,
                 DepartureTime = new DateTime(2016, 9, 27, 15, 45, 0),
-                VolunteerEmail = "me@iamsocool.com",
-                VolunteerFirst = "David",
-                VolunteerLast = "Bowie",
+                AssociateEmail = "me@iamsocool.com",
+                AssociateFirst = "David",
+                AssociateLast = "Bowie",
                 SeatsAvailable = 3
             };
             bool passed = await logicHelper.InsertRide(rideDto);
@@ -85,12 +85,12 @@ namespace Workforce.Logic.Charlie.Tests
         {
             var reqDto = new RequestDto()
             {
-                DepartureLoc = "18",
-                DestinationLoc = "30",
+                DepartureLoc = 18,
+                DestinationLoc = 30,
                 DepartureTime = new DateTime(2016, 9, 27, 15, 45, 0),
-                VolunteerEmail = "me@iamsocool.com",
-                VolunteerFirst = "David",
-                VolunteerLast = "Bowie"
+                AssociateEmail = "me@iamsocool.com",
+                AssociateFirst = "David",
+                AssociateLast = "Bowie"
             };
             bool passed = await logicHelper.InsertRequest(reqDto);
             Assert.True(passed);
@@ -105,12 +105,12 @@ namespace Workforce.Logic.Charlie.Tests
         {
             var reqDto = new RequestDto()
             {
-                DepartureLoc = "19",
-                DestinationLoc = "30",
+                DepartureLoc = 1900,
+                DestinationLoc = 30,
                 DepartureTime = new DateTime(2016, 9, 27, 15, 45, 0),
-                VolunteerEmail = "me@iamsocool.com",
-                VolunteerFirst = "David",
-                VolunteerLast = "Bowie"
+                AssociateEmail = "me@iamsocool.com",
+                AssociateFirst = "David",
+                AssociateLast = "Bowie"
             };
             bool passed = await logicHelper.InsertRequest(reqDto);
             Assert.True(!passed);
