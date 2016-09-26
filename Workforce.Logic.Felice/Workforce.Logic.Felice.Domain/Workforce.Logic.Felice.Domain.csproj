@@ -80,8 +80,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Address.cs" />
     <Compile Include="Associate.cs" />
     <Compile Include="Batch.cs" />
+    <Compile Include="DomainModels\AddressDto.cs" />
     <Compile Include="DomainModels\AssociateDto.cs" />
     <Compile Include="DomainModels\BatchDto.cs" />
     <Compile Include="DomainModels\InstructorDto.cs" />
@@ -96,6 +98,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Service References\WorkforceServiceReference\FeliceService.wsdl" />
     <None Include="Service References\WorkforceServiceReference\FeliceService.xsd">
       <SubType>Designer</SubType>
@@ -106,7 +109,22 @@
     <None Include="Service References\WorkforceServiceReference\FeliceService11.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Web.config" />

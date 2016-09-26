@@ -82,7 +82,9 @@
     <None Include="Service References\WorkforceServiceReference\FeliceService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web.config" />
+    <None Include="Web.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
