@@ -12,13 +12,13 @@ namespace Workforce.Logic.Felice.Domain
 {
    public class Instructor
    {
-      private readonly MapperConfiguration associateMapper = new MapperConfiguration(t => t.CreateMap<InstructorDao, InstructorDto>());
-      private readonly MapperConfiguration associateReverseMapper = new MapperConfiguration(t => t.CreateMap<InstructorDto, InstructorDao>());
+      private readonly MapperConfiguration associateMapper = new MapperConfiguration(i => i.CreateMap<InstructorDao, InstructorDto>());
+      private readonly MapperConfiguration associateReverseMapper = new MapperConfiguration(i => i.CreateMap<InstructorDto, InstructorDao>());
 
       /// <summary>
       /// Validates the data coming in from the data layer
       /// </summary>
-      public bool ValidateSoapData(InstructorDao associate)
+      public bool ValidateSoapData(InstructorDao instructor)
       {
          //reserved for validating information coming from the Data Layer
          return true;
@@ -27,30 +27,30 @@ namespace Workforce.Logic.Felice.Domain
       /// <summary>
       /// After successful validation, this method will map the data from the Data Layer to the Dto
       /// </summary>
-      public InstructorDto MapToRest(InstructorDao a)
+      public InstructorDto MapToRest(InstructorDao i)
       {
          var mapper = associateMapper.CreateMapper();
-         return mapper.Map<InstructorDto>(a);
+         return mapper.Map<InstructorDto>(i);
       }
 
       /// <summary>
       /// Validates the data stored in the Dto being passed through from the Client side
       /// </summary>
-      public bool ValidateRestData(InstructorDto associate)
+      public bool ValidateRestData(InstructorDto instructor)
       {
-         var context = new ValidationContext(associate);
+         var context = new ValidationContext(instructor);
          var results = new List<ValidationResult>();
 
-         return Validator.TryValidateObject(associate, context, results);
+         return Validator.TryValidateObject(instructor, context, results);
       }
       
       /// <summary>
       /// After validation, this method will Map the data within the Dto to the Data Layer
       /// </summary>
-      public InstructorDao MapToSoap(InstructorDto a)
+      public InstructorDao MapToSoap(InstructorDto i)
       {
          var mapper = associateReverseMapper.CreateMapper();
-         return mapper.Map<InstructorDao>(a);
+         return mapper.Map<InstructorDao>(i);
       }
    }
 }

@@ -12,8 +12,8 @@ namespace Workforce.Logic.Felice.Domain
 {
    public class Batch
    {
-      private readonly MapperConfiguration batchMapper = new MapperConfiguration(t => t.CreateMap<BatchDao, BatchDto>());
-      private readonly MapperConfiguration batchReverseMapper = new MapperConfiguration(t => t.CreateMap<BatchDto, BatchDao>());
+      private readonly MapperConfiguration batchMapper = new MapperConfiguration(b => b.CreateMap<BatchDao, BatchDto>());
+      private readonly MapperConfiguration batchReverseMapper = new MapperConfiguration(b => b.CreateMap<BatchDto, BatchDao>());
 
       /// <summary>
       /// Validates the data coming in from the data layer
@@ -27,10 +27,10 @@ namespace Workforce.Logic.Felice.Domain
       /// <summary>
       /// After successful validation, this method will map the data from the Data Layer to the Dto
       /// </summary>
-      public BatchDto MapToRest(BatchDao a)
+      public BatchDto MapToRest(BatchDao b)
       {
          var mapper = batchMapper.CreateMapper();
-         return mapper.Map<BatchDto>(a);
+         return mapper.Map<BatchDto>(b);
       }
 
       /// <summary>
@@ -47,10 +47,10 @@ namespace Workforce.Logic.Felice.Domain
       /// <summary>
       /// After validation, this method will Map the data within the Dto to the Data Layer
       /// </summary>
-      public BatchDao MapToSoap(BatchDto a)
+      public BatchDao MapToSoap(BatchDto b)
       {
          var mapper = batchReverseMapper.CreateMapper();
-         return mapper.Map<BatchDao>(a);
+         return mapper.Map<BatchDao>(b);
       }
    }
 }
