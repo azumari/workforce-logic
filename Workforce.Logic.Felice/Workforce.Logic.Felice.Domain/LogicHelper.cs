@@ -17,7 +17,7 @@ namespace Workforce.Logic.Felice.Domain
       //private readonly Gender genderLogic = new Gender();
       private readonly Instructor instructorLogic = new Instructor();
 
-      #region All Associate Related Methods
+      #region All methods related to Associate
       /// <summary>
       /// Basic 'Get' method that retrieves all associates regardless of active status
       /// </summary>
@@ -41,13 +41,44 @@ namespace Workforce.Logic.Felice.Domain
       }
      
       /// <summary>
-      /// Attempts to add a new associate after ensuring the data being entered is valid
+      /// Attempts to add a new associate after ensuring that the data entered is valid
       /// </summary>
       public async Task<bool> AddNewAssociate(AssociateDto newAssociate)
       {
          if (associateLogic.ValidateRestData(newAssociate))
          {
             return await client.InsertAssociateAsync(associateLogic.MapToSoap(newAssociate));
+         }
+         else
+         {
+            return false;
+         }
+      }
+
+      /// <summary>
+      /// Changes the active status of an associate
+      /// This is essentially the 'Delete' method
+      /// </summary>
+      public async Task<bool> DeactivateAssociate(AssociateDto delAssociate)
+      {
+         if (associateLogic.ValidateRestData(delAssociate))
+         {
+            return await client.DeleteAssociateAsync(associateLogic.MapToSoap(delAssociate));
+         }
+         else
+         {
+            return false;
+         }
+      }
+
+      /// <summary>
+      /// This is the basic 'Update' method for Associate
+      /// </summary>
+      public async Task<bool> UpdateAssociate(AssociateDto update)
+      {
+         if (associateLogic.ValidateRestData(update))
+         {
+            return await client.UpdateAssociateAsync(associateLogic.MapToSoap(update));
          }
          else
          {
@@ -74,6 +105,52 @@ namespace Workforce.Logic.Felice.Domain
          }
          return address;
       }
+
+      /// <summary>
+      /// Attempts to add a new address after ensuring that the data entered is valid
+      /// </summary>
+      public async Task<bool> AddNewAddress(AddressDto newAddress)
+      {
+         if (addressLogic.ValidateRestData(newAddress))
+         {
+            return await client.InsertAddressAsync(addressLogic.MapToSoap(newAddress));
+         }
+         else
+         {
+            return false;
+         }
+      }
+
+      /// <summary>
+      /// Changes the active status of an address
+      /// This is essentially the 'Delete' method
+      /// </summary>
+      public async Task<bool> DeactivateAddress(AddressDto delAddress)
+      {
+         if (addressLogic.ValidateRestData(delAddress))
+         {
+            return await client.DeleteAddressAsync(addressLogic.MapToSoap(delAddress));
+         }
+         else
+         {
+            return false;
+         }
+      }
+
+      /// <summary>
+      /// This is the basic 'Update' method for Address
+      /// </summary>
+      public async Task<bool> UpdateAddress(AddressDto update)
+      {
+         if (addressLogic.ValidateRestData(update))
+         {
+            return await client.UpdateAddressAsync(addressLogic.MapToSoap(update));
+         }
+         else
+         {
+            return false;
+         }
+      }
       #endregion
 
       #region All methods related to Batch
@@ -93,6 +170,52 @@ namespace Workforce.Logic.Felice.Domain
             }
          }
          return batches;
+      }
+
+      /// <summary>
+      /// Attempts to add a new batch after ensuring that the data entered is valid
+      /// </summary>
+      public async Task<bool> AddNewBatch(BatchDto newBatch)
+      {
+         if (batchLogic.ValidateRestData(newBatch))
+         {
+            return await client.InsertBatchAsync(batchLogic.MapToSoap(newBatch));
+         }
+         else
+         {
+            return false;
+         }
+      }
+
+      /// <summary>
+      /// Changes the active status of a batch
+      /// This is essentially the 'Delete' method
+      /// </summary>
+      public async Task<bool> DeactivateBatch(BatchDto delBatch)
+      {
+         if (batchLogic.ValidateRestData(delBatch))
+         {
+            return await client.DeleteBatchAsync(batchLogic.MapToSoap(delBatch));
+         }
+         else
+         {
+            return false;
+         }
+      }
+
+      /// <summary>
+      /// This is the basic 'Update' method for Batch
+      /// </summary>
+      public async Task<bool> UpdateBatch(BatchDto update)
+      {
+         if (batchLogic.ValidateRestData(update))
+         {
+            return await client.UpdateBatchAsync(batchLogic.MapToSoap(update));
+         }
+         else
+         {
+            return false;
+         }
       }
       #endregion
    }

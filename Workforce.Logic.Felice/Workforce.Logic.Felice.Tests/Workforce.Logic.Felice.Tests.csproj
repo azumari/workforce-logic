@@ -71,6 +71,7 @@
     <Compile Include="TestDomain.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Properties\DataSources\Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao.datasource" />
     <None Include="Service References\WorkforceServiceReference\FeliceService.wsdl" />
     <None Include="Service References\WorkforceServiceReference\FeliceService.xsd">
@@ -81,6 +82,21 @@
     </None>
     <None Include="Service References\WorkforceServiceReference\FeliceService2.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Web.config">
       <SubType>Designer</SubType>
