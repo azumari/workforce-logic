@@ -23,7 +23,7 @@ namespace Workforce.Logic.Grace.Tests
     {
       ApartmentDto aptDto = new ApartmentDto()
       {
-        RoomNumber = 71
+        RoomNumber = 53
       };
       bool passed = await logicHelper.DeleteApartment(aptDto);
       Assert.True(passed);
@@ -38,7 +38,12 @@ namespace Workforce.Logic.Grace.Tests
     {
       HousingComplexDto complexDto = new HousingComplexDto()
       {
-        HousingComplexId = 1
+        HotelID = 56,
+        Address = "ha ha ha",
+        IsHotel = true,
+        Name = "2 star motel",
+        PhoneNumber = "1-800-123-4567",
+
       };
       bool passed = await logicHelper.DeleteComplex(complexDto);
       Assert.True(passed);
@@ -74,6 +79,7 @@ namespace Workforce.Logic.Grace.Tests
       Assert.True(passed);
 
     }
+
 
 
   }
