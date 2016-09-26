@@ -129,6 +129,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ApartmentController.cs" />
+    <Compile Include="Controllers\FilterAptsByComplexController.cs" />
     <Compile Include="Controllers\HousingComplexController.cs" />
     <Compile Include="Controllers\HousingDataController.cs" />
     <Compile Include="Controllers\IndexController.cs" />

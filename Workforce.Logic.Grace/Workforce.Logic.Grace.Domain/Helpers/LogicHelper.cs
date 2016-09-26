@@ -292,9 +292,25 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       }
     }
 
+    #endregion
 
+    #region Method to filter 
 
+    public async Task<List<ApartmentDto>> FilterAptByComplex(HousingComplexDto complex)
+    { 
+      List<ApartmentDto> returnList = new List<ApartmentDto>();
+      foreach (var item in await ApartmentsGetAll())
+      {
+        if (item.HotelID.Equals(complex.HotelID))
+        {
+          returnList.Add(item);
+        }
+      }
+
+      return returnList;
+    }
 
     #endregion
+
   }
 }
