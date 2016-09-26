@@ -128,7 +128,7 @@ namespace Workforce.Logic.Charlie.Tests
         {
             var locDto = new LocationDto()
             {
-                LocationId = 37,
+                LocationId = 39,
                 Latitude = 0,
                 Longitude = 0,
                 Address = "",
@@ -249,6 +249,48 @@ namespace Workforce.Logic.Charlie.Tests
             Assert.True(!passed);
         }
 
+        #endregion
+
+        #region test updates
+        /// <summary>
+        /// test method to update location (positive)
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public async Task Test_UpdateLocation()
+        {
+            var locDto = new LocationDto()
+            {
+                LocationId = 36,
+                Latitude = 40.5,
+                Longitude = 40.5,
+                Address = "somewhere in Turkey",
+                StopName = "why"
+
+            };
+            bool passed = await logicHelper.UpdateLocation(locDto);
+            Assert.True(passed);
+        }
+
+        /// <summary>
+        /// test method to update location (negative)
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public async Task Test_UpdateLocation2()
+        {
+            var locDto = new LocationDto()
+            {
+                LocationId = 370,
+                Latitude = 0,
+                Longitude = 0,
+                Address = "",
+                StopName = ""
+
+            };
+            bool passed = await logicHelper.UpdateLocation(locDto);
+            Assert.True(!passed);
+        }
         #endregion
 
     }

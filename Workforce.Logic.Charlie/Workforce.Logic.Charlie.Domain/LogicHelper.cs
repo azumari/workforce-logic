@@ -337,6 +337,27 @@ namespace Workforce.Logic.Charlie.Domain
             return true;
         }
 
+        /// <summary>
+        /// update location
+        /// </summary>
+        /// <param name="loc"></param>
+        /// <returns></returns>
+        public async Task<bool> UpdateLocation(LocationDto loc)
+        {
+            //validate locationdto
+            try
+            {
+                var toUpdate = locModel.MapToSoap(loc);
+                toUpdate.Active = true;
+                return await client.UpdateLocationAsync(toUpdate);
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         //update location 
 
         //get riders? 
