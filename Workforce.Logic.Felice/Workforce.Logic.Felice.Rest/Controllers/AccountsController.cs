@@ -19,7 +19,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
     /// system by calling the ApplicationUserManager Class
     /// </summary>
     /// <returns></returns>
-    [Authorize]
+    [Authorize(Roles="Admin")]
     [Route("user")]
     public IHttpActionResult GetUsers()
     {
@@ -32,7 +32,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [Route("user/{id:guid}", Name = "GetUserById")]
     public async Task<IHttpActionResult> GetUser(string Id)
     {
@@ -53,7 +53,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
     /// </summary>
     /// <param name="username"></param>
     /// <returns></returns>
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [Route("user/{username}")]
     public async Task<IHttpActionResult> GetUserByName(string username)
     {
@@ -185,7 +185,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    [Authorize]
+    [Authorize(Roles="Admin")]
     [Route("user/{id:guid}")]
     public async Task<IHttpActionResult> DeleteUser(string id)
     {
@@ -210,6 +210,54 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       //client will be notified
       //that they are not found
       return NotFound();
+    }
+
+    /// <summary>
+    /// This method can only be accessed by Admin accounts only.
+    /// This method will accept the UserId in its URI and array of the roles
+    /// this userId should be enrolled in. This method will validate that this
+    /// array of roles exist in the system. If it doesn't an HTTP Bad response
+    /// will be sent letting you know that which roles do not exist. The system
+    /// will delete all the roles assigned for the user then will assign only the
+    /// roles sent in the request.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="rolesToAssign"></param>
+    /// <returns></returns>
+    [Authorize(Roles="Admin")]
+    [Route("user/{id:guid}/roles")]
+    [HttpPut]
+    public async Task<IHttpActionResult> AssignRolesToUser([FromUri] string id, [FromBody] string[] rolesToAssign)
+    {
+      var appUser = await this.AppUserManager.FindByIdAsync(id);
+      
+      if(appUser == null)
+      {
+        return NotFound();
+      }
+
+      var currentRoles = await this.AppUserManager.GetRolesAsync(appUser.Id);
+      var rolesNotExists = rolesToAssign.Except(this.AppRoleManager.Roles.Select(x => x.Name)).ToArray();
+      if(rolesNotExists.Count() > 0)
+      {
+        ModelState.AddModelError("", string.Format("Roles '{0}' does not exist", string.Join(",", rolesNotExists)));
+      }
+
+      IdentityResult removeResult = await this.AppUserManager.RemoveFromRolesAsync(appUser.Id, currentRoles.ToArray());
+      if(!removeResult.Succeeded)
+      {
+        ModelState.AddModelError("", "Failed to remove user roles");
+        return BadRequest(ModelState);
+      }
+
+      IdentityResult addResult = await this.AppUserManager.AddToRolesAsync(appUser.Id, rolesToAssign);
+      if(!addResult.Succeeded)
+      {
+        ModelState.AddModelError("", "Failed to add user roles");
+        return BadRequest(ModelState);
+      }
+
+      return Ok();
     }
   }
 }

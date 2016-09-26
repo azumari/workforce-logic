@@ -15,6 +15,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
   {
     private ModelFactory modelFactory;
     private ApplicationUserManager appUserManager = null;
+    private ApplicationRoleManager appRoleManager = null;
 
     /// <summary>
     /// Gets instance of ApplicationUserManager that
@@ -25,6 +26,18 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       get
       {
         return appUserManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+      }
+    }
+
+    /// <summary>
+    /// Gets instance of ApplicationRoleManager that
+    /// we already set up in the Startup class
+    /// </summary>
+    protected ApplicationRoleManager AppRoleManager
+    {
+      get
+      {
+        return appRoleManager ?? Request.GetOwinContext().GetUserManager<ApplicationRoleManager>();
       }
     }
 
