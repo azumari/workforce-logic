@@ -23,6 +23,7 @@ namespace Workforce.Logic.Grace.Rest.Controllers
       options.Add("getAllHousingComplexes", "api/HousingComplex");
       options.Add("getAllHousingData", "api/HousingData");
       options.Add("getAllStatuses", "api/Status");
+      options.Add("filterApartmentsByComplex", "api/filteraptsbycomplex");
 
       return Request.CreateResponse(HttpStatusCode.OK, options);
     }
