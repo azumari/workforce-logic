@@ -233,6 +233,24 @@ namespace Workforce.Logic.Charlie.Domain
         }
 
         /// <summary>
+        /// Delete the given location
+        /// </summary>
+        /// <param name="loc"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteLocation(LocationDto loc)
+        {
+            try
+            {
+                var toNix = locModel.MapToSoap(loc);
+                return await client.DeleteLocationAsync(toNix);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Returns the location id corresponding to given stop name
         /// </summary>
         /// <param name="name"></param>
