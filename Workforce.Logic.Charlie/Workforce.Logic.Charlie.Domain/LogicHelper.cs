@@ -18,6 +18,9 @@ namespace Workforce.Logic.Charlie.Domain
         Ride rideModel = new Ride();
         Request reqModel = new Request();
 
+
+        #region get
+
         /// <summary>
         /// Retreive all active meetup locations.
         /// </summary>
@@ -128,6 +131,10 @@ namespace Workforce.Logic.Charlie.Domain
             return reqs;
         }
 
+        #endregion
+
+        #region insert
+
         /// <summary>
         /// insert new location
         /// </summary>
@@ -235,10 +242,12 @@ namespace Workforce.Logic.Charlie.Domain
                 {
                     return false;
                 }
-                
             }
-
         }
+
+        #endregion
+
+        #region delete
 
         /// <summary>
         /// Delete the given location
@@ -300,6 +309,17 @@ namespace Workforce.Logic.Charlie.Domain
             }
         }
 
+        #endregion
+
+        #region updates and friends 
+
+        //match ride to request
+
+        //match request to ride
+
+        //update location 
+
+        //get riders? 
 
         /// <summary>
         /// Returns the location id corresponding to given stop name
@@ -319,6 +339,8 @@ namespace Workforce.Logic.Charlie.Domain
                 return 0;
             }
         }
+
+        #endregion
 
     }
 }
