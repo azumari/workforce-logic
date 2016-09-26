@@ -31,6 +31,78 @@
   <wsdl:message name="ICharlieService_GetRide_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetRideResponse" />
   </wsdl:message>
+  <wsdl:message name="ICharlieService_InsertLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertLocation" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_InsertLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_InsertRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertRequest" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_InsertRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_InsertSchedule_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSchedule" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_InsertSchedule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_InsertRide_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertRide" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_InsertRide_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertRideResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_UpdateLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateLocation" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_UpdateLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_UpdateRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRequest" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_UpdateRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_UpdateSchedule_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSchedule" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_UpdateSchedule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_UpdateRide_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRide" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_UpdateRide_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRideResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_DeleteLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteLocation" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_DeleteLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_DeleteRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRequest" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_DeleteRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_DeleteSchedule_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSchedule" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_DeleteSchedule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_DeleteRide_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRide" />
+  </wsdl:message>
+  <wsdl:message name="ICharlieService_DeleteRide_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRideResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICharlieService">
     <wsdl:operation name="GetLocations">
       <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/GetLocations" message="tns:ICharlieService_GetLocations_InputMessage" />
@@ -47,6 +119,54 @@
     <wsdl:operation name="GetRide">
       <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/GetRide" message="tns:ICharlieService_GetRide_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/GetRideResponse" message="tns:ICharlieService_GetRide_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/InsertLocation" message="tns:ICharlieService_InsertLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/InsertLocationResponse" message="tns:ICharlieService_InsertLocation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/InsertRequest" message="tns:ICharlieService_InsertRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/InsertRequestResponse" message="tns:ICharlieService_InsertRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSchedule">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/InsertSchedule" message="tns:ICharlieService_InsertSchedule_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/InsertScheduleResponse" message="tns:ICharlieService_InsertSchedule_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertRide">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/InsertRide" message="tns:ICharlieService_InsertRide_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/InsertRideResponse" message="tns:ICharlieService_InsertRide_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/UpdateLocation" message="tns:ICharlieService_UpdateLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/UpdateLocationResponse" message="tns:ICharlieService_UpdateLocation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/UpdateRequest" message="tns:ICharlieService_UpdateRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/UpdateRequestResponse" message="tns:ICharlieService_UpdateRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSchedule">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/UpdateSchedule" message="tns:ICharlieService_UpdateSchedule_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/UpdateScheduleResponse" message="tns:ICharlieService_UpdateSchedule_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRide">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/UpdateRide" message="tns:ICharlieService_UpdateRide_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/UpdateRideResponse" message="tns:ICharlieService_UpdateRide_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/DeleteLocation" message="tns:ICharlieService_DeleteLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/DeleteLocationResponse" message="tns:ICharlieService_DeleteLocation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/DeleteRequest" message="tns:ICharlieService_DeleteRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/DeleteRequestResponse" message="tns:ICharlieService_DeleteRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSchedule">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/DeleteSchedule" message="tns:ICharlieService_DeleteSchedule_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/DeleteScheduleResponse" message="tns:ICharlieService_DeleteSchedule_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRide">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICharlieService/DeleteRide" message="tns:ICharlieService_DeleteRide_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICharlieService/DeleteRideResponse" message="tns:ICharlieService_DeleteRide_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICharlieService" type="tns:ICharlieService">
@@ -80,6 +200,114 @@
     </wsdl:operation>
     <wsdl:operation name="GetRide">
       <soap:operation soapAction="http://tempuri.org/ICharlieService/GetRide" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertLocation">
+      <soap:operation soapAction="http://tempuri.org/ICharlieService/InsertLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRequest">
+      <soap:operation soapAction="http://tempuri.org/ICharlieService/InsertRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSchedule">
+      <soap:operation soapAction="http://tempuri.org/ICharlieService/InsertSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRide">
+      <soap:operation soapAction="http://tempuri.org/ICharlieService/InsertRide" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLocation">
+      <soap:operation soapAction="http://tempuri.org/ICharlieService/UpdateLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRequest">
+      <soap:operation soapAction="http://tempuri.org/ICharlieService/UpdateRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSchedule">
+      <soap:operation soapAction="http://tempuri.org/ICharlieService/UpdateSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRide">
+      <soap:operation soapAction="http://tempuri.org/ICharlieService/UpdateRide" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLocation">
+      <soap:operation soapAction="http://tempuri.org/ICharlieService/DeleteLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRequest">
+      <soap:operation soapAction="http://tempuri.org/ICharlieService/DeleteRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSchedule">
+      <soap:operation soapAction="http://tempuri.org/ICharlieService/DeleteSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRide">
+      <soap:operation soapAction="http://tempuri.org/ICharlieService/DeleteRide" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
