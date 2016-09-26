@@ -10,15 +10,15 @@ using Workforce.Logic.Felice.Domain.WorkforceServiceReference;
 
 namespace Workforce.Logic.Felice.Domain
 {
-   public class Instructor
+   public class Gender
    {
-      private readonly MapperConfiguration associateMapper = new MapperConfiguration(t => t.CreateMap<InstructorDao, InstructorDto>());
-      private readonly MapperConfiguration associateReverseMapper = new MapperConfiguration(t => t.CreateMap<InstructorDto, InstructorDao>());
+      private readonly MapperConfiguration genderMapper = new MapperConfiguration(g => g.CreateMap<GenderDao, GenderDto>());
+      private readonly MapperConfiguration genderReverseMapper = new MapperConfiguration(g => g.CreateMap<GenderDto, GenderDao>());
 
       /// <summary>
       /// Validates the data coming in from the data layer
       /// </summary>
-      public bool ValidateSoapData(InstructorDao associate)
+      public bool ValidateSoapData(GenderDao batch)
       {
          //reserved for validating information coming from the Data Layer
          return true;
@@ -27,30 +27,30 @@ namespace Workforce.Logic.Felice.Domain
       /// <summary>
       /// After successful validation, this method will map the data from the Data Layer to the Dto
       /// </summary>
-      public InstructorDto MapToRest(InstructorDao a)
+      public GenderDto MapToRest(GenderDao g)
       {
-         var mapper = associateMapper.CreateMapper();
-         return mapper.Map<InstructorDto>(a);
+         var mapper = genderMapper.CreateMapper();
+         return mapper.Map<GenderDto>(g);
       }
 
       /// <summary>
       /// Validates the data stored in the Dto being passed through from the Client side
       /// </summary>
-      public bool ValidateRestData(InstructorDto associate)
+      public bool ValidateRestData(GenderDto gender)
       {
-         var context = new ValidationContext(associate);
+         var context = new ValidationContext(gender);
          var results = new List<ValidationResult>();
 
-         return Validator.TryValidateObject(associate, context, results);
+         return Validator.TryValidateObject(gender, context, results);
       }
-      
+
       /// <summary>
       /// After validation, this method will Map the data within the Dto to the Data Layer
       /// </summary>
-      public InstructorDao MapToSoap(InstructorDto a)
+      public GenderDao MapToSoap(GenderDto g)
       {
-         var mapper = associateReverseMapper.CreateMapper();
-         return mapper.Map<InstructorDao>(a);
+         var mapper = genderReverseMapper.CreateMapper();
+         return mapper.Map<GenderDao>(g);
       }
    }
 }
