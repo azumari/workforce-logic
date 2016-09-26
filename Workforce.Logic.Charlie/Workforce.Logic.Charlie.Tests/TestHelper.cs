@@ -203,6 +203,52 @@ namespace Workforce.Logic.Charlie.Tests
             Assert.True(!passed);
         }
 
+        /// <summary>
+        /// test method to delete ride (positive)
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public async Task Test_DeleteRide()
+        {
+            var rideDto = new RideDto()
+            {
+                RideId = 24,
+                AssociateEmail = "",
+                AssociateFirst = "",
+                AssociateLast = "",
+                DepartureLoc = 0,
+                DestinationLoc = 0,
+                DepartureTime = new DateTime(2000, 1, 1),
+                SeatsAvailable = 1
+
+            };
+            bool passed = await logicHelper.DeleteRide(rideDto);
+            Assert.True(passed);
+        }
+
+        /// <summary>
+        /// test method to delete ride (negative)
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public async Task Test_DeleteRide2()
+        {
+            var rideDto = new RideDto()
+            {
+                RideId = 90,
+                AssociateEmail = "",
+                AssociateFirst = "",
+                AssociateLast = "",
+                DepartureLoc = 0,
+                DestinationLoc = 0,
+                DepartureTime = new DateTime(2000, 1, 1),
+                SeatsAvailable = 1
+
+            };
+            bool passed = await logicHelper.DeleteRide(rideDto);
+            Assert.True(!passed);
+        }
+
         #endregion
 
     }

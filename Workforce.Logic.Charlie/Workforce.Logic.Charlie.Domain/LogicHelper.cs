@@ -280,6 +280,28 @@ namespace Workforce.Logic.Charlie.Domain
         }
 
         /// <summary>
+        /// Delete the given ride
+        /// assignment of Schedule compensates for difference between dao, dto forms
+        /// only the id will be checked in the db
+        /// </summary>
+        /// <param name="ride"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteRide(RideDto ride)
+        {
+            try
+            {
+                var toNix = rideModel.MapToSoap(ride);
+                toNix.Schedule = 20;
+                return await client.DeleteRideAsync(toNix);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        /// <summary>
         /// Returns the location id corresponding to given stop name
         /// </summary>
         /// <param name="name"></param>
