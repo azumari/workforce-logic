@@ -13,16 +13,453 @@
   <wsdl:message name="IFeliceService_GetAssociates_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAssociatesResponse" />
   </wsdl:message>
+  <wsdl:message name="IFeliceService_GetAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddress" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_GetAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_GetAssociateAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssociateAddress" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_GetAssociateAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssociateAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_GetBatches_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBatches" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_GetBatches_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBatchesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_GetInstructor_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInstructor" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_GetInstructor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInstructorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_GetGender_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGender" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_GetGender_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGenderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_InsertAssociate_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAssociate" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_InsertAssociate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAssociateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_InsertAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAddress" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_InsertAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_InsertAssociateAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAssociateAddress" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_InsertAssociateAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAssociateAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_InsertBatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertBatch" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_InsertBatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertBatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_InsertGender_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertGender" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_InsertGender_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertGenderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_InsertInstructor_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertInstructor" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_InsertInstructor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertInstructorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_UpdateAssociate_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAssociate" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_UpdateAssociate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAssociateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_UpdateAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAddress" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_UpdateAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_UpdateAssociateAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAssociateAddress" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_UpdateAssociateAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAssociateAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_UpdateBatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBatch" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_UpdateBatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_UpdateGender_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGender" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_UpdateGender_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGenderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_UpdateInstructor_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateInstructor" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_UpdateInstructor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateInstructorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_DeleteAssociate_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAssociate" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_DeleteAssociate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAssociateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_DeleteAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAddress" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_DeleteAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_DeleteAssociateAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAssociateAddress" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_DeleteAssociateAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAssociateAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_DeleteBatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBatch" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_DeleteBatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_DeleteGender_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteGender" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_DeleteGender_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteGenderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_DeleteInstructor_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteInstructor" />
+  </wsdl:message>
+  <wsdl:message name="IFeliceService_DeleteInstructor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteInstructorResponse" />
+  </wsdl:message>
   <wsdl:portType name="IFeliceService">
     <wsdl:operation name="GetAssociates">
       <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/GetAssociates" message="tns:IFeliceService_GetAssociates_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/GetAssociatesResponse" message="tns:IFeliceService_GetAssociates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/GetAddress" message="tns:IFeliceService_GetAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/GetAddressResponse" message="tns:IFeliceService_GetAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAssociateAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/GetAssociateAddress" message="tns:IFeliceService_GetAssociateAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/GetAssociateAddressResponse" message="tns:IFeliceService_GetAssociateAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBatches">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/GetBatches" message="tns:IFeliceService_GetBatches_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/GetBatchesResponse" message="tns:IFeliceService_GetBatches_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstructor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/GetInstructor" message="tns:IFeliceService_GetInstructor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/GetInstructorResponse" message="tns:IFeliceService_GetInstructor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGender">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/GetGender" message="tns:IFeliceService_GetGender_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/GetGenderResponse" message="tns:IFeliceService_GetGender_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAssociate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/InsertAssociate" message="tns:IFeliceService_InsertAssociate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/InsertAssociateResponse" message="tns:IFeliceService_InsertAssociate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/InsertAddress" message="tns:IFeliceService_InsertAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/InsertAddressResponse" message="tns:IFeliceService_InsertAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAssociateAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/InsertAssociateAddress" message="tns:IFeliceService_InsertAssociateAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/InsertAssociateAddressResponse" message="tns:IFeliceService_InsertAssociateAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/InsertBatch" message="tns:IFeliceService_InsertBatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/InsertBatchResponse" message="tns:IFeliceService_InsertBatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertGender">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/InsertGender" message="tns:IFeliceService_InsertGender_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/InsertGenderResponse" message="tns:IFeliceService_InsertGender_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertInstructor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/InsertInstructor" message="tns:IFeliceService_InsertInstructor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/InsertInstructorResponse" message="tns:IFeliceService_InsertInstructor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAssociate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/UpdateAssociate" message="tns:IFeliceService_UpdateAssociate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/UpdateAssociateResponse" message="tns:IFeliceService_UpdateAssociate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/UpdateAddress" message="tns:IFeliceService_UpdateAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/UpdateAddressResponse" message="tns:IFeliceService_UpdateAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAssociateAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/UpdateAssociateAddress" message="tns:IFeliceService_UpdateAssociateAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/UpdateAssociateAddressResponse" message="tns:IFeliceService_UpdateAssociateAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/UpdateBatch" message="tns:IFeliceService_UpdateBatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/UpdateBatchResponse" message="tns:IFeliceService_UpdateBatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGender">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/UpdateGender" message="tns:IFeliceService_UpdateGender_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/UpdateGenderResponse" message="tns:IFeliceService_UpdateGender_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstructor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/UpdateInstructor" message="tns:IFeliceService_UpdateInstructor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/UpdateInstructorResponse" message="tns:IFeliceService_UpdateInstructor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAssociate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/DeleteAssociate" message="tns:IFeliceService_DeleteAssociate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/DeleteAssociateResponse" message="tns:IFeliceService_DeleteAssociate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/DeleteAddress" message="tns:IFeliceService_DeleteAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/DeleteAddressResponse" message="tns:IFeliceService_DeleteAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAssociateAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/DeleteAssociateAddress" message="tns:IFeliceService_DeleteAssociateAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/DeleteAssociateAddressResponse" message="tns:IFeliceService_DeleteAssociateAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/DeleteBatch" message="tns:IFeliceService_DeleteBatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/DeleteBatchResponse" message="tns:IFeliceService_DeleteBatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGender">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/DeleteGender" message="tns:IFeliceService_DeleteGender_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/DeleteGenderResponse" message="tns:IFeliceService_DeleteGender_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInstructor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFeliceService/DeleteInstructor" message="tns:IFeliceService_DeleteInstructor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFeliceService/DeleteInstructorResponse" message="tns:IFeliceService_DeleteInstructor_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IFeliceService" type="tns:IFeliceService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetAssociates">
       <soap:operation soapAction="http://tempuri.org/IFeliceService/GetAssociates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddress">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/GetAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssociateAddress">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/GetAssociateAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatches">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/GetBatches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstructor">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/GetInstructor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGender">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/GetGender" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAssociate">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/InsertAssociate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAddress">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/InsertAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAssociateAddress">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/InsertAssociateAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBatch">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/InsertBatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertGender">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/InsertGender" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertInstructor">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/InsertInstructor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAssociate">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/UpdateAssociate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAddress">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/UpdateAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAssociateAddress">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/UpdateAssociateAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBatch">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/UpdateBatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGender">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/UpdateGender" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstructor">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/UpdateInstructor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAssociate">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/DeleteAssociate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAddress">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/DeleteAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAssociateAddress">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/DeleteAssociateAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBatch">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/DeleteBatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGender">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/DeleteGender" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInstructor">
+      <soap:operation soapAction="http://tempuri.org/IFeliceService/DeleteInstructor" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

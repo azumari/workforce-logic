@@ -82,7 +82,24 @@
     <None Include="Service References\WorkforceServiceReference\FeliceService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web.config" />
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Web.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

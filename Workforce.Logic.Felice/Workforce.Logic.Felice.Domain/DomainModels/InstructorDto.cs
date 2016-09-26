@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Workforce.Logic.Felice.Domain.DomainModels
 {
-   class InstructorDto
+   public class InstructorDto
    {
       public int InstructorID { get; set; }
       [StringLength(50), Required]

@@ -1,55 +1,56 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Workforce.Logic.Felice.Domain.DomainModels;
+using Workforce.Logic.Felice.Domain.WorkforceServiceReference;
 
 namespace Workforce.Logic.Felice.Domain
 {
-   class Batch
+   public class Batch
    {
+      private readonly MapperConfiguration batchMapper = new MapperConfiguration(t => t.CreateMap<BatchDao, BatchDto>());
+      private readonly MapperConfiguration batchReverseMapper = new MapperConfiguration(t => t.CreateMap<BatchDto, BatchDao>());
+
       /// <summary>
-      /// Validates the data given by the data layer
+      /// Validates the data coming in from the data layer
       /// </summary>
-      public bool ValidateData()
+      public bool ValidateSoapData(BatchDao batch)
       {
+         //reserved for validating information coming from the Data Layer
          return true;
       }
 
       /// <summary>
-      /// After validation has occurred, this method will map the data passed through the Data Layer to the Dto
+      /// After successful validation, this method will map the data from the Data Layer to the Dto
       /// </summary>
-      public void MapToDomain()
+      public BatchDto MapToRest(BatchDao a)
       {
-
+         var mapper = batchMapper.CreateMapper();
+         return mapper.Map<BatchDto>(a);
       }
 
       /// <summary>
-      /// Validates the data that is passed in through on client side
+      /// Validates the data stored in the Dto being passed through from the Client side
       /// </summary>
-      public bool ValidateClient(BatchDto batch)
+      public bool ValidateRestData(BatchDto batch)
       {
-         DateTime _StartDate, _EndDate;
+         var context = new ValidationContext(batch);
+         var results = new List<ValidationResult>();
 
-         if (batch.BatchID <= 0 || batch.InstructorID <= 0)
-            return false;
-         else if (String.IsNullOrWhiteSpace(batch.Name))
-            return false;
-         else if (!DateTime.TryParse(batch.StartDate.ToString(), out _StartDate) || !DateTime.TryParse(batch.EndDate.ToString(), out _EndDate))
-            return false;
-         else if (batch.StartDate <= DateTime.UtcNow || batch.EndDate <= batch.StartDate || batch.EndDate <= DateTime.UtcNow)
-            return false;
-         else
-            return true;
+         return Validator.TryValidateObject(batch, context, results);
       }
 
       /// <summary>
-      /// After validation has occurred, this method will map the data passed through the Dto back to the Data Layer
+      /// After validation, this method will Map the data within the Dto to the Data Layer
       /// </summary>
-      public void MapToData()
+      public BatchDao MapToSoap(BatchDto a)
       {
-
+         var mapper = batchReverseMapper.CreateMapper();
+         return mapper.Map<BatchDao>(a);
       }
    }
 }
