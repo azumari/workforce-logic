@@ -21,16 +21,3 @@ join or seek out nearby ride offers that are presently available.
 
 This particular aspect of Workforce focuses on the Business Logic Layer (BLL) of the three 
 collaborative projects.
-
-
-## Features
-
-What's all the bells and whistles this project can perform?
-* What's the main functionality
-* You can also do another thing
-* If you get really randy, you can even do this
-
-## Configuration
-
-Here you should write what are all of the configurations a user can enter when
-using the project.
