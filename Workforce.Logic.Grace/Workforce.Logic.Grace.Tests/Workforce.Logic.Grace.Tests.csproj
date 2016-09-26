@@ -35,6 +35,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,8 +63,29 @@
   <ItemGroup>
     <Compile Include="EmailTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\GraceServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="TestDeletes.cs" />
+    <Compile Include="TestInserts.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\Workforce.Logic.Grace.Domain.GraceServiceReference.ApartmentDao.datasource" />
+    <None Include="Properties\DataSources\Workforce.Logic.Grace.Domain.GraceServiceReference.HousingComplexDao.datasource" />
+    <None Include="Properties\DataSources\Workforce.Logic.Grace.Domain.GraceServiceReference.HousingDataDao.datasource" />
+    <None Include="Properties\DataSources\Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao.datasource" />
+    <None Include="Service References\GraceServiceReference\GraceService.wsdl" />
+    <None Include="Service References\GraceServiceReference\GraceService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GraceServiceReference\GraceService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GraceServiceReference\GraceService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -74,6 +97,27 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\GraceServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GraceServiceReference\GraceService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GraceServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GraceServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GraceServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

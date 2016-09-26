@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Workforce.Logic.Grace.Rest.GraceServiceReference {
+namespace Workforce.Logic.Grace.Tests.GraceServiceReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -89,12 +89,12 @@ namespace Workforce.Logic.Grace.Rest.GraceServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IGraceServiceChannel : Workforce.Logic.Grace.Rest.GraceServiceReference.IGraceService, System.ServiceModel.IClientChannel {
+    public interface IGraceServiceChannel : Workforce.Logic.Grace.Tests.GraceServiceReference.IGraceService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GraceServiceClient : System.ServiceModel.ClientBase<Workforce.Logic.Grace.Rest.GraceServiceReference.IGraceService>, Workforce.Logic.Grace.Rest.GraceServiceReference.IGraceService {
+    public partial class GraceServiceClient : System.ServiceModel.ClientBase<Workforce.Logic.Grace.Tests.GraceServiceReference.IGraceService>, Workforce.Logic.Grace.Tests.GraceServiceReference.IGraceService {
         
         public GraceServiceClient() {
         }
