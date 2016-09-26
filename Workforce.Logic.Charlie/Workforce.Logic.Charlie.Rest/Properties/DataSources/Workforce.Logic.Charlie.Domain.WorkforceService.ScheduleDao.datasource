@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="ScheduleDao" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>Workforce.Logic.Charlie.Rest.WorkforceService.ScheduleDao, Service References.WorkforceService.Reference.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+   <TypeInfo>Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao, Workforce.Logic.Charlie.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>

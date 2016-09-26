@@ -72,6 +72,10 @@
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
@@ -97,9 +101,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.Formatting">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
@@ -116,6 +117,9 @@
     <Content Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao1.datasource" />
     <Content Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao2.datasource" />
     <Content Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.WorkforceService.RideDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao.datasource" />
     <None Include="Service References\WorkforceService\CharlieService.disco" />
     <None Include="Service References\WorkforceService\configuration91.svcinfo" />
     <None Include="Service References\WorkforceService\configuration.svcinfo" />
@@ -153,15 +157,6 @@
     <None Include="Service References\WorkforceService\CharlieService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\WorkforceService\Workforce.Logic.Charlie.Rest.WorkforceService.RequestDao.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\WorkforceService\Workforce.Logic.Charlie.Rest.WorkforceService.RideDao.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\WorkforceService\Workforce.Logic.Charlie.Rest.WorkforceService.ScheduleDao.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
