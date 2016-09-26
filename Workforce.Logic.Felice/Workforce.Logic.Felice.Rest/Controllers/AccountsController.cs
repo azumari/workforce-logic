@@ -19,6 +19,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
     /// system by calling the ApplicationUserManager Class
     /// </summary>
     /// <returns></returns>
+    [Authorize]
     [Route("user")]
     public IHttpActionResult GetUsers()
     {
@@ -31,6 +32,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
+    [Authorize]
     [Route("user/{id:guid}", Name = "GetUserById")]
     public async Task<IHttpActionResult> GetUser(string Id)
     {
@@ -51,6 +53,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
     /// </summary>
     /// <param name="username"></param>
     /// <returns></returns>
+    [Authorize]
     [Route("user/{username}")]
     public async Task<IHttpActionResult> GetUserByName(string username)
     {
@@ -69,6 +72,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
     /// </summary>
     /// <param name="createUserModel"></param>
     /// <returns></returns>
+    [AllowAnonymous]
     [Route("create")]
     public async Task<IHttpActionResult> CreateUser(CreateUserBindingModel createUserModel)
     {
@@ -120,6 +124,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       return Created(locationHeader, TheModelFactory.Create(user));
     }
 
+    [AllowAnonymous]
     [HttpGet]
     [Route("ConfirmEmail", Name="ConfirmEmailRoute")]
     public async Task<IHttpActionResult> ConfirmEmail(string userId = "", string code = "")
@@ -155,6 +160,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
     /// </summary>
     /// <param name="model"></param>
     /// <returns></returns>
+    [Authorize]
     [Route("ChangePassword")]
     public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
     {
@@ -179,6 +185,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
+    [Authorize]
     [Route("user/{id:guid}")]
     public async Task<IHttpActionResult> DeleteUser(string id)
     {
