@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Web;
 using Thinktecture.IdentityModel.Tokens;
@@ -28,9 +27,7 @@ namespace Workforce.Logic.Felice.Rest.Providers
       }
       string plaintext = ConfigurationManager.AppSettings["AudienceID"] + DateTime.Now;
       string secretText = ConfigurationManager.AppSettings["AudienceSecret"];
-      //var secKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Encoding.Default.GetBytes(plaintext));
-      var keyByteArray = TextEncodings.Base64Url.Decode(secretText);
-      //var signKey = new Microsoft.IdentityModel.Tokens.SigningCredentials(secKey, SecurityAlgorithms.HmacSha256Signature);
+      var keyByteArray = TextEncodings.Base64Url.Decode(secretText);      
       var signKey = new HmacSigningCredentials(keyByteArray);
       var issued = data.Properties.IssuedUtc;
       var expires = data.Properties.ExpiresUtc;
