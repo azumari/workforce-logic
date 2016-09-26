@@ -24,6 +24,9 @@ namespace Workforce.Logic.Charlie.Domain.WorkforceService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string AddressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -45,6 +48,19 @@ namespace Workforce.Logic.Charlie.Domain.WorkforceService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Active {
+            get {
+                return this.ActiveField;
+            }
+            set {
+                if ((this.ActiveField.Equals(value) != true)) {
+                    this.ActiveField = value;
+                    this.RaisePropertyChanged("Active");
+                }
             }
         }
         
@@ -464,6 +480,78 @@ namespace Workforce.Logic.Charlie.Domain.WorkforceService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/GetRide", ReplyAction="http://tempuri.org/ICharlieService/GetRideResponse")]
         System.Threading.Tasks.Task<Workforce.Logic.Charlie.Domain.WorkforceService.RideDao[]> GetRideAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/InsertLocation", ReplyAction="http://tempuri.org/ICharlieService/InsertLocationResponse")]
+        bool InsertLocation(Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao newlocation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/InsertLocation", ReplyAction="http://tempuri.org/ICharlieService/InsertLocationResponse")]
+        System.Threading.Tasks.Task<bool> InsertLocationAsync(Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao newlocation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/InsertRequest", ReplyAction="http://tempuri.org/ICharlieService/InsertRequestResponse")]
+        bool InsertRequest(Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao newrequest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/InsertRequest", ReplyAction="http://tempuri.org/ICharlieService/InsertRequestResponse")]
+        System.Threading.Tasks.Task<bool> InsertRequestAsync(Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao newrequest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/InsertSchedule", ReplyAction="http://tempuri.org/ICharlieService/InsertScheduleResponse")]
+        bool InsertSchedule(Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao newschedule);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/InsertSchedule", ReplyAction="http://tempuri.org/ICharlieService/InsertScheduleResponse")]
+        System.Threading.Tasks.Task<bool> InsertScheduleAsync(Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao newschedule);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/InsertRide", ReplyAction="http://tempuri.org/ICharlieService/InsertRideResponse")]
+        bool InsertRide(Workforce.Logic.Charlie.Domain.WorkforceService.RideDao newride);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/InsertRide", ReplyAction="http://tempuri.org/ICharlieService/InsertRideResponse")]
+        System.Threading.Tasks.Task<bool> InsertRideAsync(Workforce.Logic.Charlie.Domain.WorkforceService.RideDao newride);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/UpdateLocation", ReplyAction="http://tempuri.org/ICharlieService/UpdateLocationResponse")]
+        bool UpdateLocation(Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/UpdateLocation", ReplyAction="http://tempuri.org/ICharlieService/UpdateLocationResponse")]
+        System.Threading.Tasks.Task<bool> UpdateLocationAsync(Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/UpdateRequest", ReplyAction="http://tempuri.org/ICharlieService/UpdateRequestResponse")]
+        bool UpdateRequest(Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/UpdateRequest", ReplyAction="http://tempuri.org/ICharlieService/UpdateRequestResponse")]
+        System.Threading.Tasks.Task<bool> UpdateRequestAsync(Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/UpdateSchedule", ReplyAction="http://tempuri.org/ICharlieService/UpdateScheduleResponse")]
+        bool UpdateSchedule(Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao schedule);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/UpdateSchedule", ReplyAction="http://tempuri.org/ICharlieService/UpdateScheduleResponse")]
+        System.Threading.Tasks.Task<bool> UpdateScheduleAsync(Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao schedule);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/UpdateRide", ReplyAction="http://tempuri.org/ICharlieService/UpdateRideResponse")]
+        bool UpdateRide(Workforce.Logic.Charlie.Domain.WorkforceService.RideDao ride);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/UpdateRide", ReplyAction="http://tempuri.org/ICharlieService/UpdateRideResponse")]
+        System.Threading.Tasks.Task<bool> UpdateRideAsync(Workforce.Logic.Charlie.Domain.WorkforceService.RideDao ride);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/DeleteLocation", ReplyAction="http://tempuri.org/ICharlieService/DeleteLocationResponse")]
+        bool DeleteLocation(Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/DeleteLocation", ReplyAction="http://tempuri.org/ICharlieService/DeleteLocationResponse")]
+        System.Threading.Tasks.Task<bool> DeleteLocationAsync(Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/DeleteRequest", ReplyAction="http://tempuri.org/ICharlieService/DeleteRequestResponse")]
+        bool DeleteRequest(Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/DeleteRequest", ReplyAction="http://tempuri.org/ICharlieService/DeleteRequestResponse")]
+        System.Threading.Tasks.Task<bool> DeleteRequestAsync(Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/DeleteSchedule", ReplyAction="http://tempuri.org/ICharlieService/DeleteScheduleResponse")]
+        bool DeleteSchedule(Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao schedule);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/DeleteSchedule", ReplyAction="http://tempuri.org/ICharlieService/DeleteScheduleResponse")]
+        System.Threading.Tasks.Task<bool> DeleteScheduleAsync(Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao schedule);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/DeleteRide", ReplyAction="http://tempuri.org/ICharlieService/DeleteRideResponse")]
+        bool DeleteRide(Workforce.Logic.Charlie.Domain.WorkforceService.RideDao ride);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICharlieService/DeleteRide", ReplyAction="http://tempuri.org/ICharlieService/DeleteRideResponse")]
+        System.Threading.Tasks.Task<bool> DeleteRideAsync(Workforce.Logic.Charlie.Domain.WorkforceService.RideDao ride);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -523,6 +611,102 @@ namespace Workforce.Logic.Charlie.Domain.WorkforceService {
         
         public System.Threading.Tasks.Task<Workforce.Logic.Charlie.Domain.WorkforceService.RideDao[]> GetRideAsync() {
             return base.Channel.GetRideAsync();
+        }
+        
+        public bool InsertLocation(Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao newlocation) {
+            return base.Channel.InsertLocation(newlocation);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InsertLocationAsync(Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao newlocation) {
+            return base.Channel.InsertLocationAsync(newlocation);
+        }
+        
+        public bool InsertRequest(Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao newrequest) {
+            return base.Channel.InsertRequest(newrequest);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InsertRequestAsync(Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao newrequest) {
+            return base.Channel.InsertRequestAsync(newrequest);
+        }
+        
+        public bool InsertSchedule(Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao newschedule) {
+            return base.Channel.InsertSchedule(newschedule);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InsertScheduleAsync(Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao newschedule) {
+            return base.Channel.InsertScheduleAsync(newschedule);
+        }
+        
+        public bool InsertRide(Workforce.Logic.Charlie.Domain.WorkforceService.RideDao newride) {
+            return base.Channel.InsertRide(newride);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InsertRideAsync(Workforce.Logic.Charlie.Domain.WorkforceService.RideDao newride) {
+            return base.Channel.InsertRideAsync(newride);
+        }
+        
+        public bool UpdateLocation(Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao location) {
+            return base.Channel.UpdateLocation(location);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateLocationAsync(Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao location) {
+            return base.Channel.UpdateLocationAsync(location);
+        }
+        
+        public bool UpdateRequest(Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao request) {
+            return base.Channel.UpdateRequest(request);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateRequestAsync(Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao request) {
+            return base.Channel.UpdateRequestAsync(request);
+        }
+        
+        public bool UpdateSchedule(Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao schedule) {
+            return base.Channel.UpdateSchedule(schedule);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateScheduleAsync(Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao schedule) {
+            return base.Channel.UpdateScheduleAsync(schedule);
+        }
+        
+        public bool UpdateRide(Workforce.Logic.Charlie.Domain.WorkforceService.RideDao ride) {
+            return base.Channel.UpdateRide(ride);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateRideAsync(Workforce.Logic.Charlie.Domain.WorkforceService.RideDao ride) {
+            return base.Channel.UpdateRideAsync(ride);
+        }
+        
+        public bool DeleteLocation(Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao location) {
+            return base.Channel.DeleteLocation(location);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteLocationAsync(Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao location) {
+            return base.Channel.DeleteLocationAsync(location);
+        }
+        
+        public bool DeleteRequest(Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao request) {
+            return base.Channel.DeleteRequest(request);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteRequestAsync(Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao request) {
+            return base.Channel.DeleteRequestAsync(request);
+        }
+        
+        public bool DeleteSchedule(Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao schedule) {
+            return base.Channel.DeleteSchedule(schedule);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteScheduleAsync(Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao schedule) {
+            return base.Channel.DeleteScheduleAsync(schedule);
+        }
+        
+        public bool DeleteRide(Workforce.Logic.Charlie.Domain.WorkforceService.RideDao ride) {
+            return base.Channel.DeleteRide(ride);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteRideAsync(Workforce.Logic.Charlie.Domain.WorkforceService.RideDao ride) {
+            return base.Channel.DeleteRideAsync(ride);
         }
     }
 }

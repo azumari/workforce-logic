@@ -116,6 +116,9 @@
     <Content Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao1.datasource" />
     <Content Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.ProjectCharlieService.LocationDao2.datasource" />
     <Content Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.WorkforceService.LocationDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.WorkforceService.RequestDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.WorkforceService.RideDao.datasource" />
+    <Content Include="Properties\DataSources\Workforce.Logic.Charlie.Domain.WorkforceService.ScheduleDao.datasource" />
     <None Include="Service References\WorkforceService\CharlieService.disco" />
     <None Include="Service References\WorkforceService\configuration91.svcinfo" />
     <None Include="Service References\WorkforceService\configuration.svcinfo" />
@@ -153,15 +156,6 @@
     <None Include="Service References\WorkforceService\CharlieService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\WorkforceService\Workforce.Logic.Charlie.Rest.WorkforceService.RequestDao.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\WorkforceService\Workforce.Logic.Charlie.Rest.WorkforceService.RideDao.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\WorkforceService\Workforce.Logic.Charlie.Rest.WorkforceService.ScheduleDao.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

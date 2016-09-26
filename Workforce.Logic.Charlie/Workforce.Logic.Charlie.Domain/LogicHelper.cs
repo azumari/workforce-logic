@@ -131,10 +131,8 @@ namespace Workforce.Logic.Charlie.Domain
         public async Task<bool> InsertLocation(LocationDto loc)
         {
             //validate locationdto
-            //implement exception catching
             var toAdd = locModel.MapToSoap(loc);
-            return true;
-
+            return await client.InsertLocationAsync(toAdd);
         }
 
         /// <summary>
@@ -145,19 +143,86 @@ namespace Workforce.Logic.Charlie.Domain
         public async Task<bool> InsertRide(RideDto ride)
         {
             //validate ridedto
-            //implement exception catching
             var toAdd = rideModel.MapToSoap(ride);
-            return true;
+            var sched = new ScheduleDao();
+            sched.DepartureLoc = await LocIdByName(ride.DepartureLoc);
+            sched.DepartureTime = ride.DepartureTime;
+            sched.DestinationLoc = await LocIdByName(ride.DestinationLoc);
+            if (sched.DepartureLoc == 0 || sched.DestinationLoc == 0)
+            {
+                return false;
+            }
+            else
+            {
+                if (await client.InsertScheduleAsync(sched))
+                {
+                    var allSched = await client.GetScheduleAsync();
+                    var scId = allSched.Last(sc => sc.DepartureLoc == sched.DepartureLoc &&
+                                            sc.DepartureTime == sched.DepartureTime &&
+                                            sc.DestinationLoc == sched.DestinationLoc).ScheduleID;
+                    toAdd.Schedule = scId;
+                    return await client.InsertRideAsync(toAdd);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Insert a new Request
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public async Task<bool> InsertRequest(RequestDto req)
+        {
+            //validate requestdto
+            var toAdd = reqModel.MapToSoap(req);
+            var sched = new ScheduleDao();
+            sched.DepartureLoc = await LocIdByName(req.DepartureLoc);
+            sched.DepartureTime = req.DepartureTime;
+            sched.DestinationLoc = await LocIdByName(req.DestinationLoc);
+            if (sched.DepartureLoc == 0 || sched.DestinationLoc == 0)
+            {
+                return false;
+            }
+            else
+            {
+                if (await client.InsertScheduleAsync(sched))
+                {
+                    var allSched = await client.GetScheduleAsync();
+                    var scId = allSched.Last(sc => sc.DepartureLoc == sched.DepartureLoc &&
+                                            sc.DepartureTime == sched.DepartureTime &&
+                                            sc.DestinationLoc == sched.DestinationLoc).ScheduleID;
+                    toAdd.Schedule = scId;
+                    return await client.InsertRequestAsync(toAdd);
+                }
+                else
+                {
+                    return false;
+                }
+            }
 
         }
 
-        public async Task<bool> InsertRequest(RequestDto req)
+        /// <summary>
+        /// Returns the location id corresponding to given stop name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public async Task<int> LocIdByName(string name)
         {
-            //validate locationdto
-            //implement exception catching
-            var toAdd = reqModel.MapToSoap(req);
-            return true;
-
+            var locs = await client.GetLocationsAsync();
+            var result = Array.Find(locs, lc => lc.StopName == name);
+            if(result != null)
+            {
+                return result.LocationId;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
     }

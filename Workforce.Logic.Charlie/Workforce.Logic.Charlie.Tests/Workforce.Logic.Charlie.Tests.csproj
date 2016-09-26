@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="EmailTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.config" />
