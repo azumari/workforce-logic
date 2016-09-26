@@ -18,8 +18,6 @@ namespace Workforce.Logic.Charlie.Domain
         Ride rideModel = new Ride();
         Request reqModel = new Request();
 
-        LocationRules lr = new LocationRules();
-
         /// <summary>
         /// Retreive all active meetup locations.
         /// </summary>
@@ -28,11 +26,10 @@ namespace Workforce.Logic.Charlie.Domain
         {
             var locs = new List<LocationDto>();
             var source = await client.GetLocationsAsync();
-            var tests = lr.GetType().GetMethods();
 
             foreach (var item in source)
             {
-                if (locModel.Validate(tests, item))
+                if (locModel.ValidateDao(item))
                 {
                     var newLoc = locModel.MapToRest(item);
                     locs.Add(newLoc);
@@ -52,8 +49,36 @@ namespace Workforce.Logic.Charlie.Domain
 
             foreach (var item in source)
             { 
-                    var newRide = rideModel.MapToRest(item);
+                if (item.Active)
+                {
+                    var newRide = await rideModel.MapToRest(item);
                     rides.Add(newRide);
+                }
+            }
+            return rides;
+        }
+
+        /// <summary>
+        /// Return all active rides with the given departure and destination locations
+        /// </summary>
+        /// <param name="dept"></param>
+        /// <param name="dest"></param>
+        /// <returns></returns>
+        public async Task<List<RideDto>> RidesByEndpoints(string dept, string dest)
+        {
+            var rides = new List<RideDto>();
+            var source = await client.GetRideAsync();
+
+            foreach (var item in source)
+            {
+                if (item.Active)
+                {
+                    var newRide = await rideModel.MapToRest(item);
+                    if (newRide.DepartureLoc == dept && newRide.DestinationLoc == dest)
+                    {
+                        rides.Add(newRide);
+                    }
+                }
             }
             return rides;
         }
@@ -69,10 +94,70 @@ namespace Workforce.Logic.Charlie.Domain
 
             foreach (var item in source)
             {
-                    var newReq = reqModel.MapToRest(item);
+                    var newReq = await reqModel.MapToRest(item);
                     reqs.Add(newReq);
             }
             return reqs;
+        }
+
+
+        /// <summary>
+        /// Return all requests with the given departure and destination locations
+        /// </summary>
+        /// <param name="dept"></param>
+        /// <param name="dest"></param>
+        /// <returns></returns>
+        public async Task<List<RequestDto>> RequestsByEndpoints (string dept, string dest)
+        {
+            var reqs = new List<RequestDto>();
+            var source = await client.GetRequestAsync();
+
+            foreach (var item in source)
+            {
+                var newReq = await reqModel.MapToRest(item);
+                if (newReq.DepartureLoc == dept && newReq.DestinationLoc == dest)
+                {
+                    reqs.Add(newReq);
+                }
+            }
+            return reqs;
+        }
+
+        /// <summary>
+        /// insert new location
+        /// </summary>
+        /// <param name="loc"></param>
+        /// <returns></returns>
+        public async Task<bool> InsertLocation(LocationDto loc)
+        {
+            //validate locationdto
+            //implement exception catching
+            var toAdd = locModel.MapToSoap(loc);
+            return true;
+
+        }
+
+        /// <summary>
+        /// insert new ride
+        /// </summary>
+        /// <param name="ride"></param>
+        /// <returns></returns>
+        public async Task<bool> InsertRide(RideDto ride)
+        {
+            //validate ridedto
+            //implement exception catching
+            var toAdd = rideModel.MapToSoap(ride);
+            return true;
+
+        }
+
+        public async Task<bool> InsertRequest(RequestDto req)
+        {
+            //validate locationdto
+            //implement exception catching
+            var toAdd = reqModel.MapToSoap(req);
+            return true;
+
         }
 
     }

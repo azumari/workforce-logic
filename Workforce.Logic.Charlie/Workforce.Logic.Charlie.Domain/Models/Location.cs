@@ -45,7 +45,7 @@ namespace Workforce.Logic.Charlie.Domain.Models
                     }
                 }
             }
-            return false;
+            return true;
         }
 
         /// <summary>

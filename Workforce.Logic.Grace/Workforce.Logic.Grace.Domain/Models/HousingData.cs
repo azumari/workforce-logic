@@ -29,7 +29,7 @@ namespace Workforce.Logic.Grace.Domain.Models
     /// </summary>
     /// <param name="data"></param>
     /// <returns>HousingDataDto</returns> 
-    private HousingDataDto MapToDto(HousingDataDao data)
+    public HousingDataDto MapToDto(HousingDataDao data)
     {
       var mapper = dataMapper.CreateMapper();
       return mapper.Map<HousingDataDto>(data);
@@ -40,7 +40,7 @@ namespace Workforce.Logic.Grace.Domain.Models
     /// </summary>
     /// <param name="data"></param>
     /// <returns>HousingDataDao</returns>
-    private HousingDataDao MapToDao(HousingDataDto data)
+    public HousingDataDao MapToDao(HousingDataDto data)
     {
       var mapper = dataMapper.CreateMapper();
       return mapper.Map<HousingDataDao>(data);

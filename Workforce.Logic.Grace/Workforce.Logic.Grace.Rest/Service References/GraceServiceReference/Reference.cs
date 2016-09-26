@@ -20,6 +20,48 @@ namespace Workforce.Logic.Grace.Rest.GraceServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/GetComplexes", ReplyAction="http://tempuri.org/IGraceService/GetComplexesResponse")]
         System.Threading.Tasks.Task<Workforce.Logic.Grace.Domain.GraceServiceReference.HousingComplexDao[]> GetComplexesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/GetApartments", ReplyAction="http://tempuri.org/IGraceService/GetApartmentsResponse")]
+        Workforce.Logic.Grace.Domain.GraceServiceReference.ApartmentDao[] GetApartments();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/GetApartments", ReplyAction="http://tempuri.org/IGraceService/GetApartmentsResponse")]
+        System.Threading.Tasks.Task<Workforce.Logic.Grace.Domain.GraceServiceReference.ApartmentDao[]> GetApartmentsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/GetHousingData", ReplyAction="http://tempuri.org/IGraceService/GetHousingDataResponse")]
+        Workforce.Logic.Grace.Domain.GraceServiceReference.HousingDataDao[] GetHousingData();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/GetHousingData", ReplyAction="http://tempuri.org/IGraceService/GetHousingDataResponse")]
+        System.Threading.Tasks.Task<Workforce.Logic.Grace.Domain.GraceServiceReference.HousingDataDao[]> GetHousingDataAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/GetStatuses", ReplyAction="http://tempuri.org/IGraceService/GetStatusesResponse")]
+        Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao[] GetStatuses();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/GetStatuses", ReplyAction="http://tempuri.org/IGraceService/GetStatusesResponse")]
+        System.Threading.Tasks.Task<Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao[]> GetStatusesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/InsertApartment", ReplyAction="http://tempuri.org/IGraceService/InsertApartmentResponse")]
+        bool InsertApartment(Workforce.Logic.Grace.Domain.GraceServiceReference.ApartmentDao newapt);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/InsertApartment", ReplyAction="http://tempuri.org/IGraceService/InsertApartmentResponse")]
+        System.Threading.Tasks.Task<bool> InsertApartmentAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.ApartmentDao newapt);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/InsertHousingData", ReplyAction="http://tempuri.org/IGraceService/InsertHousingDataResponse")]
+        bool InsertHousingData(Workforce.Logic.Grace.Domain.GraceServiceReference.HousingDataDao newhdata);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/InsertHousingData", ReplyAction="http://tempuri.org/IGraceService/InsertHousingDataResponse")]
+        System.Threading.Tasks.Task<bool> InsertHousingDataAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.HousingDataDao newhdata);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/InsertHousingComplex", ReplyAction="http://tempuri.org/IGraceService/InsertHousingComplexResponse")]
+        bool InsertHousingComplex(Workforce.Logic.Grace.Domain.GraceServiceReference.HousingComplexDao newhcomplex);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/InsertHousingComplex", ReplyAction="http://tempuri.org/IGraceService/InsertHousingComplexResponse")]
+        System.Threading.Tasks.Task<bool> InsertHousingComplexAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.HousingComplexDao newhcomplex);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/InsertStatus", ReplyAction="http://tempuri.org/IGraceService/InsertStatusResponse")]
+        bool InsertStatus(Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao newstatus);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGraceService/InsertStatus", ReplyAction="http://tempuri.org/IGraceService/InsertStatusResponse")]
+        System.Threading.Tasks.Task<bool> InsertStatusAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao newstatus);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +97,62 @@ namespace Workforce.Logic.Grace.Rest.GraceServiceReference {
         
         public System.Threading.Tasks.Task<Workforce.Logic.Grace.Domain.GraceServiceReference.HousingComplexDao[]> GetComplexesAsync() {
             return base.Channel.GetComplexesAsync();
+        }
+        
+        public Workforce.Logic.Grace.Domain.GraceServiceReference.ApartmentDao[] GetApartments() {
+            return base.Channel.GetApartments();
+        }
+        
+        public System.Threading.Tasks.Task<Workforce.Logic.Grace.Domain.GraceServiceReference.ApartmentDao[]> GetApartmentsAsync() {
+            return base.Channel.GetApartmentsAsync();
+        }
+        
+        public Workforce.Logic.Grace.Domain.GraceServiceReference.HousingDataDao[] GetHousingData() {
+            return base.Channel.GetHousingData();
+        }
+        
+        public System.Threading.Tasks.Task<Workforce.Logic.Grace.Domain.GraceServiceReference.HousingDataDao[]> GetHousingDataAsync() {
+            return base.Channel.GetHousingDataAsync();
+        }
+        
+        public Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao[] GetStatuses() {
+            return base.Channel.GetStatuses();
+        }
+        
+        public System.Threading.Tasks.Task<Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao[]> GetStatusesAsync() {
+            return base.Channel.GetStatusesAsync();
+        }
+        
+        public bool InsertApartment(Workforce.Logic.Grace.Domain.GraceServiceReference.ApartmentDao newapt) {
+            return base.Channel.InsertApartment(newapt);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InsertApartmentAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.ApartmentDao newapt) {
+            return base.Channel.InsertApartmentAsync(newapt);
+        }
+        
+        public bool InsertHousingData(Workforce.Logic.Grace.Domain.GraceServiceReference.HousingDataDao newhdata) {
+            return base.Channel.InsertHousingData(newhdata);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InsertHousingDataAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.HousingDataDao newhdata) {
+            return base.Channel.InsertHousingDataAsync(newhdata);
+        }
+        
+        public bool InsertHousingComplex(Workforce.Logic.Grace.Domain.GraceServiceReference.HousingComplexDao newhcomplex) {
+            return base.Channel.InsertHousingComplex(newhcomplex);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InsertHousingComplexAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.HousingComplexDao newhcomplex) {
+            return base.Channel.InsertHousingComplexAsync(newhcomplex);
+        }
+        
+        public bool InsertStatus(Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao newstatus) {
+            return base.Channel.InsertStatus(newstatus);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InsertStatusAsync(Workforce.Logic.Grace.Domain.GraceServiceReference.StatusDao newstatus) {
+            return base.Channel.InsertStatusAsync(newstatus);
         }
     }
 }

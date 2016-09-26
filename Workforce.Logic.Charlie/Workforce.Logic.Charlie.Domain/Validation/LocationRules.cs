@@ -10,6 +10,9 @@ namespace Workforce.Logic.Charlie.Domain.Validation
 {
     public class LocationRules
     {
-
+        public bool Test (LocationDao loc)
+        {
+            return true;
+        }
     }
 }

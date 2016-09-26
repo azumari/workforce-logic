@@ -13,16 +13,149 @@
   <wsdl:message name="IGraceService_GetComplexes_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetComplexesResponse" />
   </wsdl:message>
+  <wsdl:message name="IGraceService_GetApartments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApartments" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_GetApartments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApartmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_GetHousingData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHousingData" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_GetHousingData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHousingDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_GetStatuses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatuses" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_GetStatuses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_InsertApartment_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertApartment" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_InsertApartment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertApartmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_InsertHousingData_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertHousingData" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_InsertHousingData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertHousingDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_InsertHousingComplex_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertHousingComplex" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_InsertHousingComplex_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertHousingComplexResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_InsertStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertStatus" />
+  </wsdl:message>
+  <wsdl:message name="IGraceService_InsertStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertStatusResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGraceService">
     <wsdl:operation name="GetComplexes">
       <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/GetComplexes" message="tns:IGraceService_GetComplexes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/GetComplexesResponse" message="tns:IGraceService_GetComplexes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApartments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/GetApartments" message="tns:IGraceService_GetApartments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/GetApartmentsResponse" message="tns:IGraceService_GetApartments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHousingData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/GetHousingData" message="tns:IGraceService_GetHousingData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/GetHousingDataResponse" message="tns:IGraceService_GetHousingData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatuses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/GetStatuses" message="tns:IGraceService_GetStatuses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/GetStatusesResponse" message="tns:IGraceService_GetStatuses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertApartment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/InsertApartment" message="tns:IGraceService_InsertApartment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/InsertApartmentResponse" message="tns:IGraceService_InsertApartment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertHousingData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/InsertHousingData" message="tns:IGraceService_InsertHousingData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/InsertHousingDataResponse" message="tns:IGraceService_InsertHousingData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertHousingComplex">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/InsertHousingComplex" message="tns:IGraceService_InsertHousingComplex_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/InsertHousingComplexResponse" message="tns:IGraceService_InsertHousingComplex_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGraceService/InsertStatus" message="tns:IGraceService_InsertStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGraceService/InsertStatusResponse" message="tns:IGraceService_InsertStatus_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGraceService" type="tns:IGraceService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetComplexes">
       <soap:operation soapAction="http://tempuri.org/IGraceService/GetComplexes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApartments">
+      <soap:operation soapAction="http://tempuri.org/IGraceService/GetApartments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHousingData">
+      <soap:operation soapAction="http://tempuri.org/IGraceService/GetHousingData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatuses">
+      <soap:operation soapAction="http://tempuri.org/IGraceService/GetStatuses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertApartment">
+      <soap:operation soapAction="http://tempuri.org/IGraceService/InsertApartment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertHousingData">
+      <soap:operation soapAction="http://tempuri.org/IGraceService/InsertHousingData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertHousingComplex">
+      <soap:operation soapAction="http://tempuri.org/IGraceService/InsertHousingComplex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertStatus">
+      <soap:operation soapAction="http://tempuri.org/IGraceService/InsertStatus" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
