@@ -296,6 +296,11 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
     #region Method to filter 
 
+    /// <summary>
+    /// This method returns a list of apartments within the given HousingComplex
+    /// </summary>
+    /// <param name="complex"></param>
+    /// <returns>Task<List<ApartmentDto>></returns>
     public async Task<List<ApartmentDto>> FilterAptByComplex(HousingComplexDto complex)
     { 
       List<ApartmentDto> returnList = new List<ApartmentDto>();
@@ -306,7 +311,6 @@ namespace Workforce.Logic.Grace.Domain.Helpers
           returnList.Add(item);
         }
       }
-
       return returnList;
     }
 

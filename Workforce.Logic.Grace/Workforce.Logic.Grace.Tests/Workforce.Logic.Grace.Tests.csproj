@@ -73,6 +73,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="TestDeletes.cs" />
+    <Compile Include="TestFilters.cs" />
     <Compile Include="TestInserts.cs" />
   </ItemGroup>
   <ItemGroup>
