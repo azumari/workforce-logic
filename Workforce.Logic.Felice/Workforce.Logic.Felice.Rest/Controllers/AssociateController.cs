@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Workforce.Logic.Felice.Domain;
+using Workforce.Logic.Felice.Domain.DomainModels;
 
 namespace Workforce.Logic.Felice.Rest.Controllers
 {
@@ -19,6 +20,21 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       public async Task<HttpResponseMessage> Get()
       {
          return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllAssociates());
+      }
+
+      public async Task<HttpResponseMessage> PostAddAssociate(AssociateDto associate)
+      {
+         return Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewAssociate(associate));
+      }
+
+      public async Task<HttpResponseMessage> PostDelAssociate(AssociateDto associate)
+      {
+         return Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateAssociate(associate));
+      }
+
+      public async Task<HttpResponseMessage> PostUpdateAssociate(AssociateDto associate)
+      {
+         return Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateAssociate(associate));
       }
    }
 }
