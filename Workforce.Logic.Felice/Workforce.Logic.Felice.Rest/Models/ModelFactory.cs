@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -72,5 +73,22 @@ namespace Workforce.Logic.Felice.Rest.Models
       public IList<string> Roles { get; set; }
       public IList<System.Security.Claims.Claim> Claims { get; set; }
     }
+
+    public RoleReturnModel Create(IdentityRole appRole) {
+      return new RoleReturnModel
+      {
+        Url = urlHelper.Link("GetRoleById", new { id = appRole.Id }),
+        Id = appRole.Id,
+        Name = appRole.Name
+      };
+    }
+}
+ 
+  public class RoleReturnModel
+  {
+    public string Url { get; set; }
+    public string Id { get; set; }
+    public string Name { get; set; }
   }
+  
 }
