@@ -159,6 +159,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\AssociateController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\GenderController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

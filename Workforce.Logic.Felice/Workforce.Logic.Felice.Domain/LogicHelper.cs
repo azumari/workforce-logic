@@ -47,6 +47,10 @@ namespace Workforce.Logic.Felice.Domain
       {
          if (associateLogic.ValidateRestData(newAssociate))
          {
+            var serviceGenders = await client.GetGenderAsync();
+
+            newAssociate.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(newAssociate.Gender)).GenderID.ToString();
+            
             return await client.InsertAssociateAsync(associateLogic.MapToSoap(newAssociate));
          }
          else
@@ -63,6 +67,10 @@ namespace Workforce.Logic.Felice.Domain
       {
          if (associateLogic.ValidateRestData(delAssociate))
          {
+            var serviceGenders = await client.GetGenderAsync();
+
+            delAssociate.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(delAssociate.Gender)).GenderID.ToString();
+
             return await client.DeleteAssociateAsync(associateLogic.MapToSoap(delAssociate));
          }
          else
@@ -78,6 +86,10 @@ namespace Workforce.Logic.Felice.Domain
       {
          if (associateLogic.ValidateRestData(update))
          {
+            var serviceGenders = await client.GetGenderAsync();
+
+            update.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(update.Gender)).GenderID.ToString();
+
             return await client.UpdateAssociateAsync(associateLogic.MapToSoap(update));
          }
          else
