@@ -161,6 +161,34 @@ namespace Workforce.Logic.Felice.Domain
       }
 
       /// <summary>
+      /// Base 'Get' method that retrieves all addresses based on active status
+      /// </summary>
+      public async Task<List<AddressDto>> GetAddressesByStatus(string status)
+      {
+         var address = new List<AddressDto>();
+         var serviceAddress = await client.GetAddressAsync();
+
+         foreach (var item in serviceAddress)
+         {
+            if (status == "true")
+            {
+               if (addressLogic.ValidateSoapData(item) && item.Active)
+               {
+                  address.Add(addressLogic.MapToRest(item));
+               }
+            }
+            else
+            {
+               if (addressLogic.ValidateSoapData(item) && item.Active == false)
+               {
+                  address.Add(addressLogic.MapToRest(item));
+               }
+            }
+         }
+         return address;
+      }
+
+      /// <summary>
       /// Attempts to add a new address after ensuring that the data entered is valid
       /// </summary>
       public async Task<bool> AddNewAddress(AddressDto newAddress)
@@ -400,7 +428,7 @@ namespace Workforce.Logic.Felice.Domain
       /// This is the base 'Get' method for instructers that will resturn results based on active status
       /// </summary>
       /// <returns></returns>
-      public async Task<List<InstructorDto>> GetInstructorsByStatus(bool status)
+      public async Task<List<InstructorDto>> GetInstructorsByStatus(string status)
       {
          var instructors = new List<InstructorDto>();
          var serviceInstructors = await client.GetInstructorAsync();

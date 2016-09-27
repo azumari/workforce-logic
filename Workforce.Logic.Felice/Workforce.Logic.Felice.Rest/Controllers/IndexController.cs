@@ -36,7 +36,6 @@ namespace Workforce.Logic.Felice.Rest.Controllers
          options.Add("GetAllActiveAddresses", "api/address/findbystatus/true");
          options.Add("GetAllDeactiveAddresses", "api/address/findbystatus/false");
 
-
          return Request.CreateResponse(HttpStatusCode.OK, options);
       }
    }
