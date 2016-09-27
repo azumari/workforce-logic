@@ -156,7 +156,10 @@ namespace Workforce.Logic.Felice.Domain
       {
          if (addressLogic.ValidateRestData(update))
          {
-            return await client.UpdateAddressAsync(addressLogic.MapToSoap(update));
+            var keepStatus = addressLogic.MapToSoap(update);
+            keepStatus.Active = true;
+
+            return await client.UpdateAddressAsync(keepStatus);
          }
          else
          {
@@ -176,7 +179,7 @@ namespace Workforce.Logic.Felice.Domain
 
          foreach (var item in serviceBatches)
          {
-            if (batchLogic.ValidateSoapData(item) && item.Active)
+            if (batchLogic.ValidateSoapData(item))
             {
                batches.Add(batchLogic.MapToRest(item));
             }
@@ -222,10 +225,10 @@ namespace Workforce.Logic.Felice.Domain
       {
          if (batchLogic.ValidateRestData(update))
          {
-            var toSoap = batchLogic.MapToSoap(update);
-            toSoap.Active = true;
+            var keepStatus = batchLogic.MapToSoap(update);
+            keepStatus.Active = true;
 
-            return await client.UpdateBatchAsync(toSoap);
+            return await client.UpdateBatchAsync(keepStatus);
          }
          else
          {
@@ -292,7 +295,10 @@ namespace Workforce.Logic.Felice.Domain
       {
          if (genderLogic.ValidateRestData(update))
          {
-            return await client.UpdateGenderAsync(genderLogic.MapToSoap(update));
+            var keepStatus = genderLogic.MapToSoap(update);
+            keepStatus.Active = true;
+
+            return await client.UpdateGenderAsync(keepStatus);
          }
          else
          {
