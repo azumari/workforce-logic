@@ -60,12 +60,11 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
         /// <summary>
         /// create a ride corresponding to an existing request 
         /// </summary>
-        /// <param name="req"></param>
-        /// <param name="ride"></param>
+        /// <param name="match"></param>
         /// <returns></returns>
-        public async Task<HttpResponseMessage> Put([FromBody]RequestDto req,[FromBody]RideDto ride)
+        public async Task<HttpResponseMessage> Put([FromBody]MatchDto match)
         {
-            if (await logHelp.InviteToRide(req,ride))
+            if (await logHelp.InviteToRide(match))
             {
                 //email confirmation
                 return Request.CreateResponse(HttpStatusCode.OK, "success!");
