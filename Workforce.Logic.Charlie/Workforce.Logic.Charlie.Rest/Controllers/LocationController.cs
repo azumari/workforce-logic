@@ -46,6 +46,24 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
             }
         }
 
+        /// <summary>
+        /// update given location
+        /// </summary>
+        /// <param name="loc"></param>
+        /// <returns></returns>
+        public async Task<HttpResponseMessage> Put([FromBody]LocationDto loc)
+        {
+            var success = await logHelp.UpdateLocation(loc);
+            if (success)
+            {
+                //email confirmation
+                return Request.CreateResponse(HttpStatusCode.OK, "success!");
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "failed to insert");
+            }
+        }
 
         /// <summary>
         /// Delete given location
