@@ -18,7 +18,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       /// This 'Get' method returns all Instructors regardless of status
       /// </summary>
       [HttpGet]
-      public async Task<HttpResponseMessage> Get()
+      public async Task<HttpResponseMessage> FindAll()
       {
          return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllInstructors());
       }
