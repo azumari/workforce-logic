@@ -43,5 +43,32 @@ namespace Workforce.Logic.Grace.Rest.Controllers
       }
       return Request.CreateResponse(HttpStatusCode.OK, "failed to insert");
     }
+    /// <summary>
+    /// put method for apartment
+    /// </summary>
+    /// <param name="apartment"></param>
+    /// <returns></returns>
+    public async Task<HttpResponseMessage> Put([FromBody]ApartmentDto apartment)
+    {
+      if (await logicHelper.UpdateApartment(apartment))
+      {
+        return Request.CreateResponse(HttpStatusCode.OK, "successful insert");
+      }
+      return Request.CreateResponse(HttpStatusCode.OK, "failed to insert");
+    }
+    /// <summary>
+    /// delete method for apartment
+    /// </summary>
+    /// <param name="apartment"></param>
+    /// <returns></returns>
+    public async Task<HttpResponseMessage> Delete([FromBody]ApartmentDto apartment)
+    {
+      if (await logicHelper.DeleteApartment(apartment))
+      {
+        return Request.CreateResponse(HttpStatusCode.OK, "successful insert");
+      }
+      return Request.CreateResponse(HttpStatusCode.OK, "failed to insert");
+    }
+
   }
 }

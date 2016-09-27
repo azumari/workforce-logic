@@ -37,8 +37,35 @@ namespace Workforce.Logic.Grace.Rest.Controllers
     /// <param name="newHousingComDto"></param>
     /// <returns></returns>
     public async Task<HttpResponseMessage> Post([FromBody]HousingComplexDto newHousingComDto)
-    { 
-      if(await logicHelper.AddHousingComplex(newHousingComDto))
+    {
+      if (await logicHelper.AddHousingComplex(newHousingComDto))
+      {
+        return Request.CreateResponse(HttpStatusCode.OK, "successful insert");
+      }
+      return Request.CreateResponse(HttpStatusCode.OK, "failed to insert");
+    }
+
+    /// <summary>
+    /// put method for HousingComplex
+    /// </summary>
+    /// <param name="complex"></param>
+    /// <returns></returns>
+    public async Task<HttpResponseMessage> Put([FromBody]HousingComplexDto complex)
+    {
+      if (await logicHelper.UpdateHousingComplex(complex))
+      {
+        return Request.CreateResponse(HttpStatusCode.OK, "successful insert");
+      }
+      return Request.CreateResponse(HttpStatusCode.OK, "failed to insert");
+    }
+    /// <summary>
+    /// Delete method for Housing Complex
+    /// </summary>
+    /// <param name="complex"></param>
+    /// <returns></returns>
+    public async Task<HttpResponseMessage> Delete([FromBody]HousingComplexDto complex)
+    {
+      if (await logicHelper.DeleteComplex(complex))
       {
         return Request.CreateResponse(HttpStatusCode.OK, "successful insert");
       }
@@ -46,4 +73,3 @@ namespace Workforce.Logic.Grace.Rest.Controllers
     }
   }
 }
- 
