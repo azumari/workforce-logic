@@ -311,9 +311,7 @@ namespace Workforce.Logic.Charlie.Domain
 
         #endregion
 
-        #region updates and friends 
-
-        //match ride to request
+        #region updates etc
 
         /// <summary>
         /// Match a new request to join an existing ride 
@@ -323,7 +321,41 @@ namespace Workforce.Logic.Charlie.Domain
         /// <returns></returns>
         public async Task<bool> JoinRide(RideDto ride, RequestDto req)
         {
-            return true;
+            //validate ride, req
+            var toAdd = reqModel.MapToSoap(req);
+            var scId = 0;
+                try
+                {
+                    var allSched = await client.GetScheduleAsync();
+                    scId = allSched.Last(sc => sc.DepartureLoc == ride.DepartureLoc &&
+                                                sc.DepartureTime == ride.DepartureTime &&
+                                                sc.DestinationLoc == ride.DestinationLoc).ScheduleID;
+                    if (scId != 0)
+                    {
+                        toAdd.Schedule = scId;
+                        toAdd.Active = true;
+                        ride.SeatsAvailable = ride.SeatsAvailable - 1;
+                        if (await client.InsertRequestAsync(toAdd))
+                        {
+                            var decremented = rideModel.MapToSoap(ride);
+                            decremented.Schedule = scId;
+                            decremented.Active = true;
+                            return await client.UpdateRideAsync(decremented);
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch
+                {
+                    return false;
+                }
         }
 
         /// <summary>
@@ -334,10 +366,53 @@ namespace Workforce.Logic.Charlie.Domain
         /// <returns></returns>
         public async Task<bool> InviteToRide(RequestDto req, RideDto ride)
         {
-            return true;
+            //validate ride, req
+            var toAdd = rideModel.MapToSoap(ride);
+            var scId = 0;
+                try
+                {
+                    var allSched = await client.GetScheduleAsync();
+                    scId = allSched.Last(sc => sc.DepartureLoc == req.DepartureLoc &&
+                                            sc.DepartureTime == req.DepartureTime &&
+                                            sc.DestinationLoc == req.DestinationLoc).ScheduleID;
+                if (scId != 0)
+                {
+                    toAdd.Schedule = scId;
+                    toAdd.Active = true;
+                    toAdd.SeatsAvailable = ride.SeatsAvailable - 1;
+                    return await client.InsertRideAsync(toAdd);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        //update location 
+        /// <summary>
+        /// update location
+        /// </summary>
+        /// <param name="loc"></param>
+        /// <returns></returns>
+        public async Task<bool> UpdateLocation(LocationDto loc)
+        {
+            //validate locationdto
+            try
+            {
+                var toUpdate = locModel.MapToSoap(loc);
+                toUpdate.Active = true;
+                return await client.UpdateLocationAsync(toUpdate);
+
+            }
+            catch
+            {
+                return false;
+            }
+        } 
 
         //get riders? 
 
