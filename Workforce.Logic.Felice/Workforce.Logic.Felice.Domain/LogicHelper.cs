@@ -85,11 +85,6 @@ namespace Workforce.Logic.Felice.Domain
             var serviceGenders = await client.GetGenderAsync();
 
             newAssociate.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(newAssociate.Gender)).GenderID.ToString();
-
-            if (newAssociate.BatchID == null)
-            {
-               newAssociate.BatchID = 1;
-            }
             
             return await client.InsertAssociateAsync(associateLogic.MapToSoap(newAssociate));
          }
@@ -384,32 +379,41 @@ namespace Workforce.Logic.Felice.Domain
 
       #region All methods related to Instructor
       /// <summary>
-      /// Basic 'Get' method that retrieves all instructors regardless of active status
+      /// The 'Get' method that retrieves all instructors regardless of active status
       /// </summary>
       public async Task<List<InstructorDto>> GetAllInstructors()
       {
          var instructors = new List<InstructorDto>();
-         try
-         {
-            var serviceInstructors = await client.GetInstructorAsync();
-            foreach (var item in serviceInstructors)
-            {
-               if (instructorLogic.ValidateSoapData(item) && item.Active)
-               {
-                  instructors.Add(instructorLogic.MapToRest(item));
-               }
-            }
+         var serviceInstructors = await client.GetInstructorAsync();
 
-         }
-         catch
+         foreach (var item in serviceInstructors)
          {
-            var i = new InstructorDto();
-            instructors.Add(i);
+            if (instructorLogic.ValidateSoapData(item) && item.Active)
+            {
+               instructors.Add(instructorLogic.MapToRest(item));
+            }
          }
-        
          return instructors;
       }
 
+      /// <summary>
+      /// This is the base 'Get' method for instructers that will resturn results based on active status
+      /// </summary>
+      /// <returns></returns>
+      public async Task<List<InstructorDto>> GetInstructorsByStatus(bool status)
+      {
+         var instructors = new List<InstructorDto>();
+         var serviceInstructors = await client.GetInstructorAsync();
+
+         foreach (var item in serviceInstructors)
+         {
+            if (instructorLogic.ValidateSoapData(item) && item.Active)
+            {
+               instructors.Add(instructorLogic.MapToRest(item));
+            }
+         }
+         return instructors;
+      }
 
       /// <summary>
       /// Basic 'Get' method that retrieves all instructors regardless of active status
