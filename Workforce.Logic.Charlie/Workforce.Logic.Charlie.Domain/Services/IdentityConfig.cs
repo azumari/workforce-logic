@@ -5,8 +5,8 @@ using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Workforce.Logic.Charlie.Domain.Services
 {
