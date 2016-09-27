@@ -37,6 +37,8 @@ namespace Workforce.Logic.Grace.Rest.Controllers
     /// <returns></returns>
     public async Task<HttpResponseMessage> Post([FromBody]ApartmentDto newApartmentDto)
     {
+      newApartmentDto.ActiveBit = true;
+      newApartmentDto.CurrentCapacity = 0;
       if (await logicHelper.AddApartment(newApartmentDto))
       {
         return Request.CreateResponse(HttpStatusCode.OK, "successful insert");

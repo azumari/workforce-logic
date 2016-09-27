@@ -26,11 +26,13 @@ namespace Workforce.Logic.Grace.Tests
     {
       ApartmentDto aptDto = new ApartmentDto()
       {
-        CurrentCapacity = 2,
-        GenderID = null,
-        HotelID = null,
-        MaxCapacity = 10,
-        RoomNumber = 8460
+        CurrentCapacity = 0,
+        ActiveBit = true,
+        GenderID = 2,
+        HotelID =  68,
+        RoomID = 1432,
+        MaxCapacity = 6,
+        RoomNumber = 3234
       };
       bool passed = await logicHelper.AddApartment(aptDto);
       Assert.True(passed);
@@ -45,10 +47,11 @@ namespace Workforce.Logic.Grace.Tests
     {
       HousingComplexDto comlexDto = new HousingComplexDto()
       {
-        Address = "ha ha ha",
+        Address = "340 Elvira st",
         IsHotel = true,
-        Name = "2 star motel",
-        PhoneNumber = "1-800-123-4567"
+        Name = "Camden Dulles",
+        PhoneNumber = "1-800-123-4567",
+        ActiveBit = true
       };
       bool passed = await logicHelper.AddHousingComplex(comlexDto);
       Assert.True(passed);
@@ -63,11 +66,11 @@ namespace Workforce.Logic.Grace.Tests
     {
       HousingDataDto dataDto = new HousingDataDto()
       {
-        AssociateID = 44,
+        AssociateID = 2,
         MoveInDate = DateTime.Now,
         MoveOutDate = DateTime.Now,
-        RoomID = 53,
-        StatusID = 2
+        RoomID = 7,
+        StatusID = 1
       };
       bool passed = await logicHelper.AddHousingData(dataDto);
       Assert.True(passed);
@@ -100,13 +103,13 @@ namespace Workforce.Logic.Grace.Tests
     public async Task Test_InsertAssociate()
     {
 
-      int associateId = 54;
-      int roomId = 52;
+      int associateId = 2;
+      int roomId = 7;
 
       //FIND THE ASSOCIATE FROM A LIST OF ASSOCIATES
       List<AssociateDto> assocList = await consumerHelper.ConsumeAssociatesFromAPI();
       AssociateDto assoc = assocList.Find(id => id.AssociateID.Equals(associateId));
-      
+
       //FIND THE APARTMENT
       ApartmentDto aptDto = (await logicHelper.ApartmentsGetAll()).Find(id => id.RoomID.Equals(roomId));
 
@@ -132,8 +135,8 @@ namespace Workforce.Logic.Grace.Tests
 
       Assert.True(passed && passed2);
 
- 
+
     }
- 
+
   }
 }

@@ -137,6 +137,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ApartmentController.cs" />
+    <Compile Include="Controllers\AssociateController.cs" />
     <Compile Include="Controllers\D3AptCapacityController.cs" />
     <Compile Include="Controllers\FilterAptsByComplexController.cs" />
     <Compile Include="Controllers\GetAssociatesController.cs" />

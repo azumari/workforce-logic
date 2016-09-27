@@ -38,6 +38,7 @@ namespace Workforce.Logic.Grace.Rest.Controllers
     /// <returns></returns>
     public async Task<HttpResponseMessage> Post([FromBody]HousingComplexDto newHousingComDto)
     {
+      newHousingComDto.ActiveBit = true;
       if (await logicHelper.AddHousingComplex(newHousingComDto))
       {
         return Request.CreateResponse(HttpStatusCode.OK, "successful insert");
