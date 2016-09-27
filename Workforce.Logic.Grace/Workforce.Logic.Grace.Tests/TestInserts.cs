@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Workforce.Logic.Grace.Domain.BusinessModels.Dtos;
 using Workforce.Logic.Grace.Domain.Helpers;
+using Workforce.Logic.Grace.Domain.Models;
+using Workforce.Logic.Grace.Domain.TransferModels.Dtos;
 using Xunit;
 
 namespace Workforce.Logic.Grace.Tests
@@ -13,7 +15,7 @@ namespace Workforce.Logic.Grace.Tests
   {
 
     private readonly LogicHelper logicHelper = new LogicHelper();
-
+    private readonly Consumers consumerHelper = new Consumers();
 
     /// <summary>
     ///  Test method to Insert Apartment
@@ -65,8 +67,7 @@ namespace Workforce.Logic.Grace.Tests
         MoveInDate = DateTime.Now,
         MoveOutDate = DateTime.Now,
         RoomID = 53,
-        StatusID = 2,
-        ActiveBit = true
+        StatusID = 2
       };
       bool passed = await logicHelper.AddHousingData(dataDto);
       Assert.True(passed);
@@ -88,8 +89,51 @@ namespace Workforce.Logic.Grace.Tests
       };
       bool passed = await logicHelper.AddStatus(statusDto);
       Assert.True(passed);
-
     }
 
+
+    /// <summary>
+    /// this test case test inserting an associate by adding a new HousingData and updating currentCapacity of the room by 1
+    /// </summary>
+    /// <returns></returns>
+    [Fact]
+    public async Task Test_InsertAssociate()
+    {
+
+      int associateId = 54;
+      int roomId = 52;
+
+      //FIND THE ASSOCIATE FROM A LIST OF ASSOCIATES
+      List<AssociateDto> assocList = await consumerHelper.ConsumeAssociatesFromAPI();
+      AssociateDto assoc = assocList.Find(id => id.AssociateID.Equals(associateId));
+      
+      //FIND THE APARTMENT
+      ApartmentDto aptDto = (await logicHelper.ApartmentsGetAll()).Find(id => id.RoomID.Equals(roomId));
+
+      //FIND THE HousingComplex
+      HousingComplexDto comDto = (await logicHelper.HousingComplexsGetAll()).Find(id => id.HotelID.Equals(aptDto.HotelID));
+
+
+      HousingDataDto data = new HousingDataDto()
+      {
+        AssociateID = assoc.AssociateID,
+        MoveInDate = DateTime.Now,
+        MoveOutDate = DateTime.Now,
+        RoomID = roomId,
+        StatusID = 7
+      };
+
+      aptDto.CurrentCapacity++;
+      aptDto.GenderID = 1;
+      bool passed = await logicHelper.UpdateApartment(aptDto);
+
+
+      bool passed2 = (await logicHelper.AddHousingData(data));
+
+      Assert.True(passed && passed2);
+
+ 
+    }
+ 
   }
 }

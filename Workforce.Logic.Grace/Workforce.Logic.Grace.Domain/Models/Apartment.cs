@@ -86,6 +86,21 @@ namespace Workforce.Logic.Grace.Domain.Models
       }
       return apts;
     }
+
+
+    public List<ApartmentDto> getActiveDtoList(IEnumerable<ApartmentDao> daos)
+    {
+      var apts = new List<ApartmentDto>();
+      foreach (var item in daos)
+      {
+        if (item.ActiveBit)
+        {
+          var temp = MapToDto(item);
+          apts.Add(temp);
+        }
+      }
+      return apts;
+    }
     #endregion
 
   }

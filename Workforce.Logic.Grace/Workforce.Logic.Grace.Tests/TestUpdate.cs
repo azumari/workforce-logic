@@ -23,11 +23,12 @@ namespace Workforce.Logic.Grace.Tests
     [Fact]
     public async Task Test_UpdateHousingData()
     {
-      HousingDataDto aptDto = new HousingDataDto()
+      HousingDataDto dataDto = new HousingDataDto()
       {
-
-
+        AssociateID = 0,
+        RoomID = 52
       };
+      bool passed = await logicHelper.UpdateHousingData(dataDto);
 
       Assert.True(true);
     }
@@ -37,9 +38,15 @@ namespace Workforce.Logic.Grace.Tests
     {
       ApartmentDto aptDto = new ApartmentDto()
       {
-        RoomID = 33,
-        ActiveBit = true 
-      }; 
+        HotelID = 22,
+        ActiveBit = true,
+        CurrentCapacity = 1,
+        MaxCapacity = 99,
+        GenderID = 1,
+        RoomID = 43,
+        RoomNumber = 0
+
+      };
 
       bool passed = await logicHelper.UpdateApartment(aptDto);
       Assert.True(passed);
@@ -51,10 +58,10 @@ namespace Workforce.Logic.Grace.Tests
       HousingComplexDto comDto = new HousingComplexDto()
       {
         HotelID = 23,
-        ActiveBit = true,
-        Address = "CHANGED ADDRESS",
-        Name = "CHANGED NAME",
-        PhoneNumber = "CHANGED PHONE nUM",
+        ActiveBit = false,
+        Address = "798798",
+        Name = "798987798789",
+        PhoneNumber = "987899897987",
         IsHotel = false
       };
       bool passed = await logicHelper.UpdateHousingComplex(comDto);
@@ -67,14 +74,14 @@ namespace Workforce.Logic.Grace.Tests
     {
       StatusDto statDto = new StatusDto()
       {
-        ActiveBit = true,
+
         StatusColor = "CHANGED COLOR",
         StatusMessage = "CHANGED MESSAGE",
-        StatusID = 4
+        StatusID = 7
       };
       bool passed = await logicHelper.UpdateStatus(statDto);
       Assert.True(passed);
-//      Assert.True(await logicHelper.UpdateStatus(new StatusDto() { ActiveBit = true, StatusID = 6 , StatusMessage = "new disease", StatusColor = "magenta"}));
+      //      Assert.True(await logicHelper.UpdateStatus(new StatusDto() { ActiveBit = true, StatusID = 6 , StatusMessage = "new disease", StatusColor = "magenta"}));
     }
 
   }

@@ -12,6 +12,11 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 {
   public class Consumers
   {
+
+    /// <summary>
+    /// this method consumes the associates from project Felice API
+    /// </summary>
+    /// <returns></returns>
     public async Task<List<AssociateDto>> ConsumeAssociatesFromAPI()
     {
       using (var client = new HttpClient())
@@ -22,16 +27,16 @@ namespace Workforce.Logic.Grace.Domain.Helpers
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
         HttpResponseMessage response = await client.GetAsync("api/associate");
-        List<AssociateDto> trainee = new List<AssociateDto>();
+        List<AssociateDto> assoc = new List<AssociateDto>();
         if (response.IsSuccessStatusCode)
         {
 
 
           string holdingString = await response.Content.ReadAsStringAsync();
-          trainee = JsonConvert.DeserializeObject<List<AssociateDto>>(holdingString);
+          assoc = JsonConvert.DeserializeObject<List<AssociateDto>>(holdingString);
         }
 
-        return trainee;
+        return assoc;
       }
     }
   }

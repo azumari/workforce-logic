@@ -12,7 +12,10 @@ namespace Workforce.Logic.Grace.Domain.Models
   public class D3AptCapacity
   {
 
-
+    /// <summary>
+    /// this method makes the JSON/XML model for the d3JS graph to consume
+    /// </summary>
+    /// <returns>Task<List<GraphAptCapacityDto>></returns>
     public async Task<List<GraphAptCapacityDto>> getNewModel()
     {
       HousingComplex mapper = new HousingComplex();
@@ -35,7 +38,11 @@ namespace Workforce.Logic.Grace.Domain.Models
 
     private readonly GraceServiceClient graceService = new GraceServiceClient();
 
-    //method to give the max capacity of the given apartment 
+    /// <summary>
+    /// method to give the max capacity of the given apartment 
+    /// </summary>
+    /// <param name="hotApt"></param>
+    /// <returns>Task<int></returns>
     public async Task<int> returnComplexCurCap(HousingComplexDto hotApt)
     {
       int Total = 0;
@@ -49,7 +56,11 @@ namespace Workforce.Logic.Grace.Domain.Models
       return Total;
     }
 
-    //method to give the current capacity of the given apartment complex
+    /// <summary>
+    /// method to give the current capacity of the given apartment complex
+    /// </summary>
+    /// <param name="hotApt"></param>
+    /// <returns>Task<int></returns>
     public async Task<int> returnComplexMaxCap(HousingComplexDto hotApt)
     {
       int Total = 0;

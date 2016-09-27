@@ -34,8 +34,25 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       {
         return null;
       }
-
-
+    }
+    /// <summary>
+    /// this method gets all the active apartments
+    /// </summary>
+    /// <returns></returns>
+    public async Task<List<ApartmentDto>> ApartmentsGetActvie()
+    {
+      try
+      {
+        Apartment apartmentVnM = new Apartment();
+        //var daoApartments = await graceService.GetApartmentsAsync();
+        var dtoApartments = apartmentVnM.getActiveDtoList(await graceService.GetApartmentsAsync());
+        //STILL NEED TO VALIDATE
+        return dtoApartments;
+      }
+      catch (Exception)
+      {
+        return null;
+      }
     }
     /// <summary>
     /// This method calls the soap service and awaits on the get
@@ -57,9 +74,29 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       {
         return null;
       }
-
-
     }
+    /// <summary>
+    /// method to get the active housingcomplexes
+    /// </summary>
+    /// <returns></returns>
+    public async Task<List<HousingComplexDto>> HousingComplexsGetActive()
+    {
+      try
+      {
+        HousingComplex housingComplexVnM = new HousingComplex();
+        var dtoComplexes = housingComplexVnM.getActiveDtoList(await graceService.GetComplexesAsync()); 
+
+        //STILL NEED TO VALIDATE
+        return dtoComplexes;
+
+      }
+      catch (Exception)
+      {
+        return null;
+      }
+    }
+    
+
     /// <summary>
     ///  This method calls the soap service and awaits on the get
     /// </summary>
@@ -105,7 +142,11 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     #endregion
 
     #region updates for all models
-
+    /// <summary>
+    /// THIS METHOD UPDATES THE ApartmentDto
+    /// </summary>
+    /// <param name="fixApt"></param>
+    /// <returns>Task<bool></returns>
     public async Task<bool> UpdateApartment(ApartmentDto fixApt)
     {
       Apartment apartmentVnM = new Apartment();
@@ -115,7 +156,11 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
       return await graceService.UpdateApartmentAsync(apartmentVnM.MapToDao(fixApt));
     }
-
+    /// <summary>
+    /// this method updates the HousingComplexDto
+    /// </summary>
+    /// <param name="fixComplex"></param>
+    /// <returns>Task<bool></returns>
     public async Task<bool> UpdateHousingComplex(HousingComplexDto fixComplex)
     {
       HousingComplex housingComplexVnM = new HousingComplex();
@@ -125,12 +170,27 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
       return await graceService.UpdateHousingComplexAsync(housingComplexVnM.MapToDao(fixComplex));
     }
-
+    /// <summary>
+    /// this method updates the StatusDto
+    /// </summary>
+    /// <param name="fixStatus"></param>
+    /// <returns>Task<bool></returns>
     public async Task<bool> UpdateStatus(StatusDto fixStatus)
     {
       Status statusVnM = new Status();
 
       return await graceService.UpdateStatusAsync(statusVnM.MapToDao(fixStatus));
+    }
+    /// <summary>
+    /// This method updates the HousingDataDto
+    /// </summary>
+    /// <param name="fixData"></param>
+    /// <returns>Task<bool></returns>
+    public async Task<bool> UpdateHousingData(HousingDataDto fixData)
+    {
+      HousingData dataVnM = new HousingData();
+
+      return await graceService.UpdateHousingDataAsync(dataVnM.MapToDao(fixData));
     }
     #endregion
 

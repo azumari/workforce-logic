@@ -20,8 +20,13 @@ namespace Workforce.Logic.Grace.Rest.Controllers
     /// CRUD: Read calls logicHelper to get all Apartments from service
     /// </summary>
     /// <returns>Task<HttpResponseMessage></returns>
-    public async Task<HttpResponseMessage> Get()
+    public async Task<HttpResponseMessage> Get()//[FromUri] bool getActive)
     {
+      bool getActive = true;
+      if (getActive)
+      {
+        return Request.CreateResponse(HttpStatusCode.OK, await logicHelper.ApartmentsGetActvie());
+      }
       return Request.CreateResponse(HttpStatusCode.OK, await logicHelper.ApartmentsGetAll());
     }
 

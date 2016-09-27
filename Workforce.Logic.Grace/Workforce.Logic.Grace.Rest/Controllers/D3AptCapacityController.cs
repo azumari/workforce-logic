@@ -14,7 +14,10 @@ namespace Workforce.Logic.Grace.Rest.Controllers
 
     D3jsHelper d3jsHelper = new D3jsHelper();
 
-
+    /// <summary>
+    /// get method to generate the data needed for the d3js graph to consume this data
+    /// </summary>
+    /// <returns></returns>
     public async Task<HttpResponseMessage> Get()
     {
       return Request.CreateResponse(HttpStatusCode.OK, await d3jsHelper.ReturnGraphAptCapacity());
