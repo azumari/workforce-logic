@@ -15,8 +15,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       private readonly LogicHelper logic = new LogicHelper();
 
       /// <summary>
-      /// This is the base 'Get' method for Instructor
-      /// Must implement FindBy and GetAllActive in new future
+      /// This 'Get' method returns all Instructors regardless of status
       /// </summary>
       [HttpGet]
       public async Task<HttpResponseMessage> Get()
@@ -24,7 +23,14 @@ namespace Workforce.Logic.Felice.Rest.Controllers
          return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllInstructors());
       }
 
-
+      /// <summary>
+      /// This is the base 'Get' method for Instructors that retrieves based on status
+      /// </summary>
+      [HttpGet]
+      public async Task<HttpResponseMessage> FindByStatus(string status)
+      {
+         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetInstructorsByStatus(status));
+      }
 
       /// <summary>
       /// Adds a new Instructor to the database
