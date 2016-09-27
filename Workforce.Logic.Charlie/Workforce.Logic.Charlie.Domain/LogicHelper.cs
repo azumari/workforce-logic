@@ -325,7 +325,6 @@ namespace Workforce.Logic.Charlie.Domain
             {
                 RequestID = 0,
                 Associate = await AssocByEmail(match.ReqEmail),
-                Active = true,
             };
                 try
                 {
@@ -335,18 +334,19 @@ namespace Workforce.Logic.Charlie.Domain
                                                 sc.DestinationLoc == match.DestLoc).ScheduleID;
                     if (scId != 0)
                     {
-                        toAdd.Schedule = 22;
-                        if (await client.InsertRequestAsync(toAdd))
+                    toAdd.Active = true;
+                    var added = await client.InsertRequestAsync(toAdd);
+                        if (added)
                         {
-                        //var decremented = new RideDao()
-                        //{
-                        //    RideID = match.RideId,
-                        //    Associate = await AssocByEmail(match.RideEmail),
-                        //    SeatsAvailable = match.Seats - 1,
-                        //    Schedule = scId,
-                        //    Active = true,
-                        //};
-                        return true;//await client.UpdateRideAsync(decremented);
+                            var decremented = new RideDao()
+                            {
+                                RideID = match.RideId,
+                                Associate = await AssocByEmail(match.RideEmail),
+                                SeatsAvailable = match.Seats - 1,
+                                Schedule = scId,
+                                Active = true,
+                            };
+                            return await client.UpdateRideAsync(decremented);
                         }
                         else
                         {

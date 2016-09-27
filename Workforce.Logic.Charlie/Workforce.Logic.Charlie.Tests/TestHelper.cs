@@ -98,7 +98,7 @@ namespace Workforce.Logic.Charlie.Tests
             {
                 RequestID = 0,
                 Active = true,
-                Schedule = 22,
+                Schedule = 109,
                 Associate = 9
             };
             //bool passed = await logicHelper.InsertRequest(reqDto);
@@ -318,7 +318,7 @@ namespace Workforce.Logic.Charlie.Tests
                 DeptLoc = 18,
                 DestLoc = 19,
                 DeptTime = new DateTime(2016,9,24,13,51,51),
-                Seats = 3
+                Seats = 5
             };
 
             bool passed = await logicHelper.JoinRide(match);
