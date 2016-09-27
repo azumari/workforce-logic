@@ -18,6 +18,9 @@ namespace Workforce.Logic.Charlie.Domain
         Ride rideModel = new Ride();
         Request reqModel = new Request();
 
+
+        #region get
+
         /// <summary>
         /// Retreive all active meetup locations.
         /// </summary>
@@ -128,6 +131,10 @@ namespace Workforce.Logic.Charlie.Domain
             return reqs;
         }
 
+        #endregion
+
+        #region insert
+
         /// <summary>
         /// insert new location
         /// </summary>
@@ -136,10 +143,18 @@ namespace Workforce.Logic.Charlie.Domain
         public async Task<bool> InsertLocation(LocationDto loc)
         {
             //validate locationdto
-            var toAdd = locModel.MapToSoap(loc);
-            toAdd.Active = true;
-            return await client.InsertLocationAsync(toAdd);
-        }
+            try
+            {
+                var toAdd = locModel.MapToSoap(loc);
+                toAdd.Active = true;
+                return await client.InsertLocationAsync(toAdd);
+
+            }
+            catch
+            {
+                return false;
+            }
+         }
 
         /// <summary>
         /// insert new ride
@@ -178,7 +193,7 @@ namespace Workforce.Logic.Charlie.Domain
                         return false;
                     }
                 }
-                catch(Exception e)
+                catch
                 {
                     return false;
                 }
@@ -223,14 +238,108 @@ namespace Workforce.Logic.Charlie.Domain
                         return false;
                     }
                 }
-                catch(Exception e)
+                catch
                 {
                     return false;
                 }
-                
             }
-
         }
+
+        #endregion
+
+        #region delete
+
+        /// <summary>
+        /// Delete the given location
+        /// </summary>
+        /// <param name="loc"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteLocation(LocationDto loc)
+        {
+            try
+            {
+                var toNix = locModel.MapToSoap(loc);
+                return await client.DeleteLocationAsync(toNix);
+            }
+            catch 
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Delete the given request
+        /// assignment of Schedule compensates for difference between dao, dto forms
+        /// only the id will be checked in the db
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteRequest(RequestDto req)
+        {
+            try
+            {
+                var toNix = reqModel.MapToSoap(req);
+                toNix.Schedule = 20; 
+                return await client.DeleteRequestAsync(toNix);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Delete the given ride
+        /// assignment of Schedule compensates for difference between dao, dto forms
+        /// only the id will be checked in the db
+        /// </summary>
+        /// <param name="ride"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteRide(RideDto ride)
+        {
+            try
+            {
+                var toNix = rideModel.MapToSoap(ride);
+                toNix.Schedule = 20;
+                return await client.DeleteRideAsync(toNix);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        #endregion
+
+        #region updates and friends 
+
+        //match ride to request
+
+        /// <summary>
+        /// Match a new request to join an existing ride 
+        /// </summary>
+        /// <param name="ride"></param>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public async Task<bool> JoinRide(RideDto ride, RequestDto req)
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// Create a new ride to answer an existing request
+        /// </summary>
+        /// <param name="req"></param>
+        /// <param name="ride"></param>
+        /// <returns></returns>
+        public async Task<bool> InviteToRide(RequestDto req, RideDto ride)
+        {
+            return true;
+        }
+
+        //update location 
+
+        //get riders? 
 
         /// <summary>
         /// Returns the location id corresponding to given stop name
@@ -250,6 +359,8 @@ namespace Workforce.Logic.Charlie.Domain
                 return 0;
             }
         }
+
+        #endregion
 
     }
 }

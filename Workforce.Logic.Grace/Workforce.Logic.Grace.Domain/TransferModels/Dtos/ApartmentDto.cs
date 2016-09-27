@@ -15,7 +15,7 @@ namespace Workforce.Logic.Grace.Domain.BusinessModels.Dtos
     public int MaxCapacity { get; set; }
     public Nullable<int> GenderID { get; set; }
     public Nullable<int> HotelID { get; set; }
- 
+    public bool ActiveBit { get; set; }
 
   }
 }

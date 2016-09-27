@@ -49,6 +49,7 @@ namespace Workforce.Logic.Felice.Rest
       
       app.CreatePerOwinContext(ApplicationDbContext.Create);
       app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+      app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
 
       //Plug in the OAuth bearer JSON web token
       OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
@@ -58,7 +59,7 @@ namespace Workforce.Logic.Felice.Rest
         TokenEndpointPath = new PathString("/oauth/token"),
         AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
         Provider = new CustomOAuthProvider(),
-        AccessTokenFormat = new CustomJwtFormat("http://localhost/workforce-felice-rest/")
+        AccessTokenFormat = new CustomJwtFormat(ConfigurationManager.AppSettings["Issuer"])
       };
 
       app.UseOAuthAuthorizationServer(OAuthServerOptions);
@@ -74,7 +75,7 @@ namespace Workforce.Logic.Felice.Rest
 
     private void ConfigureOAuthTokenConsumption(IAppBuilder app)
     {
-      var issuer = "http://localhost/workforce-felice-rest/";
+      var issuer = ConfigurationManager.AppSettings["Issuer"];
       string audienceId = ConfigurationManager.AppSettings["AudienceID"];
       byte[] audienceSecret = TextEncodings.Base64Url.Decode(ConfigurationManager.AppSettings["AudienceSecret"]);
 

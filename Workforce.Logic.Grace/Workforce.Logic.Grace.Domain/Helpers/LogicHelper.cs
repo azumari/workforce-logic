@@ -11,7 +11,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 {
   public class LogicHelper
   {
-     
+
     private readonly GraceServiceClient graceService = new GraceServiceClient();
 
     #region GetAlls()
@@ -22,12 +22,20 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// <returns>  List<ApartmentDto> apartments  </returns>
     public async Task<List<ApartmentDto>> ApartmentsGetAll()
     {
-      Apartment apartmentVnM = new Apartment();
-      var daoApartments= await graceService.GetApartmentsAsync();
-      var dtoApartments = apartmentVnM.getDtoList(daoApartments);
-      
-      //STILL NEED TO VALIDATE
-      return dtoApartments;
+      try
+      {
+        Apartment apartmentVnM = new Apartment();
+        var daoApartments = await graceService.GetApartmentsAsync();
+        var dtoApartments = apartmentVnM.getDtoList(daoApartments);
+        //STILL NEED TO VALIDATE
+        return dtoApartments;
+      }
+      catch (Exception)
+      {
+        return null;
+      }
+
+
     }
     /// <summary>
     /// This method calls the soap service and awaits on the get
@@ -35,12 +43,20 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// <returns> List<HousingComplexDto> </returns>
     public async Task<List<HousingComplexDto>> HousingComplexsGetAll()
     {
-      HousingComplex housingComplexVnM = new HousingComplex();
-      var daoComplexes = await graceService.GetComplexesAsync();      
-      var dtoComplexes = housingComplexVnM.getDtoList(daoComplexes);
-            
-      //STILL NEED TO VALIDATE
-      return dtoComplexes;
+      try
+      {
+        HousingComplex housingComplexVnM = new HousingComplex();
+        var daoComplexes = await graceService.GetComplexesAsync();
+        var dtoComplexes = housingComplexVnM.getDtoList(daoComplexes);
+
+        //STILL NEED TO VALIDATE
+        return dtoComplexes;
+
+      }
+      catch (Exception)
+      {
+        return null;
+      }
 
 
     }
@@ -50,12 +66,19 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// <returns>  List<HousingDataDto> </returns>
     public async Task<List<HousingDataDto>> HousingDataGetAll()
     {
-      HousingData housingDataVnM = new HousingData();
-      var daoDatas = await graceService.GetHousingDataAsync();
-      var dtoDatas = housingDataVnM.getDtoList(daoDatas);
+      try
+      {
+        HousingData housingDataVnM = new HousingData();
+        var daoDatas = await graceService.GetHousingDataAsync();
+        var dtoDatas = housingDataVnM.getDtoList(daoDatas);
 
-      //STILL NEED TO VALIDATE
-      return dtoDatas;
+        //STILL NEED TO VALIDATE
+        return dtoDatas;
+      }
+      catch (Exception)
+      {
+        return null;
+      }
     }
 
     /// <summary>
@@ -64,12 +87,19 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// <returns> List<StatusDto> </returns>
     public async Task<List<StatusDto>> StatusesGetAll()
     {
-      Status statusVnM = new Status();
-      var daoStatuses = await graceService.GetStatusesAsync();
-      var dtoStatuses = statusVnM.getDtoList(daoStatuses);
+      try
+      {
+        Status statusVnM = new Status();
+        var daoStatuses = await graceService.GetStatusesAsync();
+        var dtoStatuses = statusVnM.getDtoList(daoStatuses);
 
-      //STILL NEED TO VALIDATE
-      return dtoStatuses;
+        //STILL NEED TO VALIDATE
+        return dtoStatuses;
+      }
+      catch (Exception)
+      {
+        return null;
+      }
     }
 
     #endregion
@@ -86,12 +116,20 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// <returns></returns>
     public async Task<bool> AddApartment(ApartmentDto newApt)
     {
-      Apartment apartmentVnM = new Apartment();
+      try
+      {
+        Apartment apartmentVnM = new Apartment();
 
-      //validate the incoming DTO first before converting into DAO
-      //STILL NEED TO VALIDATE
-           
-      return await graceService.InsertApartmentAsync(apartmentVnM.MapToDao(newApt));      
+        //validate the incoming DTO first before converting into DAO
+        //STILL NEED TO VALIDATE
+
+        return await graceService.InsertApartmentAsync(apartmentVnM.MapToDao(newApt));
+
+      }
+      catch (Exception)
+      {
+        return false;
+      }
     }
     /// <summary>
     /// this method inserts a new complex by calling on the soap service. 
@@ -102,12 +140,19 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// <returns>Task<bool></returns>
     public async Task<bool> AddHousingComplex(HousingComplexDto newComplex)
     {
-      HousingComplex housingComplexVnM = new HousingComplex();
+      try
+      {
+        HousingComplex housingComplexVnM = new HousingComplex();
 
-      //validate the incoming DTO first before converting into DAO
-      //STILL NEED TO VALIDATE
+        //validate the incoming DTO first before converting into DAO
+        //STILL NEED TO VALIDATE
 
-      return await graceService.InsertHousingComplexAsync(housingComplexVnM.MapToDao(newComplex));     
+        return await graceService.InsertHousingComplexAsync(housingComplexVnM.MapToDao(newComplex));
+      }
+      catch (Exception)
+      {
+        return false;
+      }
     }
     /// <summary>
     /// this method inserts a new housingData by calling on the soap service. 
@@ -118,12 +163,19 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// <returns>Task<bool></returns>
     public async Task<bool> AddHousingData(HousingDataDto newData)
     {
-      HousingData housingDataVnM = new HousingData();
+      try
+      {
+        HousingData housingDataVnM = new HousingData();
 
-      //validate the incoming DTO first before converting into DAO
-      //STILL NEED TO VALIDATE
+        //validate the incoming DTO first before converting into DAO
+        //STILL NEED TO VALIDATE
 
-      return await graceService.InsertHousingDataAsync(housingDataVnM.MapToDao(newData));
+        return await graceService.InsertHousingDataAsync(housingDataVnM.MapToDao(newData));
+      }
+      catch (Exception)
+      {
+        return false;
+      }
     }
     /// <summary>
     /// this method inserts a new status by calling on the soap service. 
@@ -134,12 +186,19 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// <returns>Task<bool></returns>
     public async Task<bool> AddStatus(StatusDto newStatus)
     {
-      Status statusVnM = new Status();
+      try
+      {
+        Status statusVnM = new Status();
 
-      //validate the incoming DTO first before converting into DAO
-      //STILL NEED TO VALIDATE
-       
-      return await graceService.InsertStatusAsync(statusVnM.MapToDao(newStatus));   
+        //validate the incoming DTO first before converting into DAO
+        //STILL NEED TO VALIDATE
+
+        return await graceService.InsertStatusAsync(statusVnM.MapToDao(newStatus));
+      }
+      catch (Exception)
+      {
+        return false;
+      }
     }
 
 
@@ -154,12 +213,19 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// <returns>Task<bool></returns>
     public async Task<bool> DeleteApartment(ApartmentDto oldApartment)
     {
-      Apartment ApartmentVnM = new Apartment();
+      try
+      {
+        Apartment ApartmentVnM = new Apartment();
 
-      //validate the incoming DTO first before converting into DAO
-      //STILL NEED TO VALIDATE
+        //validate the incoming DTO first before converting into DAO
+        //STILL NEED TO VALIDATE
 
-      return await graceService.DeleteApartmentAsync(ApartmentVnM.MapToDao(oldApartment));
+        return await graceService.DeleteApartmentAsync(ApartmentVnM.MapToDao(oldApartment));
+      }
+      catch (Exception)
+      {
+        return false;
+      }
     }
     /// <summary>
     /// This method recieves an HousingComlexDto model that we expect to delete based off of the primary key
@@ -168,12 +234,19 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// <returns>Task<bool></returns>
     public async Task<bool> DeleteComplex(HousingComplexDto oldComplex)
     {
-      HousingComplex housingComplexVnM = new HousingComplex();
+      try
+      {
+        HousingComplex housingComplexVnM = new HousingComplex();
 
-      //validate the incoming DTO first before converting into DAO
-      //STILL NEED TO VALIDATE
+        //validate the incoming DTO first before converting into DAO
+        //STILL NEED TO VALIDATE
 
-      return await graceService.DeleteHousingComplexAsync(housingComplexVnM.MapToDao(oldComplex));
+        return await graceService.DeleteHousingComplexAsync(housingComplexVnM.MapToDao(oldComplex));
+      }
+      catch (Exception)
+      {
+        return false;
+      }
     }
     /// <summary>
     /// This method recieves an HousingDataDto model that we expect to delete based off of the primary key
@@ -182,12 +255,20 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// <returns>Task<bool></returns>
     public async Task<bool> DeleteHousingData(HousingDataDto oldData)
     {
-      HousingData housingDataVnM = new HousingData();
+      try
+      {
+        HousingData housingDataVnM = new HousingData();
 
-      //validate the incoming DTO first before converting into DAO
-      //STILL NEED TO VALIDATE
+        //validate the incoming DTO first before converting into DAO
+        //STILL NEED TO VALIDATE
 
-      return await graceService.DeleteHousingDataAsync(housingDataVnM.MapToDao(oldData));
+
+        return await graceService.DeleteHousingDataAsync(housingDataVnM.MapToDao(oldData));
+      }
+      catch (Exception)
+      {
+        return false;
+      }
     }
     /// <summary>
     /// This method recieves an StatusDto model that we expect to delete based off of the primary key
@@ -196,17 +277,44 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// <returns>Task<bool></returns>
     public async Task<bool> DeleteStatus(StatusDto oldStatus)
     {
-      Status statusVnM = new Status();
+      try
+      {
+        Status statusVnM = new Status();
 
-      //validate the incoming DTO first before converting into DAO
-      //STILL NEED TO VALIDATE
+        //validate the incoming DTO first before converting into DAO
+        //STILL NEED TO VALIDATE
 
-      return await graceService.DeleteStatusAsync(statusVnM.MapToDao(oldStatus));
+        return await graceService.DeleteStatusAsync(statusVnM.MapToDao(oldStatus));
+      }
+      catch (Exception)
+      {
+        return false;
+      }
     }
 
+    #endregion
 
+    #region Method to filter 
 
+    /// <summary>
+    /// This method returns a list of apartments within the given HousingComplex
+    /// </summary>
+    /// <param name="complex"></param>
+    /// <returns>Task<List<ApartmentDto>></returns>
+    public async Task<List<ApartmentDto>> FilterAptByComplex(HousingComplexDto complex)
+    { 
+      List<ApartmentDto> returnList = new List<ApartmentDto>();
+      foreach (var item in await ApartmentsGetAll())
+      {
+        if (item.HotelID.Equals(complex.HotelID))
+        {
+          returnList.Add(item);
+        }
+      }
+      return returnList;
+    }
 
     #endregion
+
   }
 }

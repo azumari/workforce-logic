@@ -5,11 +5,13 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Workforce.Logic.Charlie.Domain;
 using Workforce.Logic.Charlie.Domain.TransferModels;
 
 namespace Workforce.Logic.Charlie.Rest.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class RideController : ApiController
     {
 
@@ -44,6 +46,43 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
         public async Task<HttpResponseMessage> Post([FromBody]RideDto ride)
         {
             if (await logHelp.InsertRide(ride))
+            {
+                //email confirmation
+                return Request.CreateResponse(HttpStatusCode.OK, "success!");
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "failed to insert");
+            }
+        }
+
+        /// <summary>
+        /// create a request corresponding to an existing ride 
+        /// </summary>
+        /// <param name="ride"></param>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public async Task<HttpResponseMessage> Put([FromBody]RideDto ride, [FromBody]RequestDto req)
+        {
+            if (await logHelp.JoinRide(ride,req))
+            {
+                //email confirmation
+                return Request.CreateResponse(HttpStatusCode.OK, "success!");
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "failed to insert");
+            }
+        }
+
+        /// <summary>
+        /// Delete given ride
+        /// </summary>
+        /// <param name="ride"></param>
+        /// <returns></returns>
+        public async Task<HttpResponseMessage> Delete([FromBody]RideDto ride)
+        {
+            if (await logHelp.DeleteRide(ride))
             {
                 //email confirmation
                 return Request.CreateResponse(HttpStatusCode.OK, "success!");
