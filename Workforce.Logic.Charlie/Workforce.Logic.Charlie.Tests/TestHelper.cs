@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Workforce.Logic.Charlie.Domain;
 using Workforce.Logic.Charlie.Domain.BusinessModels;
 using Workforce.Logic.Charlie.Domain.TransferModels;
+using Workforce.Logic.Charlie.Domain.WorkforceService;
 using Xunit;
 
 namespace Workforce.Logic.Charlie.Tests
@@ -15,6 +16,7 @@ namespace Workforce.Logic.Charlie.Tests
         #region test inserts
 
         private readonly LogicHelper logicHelper = new LogicHelper();
+        CharlieServiceClient client = new CharlieServiceClient();
 
         /// <summary>
         ///  Test method to insert location
@@ -83,16 +85,24 @@ namespace Workforce.Logic.Charlie.Tests
         [Fact]
         public async Task Test_InsertRequest()
         {
-            var reqDto = new RequestDto()
+            //var reqDto = new RequestDto()
+            //{
+            //    DepartureLoc = 18,
+            //    DestinationLoc = 30,
+            //    DepartureTime = new DateTime(2016, 9, 29, 15, 45, 0),
+            //    AssociateEmail = "me@iamsocool.com",
+            //    AssociateFirst = "David",
+            //    AssociateLast = "Bowie"
+            //};
+            var reqDao = new RequestDao()
             {
-                DepartureLoc = 18,
-                DestinationLoc = 30,
-                DepartureTime = new DateTime(2016, 9, 29, 15, 45, 0),
-                AssociateEmail = "me@iamsocool.com",
-                AssociateFirst = "David",
-                AssociateLast = "Bowie"
+                RequestID = 0,
+                Active = true,
+                Schedule = 22,
+                Associate = 9
             };
-            bool passed = await logicHelper.InsertRequest(reqDto);
+            //bool passed = await logicHelper.InsertRequest(reqDto);
+            bool passed = await client.InsertRequestAsync(reqDao);
             Assert.True(passed);
         }
 

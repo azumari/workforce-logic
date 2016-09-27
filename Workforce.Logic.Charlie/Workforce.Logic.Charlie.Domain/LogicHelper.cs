@@ -335,7 +335,7 @@ namespace Workforce.Logic.Charlie.Domain
                                                 sc.DestinationLoc == match.DestLoc).ScheduleID;
                     if (scId != 0)
                     {
-                        toAdd.Schedule = scId;
+                        toAdd.Schedule = 22;
                         if (await client.InsertRequestAsync(toAdd))
                         {
                         //var decremented = new RideDao()
