@@ -80,6 +80,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Associate.cs" />
+    <Compile Include="AssociateAccess.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Request.cs" />
     <Compile Include="Models\Ride.cs" />

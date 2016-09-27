@@ -13,6 +13,7 @@ namespace Workforce.Logic.Charlie.Domain.Models
     {
 
         CharlieServiceClient client = new CharlieServiceClient();
+        AssociateAccess asac = new AssociateAccess();
 
         private readonly MapperConfiguration mapperReq = new MapperConfiguration(l => l.CreateMap<RequestDao, RequestDto>());
         private readonly MapperConfiguration mapperReq2 = new MapperConfiguration(l => l.CreateMap<RequestDto, RequestDao>());
@@ -27,8 +28,6 @@ namespace Workforce.Logic.Charlie.Domain.Models
             var mapper = mapperReq2.CreateMapper();
             var dao = mapper.Map<RequestDao>(req);
             dao.RequestID = req.RequestId;
-            //change when we can consume Associate!!
-            dao.Associate = 6;
             return dao;
         }
 
@@ -55,6 +54,10 @@ namespace Workforce.Logic.Charlie.Domain.Models
                 dto.DestinationLoc = sched.DestinationLoc;
                 dto.DepartureTime = sched.DepartureTime;
             }
+            var assoc = await AssocById(req.Associate);
+            dto.AssociateEmail = assoc.Email;
+            dto.AssociateFirst = assoc.FirstName;
+            dto.AssociateLast = assoc.LastName;
             return dto;
         }
 
@@ -78,6 +81,33 @@ namespace Workforce.Logic.Charlie.Domain.Models
         {
             var locs = await client.GetLocationsAsync();
             return Array.Find(locs, lc => lc.LocationId == id);
+        }
+
+        /// <summary>
+        /// Returns associate with given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<Associate> AssocById(int id)
+        {
+            var assoc = new Associate();
+            var list = await asac.GrabFromFelice();
+            var result = list.Find(a => a.AssociateId == id);
+            if (result != null)
+            {
+                assoc.AssociateId = id;
+                assoc.Email = result.Email;
+                assoc.FirstName = result.FirstName;
+                assoc.LastName = result.LastName;
+            }
+            else
+            {
+                assoc.AssociateId = id;
+                assoc.Email = "noemail";
+                assoc.FirstName = "nofirstname";
+                assoc.LastName = "nolastname";
+            }
+            return assoc;
         }
 
 

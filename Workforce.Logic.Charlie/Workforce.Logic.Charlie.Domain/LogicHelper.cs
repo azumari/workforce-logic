@@ -17,6 +17,7 @@ namespace Workforce.Logic.Charlie.Domain
         Location locModel = new Location();
         Ride rideModel = new Ride();
         Request reqModel = new Request();
+        AssociateAccess asac = new AssociateAccess();
 
 
         #region get
@@ -55,6 +56,7 @@ namespace Workforce.Logic.Charlie.Domain
                 if (item.Active)
                 {
                     var newRide = await rideModel.MapToRest(item);
+
                     rides.Add(newRide);
                 }
             }
@@ -467,7 +469,9 @@ namespace Workforce.Logic.Charlie.Domain
         /// <returns></returns>
         public async Task<int> AssocByEmail(string email)
         {
-            return 9;
+            var associates = new List<Associate>();
+            associates = await asac.GrabFromFelice();
+            return associates.First((a => a.Email == email)).AssociateId;
         }
 
         #endregion
