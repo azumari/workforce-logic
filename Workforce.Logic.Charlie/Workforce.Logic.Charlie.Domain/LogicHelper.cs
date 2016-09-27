@@ -311,9 +311,7 @@ namespace Workforce.Logic.Charlie.Domain
 
         #endregion
 
-        #region updates and friends 
-
-        //match ride to request
+        #region updates etc
 
         /// <summary>
         /// Match a new request to join an existing ride 
@@ -325,27 +323,39 @@ namespace Workforce.Logic.Charlie.Domain
         {
             //validate ride, req
             var toAdd = reqModel.MapToSoap(req);
-            if (ride.DepartureLoc == 0 || ride.DestinationLoc == 0)
-            {
-                return false;
-            }
-            else
-            {
+            var scId = 0;
                 try
                 {
-                        var allSched = await client.GetScheduleAsync();
-                        var scId = allSched.Last(sc => sc.DepartureLoc == ride.DepartureLoc &&
+                    var allSched = await client.GetScheduleAsync();
+                    scId = allSched.Last(sc => sc.DepartureLoc == ride.DepartureLoc &&
                                                 sc.DepartureTime == ride.DepartureTime &&
                                                 sc.DestinationLoc == ride.DestinationLoc).ScheduleID;
+                    if (scId != 0)
+                    {
                         toAdd.Schedule = scId;
                         toAdd.Active = true;
-                        return await client.InsertRequestAsync(toAdd);
+                        ride.SeatsAvailable = ride.SeatsAvailable - 1;
+                        if (await client.InsertRequestAsync(toAdd))
+                        {
+                            var decremented = rideModel.MapToSoap(ride);
+                            decremented.Schedule = scId;
+                            decremented.Active = true;
+                            return await client.UpdateRideAsync(decremented);
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
                 catch
                 {
                     return false;
                 }
-            }
         }
 
         /// <summary>
@@ -358,26 +368,28 @@ namespace Workforce.Logic.Charlie.Domain
         {
             //validate ride, req
             var toAdd = rideModel.MapToSoap(ride);
-            if (req.DepartureLoc == 0 || req.DestinationLoc == 0)
-            {
-                return false;
-            }
-            else
-            {
+            var scId = 0;
                 try
                 {
                     var allSched = await client.GetScheduleAsync();
-                    var scId = allSched.Last(sc => sc.DepartureLoc == req.DepartureLoc &&
+                    scId = allSched.Last(sc => sc.DepartureLoc == req.DepartureLoc &&
                                             sc.DepartureTime == req.DepartureTime &&
                                             sc.DestinationLoc == req.DestinationLoc).ScheduleID;
+                if (scId != 0)
+                {
                     toAdd.Schedule = scId;
                     toAdd.Active = true;
+                    toAdd.SeatsAvailable = ride.SeatsAvailable - 1;
                     return await client.InsertRideAsync(toAdd);
                 }
-                catch
+                else
                 {
                     return false;
                 }
+            }
+            catch
+            {
+                return false;
             }
         }
 

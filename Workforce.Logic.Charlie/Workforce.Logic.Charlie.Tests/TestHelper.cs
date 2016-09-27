@@ -87,7 +87,7 @@ namespace Workforce.Logic.Charlie.Tests
             {
                 DepartureLoc = 18,
                 DestinationLoc = 30,
-                DepartureTime = new DateTime(2016, 9, 27, 15, 45, 0),
+                DepartureTime = new DateTime(2016, 9, 28, 15, 45, 0),
                 AssociateEmail = "me@iamsocool.com",
                 AssociateFirst = "David",
                 AssociateLast = "Bowie"
@@ -290,6 +290,72 @@ namespace Workforce.Logic.Charlie.Tests
             };
             bool passed = await logicHelper.UpdateLocation(locDto);
             Assert.True(!passed);
+        }
+
+        /// <summary>
+        /// test method to match request to existing ride (positive)
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public async Task Test_JoinRide()
+        {
+            var ride = new RideDto()
+            {
+                RideId = 39,
+                AssociateEmail = "",
+                AssociateFirst = "",
+                AssociateLast = "",
+                DepartureLoc = 18,
+                DestinationLoc = 19,
+                DepartureTime = new DateTime(2016,9,24,13,51,51),
+                SeatsAvailable = 4
+            };
+            var req = new RequestDto()
+            {
+                RequestId = 0,
+                AssociateEmail = "",
+                AssociateFirst = "",
+                AssociateLast = "",
+                DepartureLoc = 18,
+                DestinationLoc = 19,
+                DepartureTime = new DateTime(2016, 9, 24, 13, 51, 51),
+            };
+
+            bool passed = await logicHelper.JoinRide(ride,req);
+            Assert.True(passed);
+        }
+
+        /// <summary>
+        /// test method to match ride to existing request (positive)
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public async Task Test_InviteToRide()
+        {
+            var ride = new RideDto()
+            {
+                RideId = 0,
+                DepartureLoc = 18,
+                DestinationLoc = 30,
+                DepartureTime = new DateTime(2016, 9, 28, 15, 45, 0),
+                AssociateEmail = "me@iamsocool.com",
+                AssociateFirst = "David",
+                AssociateLast = "Bowie",
+                SeatsAvailable = 4
+            };
+            var reqDto = new RequestDto()
+            {
+                RequestId = 94,
+                DepartureLoc = 18,
+                DestinationLoc = 30,
+                DepartureTime = new DateTime(2016, 9, 28, 15, 45, 0),
+                AssociateEmail = "me@iamsocool.com",
+                AssociateFirst = "David",
+                AssociateLast = "Bowie"
+            };
+
+            bool passed = await logicHelper.InviteToRide(reqDto,ride);
+            Assert.True(passed);
         }
         #endregion
 
