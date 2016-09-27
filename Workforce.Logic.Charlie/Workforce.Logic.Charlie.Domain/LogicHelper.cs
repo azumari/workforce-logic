@@ -335,6 +335,7 @@ namespace Workforce.Logic.Charlie.Domain
                     if (scId != 0)
                     {
                     toAdd.Active = true;
+                    toAdd.Schedule = scId;
                     var added = await client.InsertRequestAsync(toAdd);
                         if (added)
                         {
@@ -389,7 +390,22 @@ namespace Workforce.Logic.Charlie.Domain
                 if (scId != 0)
                 {
                     toAdd.Schedule = scId;
-                    return await client.InsertRideAsync(toAdd);
+                    var added = await client.InsertRideAsync(toAdd);
+                    if (added)
+                    {
+                        var met = new RequestDao()
+                        {
+                            RequestID = match.ReqId,
+                            Associate = await AssocByEmail(match.RideEmail),
+                            Schedule = scId,
+                            Active = false,
+                        };
+                        return await client.UpdateRequestAsync(met);
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
                 else
                 {
