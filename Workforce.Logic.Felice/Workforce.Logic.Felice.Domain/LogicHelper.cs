@@ -43,7 +43,7 @@ namespace Workforce.Logic.Felice.Domain
       /// <summary>
       /// Basic 'Get' method that retrieves all associates based on active status
       /// </summary>
-      public async Task<List<AssociateDto>> GetAssociatesByStatus(bool active)
+      public async Task<List<AssociateDto>> GetAssociatesByStatus(string status)
       {
          var associate = new List<AssociateDto>();
          var serviceAssociates = await client.GetAssociatesAsync();
@@ -51,7 +51,7 @@ namespace Workforce.Logic.Felice.Domain
 
          foreach (var item in serviceAssociates)
          {
-            if (active) //return all active associates
+            if (status == "true") //return all active associates
             {
                if (associateLogic.ValidateSoapData(item) && item.Active)
                {
@@ -212,7 +212,7 @@ namespace Workforce.Logic.Felice.Domain
 
       #region All methods related to Batch
       /// <summary>
-      /// Basic 'Get' method that retrieves all batches regardless of active status
+      /// This 'Get' method retrieves all batches regardless of active status
       /// </summary>
       public async Task<List<BatchDto>> GetAllBatches()
       {
@@ -224,6 +224,34 @@ namespace Workforce.Logic.Felice.Domain
             if (batchLogic.ValidateSoapData(item))
             {
                batches.Add(batchLogic.MapToRest(item));
+            }
+         }
+         return batches;
+      }
+
+      /// <summary>
+      /// Basic 'Get' method that retrieves all batches based on active status
+      /// </summary>
+      public async Task<List<BatchDto>> GetBatchesByStatus(string status)
+      {
+         var batches = new List<BatchDto>();
+         var serviceBatches = await client.GetBatchesAsync();
+
+         foreach (var item in serviceBatches)
+         {
+            if (status == "true")
+            {
+               if (batchLogic.ValidateSoapData(item) && item.Active)
+               {
+                  batches.Add(batchLogic.MapToRest(item));
+               }
+            }
+            else
+            {
+               if (batchLogic.ValidateSoapData(item) && item.Active == false)
+               {
+                  batches.Add(batchLogic.MapToRest(item));
+               }
             }
          }
          return batches;

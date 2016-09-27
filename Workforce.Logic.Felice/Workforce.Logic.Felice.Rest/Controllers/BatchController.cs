@@ -15,13 +15,21 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       private readonly LogicHelper logic = new LogicHelper();
 
       /// <summary>
-      /// This is the base 'Get' method for Batch
-      /// Must implement FindBy and GetAllActive in new future
+      /// This 'Get' method will get every Associate that exists in the database
       /// </summary>
       [HttpGet]
-      public async Task<HttpResponseMessage> Get()
+      public async Task<HttpResponseMessage> FindAll()
       {
          return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllBatches());
+      }
+
+      /// <summary>
+      /// This is the base 'Get' method for Associate that returns results based on active status
+      /// </summary>
+      [HttpGet]
+      public async Task<HttpResponseMessage> FindByStatus(string status)
+      {
+         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetBatchesByStatus(status));
       }
 
       /// <summary>

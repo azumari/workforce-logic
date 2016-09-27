@@ -27,9 +27,9 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       /// This is the base 'Get' method for Associate that returns results based on active status
       /// </summary>
       [HttpGet]
-      public async Task<HttpResponseMessage> FindAllByStatus(bool active)
+      public async Task<HttpResponseMessage> FindByStatus(string status)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAssociatesByStatus(active));
+         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAssociatesByStatus(status));
       }
 
       /// <summary>
