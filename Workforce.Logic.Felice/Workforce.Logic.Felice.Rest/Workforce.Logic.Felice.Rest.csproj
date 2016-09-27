@@ -162,6 +162,7 @@
     <Compile Include="Controllers\BatchController.cs" />
     <Compile Include="Controllers\GenderController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\InstructorController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
