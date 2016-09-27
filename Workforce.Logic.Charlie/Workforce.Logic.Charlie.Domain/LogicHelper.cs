@@ -323,7 +323,29 @@ namespace Workforce.Logic.Charlie.Domain
         /// <returns></returns>
         public async Task<bool> JoinRide(RideDto ride, RequestDto req)
         {
-            return true;
+            //validate ride, req
+            var toAdd = reqModel.MapToSoap(req);
+            if (ride.DepartureLoc == 0 || ride.DestinationLoc == 0)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                        var allSched = await client.GetScheduleAsync();
+                        var scId = allSched.Last(sc => sc.DepartureLoc == ride.DepartureLoc &&
+                                                sc.DepartureTime == ride.DepartureTime &&
+                                                sc.DestinationLoc == ride.DestinationLoc).ScheduleID;
+                        toAdd.Schedule = scId;
+                        toAdd.Active = true;
+                        return await client.InsertRequestAsync(toAdd);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
         }
 
         /// <summary>
@@ -334,7 +356,29 @@ namespace Workforce.Logic.Charlie.Domain
         /// <returns></returns>
         public async Task<bool> InviteToRide(RequestDto req, RideDto ride)
         {
-            return true;
+            //validate ride, req
+            var toAdd = rideModel.MapToSoap(ride);
+            if (req.DepartureLoc == 0 || req.DestinationLoc == 0)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    var allSched = await client.GetScheduleAsync();
+                    var scId = allSched.Last(sc => sc.DepartureLoc == req.DepartureLoc &&
+                                            sc.DepartureTime == req.DepartureTime &&
+                                            sc.DestinationLoc == req.DestinationLoc).ScheduleID;
+                    toAdd.Schedule = scId;
+                    toAdd.Active = true;
+                    return await client.InsertRideAsync(toAdd);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
         }
 
         /// <summary>
@@ -356,9 +400,7 @@ namespace Workforce.Logic.Charlie.Domain
             {
                 return false;
             }
-        }
-
-        //update location 
+        } 
 
         //get riders? 
 
