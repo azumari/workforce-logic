@@ -13,9 +13,9 @@ namespace Workforce.Logic.Grace.Domain.Models
   {
     //have a method here to mapToDao and mapToDto
     //Have a method here to validate both the DAO's and DTO's
-     
+
     private readonly MapperConfiguration complexMapper = new MapperConfiguration(m => m.CreateMap<HousingComplexDao, HousingComplexDto>().ReverseMap());
- 
+
 
     private bool validate(IEnumerable<HousingComplexDao> temp)
     {
@@ -71,6 +71,21 @@ namespace Workforce.Logic.Grace.Domain.Models
       {
         var temp = MapToDao(item);
         complexes.Add(temp);
+      }
+      return complexes;
+    }
+
+    public List<HousingComplexDto> getActiveDtoList(IEnumerable<HousingComplexDao> daos)
+    {
+      var complexes = new List<HousingComplexDto>();
+      foreach (var item in daos)
+      {
+        if (item.ActiveBit)
+        {
+          var temp = MapToDto(item);
+          complexes.Add(temp);
+        }
+        
       }
       return complexes;
     }
