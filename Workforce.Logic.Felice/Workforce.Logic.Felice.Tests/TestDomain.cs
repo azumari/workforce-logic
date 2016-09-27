@@ -33,8 +33,9 @@ namespace Workforce.Logic.Felice.Tests
          {
             FirstName = "Katherine",
             LastName = "Pryde",
-            Email = "kpryde1@gmail.com",
-            Gender = "Female"
+            Email = "kpryde123@gmail.com",
+            Gender = "Female",
+            BatchID = 2
          };
 
          bool passed = await logic.AddNewAssociate(associate);
@@ -55,7 +56,6 @@ namespace Workforce.Logic.Felice.Tests
             LastName = "Tsukumo",
             Email = "yuma.tsukumo334@gmail.com",
             Gender = "Male",
-            IsComing = true,
             BatchID = 1,
          };
 

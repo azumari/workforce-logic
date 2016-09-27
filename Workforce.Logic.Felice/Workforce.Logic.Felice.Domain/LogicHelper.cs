@@ -85,6 +85,11 @@ namespace Workforce.Logic.Felice.Domain
             var serviceGenders = await client.GetGenderAsync();
 
             newAssociate.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(newAssociate.Gender)).GenderID.ToString();
+
+            if (newAssociate.BatchID == null)
+            {
+               newAssociate.BatchID = 1;
+            }
             
             return await client.InsertAssociateAsync(associateLogic.MapToSoap(newAssociate));
          }
