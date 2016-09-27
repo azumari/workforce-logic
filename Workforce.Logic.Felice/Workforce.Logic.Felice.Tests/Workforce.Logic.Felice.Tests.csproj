@@ -74,7 +74,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao.datasource" />
+    <None Include="Properties\DataSources\Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao.datasource" />
     <None Include="Properties\DataSources\Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao.datasource" />
+    <None Include="Properties\DataSources\Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao.datasource" />
+    <None Include="Properties\DataSources\Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao.datasource" />
+    <None Include="Properties\DataSources\Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao.datasource" />
     <None Include="Service References\WorkforceServiceReference\FeliceService.wsdl" />
     <None Include="Service References\WorkforceServiceReference\FeliceService.xsd">
       <SubType>Designer</SubType>
@@ -84,24 +89,6 @@
     </None>
     <None Include="Service References\WorkforceServiceReference\FeliceService2.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Web.config">
       <SubType>Designer</SubType>

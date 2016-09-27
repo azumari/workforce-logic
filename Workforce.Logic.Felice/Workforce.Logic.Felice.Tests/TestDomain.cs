@@ -42,12 +42,93 @@ namespace Workforce.Logic.Felice.Tests
       }
 
       /// <summary>
+      /// Tests the primary Update function for Associate
+      /// NOTE: Presently Failing; Reason: Unknown
+      /// </summary>
+      [Fact]
+      public async Task Test_UpdateAssociate()
+      {
+         var associate = new AssociateDto()
+         {
+            AssociateID = 3,
+            FirstName = "Yuma",
+            LastName = "Tsukumo",
+            Email = "yuma.tsukumo334@gmail.com",
+            Gender = "Male",
+            IsComing = true,
+            BatchID = 1,
+         };
+
+         bool passed = await logic.UpdateAssociate(associate);
+         Assert.True(passed);
+      }
+
+      /// <summary>
+      /// Tests the primary 'Delete' function for Associate
+      /// </summary>
+      [Fact]
+      public async Task Test_DeleteAssociate()
+      {
+         var associate = new AssociateDto()
+         {
+            AssociateID = 15,
+            FirstName = "FN1",
+            LastName = "LN",
+            Email = "dummy 9/17/2016 9:03:00 PM",
+            Gender = "Male"
+         };
+
+         bool passed = await logic.DeactivateAssociate(associate);
+         Assert.True(passed);
+      }
+
+
+      [Fact]
+      public async Task Test_DeleteBatch()
+      {
+         var batch = new BatchDto()
+         {
+            BatchID = 40,
+            Name = "FN1",
+            StartDate = DateTime.UtcNow,
+            EndDate = DateTime.UtcNow
+         };
+
+         bool passed = await logic.DeactivateBatch(batch);
+         Assert.True(passed);
+      }
+
+      [Fact]
+      public async Task Test_UpdateBatch()
+      {
+         var batch = new BatchDto()
+         {
+            BatchID = 41,
+            Name = "Stealing Knives",
+            StartDate = DateTime.UtcNow,
+            EndDate = DateTime.UtcNow,
+            InstructorID = 2
+         };
+
+         bool passed = await logic.UpdateBatch(batch);
+         Assert.True(passed);
+      }
+
+      /// <summary>
       /// Tests the primary 'Get' function for Associates
       /// </summary>
       [Fact]
       public async void Test_GetAllAssociates()
       {
          var actual = await logic.GetAllAssociates();
+
+         Assert.True(actual.Count >= expected);
+      }
+
+      [Fact]
+      public async void Test_GetAllInstructors()
+      {
+         var actual = await logic.GetAllInstructors();
 
          Assert.True(actual.Count >= expected);
       }

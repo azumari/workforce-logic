@@ -29,7 +29,7 @@ namespace Workforce.Logic.Felice.Domain
 
          foreach (var item in serviceAssociates)
          {
-            if (associateLogic.ValidateSoapData(item))
+            if (associateLogic.ValidateSoapData(item) && item.Active)
             {
                var parse = associateLogic.MapToRest(item);
                parse.Gender = serviceGenders.FirstOrDefault(g => g.GenderID.Equals(item.GenderID)).Name;
@@ -110,7 +110,7 @@ namespace Workforce.Logic.Felice.Domain
 
          foreach (var item in serviceAddress)
          {
-            if (addressLogic.ValidateSoapData(item))
+            if (addressLogic.ValidateSoapData(item) && item.Active)
             {
                address.Add(addressLogic.MapToRest(item));
             }
@@ -176,7 +176,7 @@ namespace Workforce.Logic.Felice.Domain
 
          foreach (var item in serviceBatches)
          {
-            if (batchLogic.ValidateSoapData(item))
+            if (batchLogic.ValidateSoapData(item) && item.Active)
             {
                batches.Add(batchLogic.MapToRest(item));
             }
@@ -222,7 +222,10 @@ namespace Workforce.Logic.Felice.Domain
       {
          if (batchLogic.ValidateRestData(update))
          {
-            return await client.UpdateBatchAsync(batchLogic.MapToSoap(update));
+            var toSoap = batchLogic.MapToSoap(update);
+            toSoap.Active = true;
+
+            return await client.UpdateBatchAsync(toSoap);
          }
          else
          {
@@ -243,7 +246,7 @@ namespace Workforce.Logic.Felice.Domain
 
          foreach (var item in serviceGenders)
          {
-            if (genderLogic.ValidateSoapData(item))
+            if (genderLogic.ValidateSoapData(item) && item.Active)
             {
                genders.Add(genderLogic.MapToRest(item));
             }
@@ -305,19 +308,54 @@ namespace Workforce.Logic.Felice.Domain
       public async Task<List<InstructorDto>> GetAllInstructors()
       {
          var instructors = new List<InstructorDto>();
-
-         var serviceInstructors = await client.GetInstructorAsync();
-
-         foreach (var item in serviceInstructors)
+         try
          {
-            if (instructorLogic.ValidateSoapData(item))
+            var serviceInstructors = await client.GetInstructorAsync();
+            foreach (var item in serviceInstructors)
             {
-               instructors.Add(instructorLogic.MapToRest(item));
+               if (instructorLogic.ValidateSoapData(item) && item.Active)
+               {
+                  instructors.Add(instructorLogic.MapToRest(item));
+               }
             }
+
          }
+         catch
+         {
+            var i = new InstructorDto();
+            instructors.Add(i);
+         }
+        
          return instructors;
       }
 
+
+      /// <summary>
+      /// Basic 'Get' method that retrieves all instructors regardless of active status
+      /// </summary>
+      public async Task<List<InstructorDto>> GetByStatusInstructors()
+      {
+         var instructors = new List<InstructorDto>();
+
+         try
+         {
+            var serviceInstructors = await client.GetInstructorAsync();
+
+            foreach (var item in serviceInstructors)
+            {
+               if (instructorLogic.ValidateSoapData(item))
+               {
+                  instructors.Add(instructorLogic.MapToRest(item));
+               }
+            }
+            return instructors;
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            return instructors;
+         }
+      }
       /// <summary>
       /// Attempts to add a new instructor after ensuring that the data entered is valid
       /// </summary>

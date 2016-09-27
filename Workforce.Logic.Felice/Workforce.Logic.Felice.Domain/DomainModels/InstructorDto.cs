@@ -14,6 +14,5 @@ namespace Workforce.Logic.Felice.Domain.DomainModels
       public string FirstName { get; set; }
       [StringLength(50), Required]
       public string LastName { get; set; }
-      public int? BatchID { get; set; }
    }
 }

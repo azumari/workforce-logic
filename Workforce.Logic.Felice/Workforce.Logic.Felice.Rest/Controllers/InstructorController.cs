@@ -24,6 +24,8 @@ namespace Workforce.Logic.Felice.Rest.Controllers
          return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllInstructors());
       }
 
+
+
       /// <summary>
       /// Adds a new Instructor to the database
       /// </summary>
