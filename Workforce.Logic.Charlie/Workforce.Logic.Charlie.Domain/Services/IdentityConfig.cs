@@ -52,26 +52,16 @@ namespace Workforce.Logic.Charlie.Domain.Services
 
       //smtp settings that we pull
       //from the app.config file
-      //System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient
-      //{
-      //  Host = ConfigurationManager.AppSettings["GmailHost"],
-      //  Port = Int32.Parse(ConfigurationManager.AppSettings["GmailPort"]),
-      //  EnableSsl = true,
-      //  DeliveryMethod = SmtpDeliveryMethod.Network,
-      //  UseDefaultCredentials = false,
-      //  Credentials = new NetworkCredential(ConfigurationManager.AppSettings["GmailUserName"], ConfigurationManager.AppSettings["GmailPassword"])
-
-      //};
-
       System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient
       {
-        Host = "smtp.gmail.com",
-        Port = 587,
+        Host = ConfigurationManager.AppSettings["GmailHost"],
+        Port = Int32.Parse(ConfigurationManager.AppSettings["GmailPort"]),
         EnableSsl = true,
         DeliveryMethod = SmtpDeliveryMethod.Network,
         UseDefaultCredentials = false,
-        Credentials = new NetworkCredential("revature.projectliberate@gmail.com", "reveroni")
+        Credentials = new NetworkCredential(ConfigurationManager.AppSettings["GmailUserName"], ConfigurationManager.AppSettings["GmailPassword"])
       };
+
       //sends the email
       return Task.Run(() => smtp.SendMailAsync(email));
     }

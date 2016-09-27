@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Workforce.Logic.Charlie.Domain;
+using Workforce.Logic.Charlie.Domain.Services;
 using Workforce.Logic.Charlie.Domain.TransferModels;
 
 namespace Workforce.Logic.Charlie.Rest.Controllers
@@ -48,6 +49,12 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
       if (await logHelp.InsertRequest(req))
       {
         //email confirmation
+        EmailService email = new EmailService();
+        var destination = req.AssociateEmail;
+        var body = "Thank you for requesting a ride";
+        var subject = "Ride Request";
+
+        await email.SendAsync(destination, body, subject);
         return Request.CreateResponse(HttpStatusCode.OK, "success!");
       }
       else
