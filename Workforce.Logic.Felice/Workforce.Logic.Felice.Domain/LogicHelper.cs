@@ -39,7 +39,42 @@ namespace Workforce.Logic.Felice.Domain
          }
          return associate;
       }
-     
+
+      /// <summary>
+      /// Basic 'Get' method that retrieves all associates based on active status
+      /// </summary>
+      public async Task<List<AssociateDto>> GetAssociatesByStatus(string status)
+      {
+         var associate = new List<AssociateDto>();
+         var serviceAssociates = await client.GetAssociatesAsync();
+         var serviceGenders = await client.GetGenderAsync();
+
+         foreach (var item in serviceAssociates)
+         {
+            if (status == "true") //return all active associates
+            {
+               if (associateLogic.ValidateSoapData(item) && item.Active)
+               {
+                  var parse = associateLogic.MapToRest(item);
+                  parse.Gender = serviceGenders.FirstOrDefault(g => g.GenderID.Equals(item.GenderID)).Name;
+
+                  associate.Add(parse);
+               }
+            }
+            else //return all deactive associates
+            {
+               if (associateLogic.ValidateSoapData(item) && item.Active == false)
+               {
+                  var parse = associateLogic.MapToRest(item);
+                  parse.Gender = serviceGenders.FirstOrDefault(g => g.GenderID.Equals(item.GenderID)).Name;
+
+                  associate.Add(parse);
+               }
+            }
+         }
+         return associate;
+      }
+
       /// <summary>
       /// Attempts to add a new associate after ensuring that the data entered is valid
       /// </summary>
@@ -50,6 +85,11 @@ namespace Workforce.Logic.Felice.Domain
             var serviceGenders = await client.GetGenderAsync();
 
             newAssociate.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(newAssociate.Gender)).GenderID.ToString();
+
+            if (newAssociate.BatchID == null)
+            {
+               newAssociate.BatchID = 1;
+            }
             
             return await client.InsertAssociateAsync(associateLogic.MapToSoap(newAssociate));
          }
@@ -86,11 +126,18 @@ namespace Workforce.Logic.Felice.Domain
       {
          if (associateLogic.ValidateRestData(update))
          {
+            //collect all genders
             var serviceGenders = await client.GetGenderAsync();
-
+            //convert Gender Name to Gender ID
             update.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(update.Gender)).GenderID.ToString();
 
-            return await client.UpdateAssociateAsync(associateLogic.MapToSoap(update));
+            //store newly updated object and map it
+            var keepStatus = associateLogic.MapToSoap(update);
+            //maintain 'Active' status so that it doesn't auto convert to false
+            keepStatus.Active = true;
+
+            //return converted information
+            return await client.UpdateAssociateAsync(keepStatus); //failing here
          }
          else
          {
@@ -110,7 +157,7 @@ namespace Workforce.Logic.Felice.Domain
 
          foreach (var item in serviceAddress)
          {
-            if (addressLogic.ValidateSoapData(item))
+            if (addressLogic.ValidateSoapData(item) && item.Active)
             {
                address.Add(addressLogic.MapToRest(item));
             }
@@ -156,7 +203,10 @@ namespace Workforce.Logic.Felice.Domain
       {
          if (addressLogic.ValidateRestData(update))
          {
-            return await client.UpdateAddressAsync(addressLogic.MapToSoap(update));
+            var keepStatus = addressLogic.MapToSoap(update);
+            keepStatus.Active = true;
+
+            return await client.UpdateAddressAsync(keepStatus);
          }
          else
          {
@@ -167,7 +217,7 @@ namespace Workforce.Logic.Felice.Domain
 
       #region All methods related to Batch
       /// <summary>
-      /// Basic 'Get' method that retrieves all batches regardless of active status
+      /// This 'Get' method retrieves all batches regardless of active status
       /// </summary>
       public async Task<List<BatchDto>> GetAllBatches()
       {
@@ -179,6 +229,34 @@ namespace Workforce.Logic.Felice.Domain
             if (batchLogic.ValidateSoapData(item))
             {
                batches.Add(batchLogic.MapToRest(item));
+            }
+         }
+         return batches;
+      }
+
+      /// <summary>
+      /// Basic 'Get' method that retrieves all batches based on active status
+      /// </summary>
+      public async Task<List<BatchDto>> GetBatchesByStatus(string status)
+      {
+         var batches = new List<BatchDto>();
+         var serviceBatches = await client.GetBatchesAsync();
+
+         foreach (var item in serviceBatches)
+         {
+            if (status == "true")
+            {
+               if (batchLogic.ValidateSoapData(item) && item.Active)
+               {
+                  batches.Add(batchLogic.MapToRest(item));
+               }
+            }
+            else
+            {
+               if (batchLogic.ValidateSoapData(item) && item.Active == false)
+               {
+                  batches.Add(batchLogic.MapToRest(item));
+               }
             }
          }
          return batches;
@@ -222,7 +300,10 @@ namespace Workforce.Logic.Felice.Domain
       {
          if (batchLogic.ValidateRestData(update))
          {
-            return await client.UpdateBatchAsync(batchLogic.MapToSoap(update));
+            var keepStatus = batchLogic.MapToSoap(update);
+            keepStatus.Active = true;
+
+            return await client.UpdateBatchAsync(keepStatus);
          }
          else
          {
@@ -243,7 +324,7 @@ namespace Workforce.Logic.Felice.Domain
 
          foreach (var item in serviceGenders)
          {
-            if (genderLogic.ValidateSoapData(item))
+            if (genderLogic.ValidateSoapData(item) && item.Active)
             {
                genders.Add(genderLogic.MapToRest(item));
             }
@@ -289,7 +370,10 @@ namespace Workforce.Logic.Felice.Domain
       {
          if (genderLogic.ValidateRestData(update))
          {
-            return await client.UpdateGenderAsync(genderLogic.MapToSoap(update));
+            var keepStatus = genderLogic.MapToSoap(update);
+            keepStatus.Active = true;
+
+            return await client.UpdateGenderAsync(keepStatus);
          }
          else
          {
@@ -305,19 +389,54 @@ namespace Workforce.Logic.Felice.Domain
       public async Task<List<InstructorDto>> GetAllInstructors()
       {
          var instructors = new List<InstructorDto>();
-
-         var serviceInstructors = await client.GetInstructorAsync();
-
-         foreach (var item in serviceInstructors)
+         try
          {
-            if (instructorLogic.ValidateSoapData(item))
+            var serviceInstructors = await client.GetInstructorAsync();
+            foreach (var item in serviceInstructors)
             {
-               instructors.Add(instructorLogic.MapToRest(item));
+               if (instructorLogic.ValidateSoapData(item) && item.Active)
+               {
+                  instructors.Add(instructorLogic.MapToRest(item));
+               }
             }
+
          }
+         catch
+         {
+            var i = new InstructorDto();
+            instructors.Add(i);
+         }
+        
          return instructors;
       }
 
+
+      /// <summary>
+      /// Basic 'Get' method that retrieves all instructors regardless of active status
+      /// </summary>
+      public async Task<List<InstructorDto>> GetByStatusInstructors()
+      {
+         var instructors = new List<InstructorDto>();
+
+         try
+         {
+            var serviceInstructors = await client.GetInstructorAsync();
+
+            foreach (var item in serviceInstructors)
+            {
+               if (instructorLogic.ValidateSoapData(item))
+               {
+                  instructors.Add(instructorLogic.MapToRest(item));
+               }
+            }
+            return instructors;
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine(ex.Message);
+            return instructors;
+         }
+      }
       /// <summary>
       /// Attempts to add a new instructor after ensuring that the data entered is valid
       /// </summary>

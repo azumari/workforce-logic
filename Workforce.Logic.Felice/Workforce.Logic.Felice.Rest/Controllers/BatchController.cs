@@ -10,8 +10,8 @@ using Workforce.Logic.Felice.Domain.DomainModels;
 
 namespace Workforce.Logic.Felice.Rest.Controllers
 {
-   public class AssociateController : ApiController
-   {
+    public class BatchController : ApiController
+    {
       private readonly LogicHelper logic = new LogicHelper();
 
       /// <summary>
@@ -20,7 +20,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       [HttpGet]
       public async Task<HttpResponseMessage> FindAll()
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllAssociates());
+         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllBatches());
       }
 
       /// <summary>
@@ -29,34 +29,35 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       [HttpGet]
       public async Task<HttpResponseMessage> FindByStatus(string status)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAssociatesByStatus(status));
+         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetBatchesByStatus(status));
       }
 
       /// <summary>
-      /// 
+      /// Adds a new Batch to the database
       /// </summary>
       [HttpPost]
-      public async Task<HttpResponseMessage> Post([FromBody]AssociateDto associate)
+      public async Task<HttpResponseMessage> Post([FromBody]BatchDto batch)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewAssociate(associate));
+         return Request.CreateResponse(HttpStatusCode.OK, await logic.AddNewBatch(batch));
       }
 
       /// <summary>
-      /// 
+      /// Deactivates (Deletes) an active Batch
+      /// Must confirm if this will reactivate it too
       /// </summary>
       [HttpDelete]
-      public async Task<HttpResponseMessage> Delete([FromBody]AssociateDto associate)
+      public async Task<HttpResponseMessage> Delete([FromBody]BatchDto batch)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateAssociate(associate));
+         return Request.CreateResponse(HttpStatusCode.OK, await logic.DeactivateBatch(batch));
       }
 
       /// <summary>
-      /// 
+      /// takes in key information to update a specific Batch
       /// </summary>
       [HttpPut]
-      public async Task<HttpResponseMessage> Put([FromBody]AssociateDto associate)
+      public async Task<HttpResponseMessage> Put([FromBody]BatchDto batch)
       {
-         return Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateAssociate(associate));
+         return Request.CreateResponse(HttpStatusCode.OK, await logic.UpdateBatch(batch));
       }
    }
 }

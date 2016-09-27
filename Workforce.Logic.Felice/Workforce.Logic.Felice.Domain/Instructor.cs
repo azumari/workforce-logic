@@ -12,8 +12,8 @@ namespace Workforce.Logic.Felice.Domain
 {
    public class Instructor
    {
-      private readonly MapperConfiguration associateMapper = new MapperConfiguration(i => i.CreateMap<InstructorDao, InstructorDto>());
-      private readonly MapperConfiguration associateReverseMapper = new MapperConfiguration(i => i.CreateMap<InstructorDto, InstructorDao>());
+      private readonly MapperConfiguration instructorMapper = new MapperConfiguration(i => i.CreateMap<InstructorDao, InstructorDto>().ForMember(i1 => i1.InstructorID, m => m.MapFrom(i2 => i2.InstructorId)));
+      private readonly MapperConfiguration instructorReverseMapper = new MapperConfiguration(i => i.CreateMap<InstructorDto, InstructorDao>().ForMember(i1 => i1.InstructorId, m => m.MapFrom(i2 => i2.InstructorID)));
 
       /// <summary>
       /// Validates the data coming in from the data layer
@@ -29,7 +29,7 @@ namespace Workforce.Logic.Felice.Domain
       /// </summary>
       public InstructorDto MapToRest(InstructorDao i)
       {
-         var mapper = associateMapper.CreateMapper();
+         var mapper = instructorMapper.CreateMapper();
          return mapper.Map<InstructorDto>(i);
       }
 
@@ -49,7 +49,7 @@ namespace Workforce.Logic.Felice.Domain
       /// </summary>
       public InstructorDao MapToSoap(InstructorDto i)
       {
-         var mapper = associateReverseMapper.CreateMapper();
+         var mapper = instructorReverseMapper.CreateMapper();
          return mapper.Map<InstructorDao>(i);
       }
    }

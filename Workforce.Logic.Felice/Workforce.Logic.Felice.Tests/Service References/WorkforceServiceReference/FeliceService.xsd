@@ -39,7 +39,6 @@
       <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Primary" type="xs:boolean" />
       <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Zipcode" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -86,9 +85,8 @@
   <xs:complexType name="InstructorDao">
     <xs:sequence>
       <xs:element minOccurs="0" name="Active" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Batch" type="xs:int" />
       <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="InstructorID" type="xs:int" />
+      <xs:element minOccurs="0" name="InstructorId" type="xs:int" />
       <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

@@ -9,13 +9,13 @@ namespace Workforce.Logic.Felice.Domain.DomainModels
 {
    public class AssociateDto
    {
-      public int AssociateID { get; set; }
+      public int? AssociateID { get; set; }
       [StringLength(50), Required]
       public string FirstName { get; set; }
       [StringLength(50), Required]
       public string LastName { get; set; }
       public string Gender { get; set; }  //set to string to hold Gender.Name
-      public int BatchID { get; set; }
+      public int? BatchID { get; set; }
       public string PhoneNumber { get; set; }
       [StringLength(500), Required]
       public string Email { get; set; }

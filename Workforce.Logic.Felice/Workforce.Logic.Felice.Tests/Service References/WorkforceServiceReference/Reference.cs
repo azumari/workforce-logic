@@ -9,987 +9,155 @@
 //------------------------------------------------------------------------------
 
 namespace Workforce.Logic.Felice.Tests.WorkforceServiceReference {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AssociateDao", Namespace="http://schemas.datacontract.org/2004/07/Workforce.Data.Felice.Soap.ServiceModels")]
-    [System.SerializableAttribute()]
-    public partial class AssociateDao : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool ActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AssociateIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int BatchIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> DateOfBirthField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int GenderIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool HasCarField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool HasKeysField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> IsComingField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PhoneNumberField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Active {
-            get {
-                return this.ActiveField;
-            }
-            set {
-                if ((this.ActiveField.Equals(value) != true)) {
-                    this.ActiveField = value;
-                    this.RaisePropertyChanged("Active");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int AssociateID {
-            get {
-                return this.AssociateIDField;
-            }
-            set {
-                if ((this.AssociateIDField.Equals(value) != true)) {
-                    this.AssociateIDField = value;
-                    this.RaisePropertyChanged("AssociateID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int BatchID {
-            get {
-                return this.BatchIDField;
-            }
-            set {
-                if ((this.BatchIDField.Equals(value) != true)) {
-                    this.BatchIDField = value;
-                    this.RaisePropertyChanged("BatchID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> DateOfBirth {
-            get {
-                return this.DateOfBirthField;
-            }
-            set {
-                if ((this.DateOfBirthField.Equals(value) != true)) {
-                    this.DateOfBirthField = value;
-                    this.RaisePropertyChanged("DateOfBirth");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email {
-            get {
-                return this.EmailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
-                    this.EmailField = value;
-                    this.RaisePropertyChanged("Email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
-            get {
-                return this.FirstNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int GenderID {
-            get {
-                return this.GenderIDField;
-            }
-            set {
-                if ((this.GenderIDField.Equals(value) != true)) {
-                    this.GenderIDField = value;
-                    this.RaisePropertyChanged("GenderID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool HasCar {
-            get {
-                return this.HasCarField;
-            }
-            set {
-                if ((this.HasCarField.Equals(value) != true)) {
-                    this.HasCarField = value;
-                    this.RaisePropertyChanged("HasCar");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool HasKeys {
-            get {
-                return this.HasKeysField;
-            }
-            set {
-                if ((this.HasKeysField.Equals(value) != true)) {
-                    this.HasKeysField = value;
-                    this.RaisePropertyChanged("HasKeys");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> IsComing {
-            get {
-                return this.IsComingField;
-            }
-            set {
-                if ((this.IsComingField.Equals(value) != true)) {
-                    this.IsComingField = value;
-                    this.RaisePropertyChanged("IsComing");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
-            get {
-                return this.LastNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PhoneNumber {
-            get {
-                return this.PhoneNumberField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PhoneNumberField, value) != true)) {
-                    this.PhoneNumberField = value;
-                    this.RaisePropertyChanged("PhoneNumber");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AddressDao", Namespace="http://schemas.datacontract.org/2004/07/Workforce.Data.Felice.Soap.ServiceModels")]
-    [System.SerializableAttribute()]
-    public partial class AddressDao : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool ActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Address1Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Address2Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AddressIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CountryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool PrimaryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ZipCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Zipcode1Field;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Active {
-            get {
-                return this.ActiveField;
-            }
-            set {
-                if ((this.ActiveField.Equals(value) != true)) {
-                    this.ActiveField = value;
-                    this.RaisePropertyChanged("Active");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Address1 {
-            get {
-                return this.Address1Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Address1Field, value) != true)) {
-                    this.Address1Field = value;
-                    this.RaisePropertyChanged("Address1");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Address2 {
-            get {
-                return this.Address2Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Address2Field, value) != true)) {
-                    this.Address2Field = value;
-                    this.RaisePropertyChanged("Address2");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int AddressId {
-            get {
-                return this.AddressIdField;
-            }
-            set {
-                if ((this.AddressIdField.Equals(value) != true)) {
-                    this.AddressIdField = value;
-                    this.RaisePropertyChanged("AddressId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string City {
-            get {
-                return this.CityField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CityField, value) != true)) {
-                    this.CityField = value;
-                    this.RaisePropertyChanged("City");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Country {
-            get {
-                return this.CountryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CountryField, value) != true)) {
-                    this.CountryField = value;
-                    this.RaisePropertyChanged("Country");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Primary {
-            get {
-                return this.PrimaryField;
-            }
-            set {
-                if ((this.PrimaryField.Equals(value) != true)) {
-                    this.PrimaryField = value;
-                    this.RaisePropertyChanged("Primary");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string State {
-            get {
-                return this.StateField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StateField, value) != true)) {
-                    this.StateField = value;
-                    this.RaisePropertyChanged("State");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ZipCode {
-            get {
-                return this.ZipCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ZipCodeField, value) != true)) {
-                    this.ZipCodeField = value;
-                    this.RaisePropertyChanged("ZipCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="Zipcode")]
-        public string Zipcode1 {
-            get {
-                return this.Zipcode1Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Zipcode1Field, value) != true)) {
-                    this.Zipcode1Field = value;
-                    this.RaisePropertyChanged("Zipcode1");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AssociateAddressDao", Namespace="http://schemas.datacontract.org/2004/07/Workforce.Data.Felice.Soap.ServiceModels")]
-    [System.SerializableAttribute()]
-    public partial class AssociateAddressDao : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool ActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AddressIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AssociateAddressIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AssociateIDField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Active {
-            get {
-                return this.ActiveField;
-            }
-            set {
-                if ((this.ActiveField.Equals(value) != true)) {
-                    this.ActiveField = value;
-                    this.RaisePropertyChanged("Active");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int AddressID {
-            get {
-                return this.AddressIDField;
-            }
-            set {
-                if ((this.AddressIDField.Equals(value) != true)) {
-                    this.AddressIDField = value;
-                    this.RaisePropertyChanged("AddressID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int AssociateAddressID {
-            get {
-                return this.AssociateAddressIDField;
-            }
-            set {
-                if ((this.AssociateAddressIDField.Equals(value) != true)) {
-                    this.AssociateAddressIDField = value;
-                    this.RaisePropertyChanged("AssociateAddressID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int AssociateID {
-            get {
-                return this.AssociateIDField;
-            }
-            set {
-                if ((this.AssociateIDField.Equals(value) != true)) {
-                    this.AssociateIDField = value;
-                    this.RaisePropertyChanged("AssociateID");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BatchDao", Namespace="http://schemas.datacontract.org/2004/07/Workforce.Data.Felice.Soap.ServiceModels")]
-    [System.SerializableAttribute()]
-    public partial class BatchDao : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool ActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int BatchIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime EndDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int InstructorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SectionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime StartDateField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Active {
-            get {
-                return this.ActiveField;
-            }
-            set {
-                if ((this.ActiveField.Equals(value) != true)) {
-                    this.ActiveField = value;
-                    this.RaisePropertyChanged("Active");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int BatchID {
-            get {
-                return this.BatchIDField;
-            }
-            set {
-                if ((this.BatchIDField.Equals(value) != true)) {
-                    this.BatchIDField = value;
-                    this.RaisePropertyChanged("BatchID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime EndDate {
-            get {
-                return this.EndDateField;
-            }
-            set {
-                if ((this.EndDateField.Equals(value) != true)) {
-                    this.EndDateField = value;
-                    this.RaisePropertyChanged("EndDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Instructor {
-            get {
-                return this.InstructorField;
-            }
-            set {
-                if ((this.InstructorField.Equals(value) != true)) {
-                    this.InstructorField = value;
-                    this.RaisePropertyChanged("Instructor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Section {
-            get {
-                return this.SectionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SectionField, value) != true)) {
-                    this.SectionField = value;
-                    this.RaisePropertyChanged("Section");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime StartDate {
-            get {
-                return this.StartDateField;
-            }
-            set {
-                if ((this.StartDateField.Equals(value) != true)) {
-                    this.StartDateField = value;
-                    this.RaisePropertyChanged("StartDate");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="InstructorDao", Namespace="http://schemas.datacontract.org/2004/07/Workforce.Data.Felice.Soap.ServiceModels")]
-    [System.SerializableAttribute()]
-    public partial class InstructorDao : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool ActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int BatchField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int InstructorIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Active {
-            get {
-                return this.ActiveField;
-            }
-            set {
-                if ((this.ActiveField.Equals(value) != true)) {
-                    this.ActiveField = value;
-                    this.RaisePropertyChanged("Active");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Batch {
-            get {
-                return this.BatchField;
-            }
-            set {
-                if ((this.BatchField.Equals(value) != true)) {
-                    this.BatchField = value;
-                    this.RaisePropertyChanged("Batch");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
-            get {
-                return this.FirstNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int InstructorID {
-            get {
-                return this.InstructorIDField;
-            }
-            set {
-                if ((this.InstructorIDField.Equals(value) != true)) {
-                    this.InstructorIDField = value;
-                    this.RaisePropertyChanged("InstructorID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
-            get {
-                return this.LastNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GenderDao", Namespace="http://schemas.datacontract.org/2004/07/Workforce.Data.Felice.Soap.ServiceModels")]
-    [System.SerializableAttribute()]
-    public partial class GenderDao : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool ActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int GenderIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Active {
-            get {
-                return this.ActiveField;
-            }
-            set {
-                if ((this.ActiveField.Equals(value) != true)) {
-                    this.ActiveField = value;
-                    this.RaisePropertyChanged("Active");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int GenderID {
-            get {
-                return this.GenderIDField;
-            }
-            set {
-                if ((this.GenderIDField.Equals(value) != true)) {
-                    this.GenderIDField = value;
-                    this.RaisePropertyChanged("GenderID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WorkforceServiceReference.IFeliceService")]
     public interface IFeliceService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/GetAssociates", ReplyAction="http://tempuri.org/IFeliceService/GetAssociatesResponse")]
-        Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao[] GetAssociates();
+        Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao[] GetAssociates();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/GetAssociates", ReplyAction="http://tempuri.org/IFeliceService/GetAssociatesResponse")]
-        System.Threading.Tasks.Task<Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao[]> GetAssociatesAsync();
+        System.Threading.Tasks.Task<Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao[]> GetAssociatesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/GetAddress", ReplyAction="http://tempuri.org/IFeliceService/GetAddressResponse")]
-        Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao[] GetAddress();
+        Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao[] GetAddress();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/GetAddress", ReplyAction="http://tempuri.org/IFeliceService/GetAddressResponse")]
-        System.Threading.Tasks.Task<Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao[]> GetAddressAsync();
+        System.Threading.Tasks.Task<Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao[]> GetAddressAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/GetAssociateAddress", ReplyAction="http://tempuri.org/IFeliceService/GetAssociateAddressResponse")]
-        Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao[] GetAssociateAddress();
+        Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao[] GetAssociateAddress();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/GetAssociateAddress", ReplyAction="http://tempuri.org/IFeliceService/GetAssociateAddressResponse")]
-        System.Threading.Tasks.Task<Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao[]> GetAssociateAddressAsync();
+        System.Threading.Tasks.Task<Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao[]> GetAssociateAddressAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/GetBatches", ReplyAction="http://tempuri.org/IFeliceService/GetBatchesResponse")]
-        Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao[] GetBatches();
+        Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao[] GetBatches();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/GetBatches", ReplyAction="http://tempuri.org/IFeliceService/GetBatchesResponse")]
-        System.Threading.Tasks.Task<Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao[]> GetBatchesAsync();
+        System.Threading.Tasks.Task<Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao[]> GetBatchesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/GetInstructor", ReplyAction="http://tempuri.org/IFeliceService/GetInstructorResponse")]
-        Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao[] GetInstructor();
+        Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao[] GetInstructor();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/GetInstructor", ReplyAction="http://tempuri.org/IFeliceService/GetInstructorResponse")]
-        System.Threading.Tasks.Task<Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao[]> GetInstructorAsync();
+        System.Threading.Tasks.Task<Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao[]> GetInstructorAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/GetGender", ReplyAction="http://tempuri.org/IFeliceService/GetGenderResponse")]
-        Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao[] GetGender();
+        Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao[] GetGender();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/GetGender", ReplyAction="http://tempuri.org/IFeliceService/GetGenderResponse")]
-        System.Threading.Tasks.Task<Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao[]> GetGenderAsync();
+        System.Threading.Tasks.Task<Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao[]> GetGenderAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/InsertAssociate", ReplyAction="http://tempuri.org/IFeliceService/InsertAssociateResponse")]
-        bool InsertAssociate(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao newassociate);
+        bool InsertAssociate(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao newassociate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/InsertAssociate", ReplyAction="http://tempuri.org/IFeliceService/InsertAssociateResponse")]
-        System.Threading.Tasks.Task<bool> InsertAssociateAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao newassociate);
+        System.Threading.Tasks.Task<bool> InsertAssociateAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao newassociate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/InsertAddress", ReplyAction="http://tempuri.org/IFeliceService/InsertAddressResponse")]
-        bool InsertAddress(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao newaddress);
+        bool InsertAddress(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao newaddress);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/InsertAddress", ReplyAction="http://tempuri.org/IFeliceService/InsertAddressResponse")]
-        System.Threading.Tasks.Task<bool> InsertAddressAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao newaddress);
+        System.Threading.Tasks.Task<bool> InsertAddressAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao newaddress);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/InsertAssociateAddress", ReplyAction="http://tempuri.org/IFeliceService/InsertAssociateAddressResponse")]
-        bool InsertAssociateAddress(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao newassocaddress);
+        bool InsertAssociateAddress(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao newassocaddress);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/InsertAssociateAddress", ReplyAction="http://tempuri.org/IFeliceService/InsertAssociateAddressResponse")]
-        System.Threading.Tasks.Task<bool> InsertAssociateAddressAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao newassocaddress);
+        System.Threading.Tasks.Task<bool> InsertAssociateAddressAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao newassocaddress);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/InsertBatch", ReplyAction="http://tempuri.org/IFeliceService/InsertBatchResponse")]
-        bool InsertBatch(Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao newbatch);
+        bool InsertBatch(Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao newbatch);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/InsertBatch", ReplyAction="http://tempuri.org/IFeliceService/InsertBatchResponse")]
-        System.Threading.Tasks.Task<bool> InsertBatchAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao newbatch);
+        System.Threading.Tasks.Task<bool> InsertBatchAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao newbatch);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/InsertGender", ReplyAction="http://tempuri.org/IFeliceService/InsertGenderResponse")]
-        bool InsertGender(Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao newgender);
+        bool InsertGender(Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao newgender);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/InsertGender", ReplyAction="http://tempuri.org/IFeliceService/InsertGenderResponse")]
-        System.Threading.Tasks.Task<bool> InsertGenderAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao newgender);
+        System.Threading.Tasks.Task<bool> InsertGenderAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao newgender);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/InsertInstructor", ReplyAction="http://tempuri.org/IFeliceService/InsertInstructorResponse")]
-        bool InsertInstructor(Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao newinstructor);
+        bool InsertInstructor(Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao newinstructor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/InsertInstructor", ReplyAction="http://tempuri.org/IFeliceService/InsertInstructorResponse")]
-        System.Threading.Tasks.Task<bool> InsertInstructorAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao newinstructor);
+        System.Threading.Tasks.Task<bool> InsertInstructorAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao newinstructor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/UpdateAssociate", ReplyAction="http://tempuri.org/IFeliceService/UpdateAssociateResponse")]
-        bool UpdateAssociate(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao assoc);
+        bool UpdateAssociate(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao assoc);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/UpdateAssociate", ReplyAction="http://tempuri.org/IFeliceService/UpdateAssociateResponse")]
-        System.Threading.Tasks.Task<bool> UpdateAssociateAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao assoc);
+        System.Threading.Tasks.Task<bool> UpdateAssociateAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao assoc);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/UpdateAddress", ReplyAction="http://tempuri.org/IFeliceService/UpdateAddressResponse")]
-        bool UpdateAddress(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao address);
+        bool UpdateAddress(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao address);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/UpdateAddress", ReplyAction="http://tempuri.org/IFeliceService/UpdateAddressResponse")]
-        System.Threading.Tasks.Task<bool> UpdateAddressAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao address);
+        System.Threading.Tasks.Task<bool> UpdateAddressAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao address);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/UpdateAssociateAddress", ReplyAction="http://tempuri.org/IFeliceService/UpdateAssociateAddressResponse")]
-        bool UpdateAssociateAddress(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao assocadd);
+        bool UpdateAssociateAddress(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao assocadd);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/UpdateAssociateAddress", ReplyAction="http://tempuri.org/IFeliceService/UpdateAssociateAddressResponse")]
-        System.Threading.Tasks.Task<bool> UpdateAssociateAddressAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao assocadd);
+        System.Threading.Tasks.Task<bool> UpdateAssociateAddressAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao assocadd);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/UpdateBatch", ReplyAction="http://tempuri.org/IFeliceService/UpdateBatchResponse")]
-        bool UpdateBatch(Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao batch);
+        bool UpdateBatch(Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao batch);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/UpdateBatch", ReplyAction="http://tempuri.org/IFeliceService/UpdateBatchResponse")]
-        System.Threading.Tasks.Task<bool> UpdateBatchAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao batch);
+        System.Threading.Tasks.Task<bool> UpdateBatchAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao batch);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/UpdateGender", ReplyAction="http://tempuri.org/IFeliceService/UpdateGenderResponse")]
-        bool UpdateGender(Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao gender);
+        bool UpdateGender(Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao gender);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/UpdateGender", ReplyAction="http://tempuri.org/IFeliceService/UpdateGenderResponse")]
-        System.Threading.Tasks.Task<bool> UpdateGenderAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao gender);
+        System.Threading.Tasks.Task<bool> UpdateGenderAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao gender);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/UpdateInstructor", ReplyAction="http://tempuri.org/IFeliceService/UpdateInstructorResponse")]
-        bool UpdateInstructor(Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao instructor);
+        bool UpdateInstructor(Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao instructor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/UpdateInstructor", ReplyAction="http://tempuri.org/IFeliceService/UpdateInstructorResponse")]
-        System.Threading.Tasks.Task<bool> UpdateInstructorAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao instructor);
+        System.Threading.Tasks.Task<bool> UpdateInstructorAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao instructor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/DeleteAssociate", ReplyAction="http://tempuri.org/IFeliceService/DeleteAssociateResponse")]
-        bool DeleteAssociate(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao assoc);
+        bool DeleteAssociate(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao assoc);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/DeleteAssociate", ReplyAction="http://tempuri.org/IFeliceService/DeleteAssociateResponse")]
-        System.Threading.Tasks.Task<bool> DeleteAssociateAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao assoc);
+        System.Threading.Tasks.Task<bool> DeleteAssociateAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao assoc);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/DeleteAddress", ReplyAction="http://tempuri.org/IFeliceService/DeleteAddressResponse")]
-        bool DeleteAddress(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao address);
+        bool DeleteAddress(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao address);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/DeleteAddress", ReplyAction="http://tempuri.org/IFeliceService/DeleteAddressResponse")]
-        System.Threading.Tasks.Task<bool> DeleteAddressAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao address);
+        System.Threading.Tasks.Task<bool> DeleteAddressAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao address);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/DeleteAssociateAddress", ReplyAction="http://tempuri.org/IFeliceService/DeleteAssociateAddressResponse")]
-        bool DeleteAssociateAddress(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao assocadd);
+        bool DeleteAssociateAddress(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao assocadd);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/DeleteAssociateAddress", ReplyAction="http://tempuri.org/IFeliceService/DeleteAssociateAddressResponse")]
-        System.Threading.Tasks.Task<bool> DeleteAssociateAddressAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao assocadd);
+        System.Threading.Tasks.Task<bool> DeleteAssociateAddressAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao assocadd);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/DeleteBatch", ReplyAction="http://tempuri.org/IFeliceService/DeleteBatchResponse")]
-        bool DeleteBatch(Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao batch);
+        bool DeleteBatch(Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao batch);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/DeleteBatch", ReplyAction="http://tempuri.org/IFeliceService/DeleteBatchResponse")]
-        System.Threading.Tasks.Task<bool> DeleteBatchAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao batch);
+        System.Threading.Tasks.Task<bool> DeleteBatchAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao batch);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/DeleteGender", ReplyAction="http://tempuri.org/IFeliceService/DeleteGenderResponse")]
-        bool DeleteGender(Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao gender);
+        bool DeleteGender(Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao gender);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/DeleteGender", ReplyAction="http://tempuri.org/IFeliceService/DeleteGenderResponse")]
-        System.Threading.Tasks.Task<bool> DeleteGenderAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao gender);
+        System.Threading.Tasks.Task<bool> DeleteGenderAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao gender);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/DeleteInstructor", ReplyAction="http://tempuri.org/IFeliceService/DeleteInstructorResponse")]
-        bool DeleteInstructor(Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao instructor);
+        bool DeleteInstructor(Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao instructor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFeliceService/DeleteInstructor", ReplyAction="http://tempuri.org/IFeliceService/DeleteInstructorResponse")]
-        System.Threading.Tasks.Task<bool> DeleteInstructorAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao instructor);
+        System.Threading.Tasks.Task<bool> DeleteInstructorAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao instructor);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1019,195 +187,195 @@ namespace Workforce.Logic.Felice.Tests.WorkforceServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao[] GetAssociates() {
+        public Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao[] GetAssociates() {
             return base.Channel.GetAssociates();
         }
         
-        public System.Threading.Tasks.Task<Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao[]> GetAssociatesAsync() {
+        public System.Threading.Tasks.Task<Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao[]> GetAssociatesAsync() {
             return base.Channel.GetAssociatesAsync();
         }
         
-        public Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao[] GetAddress() {
+        public Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao[] GetAddress() {
             return base.Channel.GetAddress();
         }
         
-        public System.Threading.Tasks.Task<Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao[]> GetAddressAsync() {
+        public System.Threading.Tasks.Task<Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao[]> GetAddressAsync() {
             return base.Channel.GetAddressAsync();
         }
         
-        public Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao[] GetAssociateAddress() {
+        public Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao[] GetAssociateAddress() {
             return base.Channel.GetAssociateAddress();
         }
         
-        public System.Threading.Tasks.Task<Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao[]> GetAssociateAddressAsync() {
+        public System.Threading.Tasks.Task<Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao[]> GetAssociateAddressAsync() {
             return base.Channel.GetAssociateAddressAsync();
         }
         
-        public Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao[] GetBatches() {
+        public Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao[] GetBatches() {
             return base.Channel.GetBatches();
         }
         
-        public System.Threading.Tasks.Task<Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao[]> GetBatchesAsync() {
+        public System.Threading.Tasks.Task<Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao[]> GetBatchesAsync() {
             return base.Channel.GetBatchesAsync();
         }
         
-        public Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao[] GetInstructor() {
+        public Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao[] GetInstructor() {
             return base.Channel.GetInstructor();
         }
         
-        public System.Threading.Tasks.Task<Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao[]> GetInstructorAsync() {
+        public System.Threading.Tasks.Task<Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao[]> GetInstructorAsync() {
             return base.Channel.GetInstructorAsync();
         }
         
-        public Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao[] GetGender() {
+        public Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao[] GetGender() {
             return base.Channel.GetGender();
         }
         
-        public System.Threading.Tasks.Task<Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao[]> GetGenderAsync() {
+        public System.Threading.Tasks.Task<Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao[]> GetGenderAsync() {
             return base.Channel.GetGenderAsync();
         }
         
-        public bool InsertAssociate(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao newassociate) {
+        public bool InsertAssociate(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao newassociate) {
             return base.Channel.InsertAssociate(newassociate);
         }
         
-        public System.Threading.Tasks.Task<bool> InsertAssociateAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao newassociate) {
+        public System.Threading.Tasks.Task<bool> InsertAssociateAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao newassociate) {
             return base.Channel.InsertAssociateAsync(newassociate);
         }
         
-        public bool InsertAddress(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao newaddress) {
+        public bool InsertAddress(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao newaddress) {
             return base.Channel.InsertAddress(newaddress);
         }
         
-        public System.Threading.Tasks.Task<bool> InsertAddressAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao newaddress) {
+        public System.Threading.Tasks.Task<bool> InsertAddressAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao newaddress) {
             return base.Channel.InsertAddressAsync(newaddress);
         }
         
-        public bool InsertAssociateAddress(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao newassocaddress) {
+        public bool InsertAssociateAddress(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao newassocaddress) {
             return base.Channel.InsertAssociateAddress(newassocaddress);
         }
         
-        public System.Threading.Tasks.Task<bool> InsertAssociateAddressAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao newassocaddress) {
+        public System.Threading.Tasks.Task<bool> InsertAssociateAddressAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao newassocaddress) {
             return base.Channel.InsertAssociateAddressAsync(newassocaddress);
         }
         
-        public bool InsertBatch(Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao newbatch) {
+        public bool InsertBatch(Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao newbatch) {
             return base.Channel.InsertBatch(newbatch);
         }
         
-        public System.Threading.Tasks.Task<bool> InsertBatchAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao newbatch) {
+        public System.Threading.Tasks.Task<bool> InsertBatchAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao newbatch) {
             return base.Channel.InsertBatchAsync(newbatch);
         }
         
-        public bool InsertGender(Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao newgender) {
+        public bool InsertGender(Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao newgender) {
             return base.Channel.InsertGender(newgender);
         }
         
-        public System.Threading.Tasks.Task<bool> InsertGenderAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao newgender) {
+        public System.Threading.Tasks.Task<bool> InsertGenderAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao newgender) {
             return base.Channel.InsertGenderAsync(newgender);
         }
         
-        public bool InsertInstructor(Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao newinstructor) {
+        public bool InsertInstructor(Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao newinstructor) {
             return base.Channel.InsertInstructor(newinstructor);
         }
         
-        public System.Threading.Tasks.Task<bool> InsertInstructorAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao newinstructor) {
+        public System.Threading.Tasks.Task<bool> InsertInstructorAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao newinstructor) {
             return base.Channel.InsertInstructorAsync(newinstructor);
         }
         
-        public bool UpdateAssociate(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao assoc) {
+        public bool UpdateAssociate(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao assoc) {
             return base.Channel.UpdateAssociate(assoc);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateAssociateAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao assoc) {
+        public System.Threading.Tasks.Task<bool> UpdateAssociateAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao assoc) {
             return base.Channel.UpdateAssociateAsync(assoc);
         }
         
-        public bool UpdateAddress(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao address) {
+        public bool UpdateAddress(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao address) {
             return base.Channel.UpdateAddress(address);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateAddressAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao address) {
+        public System.Threading.Tasks.Task<bool> UpdateAddressAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao address) {
             return base.Channel.UpdateAddressAsync(address);
         }
         
-        public bool UpdateAssociateAddress(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao assocadd) {
+        public bool UpdateAssociateAddress(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao assocadd) {
             return base.Channel.UpdateAssociateAddress(assocadd);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateAssociateAddressAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao assocadd) {
+        public System.Threading.Tasks.Task<bool> UpdateAssociateAddressAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao assocadd) {
             return base.Channel.UpdateAssociateAddressAsync(assocadd);
         }
         
-        public bool UpdateBatch(Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao batch) {
+        public bool UpdateBatch(Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao batch) {
             return base.Channel.UpdateBatch(batch);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateBatchAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao batch) {
+        public System.Threading.Tasks.Task<bool> UpdateBatchAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao batch) {
             return base.Channel.UpdateBatchAsync(batch);
         }
         
-        public bool UpdateGender(Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao gender) {
+        public bool UpdateGender(Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao gender) {
             return base.Channel.UpdateGender(gender);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateGenderAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao gender) {
+        public System.Threading.Tasks.Task<bool> UpdateGenderAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao gender) {
             return base.Channel.UpdateGenderAsync(gender);
         }
         
-        public bool UpdateInstructor(Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao instructor) {
+        public bool UpdateInstructor(Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao instructor) {
             return base.Channel.UpdateInstructor(instructor);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateInstructorAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao instructor) {
+        public System.Threading.Tasks.Task<bool> UpdateInstructorAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao instructor) {
             return base.Channel.UpdateInstructorAsync(instructor);
         }
         
-        public bool DeleteAssociate(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao assoc) {
+        public bool DeleteAssociate(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao assoc) {
             return base.Channel.DeleteAssociate(assoc);
         }
         
-        public System.Threading.Tasks.Task<bool> DeleteAssociateAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao assoc) {
+        public System.Threading.Tasks.Task<bool> DeleteAssociateAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao assoc) {
             return base.Channel.DeleteAssociateAsync(assoc);
         }
         
-        public bool DeleteAddress(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao address) {
+        public bool DeleteAddress(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao address) {
             return base.Channel.DeleteAddress(address);
         }
         
-        public System.Threading.Tasks.Task<bool> DeleteAddressAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AddressDao address) {
+        public System.Threading.Tasks.Task<bool> DeleteAddressAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AddressDao address) {
             return base.Channel.DeleteAddressAsync(address);
         }
         
-        public bool DeleteAssociateAddress(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao assocadd) {
+        public bool DeleteAssociateAddress(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao assocadd) {
             return base.Channel.DeleteAssociateAddress(assocadd);
         }
         
-        public System.Threading.Tasks.Task<bool> DeleteAssociateAddressAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao assocadd) {
+        public System.Threading.Tasks.Task<bool> DeleteAssociateAddressAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateAddressDao assocadd) {
             return base.Channel.DeleteAssociateAddressAsync(assocadd);
         }
         
-        public bool DeleteBatch(Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao batch) {
+        public bool DeleteBatch(Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao batch) {
             return base.Channel.DeleteBatch(batch);
         }
         
-        public System.Threading.Tasks.Task<bool> DeleteBatchAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao batch) {
+        public System.Threading.Tasks.Task<bool> DeleteBatchAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.BatchDao batch) {
             return base.Channel.DeleteBatchAsync(batch);
         }
         
-        public bool DeleteGender(Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao gender) {
+        public bool DeleteGender(Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao gender) {
             return base.Channel.DeleteGender(gender);
         }
         
-        public System.Threading.Tasks.Task<bool> DeleteGenderAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.GenderDao gender) {
+        public System.Threading.Tasks.Task<bool> DeleteGenderAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.GenderDao gender) {
             return base.Channel.DeleteGenderAsync(gender);
         }
         
-        public bool DeleteInstructor(Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao instructor) {
+        public bool DeleteInstructor(Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao instructor) {
             return base.Channel.DeleteInstructor(instructor);
         }
         
-        public System.Threading.Tasks.Task<bool> DeleteInstructorAsync(Workforce.Logic.Felice.Tests.WorkforceServiceReference.InstructorDao instructor) {
+        public System.Threading.Tasks.Task<bool> DeleteInstructorAsync(Workforce.Logic.Felice.Domain.WorkforceServiceReference.InstructorDao instructor) {
             return base.Channel.DeleteInstructorAsync(instructor);
         }
     }

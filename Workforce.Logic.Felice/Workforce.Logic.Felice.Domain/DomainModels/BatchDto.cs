@@ -9,10 +9,11 @@ namespace Workforce.Logic.Felice.Domain.DomainModels
 {
    public class BatchDto
    {
-      public int BatchID { get; set; }
+      public int? BatchID { get; set; }
       [StringLength(50), Required]
       public string Name { get; set; }
-      public int InstructorID { get; set; }
+      public int? Instructor { get; set; }
+      public string Section { get; set; }
       [Required]
       public DateTime StartDate { get; set; }
       [Required]

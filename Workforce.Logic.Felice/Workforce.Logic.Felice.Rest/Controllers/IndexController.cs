@@ -17,7 +17,13 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       public HttpResponseMessage Get()
       {
          var options = new Dictionary<string, string>();
-         options.Add("Get Associate", "api/associate");
+         options.Add("GetAllAssociate", "api/associate/findall");
+         options.Add("GetAllActiveAssociates", "api/associate/findbystatus/true");
+         options.Add("GetAllDeactiveAssociates", "api/associate/findbystatus/something");
+         options.Add("GetAllBatches", "api/batch/findall");
+         options.Add("GetAllActiveBatches", "api/batch/findbystatus/true");
+         options.Add("GetAllDeactiveBatches", "api/batch/findbystatus/something");
+
 
          return Request.CreateResponse(HttpStatusCode.OK, options);
       }
