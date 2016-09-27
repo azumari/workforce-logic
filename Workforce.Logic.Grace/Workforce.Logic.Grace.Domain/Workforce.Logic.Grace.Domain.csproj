@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\Consumers.cs" />
     <Compile Include="Helpers\D3jsHelper.cs" />
     <Compile Include="Models\Apartment.cs" />
     <Compile Include="Models\D3AptCapacity.cs" />
@@ -91,6 +92,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="TransferModels\Dtos\ApartmentDto.cs" />
+    <Compile Include="TransferModels\Dtos\AssociateDto.cs" />
     <Compile Include="TransferModels\Dtos\GraphAptCapacityDto.cs" />
     <Compile Include="TransferModels\Dtos\HousingComplexDto.cs" />
     <Compile Include="TransferModels\Dtos\HousingDataDto.cs" />
@@ -101,6 +103,7 @@
     <Compile Include="Services\IdentityConfig.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Service References\GraceServiceReference\GraceService.wsdl" />
     <None Include="Service References\GraceServiceReference\GraceService.xsd">
       <SubType>Designer</SubType>

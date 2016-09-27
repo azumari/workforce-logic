@@ -12,21 +12,17 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 {
   public class D3jsHelper
   {
-      
+
     /// <summary>
     /// this is the logic for getting the name of each apartment and the current and max capacity of each apartment complex
     /// </summary>
     /// <returns></returns>
     public async Task<List<GraphAptCapacityDto>> ReturnGraphAptCapacity()
     {
-      
       D3AptCapacity aptCapacity = new D3AptCapacity();
-
-      //List<GraphAptCapacityDto> returnGraph = await aptCapacity.getNewModel();
-      //return returnGraph;
       return await aptCapacity.getNewModel();
 
- 
+
     }
 
   }

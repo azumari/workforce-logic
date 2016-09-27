@@ -104,6 +104,37 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
     #endregion
 
+    #region updates for all models
+
+    public async Task<bool> UpdateApartment(ApartmentDto fixApt)
+    {
+      Apartment apartmentVnM = new Apartment();
+
+      //validate the incoming DTO first before converting into DAO
+      //STILL NEED TO VALIDATE
+
+      return await graceService.UpdateApartmentAsync(apartmentVnM.MapToDao(fixApt));
+    }
+
+    public async Task<bool> UpdateHousingComplex(HousingComplexDto fixComplex)
+    {
+      HousingComplex housingComplexVnM = new HousingComplex();
+
+      //validate the incoming DTO first before converting into DAO
+      //STILL NEED TO VALIDATE
+
+      return await graceService.UpdateHousingComplexAsync(housingComplexVnM.MapToDao(fixComplex));
+    }
+
+    public async Task<bool> UpdateStatus(StatusDto fixStatus)
+    {
+      Status statusVnM = new Status();
+
+      return await graceService.UpdateStatusAsync(statusVnM.MapToDao(fixStatus));
+    }
+    #endregion
+
+
 
     #region Insert methods for all models
 

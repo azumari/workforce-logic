@@ -12,6 +12,27 @@ namespace Workforce.Logic.Grace.Domain.Models
   public class D3AptCapacity
   {
 
+
+    public async Task<List<GraphAptCapacityDto>> getNewModel()
+    {
+      HousingComplex mapper = new HousingComplex();
+      List<GraphAptCapacityDto> returnGraph = new List<GraphAptCapacityDto>();
+      foreach (var item in await graceService.GetComplexesAsync())
+      {
+        if (item.ActiveBit)
+        {
+          returnGraph.Add(
+            new GraphAptCapacityDto()
+            {
+              name = item.Name,
+              maxCapacity = await returnComplexMaxCap(mapper.MapToDto(item)),
+              currentCapacity = await returnComplexCurCap(mapper.MapToDto(item))
+            });
+        }
+      }
+      return returnGraph;
+    }
+
     private readonly GraceServiceClient graceService = new GraceServiceClient();
 
     //method to give the max capacity of the given apartment 
@@ -42,21 +63,5 @@ namespace Workforce.Logic.Grace.Domain.Models
       return Total;
     }
 
-    public async Task<List<GraphAptCapacityDto>> getNewModel()
-    {
-      HousingComplex mapper = new HousingComplex();
-      List<GraphAptCapacityDto> returnGraph = new List<GraphAptCapacityDto>();
-      foreach (var item in await graceService.GetComplexesAsync())
-      {
-        returnGraph.Add(
-          new GraphAptCapacityDto()
-          {
-            name = item.Name,
-            maxCapacity = await returnComplexMaxCap(mapper.MapToDto(item)),
-            currentCapacity = await returnComplexCurCap(mapper.MapToDto(item))
-          });
-      }
-      return returnGraph;
-    }
   }
 }

@@ -61,11 +61,12 @@ namespace Workforce.Logic.Grace.Tests
     {
       HousingDataDto dataDto = new HousingDataDto()
       {
-        AssociateID = 20,
+        AssociateID = 44,
         MoveInDate = DateTime.Now,
         MoveOutDate = DateTime.Now,
-        RoomID = 2,
-        StatusID = 2
+        RoomID = 53,
+        StatusID = 2,
+        ActiveBit = true
       };
       bool passed = await logicHelper.AddHousingData(dataDto);
       Assert.True(passed);
@@ -80,9 +81,10 @@ namespace Workforce.Logic.Grace.Tests
     {
       StatusDto statusDto = new StatusDto()
       {
-        StatusColor = "Pink",
+        StatusColor = "purple",
         StatusID = 2,
-        StatusMessage = "YOUR FIRED"
+        StatusMessage = "has diseases, YUK",
+        ActiveBit = true
       };
       bool passed = await logicHelper.AddStatus(statusDto);
       Assert.True(passed);
