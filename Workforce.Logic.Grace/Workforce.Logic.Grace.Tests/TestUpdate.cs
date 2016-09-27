@@ -32,26 +32,31 @@ namespace Workforce.Logic.Grace.Tests
 
       Assert.True(true);
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     [Fact]
     public async Task Test_UpdateApartment()
     {
-      ApartmentDto aptDto = new ApartmentDto()
+
+      List<ApartmentDto> listApt = await logicHelper.ApartmentsGetActvie();
+      bool passed = true;
+      foreach (var item in listApt)
       {
-        HotelID = 22,
-        ActiveBit = true,
-        CurrentCapacity = 1,
-        MaxCapacity = 99,
-        GenderID = 1,
-        RoomID = 43,
-        RoomNumber = 0
-
-      };
-
-      bool passed = await logicHelper.UpdateApartment(aptDto);
+        item.GenderID = 9;
+        if (await logicHelper.UpdateApartment(item))
+        {
+          passed = false;
+        }
+      } 
+     
       Assert.True(passed);
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     [Fact]
     public async Task Test_UpdateHousingComplex()
     {
@@ -68,7 +73,10 @@ namespace Workforce.Logic.Grace.Tests
       Assert.True(passed);
       //Assert.True(await logicHelper.UpdateHousingComplex(new HousingComplexDto() {  HotelID = 23, ActiveBit = true}));
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     [Fact]
     public async Task Test_UpdateStatus()
     {
