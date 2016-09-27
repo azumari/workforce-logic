@@ -23,11 +23,12 @@ namespace Workforce.Logic.Charlie.Domain.Models
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
-        public RequestDao MapToSoap(RequestDto req)
+        public async Task<RequestDao> MapToSoap(RequestDto req)
         {
             var mapper = mapperReq2.CreateMapper();
             var dao = mapper.Map<RequestDao>(req);
             dao.RequestID = req.RequestId;
+            dao.Associate = await AssocByEmail(req.AssociateEmail);
             return dao;
         }
 
@@ -110,6 +111,25 @@ namespace Workforce.Logic.Charlie.Domain.Models
             return assoc;
         }
 
+        /// <summary>
+        /// Returns an associate id corresponding to given email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public async Task<int> AssocByEmail(string email)
+        {
+            var associates = new List<Associate>();
+            associates = await asac.GrabFromFelice();
+            var result = associates.Find((a => a.Email == email));
+            if (result != null)
+            {
+                return result.AssociateId;
+            }
+            else
+            {
+                return 0;
+            }
+        }
 
     }
 }
