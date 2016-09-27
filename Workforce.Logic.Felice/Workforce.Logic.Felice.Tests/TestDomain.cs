@@ -107,10 +107,25 @@ namespace Workforce.Logic.Felice.Tests
             Name = "Stealing Knives",
             StartDate = DateTime.UtcNow,
             EndDate = DateTime.UtcNow,
-            InstructorID = 2
+            Instructor = 2
          };
 
          bool passed = await logic.UpdateBatch(batch);
+         Assert.True(passed);
+      }
+
+      [Fact]
+      public async Task Test_AddBatch()
+      {
+         var batch = new BatchDto()
+         {
+            Name = "Stealing Knives",
+            StartDate = DateTime.UtcNow,
+            EndDate = DateTime.UtcNow,
+            Instructor = 2
+         };
+
+         bool passed = await logic.AddNewBatch(batch);
          Assert.True(passed);
       }
 

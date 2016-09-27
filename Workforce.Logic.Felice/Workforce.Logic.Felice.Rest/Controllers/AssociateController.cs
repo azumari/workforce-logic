@@ -15,13 +15,21 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       private readonly LogicHelper logic = new LogicHelper();
 
       /// <summary>
-      /// This is the base 'Get' method for Associate
-      /// It is understood that 'Get' calls to associate will come through here
+      /// This 'Get' method will get every Associate that exists in the database
       /// </summary>
       [HttpGet]
-      public async Task<HttpResponseMessage> Get()
+      public async Task<HttpResponseMessage> FindAll()
       {
          return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAllAssociates());
+      }
+
+      /// <summary>
+      /// This is the base 'Get' method for Associate that returns results based on active status
+      /// </summary>
+      [HttpGet]
+      public async Task<HttpResponseMessage> FindAllByStatus(bool active)
+      {
+         return Request.CreateResponse(HttpStatusCode.OK, await logic.GetAssociatesByStatus(active));
       }
 
       /// <summary>

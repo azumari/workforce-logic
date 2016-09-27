@@ -29,7 +29,7 @@ namespace Workforce.Logic.Felice.Domain
 
          foreach (var item in serviceAssociates)
          {
-            if (associateLogic.ValidateSoapData(item) && item.Active)
+            if (associateLogic.ValidateSoapData(item))
             {
                var parse = associateLogic.MapToRest(item);
                parse.Gender = serviceGenders.FirstOrDefault(g => g.GenderID.Equals(item.GenderID)).Name;
@@ -39,7 +39,42 @@ namespace Workforce.Logic.Felice.Domain
          }
          return associate;
       }
-     
+
+      /// <summary>
+      /// Basic 'Get' method that retrieves all associates based on active status
+      /// </summary>
+      public async Task<List<AssociateDto>> GetAssociatesByStatus(bool active)
+      {
+         var associate = new List<AssociateDto>();
+         var serviceAssociates = await client.GetAssociatesAsync();
+         var serviceGenders = await client.GetGenderAsync();
+
+         foreach (var item in serviceAssociates)
+         {
+            if (active) //return all active associates
+            {
+               if (associateLogic.ValidateSoapData(item) && item.Active)
+               {
+                  var parse = associateLogic.MapToRest(item);
+                  parse.Gender = serviceGenders.FirstOrDefault(g => g.GenderID.Equals(item.GenderID)).Name;
+
+                  associate.Add(parse);
+               }
+            }
+            else //return all deactive associates
+            {
+               if (associateLogic.ValidateSoapData(item) && item.Active == false)
+               {
+                  var parse = associateLogic.MapToRest(item);
+                  parse.Gender = serviceGenders.FirstOrDefault(g => g.GenderID.Equals(item.GenderID)).Name;
+
+                  associate.Add(parse);
+               }
+            }
+         }
+         return associate;
+      }
+
       /// <summary>
       /// Attempts to add a new associate after ensuring that the data entered is valid
       /// </summary>
@@ -86,11 +121,18 @@ namespace Workforce.Logic.Felice.Domain
       {
          if (associateLogic.ValidateRestData(update))
          {
+            //collect all genders
             var serviceGenders = await client.GetGenderAsync();
-
+            //convert Gender Name to Gender ID
             update.Gender = serviceGenders.FirstOrDefault(g => g.Name.Equals(update.Gender)).GenderID.ToString();
 
-            return await client.UpdateAssociateAsync(associateLogic.MapToSoap(update));
+            //store newly updated object and map it
+            var keepStatus = associateLogic.MapToSoap(update);
+            //maintain 'Active' status so that it doesn't auto convert to false
+            keepStatus.Active = true;
+
+            //return converted information
+            return await client.UpdateAssociateAsync(keepStatus); //failing here
          }
          else
          {
