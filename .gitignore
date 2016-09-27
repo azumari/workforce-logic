@@ -272,3 +272,4 @@ __pycache__/
 
 ### VisualStudio Patch ###
 build/
+/Workforce.Logic.Felice/Workforce.Logic.Felice.Tests/app.config

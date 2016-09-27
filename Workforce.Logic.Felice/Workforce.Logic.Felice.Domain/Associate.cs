@@ -12,8 +12,8 @@ namespace Workforce.Logic.Felice.Domain
 {
    public class Associate
    {
-      private readonly MapperConfiguration associateMapper = new MapperConfiguration(t => t.CreateMap<AssociateDao, AssociateDto>().ForMember(t1 => t1.Gender, opt => opt.MapFrom(t2 => t2.GenderID.ToString())));
-      private readonly MapperConfiguration associateReverseMapper = new MapperConfiguration(t => t.CreateMap<AssociateDto, AssociateDao>().ForMember(train => train.GenderID, m => m.MapFrom(gen => gen.Gender)));
+      private readonly MapperConfiguration associateMapper = new MapperConfiguration(a => a.CreateMap<AssociateDao, AssociateDto>().ForMember(a1 => a1.Gender, opt => opt.MapFrom(a2 => a2.GenderID.ToString())));
+      private readonly MapperConfiguration associateReverseMapper = new MapperConfiguration(a => a.CreateMap<AssociateDto, AssociateDao>().ForMember(a2 => a2.GenderID, m => m.MapFrom(a1 => int.Parse(a1.Gender))));
 
       /// <summary>
       /// Validates the data coming in from the data layer

@@ -16,22 +16,34 @@ namespace Workforce.Logic.Felice.Tests
       private LogicHelper logic;
       private FeliceServiceClient client;
 
-      AssociateDto newAssociate;
-
       public TestDomain()
       {
          client = new FeliceServiceClient();
          logic = new LogicHelper();
          expected = 1;
-
-         newAssociate = new AssociateDto()
-         {
-            FirstName = "John",
-            LastName = "Cena",
-            Email = "john.cena@gmail.com"
-         };
       }
 
+      /// <summary>
+      /// Tests the primary 'Insert' function for Associate
+      /// </summary>
+      [Fact]
+      public async Task Test_AddAssociate()
+      {
+         var associate = new AssociateDto()
+         {
+            FirstName = "Katherine",
+            LastName = "Pryde",
+            Email = "kpryde1@gmail.com",
+            Gender = "Female"
+         };
+
+         bool passed = await logic.AddNewAssociate(associate);
+         Assert.True(passed);
+      }
+
+      /// <summary>
+      /// Tests the primary 'Get' function for Associates
+      /// </summary>
       [Fact]
       public async void Test_GetAllAssociates()
       {
@@ -40,10 +52,12 @@ namespace Workforce.Logic.Felice.Tests
          Assert.True(actual.Count >= expected);
       }
 
+      /*
       [Fact]
-      public async void Test_AddNewAssociate()
+      public async void Test_UpdateAssociate()
       {
-         Assert.True(await logic.AddNewAssociate(newAssociate));
+         Assert.True(await logic.UpdateAssociate());
       }
+      */
    }
 }

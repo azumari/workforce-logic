@@ -37,6 +37,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,8 +70,10 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="TestDomain.cs" />
+    <Compile Include="TestRest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Properties\DataSources\Workforce.Logic.Felice.Domain.WorkforceServiceReference.AssociateDao.datasource" />
     <None Include="Service References\WorkforceServiceReference\FeliceService.wsdl" />
     <None Include="Service References\WorkforceServiceReference\FeliceService.xsd">
@@ -86,6 +89,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateAddressDao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.AssociateDao.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WorkforceServiceReference\Workforce.Logic.Felice.Tests.WorkforceServiceReference.BatchDao.datasource">
@@ -109,6 +115,10 @@
     <ProjectReference Include="..\Workforce.Logic.Felice.Domain\Workforce.Logic.Felice.Domain.csproj">
       <Project>{33172e4f-54e7-4409-bf2d-c616f2971a84}</Project>
       <Name>Workforce.Logic.Felice.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Workforce.Logic.Felice.Rest\Workforce.Logic.Felice.Rest.csproj">
+      <Project>{7B00065C-9295-4D05-B8E0-477ABC4F71E7}</Project>
+      <Name>Workforce.Logic.Felice.Rest</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
