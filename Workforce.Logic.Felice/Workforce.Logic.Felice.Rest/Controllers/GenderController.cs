@@ -16,7 +16,6 @@ namespace Workforce.Logic.Felice.Rest.Controllers
 
       /// <summary>
       /// This is the base 'Get' method for Gender
-      /// It is understood that 'Get' calls to gender will come through here
       /// </summary>
       [HttpGet]
       public async Task<HttpResponseMessage> Get()
