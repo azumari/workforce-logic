@@ -13,6 +13,6 @@ namespace Workforce.Logic.Grace.Domain.BusinessModels.Dtos
     public DateTime MoveInDate { get; set; }
     public DateTime MoveOutDate { get; set; }
     public int StatusID { get; set; }
-    public bool ActiveBit { get; set; }
+    
   }
 }

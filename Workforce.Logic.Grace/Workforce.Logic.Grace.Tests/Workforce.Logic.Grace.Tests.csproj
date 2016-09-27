@@ -75,6 +75,7 @@
     <Compile Include="TestDeletes.cs" />
     <Compile Include="TestFilters.cs" />
     <Compile Include="TestInserts.cs" />
+    <Compile Include="TestUpdate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\DataSources\Workforce.Logic.Grace.Domain.GraceServiceReference.ApartmentDao.datasource" />

@@ -5,8 +5,8 @@ using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Workforce.Logic.Charlie.Domain.Services
 {
@@ -60,7 +60,6 @@ namespace Workforce.Logic.Charlie.Domain.Services
         DeliveryMethod = SmtpDeliveryMethod.Network,
         UseDefaultCredentials = false,
         Credentials = new NetworkCredential(ConfigurationManager.AppSettings["GmailUserName"], ConfigurationManager.AppSettings["GmailPassword"])
-
       };
 
       //sends the email
