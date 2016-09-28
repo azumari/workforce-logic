@@ -34,9 +34,9 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<HttpResponseMessage> FindByEndpoints(int dept, int dest)
+        public async Task<HttpResponseMessage> FindByEndpoints(int loc)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, await logHelp.RidesByEndpoints(dept,dest));
+            return Request.CreateResponse(HttpStatusCode.OK, await logHelp.RidesByEndpoints(loc));
         }
 
         /// <summary>
@@ -48,11 +48,17 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
         {
             if (await logHelp.InsertRide(ride))
             {
+                var locs = await logHelp.GetAllLocations();
+                var deptLoc = locs.Find(l => l.LocationId == ride.DepartureLoc);
+                var destLoc = locs.Find(l => l.LocationId == ride.DestinationLoc);
                 //email confirmation
               EmailService email = new EmailService();
               var destination = ride.AssociateEmail;
-              var body = "Thank you for offering a ride";
-              var subject = "Offer Ride";
+              var body = "You have offered a ride from "+deptLoc.StopName+" to "+destLoc.StopName+
+                    " on "+ride.DepartureTime.ToString()
+                    +" with "+ride.SeatsAvailable.ToString()+
+                    " seats available. You will receive email confirmation if any of your colleagues are matched as riders.";
+              var subject = "Thank you for offering a ride!";
 
               await email.SendAsync(destination, body, subject);
 
@@ -74,7 +80,28 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
         {
             if (await logHelp.JoinRide(match))
             {
-                //email confirmation
+                var locs = await logHelp.GetAllLocations();
+                var deptLoc = locs.Find(l => l.LocationId == match.DeptLoc);
+                var destLoc = locs.Find(l => l.LocationId == match.DestLoc);
+                var remaining = match.Seats - 1;
+
+                EmailService email1 = new EmailService();
+                var destination1 = match.ReqEmail;
+                var body1 = "You have joined a ride from " + deptLoc.StopName + " to " + destLoc.StopName +
+                      " on " + match.DeptTime.ToString() + "! Your driver may be reached at "
+                      + match.RideEmail;
+                var subject1 = "Ride joined!";
+
+                await email1.SendAsync(destination1, body1, subject1);
+
+                EmailService email2 = new EmailService();
+                var destination2 = match.RideEmail;
+                var body2 = "A passenger has joined your ride from " + deptLoc.StopName + " to " + destLoc.StopName +
+                      " on " + match.DeptTime.ToString() + "! Your passenger may be reached at "
+                      + match.ReqEmail + " and you have " + remaining.ToString() + " remaining open seats.";
+                var subject2 = "You have a passenger!";
+
+                await email1.SendAsync(destination2, body2, subject2);
                 return Request.CreateResponse(HttpStatusCode.OK, "success!");
             }
             else
