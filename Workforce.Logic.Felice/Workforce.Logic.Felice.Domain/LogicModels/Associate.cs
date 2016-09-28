@@ -24,15 +24,14 @@ namespace Workforce.Logic.Felice.Domain
       {
          int maxEmail = 500;
          int maxName = 50;
-         int maxPhone = 10;
 
          if (val.ValidateInt(associate.AssociateID) 
             && val.ValidateInt(associate.BatchID)
             && val.ValidateInt(associate.GenderID)
-            && val.ValidateString(associate.Email, maxEmail)
-            && val.ValidateString(associate.FirstName, maxName)
-            && val.ValidateString(associate.LastName, maxName)
-            && val.ValidateString(associate.PhoneNumber, maxPhone)
+            && val.ValidateRequiredString(associate.Email, maxEmail)
+            && val.ValidateRequiredString(associate.FirstName, maxName)
+            && val.ValidateRequiredString(associate.LastName, maxName)
+            && val.ValidateStandardString(associate.PhoneNumber)
             && val.ValidateBool(associate.HasCar)
             && val.ValidateBool(associate.HasKeys)
             && val.ValidateBool(associate.IsComing)

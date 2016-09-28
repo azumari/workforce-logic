@@ -8,9 +8,21 @@ namespace Workforce.Logic.Felice.Domain
 {
    public class CoreValidator
    {
-      public bool ValidateString(string newString, int maxLength)
+      public bool ValidateRequiredString(string newString, int maxLength)
       {
-         if (newString == string.Empty || newString.Length > maxLength)
+         if (String.IsNullOrWhiteSpace(newString) || newString.Length > maxLength)
+         {
+            return false;
+         }
+         else
+         {
+            return true;
+         }
+      }
+
+      public bool ValidateStandardString(string newString)
+      {
+         if (newString == String.Empty)
          {
             return false;
          }
