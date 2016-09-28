@@ -117,7 +117,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
       //now the above list has housingDatas with the same roomid and with different AssociateIds so we will return a list of all the
       //associate dtos were thier id is equal to the housing data
-
+      dataDto.RemoveAll(x => x.StatusID.Equals(3));
 
       List<AssociateDto> returnList = new List<AssociateDto>();
 
