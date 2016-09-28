@@ -17,22 +17,22 @@ namespace Workforce.Logic.Charlie.Tests
   public class EmailTest
   {
     [Fact]
-    public async Task sendEmail()
+    public async Task Test_sendEmail()
     {
       EmailService send = new EmailService();
 
       //The person the email is being sent to
-      var Destination = "wlopez.career@gmail.com";
+      var Destination = "charlestester3@gmail.com";
 
       //The message being sent
       var Body = "Hello, how are you doing?";
 
       //The subject of the email
-      var Subject = "Welcome Mr. Dango";
+      var Subject = "whoomp, there it is";
 
       //Calls the method to send the email
       await send.SendAsync(Destination, Body, Subject);
-
+      Assert.True(true);
     }
   }
 }

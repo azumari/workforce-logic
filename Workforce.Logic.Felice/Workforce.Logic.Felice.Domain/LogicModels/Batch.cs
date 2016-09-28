@@ -14,14 +14,29 @@ namespace Workforce.Logic.Felice.Domain
    {
       private readonly MapperConfiguration batchMapper = new MapperConfiguration(b => b.CreateMap<BatchDao, BatchDto>());
       private readonly MapperConfiguration batchReverseMapper = new MapperConfiguration(b => b.CreateMap<BatchDto, BatchDao>());
+      private CoreValidator val = new CoreValidator();
 
       /// <summary>
       /// Validates the data coming in from the data layer
       /// </summary>
       public bool ValidateSoapData(BatchDao batch)
       {
-         //reserved for validating information coming from the Data Layer
-         return true;
+         int maxName = 50;
+         int maxSection = 100;
+
+         if (val.ValidateInt(batch.BatchID)
+            && val.ValidateDate(batch.EndDate)
+            && val.ValidateInt(batch.Instructor)
+            && val.ValidateRequiredString(batch.Name, maxName)
+            && val.ValidateRequiredString(batch.Section, maxSection)
+            && val.ValidateDate(batch.StartDate))
+         {
+            return true;
+         }
+         else
+         {
+            return false;
+         }
       }
 
       /// <summary>

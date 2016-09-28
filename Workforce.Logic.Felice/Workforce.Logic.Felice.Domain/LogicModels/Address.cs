@@ -14,14 +14,28 @@ namespace Workforce.Logic.Felice.Domain
    {
       private readonly MapperConfiguration addressMapper = new MapperConfiguration(t => t.CreateMap<AddressDao, AddressDto>());
       private readonly MapperConfiguration addressReverseMapper = new MapperConfiguration(t => t.CreateMap<AddressDto, AddressDao>());
+      private CoreValidator val = new CoreValidator();
 
       /// <summary>
       /// Validates the data coming in from the data layer
       /// </summary>
       public bool ValidateSoapData(AddressDao address)
       {
-         //reserved for validating information coming from the Data Layer
-         return true;
+         if (val.ValidateStandardString(address.Address1)
+            && val.ValidateStandardString(address.Address2)
+            && val.ValidateInt(address.AddressId)
+            && val.ValidateStandardString(address.City)
+            && val.ValidateStandardString(address.Country)
+            && val.ValidateBool(address.Primary)
+            && val.ValidateStandardString(address.State)
+            && val.ValidateStandardString(address.Zipcode))
+         {
+            return true;
+         }
+         else
+         {
+            return false;
+         }
       }
 
       /// <summary>

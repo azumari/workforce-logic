@@ -12,7 +12,7 @@ namespace Workforce.Logic.Felice.Domain.DomainModels
       public int? BatchID { get; set; }
       [StringLength(50), Required]
       public string Name { get; set; }
-      public int? Instructor { get; set; }
+      public int Instructor { get; set; }
       [Required]
       public string Section { get; set; }
       [Required]

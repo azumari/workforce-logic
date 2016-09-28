@@ -19,7 +19,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
     /// system by calling the ApplicationUserManager Class
     /// </summary>
     /// <returns></returns>
-    [Authorize(Roles="Admin")]
+    [Authorize(Roles = "Admin")]
     [Route("user")]
     public IHttpActionResult GetUsers()
     {
@@ -38,7 +38,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
     {
       var user = await this.AppUserManager.FindByIdAsync(Id);
 
-      if(user != null)
+      if (user != null)
       {
         return Ok(this.TheModelFactory.Create(user));
       }
@@ -79,7 +79,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       //If the model is valid,
       //We will use it to create
       //a new instance of ApplicationUser
-      if(!ModelState.IsValid)
+      if (!ModelState.IsValid)
       {
         return BadRequest(ModelState);
       }
@@ -106,7 +106,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
 
 
       //If the creation failed
-      if(!addUserResult.Succeeded)
+      if (!addUserResult.Succeeded)
       {
         return GetErrorResult(addUserResult);
       }
@@ -126,10 +126,10 @@ namespace Workforce.Logic.Felice.Rest.Controllers
 
     [AllowAnonymous]
     [HttpGet]
-    [Route("ConfirmEmail", Name="ConfirmEmailRoute")]
+    [Route("ConfirmEmail", Name = "ConfirmEmailRoute")]
     public async Task<IHttpActionResult> ConfirmEmail(string userId = "", string code = "")
     {
-      if(string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(code))
+      if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(code))
       {
         ModelState.AddModelError("", "User Id and Code are required");
         return BadRequest(ModelState);
@@ -140,9 +140,9 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       //the result will have a successful value.
       IdentityResult result = await this.AppUserManager.ConfirmEmailAsync(userId, code);
 
-      if(result.Succeeded)
+      if (result.Succeeded)
       {
-        return Ok();
+        return Redirect("http://localhost/workforce-felice/Login/Index");
       }
 
       else
@@ -164,14 +164,14 @@ namespace Workforce.Logic.Felice.Rest.Controllers
     [Route("ChangePassword")]
     public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
     {
-      if(!ModelState.IsValid)
+      if (!ModelState.IsValid)
       {
         return BadRequest(ModelState);
       }
 
       IdentityResult result = await this.AppUserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword); //test to see
 
-      if(!result.Succeeded)
+      if (!result.Succeeded)
       {
         return GetErrorResult(result);
       }
@@ -185,7 +185,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    [Authorize(Roles="Admin")]
+    [Authorize(Roles = "Admin")]
     [Route("user/{id:guid}")]
     public async Task<IHttpActionResult> DeleteUser(string id)
     {
@@ -194,11 +194,11 @@ namespace Workforce.Logic.Felice.Rest.Controllers
       var appUser = await this.AppUserManager.FindByIdAsync(id);
 
       //If user is found, the user will be deleted
-      if(appUser != null)
+      if (appUser != null)
       {
         IdentityResult result = await this.AppUserManager.DeleteAsync(appUser);
 
-        if(!result.Succeeded)
+        if (!result.Succeeded)
         {
           return GetErrorResult(result);
         }
@@ -224,34 +224,34 @@ namespace Workforce.Logic.Felice.Rest.Controllers
     /// <param name="id"></param>
     /// <param name="rolesToAssign"></param>
     /// <returns></returns>
-    [Authorize(Roles="Admin")]
+    [Authorize(Roles = "Admin")]
     [Route("user/{id:guid}/roles")]
     [HttpPut]
     public async Task<IHttpActionResult> AssignRolesToUser([FromUri] string id, [FromBody] string[] rolesToAssign)
     {
       var appUser = await this.AppUserManager.FindByIdAsync(id);
-      
-      if(appUser == null)
+
+      if (appUser == null)
       {
         return NotFound();
       }
 
       var currentRoles = await this.AppUserManager.GetRolesAsync(appUser.Id);
       var rolesNotExists = rolesToAssign.Except(this.AppRoleManager.Roles.Select(x => x.Name)).ToArray();
-      if(rolesNotExists.Count() > 0)
+      if (rolesNotExists.Count() > 0)
       {
         ModelState.AddModelError("", string.Format("Roles '{0}' does not exist", string.Join(",", rolesNotExists)));
       }
 
       IdentityResult removeResult = await this.AppUserManager.RemoveFromRolesAsync(appUser.Id, currentRoles.ToArray());
-      if(!removeResult.Succeeded)
+      if (!removeResult.Succeeded)
       {
         ModelState.AddModelError("", "Failed to remove user roles");
         return BadRequest(ModelState);
       }
 
       IdentityResult addResult = await this.AppUserManager.AddToRolesAsync(appUser.Id, rolesToAssign);
-      if(!addResult.Succeeded)
+      if (!addResult.Succeeded)
       {
         ModelState.AddModelError("", "Failed to add user roles");
         return BadRequest(ModelState);
