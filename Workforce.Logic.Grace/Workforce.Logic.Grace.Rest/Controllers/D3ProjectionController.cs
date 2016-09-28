@@ -3,11 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
+using Workforce.Logic.Grace.Domain.Helpers;
 
 namespace Workforce.Logic.Grace.Rest.Controllers
 {
-    public class D3ProjectionController : ApiController
+
+  [EnableCors(origins: "*", headers: "*", methods: "*")]
+  public class D3ProjectionController : ApiController
+  {
+
+    D3jsHelper d3jsHelper = new D3jsHelper();
+
+    public async Task<HttpResponseMessage> Get([FromUri] DateTime projectionDate)
     {
+      return Request.CreateResponse(HttpStatusCode.OK, await d3jsHelper.ReturnGraphProjection(projectionDate));
     }
+
+  }
 }

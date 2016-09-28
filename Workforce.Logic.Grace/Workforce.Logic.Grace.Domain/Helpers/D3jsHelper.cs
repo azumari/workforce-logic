@@ -25,5 +25,13 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
     }
 
+    public async Task<List<D3Projection>> ReturnGraphProjection(DateTime projectionDate)
+    {
+      D3DateProjection d3DateProjection = new D3DateProjection();
+
+      return await d3DateProjection.getNewModel(projectionDate);
+
+       
+    }
   }
 }
