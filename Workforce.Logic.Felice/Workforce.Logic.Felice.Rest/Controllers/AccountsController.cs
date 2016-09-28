@@ -6,6 +6,8 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Workforce.Logic.Felice.Domain;
+using Workforce.Logic.Felice.Domain.DomainModels;
 using Workforce.Logic.Felice.Rest.Infrastructure;
 using Workforce.Logic.Felice.Rest.Models;
 
@@ -96,6 +98,18 @@ namespace Workforce.Logic.Felice.Rest.Controllers
         Level = 3,
         JoinDate = DateTime.Now.Date
       };
+
+      AssociateDto associate = new AssociateDto()
+      {
+        FirstName = createUserModel.FirstName,
+        LastName = createUserModel.LastName,
+        Email = createUserModel.Email,
+        Gender = createUserModel.Gender,
+        BatchID = createUserModel.Batch
+      };
+
+      LogicHelper help = new LogicHelper();
+      await help.AddNewAssociate(associate);
 
       //This will do the work for us to create the user
       //It will validate if the username or email has been used before
