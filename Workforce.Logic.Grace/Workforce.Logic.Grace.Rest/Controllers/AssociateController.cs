@@ -10,22 +10,23 @@ using Workforce.Logic.Grace.Domain.TransferModels.Dtos;
 
 namespace Workforce.Logic.Grace.Rest.Controllers
 {
-    public class AssociateController : ApiController
-    {
+  public class AssociateController : ApiController
+  {
+
+    //AssociatesGetByApartment()AssociatesGetRoomless
 
     AssociateHelper associateHelper = new AssociateHelper();
 
-    public async Task<HttpResponseMessage> Get()//[FromUri] bool getActive)
+    public async Task<HttpResponseMessage> Get([FromUri] InsertAssociateDto associate)
     {
-      bool getActive = true;
-      if (getActive)
+      if (associate.AssociateId.Equals(-1))
       {
-        return Request.CreateResponse(HttpStatusCode.OK, await associateHelper.AssociatesGetActive());
+        return Request.CreateResponse(HttpStatusCode.OK, await associateHelper.AssociatesGetRoomless());
       }
-      return Request.CreateResponse(HttpStatusCode.OK, await associateHelper.AssociatesGetAll());
+      return Request.CreateResponse(HttpStatusCode.OK, await associateHelper.AssociatesGetByApartment(associate));
     }
 
-    
+
     public async Task<HttpResponseMessage> Post([FromBody]InsertAssociateDto associate)
     {
       if (await associateHelper.InsertAssociateToRoom(associate))
@@ -34,7 +35,7 @@ namespace Workforce.Logic.Grace.Rest.Controllers
       }
       return Request.CreateResponse(HttpStatusCode.OK, "failed to insert associate into a apartment room");
     }
-   
+
     public async Task<HttpResponseMessage> Put([FromBody]InsertAssociateDto associate)
     {
       if (await associateHelper.ChangeAssocToDifferentRoom(associate))
@@ -43,7 +44,7 @@ namespace Workforce.Logic.Grace.Rest.Controllers
       }
       return Request.CreateResponse(HttpStatusCode.OK, "failed to move associate to another apartment room");
     }
-    
+
     public async Task<HttpResponseMessage> Delete([FromBody]InsertAssociateDto associate)
     {
       if (await associateHelper.RemoveAssocFromRoom(associate))
