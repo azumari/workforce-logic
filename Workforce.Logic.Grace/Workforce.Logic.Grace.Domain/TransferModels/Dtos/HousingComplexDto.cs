@@ -16,6 +16,9 @@ namespace Workforce.Logic.Grace.Domain.BusinessModels.Dtos
     public int HotelID { get; set; }
     public bool ActiveBit { get; set; }
 
+    //for the d3js stuff
+    public int maxCapacity { get; set; }
+    public int currentCapacity { get; set; }
   }
 }
  

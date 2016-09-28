@@ -11,6 +11,6 @@ namespace Workforce.Logic.Grace.Domain.TransferModels.Dtos
     public string name { get; set; }
     public int maxCapacity { get; set; }
     public int currentCapacity { get; set; }
-    public int HotelId { get; set; }
+    //public int HotelId { get; set; }
   }
 }
