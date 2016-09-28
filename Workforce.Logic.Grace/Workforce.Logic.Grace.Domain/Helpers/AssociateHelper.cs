@@ -13,6 +13,11 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     private readonly LogicHelper logicHelper = new LogicHelper();
     private readonly Consumers consumerHelper = new Consumers();
 
+    /// <summary>
+    /// this method inserts an assocaite into a room and increase the current capacity
+    /// </summary>
+    /// <param name="associate"></param>
+    /// <returns></returns>
     public async Task<bool> InsertAssociateToRoom(InsertAssociateDto associate)
     {
       //FIND THE ASSOCIATE FROM A LIST OF ASSOCIATES
@@ -44,6 +49,11 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       return (passed && passed2);
     }
 
+    /// <summary>
+    /// this method removes an assocaite from a room and decrease the current capacity
+    /// </summary>
+    /// <param name="associate"></param>
+    /// <returns></returns>
     public async Task<bool> RemoveAssocFromRoom(InsertAssociateDto associate)
     {
       //FIND THE ASSOCIATE FROM A LIST OF ASSOCIATES
@@ -53,10 +63,8 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
       //FIND THE HousingData
       HousingDataDto data = (await logicHelper.HousingDataGetAll()).Find(id => id.AssociateID.Equals(associate.AssociateId));
-
       //update the status to 3  WHERE THREE MEANS TO DELETE
       data.StatusID = 3;
-
       if (aptDto.CurrentCapacity > 0)
       {
         aptDto.CurrentCapacity--;
@@ -65,11 +73,65 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       {
         return false;
       }
-
       bool passed = await logicHelper.UpdateApartment(aptDto);
       bool passed2 = await logicHelper.UpdateHousingData(data);
 
       return (passed && passed2);
+    }
+
+    /// <summary>
+    /// this method returns a list of all the associates consumed from felice that are roomless
+    /// </summary>
+    /// <returns></returns>
+    public async Task<List<AssociateDto>> AssociatesGetRoomless()
+    {
+      List<AssociateDto> assDto = await consumerHelper.ConsumeAssociatesFromAPI();
+
+      List<HousingDataDto> dataDto = await logicHelper.HousingDataGetAll();
+
+      List<AssociateDto> returnList = new List<AssociateDto>();
+
+      dataDto.RemoveAll(x => x.StatusID.Equals(3));
+
+      foreach (var item in assDto)
+      {
+        if (!dataDto.Exists(assId => assId.AssociateID.Equals(item.AssociateID))) 
+        {
+          returnList.Add(item);
+        }
+      }
+ 
+      return returnList;
+    }
+    
+    /// <summary>
+    /// this method returns a list of all the associates consumed from felice that are inside a particular room
+    /// </summary>
+    /// <param name="associate"></param>
+    /// <returns></returns>
+    public async Task<List<AssociateDto>> AssociatesGetByApartment(InsertAssociateDto associate)
+    {
+      List<AssociateDto> assDto = await consumerHelper.ConsumeAssociatesFromAPI();  
+      //find all housingDatas with a given room id
+      List<HousingDataDto> dataDto = (await logicHelper.HousingDataGetAll()).FindAll(x => x.RoomID.Equals(associate.RoomId));
+
+      //now the above list has housingDatas with the same roomid and with different AssociateIds so we will return a list of all the
+      //associate dtos were thier id is equal to the housing data
+
+
+      List<AssociateDto> returnList = new List<AssociateDto>();
+
+      foreach (var item in assDto)
+      {
+        if (dataDto.Exists(x => x.AssociateID.Equals(item.AssociateID)))
+        {
+          returnList.Add(item);
+        }
+
+      }
+
+ 
+      return returnList;
 
     }
 
@@ -86,15 +148,6 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
 
 
-    public async Task<List<AssociateDto>> AssociatesGetActive()
-    {
-      throw new NotImplementedException();
-    }
-
-    public async Task<List<AssociateDto>> AssociatesGetAll()
-    {
-      throw new NotImplementedException();
-    }
   }
 
 }

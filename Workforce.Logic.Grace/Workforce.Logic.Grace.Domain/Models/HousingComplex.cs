@@ -48,12 +48,14 @@ namespace Workforce.Logic.Grace.Domain.Models
     /// </summary>
     /// <param name="daos"></param>
     /// <returns>List<HousingComplexDto></returns>
-    public List<HousingComplexDto> getDtoList(IEnumerable<HousingComplexDao> daos)
+    public async Task<List<HousingComplexDto>> getDtoList(IEnumerable<HousingComplexDao> daos)
     {
       var complexes = new List<HousingComplexDto>();
       foreach (var item in daos)
       {
         var temp = MapToDto(item);
+        temp.currentCapacity = await returnComplexCurCap(temp);
+        temp.maxCapacity = await returnComplexMaxCap(temp);
         complexes.Add(temp);
       }
       return complexes;
@@ -75,7 +77,7 @@ namespace Workforce.Logic.Grace.Domain.Models
       return complexes;
     }
 
-    public List<HousingComplexDto> getActiveDtoList(IEnumerable<HousingComplexDao> daos)
+    public async Task<List<HousingComplexDto>> getActiveDtoList(IEnumerable<HousingComplexDao> daos)
     {
       var complexes = new List<HousingComplexDto>();
       foreach (var item in daos)
@@ -83,11 +85,53 @@ namespace Workforce.Logic.Grace.Domain.Models
         if (item.ActiveBit)
         {
           var temp = MapToDto(item);
+          temp.currentCapacity = await returnComplexCurCap(temp);
+          temp.maxCapacity = await returnComplexMaxCap(temp );
           complexes.Add(temp);
         }
         
       }
       return complexes;
+    }
+
+
+    private readonly GraceServiceClient graceService = new GraceServiceClient();
+
+
+    /// <summary>
+    /// method to give the max capacity of the given apartment 
+    /// </summary>
+    /// <param name="hotApt"></param>
+    /// <returns>Task<int></returns>
+    public async Task<int> returnComplexCurCap(HousingComplexDto hotApt)
+    {
+      int Total = 0;
+      foreach (var item in await graceService.GetApartmentsAsync())
+      {
+        if (item.ActiveBit && (item.HotelID == hotApt.HotelID))
+        {
+          Total += item.CurrentCapacity;
+        }
+      }
+      return Total;
+    }
+
+    /// <summary>
+    /// method to give the current capacity of the given apartment complex
+    /// </summary>
+    /// <param name="hotApt"></param>
+    /// <returns>Task<int></returns>
+    public async Task<int> returnComplexMaxCap(HousingComplexDto hotApt)
+    {
+      int Total = 0;
+      foreach (var item in await graceService.GetApartmentsAsync())
+      {
+        if (item.ActiveBit && (item.HotelID == hotApt.HotelID))
+        {
+          Total += item.MaxCapacity;
+        }
+      }
+      return Total;
     }
 
   }

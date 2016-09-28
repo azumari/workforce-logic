@@ -64,7 +64,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       {
         HousingComplex housingComplexVnM = new HousingComplex();
         var daoComplexes = await graceService.GetComplexesAsync();
-        var dtoComplexes = housingComplexVnM.getDtoList(daoComplexes);
+        var dtoComplexes = await housingComplexVnM.getDtoList(daoComplexes);
 
         //STILL NEED TO VALIDATE
         return dtoComplexes;
@@ -84,7 +84,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       try
       {
         HousingComplex housingComplexVnM = new HousingComplex();
-        var dtoComplexes = housingComplexVnM.getActiveDtoList(await graceService.GetComplexesAsync()); 
+        var dtoComplexes =await  housingComplexVnM.getActiveDtoList(await graceService.GetComplexesAsync()); 
 
         //STILL NEED TO VALIDATE
         return dtoComplexes;

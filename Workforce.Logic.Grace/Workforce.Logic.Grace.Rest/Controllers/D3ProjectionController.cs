@@ -10,19 +10,17 @@ using Workforce.Logic.Grace.Domain.Helpers;
 
 namespace Workforce.Logic.Grace.Rest.Controllers
 {
+
   [EnableCors(origins: "*", headers: "*", methods: "*")]
-  public class D3AptCapacityController : ApiController
+  public class D3ProjectionController : ApiController
   {
 
     D3jsHelper d3jsHelper = new D3jsHelper();
 
-    /// <summary>
-    /// get method to generate the data needed for the d3js graph to consume this data
-    /// </summary>
-    /// <returns></returns>
-    public async Task<HttpResponseMessage> Get()
+    public async Task<HttpResponseMessage> Get([FromUri] DateTime projectionDate)
     {
-      return Request.CreateResponse(HttpStatusCode.OK, await d3jsHelper.ReturnGraphAptCapacity());
+      return Request.CreateResponse(HttpStatusCode.OK, await d3jsHelper.ReturnGraphProjection(projectionDate));
     }
+
   }
 }

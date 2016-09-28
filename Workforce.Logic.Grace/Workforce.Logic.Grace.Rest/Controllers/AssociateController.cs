@@ -5,27 +5,41 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Workforce.Logic.Grace.Domain.Helpers;
 using Workforce.Logic.Grace.Domain.TransferModels.Dtos;
 
 namespace Workforce.Logic.Grace.Rest.Controllers
 {
-    public class AssociateController : ApiController
-    {
+
+  [EnableCors(origins: "*", headers: "*", methods: "*")]
+  public class AssociateController : ApiController
+  {
+
+    //AssociatesGetByApartment()AssociatesGetRoomless
 
     AssociateHelper associateHelper = new AssociateHelper();
 
-    public async Task<HttpResponseMessage> Get()//[FromUri] bool getActive)
+    /// <summary>
+    /// http get method if -1 is passed in we get associates who are roomless otherwise we return all associate
+    /// that are in the given apartment
+    /// </summary>
+    /// <param name="associate"></param>
+    /// <returns></returns>
+    public async Task<HttpResponseMessage> Get([FromUri] InsertAssociateDto associate)
     {
-      bool getActive = true;
-      if (getActive)
+      if (associate.AssociateId.Equals(-1))
       {
-        return Request.CreateResponse(HttpStatusCode.OK, await associateHelper.AssociatesGetActive());
+        return Request.CreateResponse(HttpStatusCode.OK, await associateHelper.AssociatesGetRoomless());
       }
-      return Request.CreateResponse(HttpStatusCode.OK, await associateHelper.AssociatesGetAll());
+      return Request.CreateResponse(HttpStatusCode.OK, await associateHelper.AssociatesGetByApartment(associate));
     }
 
-    
+    /// <summary>
+    /// http post to post associate into room
+    /// </summary>
+    /// <param name="associate"></param>
+    /// <returns></returns>
     public async Task<HttpResponseMessage> Post([FromBody]InsertAssociateDto associate)
     {
       if (await associateHelper.InsertAssociateToRoom(associate))
@@ -34,7 +48,12 @@ namespace Workforce.Logic.Grace.Rest.Controllers
       }
       return Request.CreateResponse(HttpStatusCode.OK, "failed to insert associate into a apartment room");
     }
-   
+
+    /// <summary>
+    /// not implemented yet but we want this to change associate to a different room
+    /// </summary>
+    /// <param name="associate"></param>
+    /// <returns></returns>
     public async Task<HttpResponseMessage> Put([FromBody]InsertAssociateDto associate)
     {
       if (await associateHelper.ChangeAssocToDifferentRoom(associate))
@@ -43,7 +62,12 @@ namespace Workforce.Logic.Grace.Rest.Controllers
       }
       return Request.CreateResponse(HttpStatusCode.OK, "failed to move associate to another apartment room");
     }
-    
+
+    /// <summary>
+    /// this method deletes assocaite from a room
+    /// </summary>
+    /// <param name="associate"></param>
+    /// <returns></returns>
     public async Task<HttpResponseMessage> Delete([FromBody]InsertAssociateDto associate)
     {
       if (await associateHelper.RemoveAssocFromRoom(associate))

@@ -30,6 +30,7 @@ namespace Workforce.Logic.Grace.Domain.Models
               name = item.Name,
               maxCapacity = await returnComplexMaxCap(mapper.MapToDto(item)),
               currentCapacity = await returnComplexCurCap(mapper.MapToDto(item))
+
             });
         }
       }
