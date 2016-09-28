@@ -142,7 +142,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
 
       if (result.Succeeded)
       {
-        return Redirect("http://localhost/workforce-felice/Login/Index");
+        return Redirect("http://ec2-54-173-46-251.compute-1.amazonaws.com/workforce-felice/login/index");
       }
 
       else
