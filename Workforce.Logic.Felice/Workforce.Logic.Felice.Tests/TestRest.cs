@@ -36,7 +36,6 @@ namespace Workforce.Logic.Felice.Tests
                Email = "kpryde1@gmail.com",
                Gender = "Female"
             };
-            AssociateController ass = new AssociateController();
 
             Assert.True(true);
          }
