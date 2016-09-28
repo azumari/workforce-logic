@@ -80,16 +80,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Address.cs" />
-    <Compile Include="Associate.cs" />
-    <Compile Include="Batch.cs" />
+    <Compile Include="LogicModels\Address.cs" />
+    <Compile Include="LogicModels\Associate.cs" />
+    <Compile Include="LogicModels\Batch.cs" />
     <Compile Include="DomainModels\AddressDto.cs" />
     <Compile Include="DomainModels\AssociateDto.cs" />
     <Compile Include="DomainModels\BatchDto.cs" />
     <Compile Include="DomainModels\GenderDto.cs" />
     <Compile Include="DomainModels\InstructorDto.cs" />
-    <Compile Include="Gender.cs" />
-    <Compile Include="Instructor.cs" />
+    <Compile Include="LogicModels\Gender.cs" />
+    <Compile Include="LogicModels\Instructor.cs" />
     <Compile Include="Service References\WorkforceServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -98,6 +98,7 @@
     <Compile Include="Services\IdentityConfig.cs" />
     <Compile Include="LogicHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\WorkforceServiceReference\FeliceService.wsdl" />

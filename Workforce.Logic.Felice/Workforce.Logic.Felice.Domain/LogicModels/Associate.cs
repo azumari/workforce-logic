@@ -20,6 +20,7 @@ namespace Workforce.Logic.Felice.Domain
       /// </summary>
       public bool ValidateSoapData(AssociateDao associate)
       {
+         if ()
          //reserved for validating information coming from the Data Layer
          return true;
       }
