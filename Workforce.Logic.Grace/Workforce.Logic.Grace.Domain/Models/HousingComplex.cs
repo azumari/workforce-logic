@@ -77,6 +77,11 @@ namespace Workforce.Logic.Grace.Domain.Models
       return complexes;
     }
 
+    /// <summary>
+    /// method to convert a list of DAOs into a list of DTOs where active bit is true
+    /// </summary>
+    /// <param name="daos"></param>
+    /// <returns></returns>
     public async Task<List<HousingComplexDto>> getActiveDtoList(IEnumerable<HousingComplexDao> daos)
     {
       var complexes = new List<HousingComplexDto>();

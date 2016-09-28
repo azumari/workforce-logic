@@ -21,17 +21,18 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     {
       D3AptCapacity aptCapacity = new D3AptCapacity();
       return await aptCapacity.getNewModel();
-
-
     }
 
+
+    /// <summary>
+    /// this helper methdo is calls the logic for percolating the model needed for the d3js projection back to its caller
+    /// </summary>
+    /// <param name="projectionDate"></param>
+    /// <returns></returns>
     public async Task<List<D3Projection>> ReturnGraphProjection(DateTime projectionDate)
     {
       D3DateProjection d3DateProjection = new D3DateProjection();
-
       return await d3DateProjection.getNewModel(projectionDate);
-
-       
     }
   }
 }

@@ -19,7 +19,11 @@ namespace Workforce.Logic.Grace.Domain.Models
     //private readonly GraceServiceClient f = new GraceServiceClient();
     private readonly MapperConfiguration apartmentMapper = new MapperConfiguration(m => m.CreateMap<ApartmentDao, ApartmentDto>().ReverseMap());
 
-
+    /// <summary>
+    /// this method validates the dto but is not implemented yet
+    /// </summary>
+    /// <param name="temp"></param>
+    /// <returns></returns>
     private bool validate(IEnumerable<ApartmentDto> temp)
     {
 
@@ -88,6 +92,11 @@ namespace Workforce.Logic.Grace.Domain.Models
     }
 
 
+    /// <summary>
+    /// this method converts a list of all DAOs into dtos where active bit is true
+    /// </summary>
+    /// <param name="daos"></param>
+    /// <returns></returns>
     public List<ApartmentDto> getActiveDtoList(IEnumerable<ApartmentDao> daos)
     {
       var apts = new List<ApartmentDto>();

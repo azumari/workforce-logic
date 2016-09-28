@@ -15,6 +15,11 @@ namespace Workforce.Logic.Grace.Domain.Models
     private readonly GraceServiceClient graceService = new GraceServiceClient();
     private readonly LogicHelper logicHelper = new LogicHelper();
 
+    /// <summary>
+    /// this method returns the model needed for d3js projections
+    /// </summary>
+    /// <param name="projectionDate"></param>
+    /// <returns></returns>
     public async Task<List<D3Projection>> getNewModel(DateTime projectionDate)
     {
       int totalMaxCapacity = 0;
@@ -41,9 +46,11 @@ namespace Workforce.Logic.Grace.Domain.Models
 
       return returnList;
     }
-
-     
- 
+    /// <summary>
+    /// this method returns the int value of the current capacity for the given complex
+    /// </summary>
+    /// <param name="hotApt"></param>
+    /// <returns></returns>
     private async Task<int> returnComplexCurCap(HousingComplexDto hotApt)
     {
       int Total = 0;
@@ -57,7 +64,11 @@ namespace Workforce.Logic.Grace.Domain.Models
       return Total;
     }
 
-
+    /// <summary>
+    /// this method returns the int value of the max capacity for the given complex
+    /// </summary>
+    /// <param name="hotApt"></param>
+    /// <returns></returns>
     private async Task<int> returnComplexMaxCap(HousingComplexDto hotApt)
     {
       int Total = 0;
