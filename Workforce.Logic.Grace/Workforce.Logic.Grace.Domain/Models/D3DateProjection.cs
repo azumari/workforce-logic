@@ -14,6 +14,8 @@ namespace Workforce.Logic.Grace.Domain.Models
   {
     private readonly GraceServiceClient graceService = new GraceServiceClient();
     private readonly LogicHelper logicHelper = new LogicHelper();
+ 
+    private readonly Consumers consumerHelper = new Consumers();
 
     /// <summary>
     /// this method returns the model needed for d3js projections
@@ -37,14 +39,59 @@ namespace Workforce.Logic.Grace.Domain.Models
         D3Projection temp = new D3Projection();
         temp.TotalMax = totalMaxCapacity;
         temp.Date = projectionDate.ToString("yyyy-MM-dd");
-        temp.CurrentCapacity = totalCurCapacity;
-        totalCurCapacity += 3;
+        //temp.CurrentCapacity = totalCurCapacity;
+        //totalCurCapacity += 3;
+        temp.CurrentCapacity = await findCurrCapDate(projectionDate);
         returnList.Add(temp);
         projectionDate = projectionDate.AddDays(1.0);
       }
   
 
       return returnList;
+    }
+
+    /// <summary>
+    /// method to get the current capacity of a given date
+    /// </summary>
+    /// <param name="dateTime"></param>
+    /// <returns></returns>
+    private async Task<int> findCurrCapDate(DateTime dateTime)
+    {
+      int value = 0;
+      //List<AssociateDto> assoc = await consumerHelper.ConsumeAssociatesFromAPI();
+      //FIND THE APARTMENT
+
+      List<HousingDataDto> dataList = await logicHelper.HousingDataGetAll();
+
+      List<HousingDataDto> returnList = new List<HousingDataDto>();
+
+      foreach (var item in dataList)
+      {
+        int b1 = (item.MoveInDate.CompareTo(dateTime));  
+        int b2 = (dateTime.CompareTo(item.MoveOutDate));
+
+        if ( (b1 == -1  || b1 == 0)  &&  (b2==0 || b2 ==1))
+        {
+          returnList.Add(item);
+        }
+ 
+      }
+
+      List<ApartmentDto> aptDto = await logicHelper.ApartmentsGetAll();
+
+      foreach (var item in returnList)
+      {
+        if (item.RoomID != null)
+        {
+          ApartmentDto temp = aptDto.Find(id => id.RoomID.Equals(item.RoomID));
+          value += temp.CurrentCapacity;
+        }
+      }
+      
+
+      return value;
+
+
     }
     /// <summary>
     /// this method returns the int value of the current capacity for the given complex
