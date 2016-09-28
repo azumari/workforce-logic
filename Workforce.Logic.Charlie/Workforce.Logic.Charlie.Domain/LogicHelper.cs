@@ -53,11 +53,14 @@ namespace Workforce.Logic.Charlie.Domain
 
             foreach (var item in source)
             { 
-                if (item.Active && item.SeatsAvailable > 0)
+                if (item.Active && (item.SeatsAvailable > 0))
                 {
                     var newRide = await rideModel.MapToRest(item);
-
-                    rides.Add(newRide);
+                    if (newRide.DepartureTime >= DateTime.Now)
+                    {
+                        rides.Add(newRide);
+                    }
+ 
                 }
             }
             return rides;
@@ -69,7 +72,7 @@ namespace Workforce.Logic.Charlie.Domain
         /// <param name="dept"></param>
         /// <param name="dest"></param>
         /// <returns></returns>
-        public async Task<List<RideDto>> RidesByEndpoints(int dept, int dest)
+        public async Task<List<RideDto>> RidesByEndpoints(int loc)
         {
             var rides = new List<RideDto>();
             var source = await client.GetRideAsync();
@@ -79,9 +82,12 @@ namespace Workforce.Logic.Charlie.Domain
                 if (item.Active && item.SeatsAvailable > 0)
                 {
                     var newRide = await rideModel.MapToRest(item);
-                    if (newRide.DepartureLoc == dept && newRide.DestinationLoc == dest)
+                    if (newRide.DepartureLoc == loc || newRide.DestinationLoc == loc)
                     {
-                        rides.Add(newRide);
+                        if (newRide.DepartureTime >= DateTime.Now)
+                        {
+                            rides.Add(newRide);
+                        }
                     }
                 }
             }
@@ -102,7 +108,10 @@ namespace Workforce.Logic.Charlie.Domain
                 if (item.Active)
                 {
                     var newReq = await reqModel.MapToRest(item);
-                    reqs.Add(newReq);
+                    if (newReq.DepartureTime >= DateTime.Now)
+                    {
+                        reqs.Add(newReq);
+                    }
                 }
             }
             return reqs;
@@ -114,7 +123,7 @@ namespace Workforce.Logic.Charlie.Domain
         /// <param name="dept"></param>
         /// <param name="dest"></param>
         /// <returns></returns>
-        public async Task<List<RequestDto>> RequestsByEndpoints (int dept, int dest)
+        public async Task<List<RequestDto>> RequestsByEndpoints (int loc)
         {
             var reqs = new List<RequestDto>();
             var source = await client.GetRequestAsync();
@@ -124,9 +133,12 @@ namespace Workforce.Logic.Charlie.Domain
                 if (item.Active)
                 {
                     var newReq = await reqModel.MapToRest(item);
-                    if (newReq.DepartureLoc == dept && newReq.DestinationLoc == dest)
+                    if (newReq.DepartureLoc == loc || newReq.DestinationLoc == loc)
                     {
-                        reqs.Add(newReq);
+                        if (newReq.DepartureTime >= DateTime.Now)
+                        {
+                            reqs.Add(newReq);
+                        }
                     }
                 }
             }

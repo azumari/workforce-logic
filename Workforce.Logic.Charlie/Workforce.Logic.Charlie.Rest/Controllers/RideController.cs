@@ -34,9 +34,9 @@ namespace Workforce.Logic.Charlie.Rest.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<HttpResponseMessage> FindByEndpoints(int dept, int dest)
+        public async Task<HttpResponseMessage> FindByEndpoints(int loc)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, await logHelp.RidesByEndpoints(dept,dest));
+            return Request.CreateResponse(HttpStatusCode.OK, await logHelp.RidesByEndpoints(loc));
         }
 
         /// <summary>
