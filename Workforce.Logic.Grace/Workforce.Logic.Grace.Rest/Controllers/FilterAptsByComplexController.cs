@@ -11,7 +11,7 @@ using Workforce.Logic.Grace.Domain.Helpers;
 
 namespace Workforce.Logic.Grace.Rest.Controllers
 {
-  [EnableCors(origins: "http://localhost", headers: "*", methods: "*")]
+  [EnableCors(origins: "*", headers: "*", methods: "*")]
   public class FilterAptsByComplexController : ApiController
   {
     private readonly LogicHelper logicHelper = new LogicHelper();
