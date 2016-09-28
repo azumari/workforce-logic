@@ -395,7 +395,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     public async Task<List<ApartmentDto>> FilterAptByComplex(HousingComplexDto complex)
     { 
       List<ApartmentDto> returnList = new List<ApartmentDto>();
-      foreach (var item in await ApartmentsGetAll())
+      foreach (var item in await ApartmentsGetActvie())
       {
         if (item.HotelID.Equals(complex.HotelID))
         {

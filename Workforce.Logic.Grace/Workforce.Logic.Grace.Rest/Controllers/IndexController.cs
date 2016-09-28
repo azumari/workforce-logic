@@ -22,6 +22,11 @@ namespace Workforce.Logic.Grace.Rest.Controllers
     {
       var options = new Dictionary<string, string>();
       options.Add("getAllApartments", "api/Apartment");
+      options.Add("Associate", "api/Associate");
+      options.Add("D3AptCapacity", "api/D3aptCapacity");
+      options.Add("D3Projection", "api/D3Projection");
+      options.Add("filterApartmentsByComplex", "api/filteraptsbycomplex");
+      options.Add("getAssociates", "api/GetASsociates");
       options.Add("getAllHousingComplexes", "api/HousingComplex");
       options.Add("getAllHousingData", "api/HousingData");
       options.Add("getAllStatuses", "api/Status");
