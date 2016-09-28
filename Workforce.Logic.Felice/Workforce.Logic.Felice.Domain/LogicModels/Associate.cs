@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Workforce.Logic.Felice.Domain.DomainModels;
@@ -14,15 +15,35 @@ namespace Workforce.Logic.Felice.Domain
    {
       private readonly MapperConfiguration associateMapper = new MapperConfiguration(a => a.CreateMap<AssociateDao, AssociateDto>().ForMember(a1 => a1.Gender, opt => opt.MapFrom(a2 => a2.GenderID.ToString())));
       private readonly MapperConfiguration associateReverseMapper = new MapperConfiguration(a => a.CreateMap<AssociateDto, AssociateDao>().ForMember(a2 => a2.GenderID, m => m.MapFrom(a1 => int.Parse(a1.Gender))));
+      private CoreValidator val = new CoreValidator();
 
       /// <summary>
       /// Validates the data coming in from the data layer
       /// </summary>
       public bool ValidateSoapData(AssociateDao associate)
       {
-         if ()
-         //reserved for validating information coming from the Data Layer
-         return true;
+         int maxEmail = 500;
+         int maxName = 50;
+         int maxPhone = 10;
+
+         if (val.ValidateInt(associate.AssociateID) 
+            && val.ValidateInt(associate.BatchID)
+            && val.ValidateInt(associate.GenderID)
+            && val.ValidateString(associate.Email, maxEmail)
+            && val.ValidateString(associate.FirstName, maxName)
+            && val.ValidateString(associate.LastName, maxName)
+            && val.ValidateString(associate.PhoneNumber, maxPhone)
+            && val.ValidateBool(associate.HasCar)
+            && val.ValidateBool(associate.HasKeys)
+            && val.ValidateBool(associate.IsComing)
+            && val.ValidateDate(associate.DateOfBirth))
+         {
+            return true;
+         }
+         else
+         {
+            return false;
+         }
       }
 
       /// <summary>

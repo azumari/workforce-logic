@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Workforce.Logic.Felice.Domain
 {
-   public class Validator
+   public class CoreValidator
    {
       public bool ValidateString(string newString, int maxLength)
       {
@@ -51,6 +51,24 @@ namespace Workforce.Logic.Felice.Domain
          else
          {
             return true;
+         }
+      }
+
+      public bool ValidateDate(DateTime? newDate)
+      {
+         DateTime test;
+
+         if (newDate == null)
+         {
+            return true;
+         }
+         else if (DateTime.TryParse(newDate.ToString(), out test))
+         {
+            return true;
+         }
+         else
+         {
+            return false;
          }
       }
    }

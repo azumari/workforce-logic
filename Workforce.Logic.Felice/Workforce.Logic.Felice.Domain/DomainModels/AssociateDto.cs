@@ -10,10 +10,11 @@ namespace Workforce.Logic.Felice.Domain.DomainModels
    public class AssociateDto
    {
       public int? AssociateID { get; set; }
-      [StringLength(50), Required]
+      [StringLength(50), Required, RegularExpression("/^[A-Za-Z]+$/")]
       public string FirstName { get; set; }
-      [StringLength(50), Required]
+      [StringLength(50), Required, RegularExpression("/^[A-Za-Z]+$/")]
       public string LastName { get; set; }
+      [RegularExpression("/^[A-Za-Z0-9]+$/")]
       public string Gender { get; set; }  //set to string to hold Gender.Name
       [Required]
       public int BatchID { get; set; }
