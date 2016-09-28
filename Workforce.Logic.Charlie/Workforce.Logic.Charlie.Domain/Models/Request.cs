@@ -93,7 +93,7 @@ namespace Workforce.Logic.Charlie.Domain.Models
         {
             var assoc = new Associate();
             var list = await asac.GrabFromFelice();
-            var result = list.Find(a => a.AssociateId == id);
+            var result = list.FirstOrDefault(a => a.AssociateId == id);
             if (result != null)
             {
                 assoc.AssociateId = id;
@@ -120,7 +120,7 @@ namespace Workforce.Logic.Charlie.Domain.Models
         {
             var associates = new List<Associate>();
             associates = await asac.GrabFromFelice();
-            var result = associates.Find((a => a.Email == email));
+            var result = associates.FirstOrDefault((a => a.Email == email));
             if (result != null)
             {
                 return result.AssociateId;
