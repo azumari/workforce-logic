@@ -14,14 +14,24 @@ namespace Workforce.Logic.Felice.Domain
    {
       private readonly MapperConfiguration genderMapper = new MapperConfiguration(g => g.CreateMap<GenderDao, GenderDto>());
       private readonly MapperConfiguration genderReverseMapper = new MapperConfiguration(g => g.CreateMap<GenderDto, GenderDao>());
+      private CoreValidator val = new CoreValidator();
 
       /// <summary>
       /// Validates the data coming in from the data layer
       /// </summary>
-      public bool ValidateSoapData(GenderDao batch)
+      public bool ValidateSoapData(GenderDao gender)
       {
-         //reserved for validating information coming from the Data Layer
-         return true;
+         int maxName = 50;
+
+         if (val.ValidateInt(gender.GenderID)
+            && val.ValidateRequiredString(gender.Name, maxName))
+         {
+            return true;
+         }
+         else
+         {
+            return false;
+         }
       }
 
       /// <summary>
