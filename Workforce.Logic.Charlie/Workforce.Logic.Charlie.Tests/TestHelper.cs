@@ -99,7 +99,7 @@ namespace Workforce.Logic.Charlie.Tests
                 RequestID = 0,
                 Active = true,
                 Schedule = 109,
-                Associate = 9
+                Associate = 88
             };
             //bool passed = await logicHelper.InsertRequest(reqDto);
             bool passed = await client.InsertRequestAsync(reqDao);

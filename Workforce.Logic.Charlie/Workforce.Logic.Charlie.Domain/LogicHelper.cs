@@ -17,6 +17,7 @@ namespace Workforce.Logic.Charlie.Domain
         Location locModel = new Location();
         Ride rideModel = new Ride();
         Request reqModel = new Request();
+        AssociateAccess asac = new AssociateAccess();
 
 
         #region get
@@ -55,6 +56,7 @@ namespace Workforce.Logic.Charlie.Domain
                 if (item.Active)
                 {
                     var newRide = await rideModel.MapToRest(item);
+
                     rides.Add(newRide);
                 }
             }
@@ -164,7 +166,7 @@ namespace Workforce.Logic.Charlie.Domain
         public async Task<bool> InsertRide(RideDto ride)
         {
             //validate ridedto
-            var toAdd = rideModel.MapToSoap(ride);
+            var toAdd = await rideModel.MapToSoap(ride);
             var sched = new ScheduleDao();
             sched.DepartureLoc = ride.DepartureLoc;
             sched.DepartureTime = ride.DepartureTime;
@@ -209,7 +211,7 @@ namespace Workforce.Logic.Charlie.Domain
         public async Task<bool> InsertRequest(RequestDto req)
         {
             //validate requestdto
-            var toAdd = reqModel.MapToSoap(req);
+            var toAdd = await reqModel.MapToSoap(req);
             var sched = new ScheduleDao();
             sched.DepartureLoc = req.DepartureLoc;
             sched.DepartureTime = req.DepartureTime;
@@ -278,7 +280,7 @@ namespace Workforce.Logic.Charlie.Domain
         {
             try
             {
-                var toNix = reqModel.MapToSoap(req);
+                var toNix = await reqModel.MapToSoap(req);
                 toNix.Schedule = 20; 
                 return await client.DeleteRequestAsync(toNix);
             }
@@ -299,7 +301,7 @@ namespace Workforce.Logic.Charlie.Domain
         {
             try
             {
-                var toNix = rideModel.MapToSoap(ride);
+                var toNix = await rideModel.MapToSoap(ride);
                 toNix.Schedule = 20;
                 return await client.DeleteRideAsync(toNix);
             }
@@ -467,7 +469,17 @@ namespace Workforce.Logic.Charlie.Domain
         /// <returns></returns>
         public async Task<int> AssocByEmail(string email)
         {
-            return 9;
+            var associates = new List<Associate>();
+            associates = await asac.GrabFromFelice();
+            var result = associates.Find((a => a.Email == email));
+            if (result != null)
+            {
+                return result.AssociateId;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         #endregion
