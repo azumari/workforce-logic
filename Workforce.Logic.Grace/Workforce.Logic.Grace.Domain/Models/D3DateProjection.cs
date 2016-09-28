@@ -37,7 +37,7 @@ namespace Workforce.Logic.Grace.Domain.Models
         returnList.Add(temp);
         projectionDate = projectionDate.AddDays(1.0);
       }
- 
+  
 
       return returnList;
     }
