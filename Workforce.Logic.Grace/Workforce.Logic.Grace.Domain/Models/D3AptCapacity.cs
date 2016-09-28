@@ -34,7 +34,7 @@ namespace Workforce.Logic.Grace.Domain.Models
               
             });
         }
-      }
+      } 
       return returnGraph;
     }
 

@@ -17,6 +17,12 @@ namespace Workforce.Logic.Grace.Rest.Controllers
 
     AssociateHelper associateHelper = new AssociateHelper();
 
+    /// <summary>
+    /// http get method if -1 is passed in we get associates who are roomless otherwise we return all associate
+    /// that are in the given apartment
+    /// </summary>
+    /// <param name="associate"></param>
+    /// <returns></returns>
     public async Task<HttpResponseMessage> Get([FromUri] InsertAssociateDto associate)
     {
       if (associate.AssociateId.Equals(-1))
@@ -26,7 +32,11 @@ namespace Workforce.Logic.Grace.Rest.Controllers
       return Request.CreateResponse(HttpStatusCode.OK, await associateHelper.AssociatesGetByApartment(associate));
     }
 
-
+    /// <summary>
+    /// http post to post associate into room
+    /// </summary>
+    /// <param name="associate"></param>
+    /// <returns></returns>
     public async Task<HttpResponseMessage> Post([FromBody]InsertAssociateDto associate)
     {
       if (await associateHelper.InsertAssociateToRoom(associate))
@@ -36,6 +46,11 @@ namespace Workforce.Logic.Grace.Rest.Controllers
       return Request.CreateResponse(HttpStatusCode.OK, "failed to insert associate into a apartment room");
     }
 
+    /// <summary>
+    /// not implemented yet but we want this to change associate to a different room
+    /// </summary>
+    /// <param name="associate"></param>
+    /// <returns></returns>
     public async Task<HttpResponseMessage> Put([FromBody]InsertAssociateDto associate)
     {
       if (await associateHelper.ChangeAssocToDifferentRoom(associate))
@@ -45,6 +60,11 @@ namespace Workforce.Logic.Grace.Rest.Controllers
       return Request.CreateResponse(HttpStatusCode.OK, "failed to move associate to another apartment room");
     }
 
+    /// <summary>
+    /// this method deletes assocaite from a room
+    /// </summary>
+    /// <param name="associate"></param>
+    /// <returns></returns>
     public async Task<HttpResponseMessage> Delete([FromBody]InsertAssociateDto associate)
     {
       if (await associateHelper.RemoveAssocFromRoom(associate))

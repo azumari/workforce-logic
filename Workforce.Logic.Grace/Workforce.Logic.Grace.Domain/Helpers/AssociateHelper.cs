@@ -13,6 +13,11 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     private readonly LogicHelper logicHelper = new LogicHelper();
     private readonly Consumers consumerHelper = new Consumers();
 
+    /// <summary>
+    /// this method inserts an assocaite into a room and increase the current capacity
+    /// </summary>
+    /// <param name="associate"></param>
+    /// <returns></returns>
     public async Task<bool> InsertAssociateToRoom(InsertAssociateDto associate)
     {
       //FIND THE ASSOCIATE FROM A LIST OF ASSOCIATES
@@ -44,6 +49,11 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       return (passed && passed2);
     }
 
+    /// <summary>
+    /// this method removes an assocaite from a room and decrease the current capacity
+    /// </summary>
+    /// <param name="associate"></param>
+    /// <returns></returns>
     public async Task<bool> RemoveAssocFromRoom(InsertAssociateDto associate)
     {
       //FIND THE ASSOCIATE FROM A LIST OF ASSOCIATES
@@ -69,6 +79,10 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       return (passed && passed2);
     }
 
+    /// <summary>
+    /// this method returns a list of all the associates consumed from felice that are roomless
+    /// </summary>
+    /// <returns></returns>
     public async Task<List<AssociateDto>> AssociatesGetRoomless()
     {
       List<AssociateDto> assDto = await consumerHelper.ConsumeAssociatesFromAPI();
@@ -77,17 +91,24 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
       List<AssociateDto> returnList = new List<AssociateDto>();
 
+      dataDto.RemoveAll(x => x.StatusID.Equals(3));
+
       foreach (var item in assDto)
       {
-        if (!dataDto.Exists(assId => assId.AssociateID.Equals(item.AssociateID)))
+        if (!dataDto.Exists(assId => assId.AssociateID.Equals(item.AssociateID))) 
         {
           returnList.Add(item);
         }
       }
-
+ 
       return returnList;
     }
-
+    
+    /// <summary>
+    /// this method returns a list of all the associates consumed from felice that are inside a particular room
+    /// </summary>
+    /// <param name="associate"></param>
+    /// <returns></returns>
     public async Task<List<AssociateDto>> AssociatesGetByApartment(InsertAssociateDto associate)
     {
       List<AssociateDto> assDto = await consumerHelper.ConsumeAssociatesFromAPI();  
