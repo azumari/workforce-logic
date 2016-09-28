@@ -53,7 +53,7 @@ namespace Workforce.Logic.Charlie.Domain
 
             foreach (var item in source)
             { 
-                if (item.Active)
+                if (item.Active && item.SeatsAvailable > 0)
                 {
                     var newRide = await rideModel.MapToRest(item);
 
@@ -76,7 +76,7 @@ namespace Workforce.Logic.Charlie.Domain
 
             foreach (var item in source)
             {
-                if (item.Active)
+                if (item.Active && item.SeatsAvailable > 0)
                 {
                     var newRide = await rideModel.MapToRest(item);
                     if (newRide.DepartureLoc == dept && newRide.DestinationLoc == dest)
@@ -336,7 +336,7 @@ namespace Workforce.Logic.Charlie.Domain
                                                 sc.DestinationLoc == match.DestLoc).ScheduleID;
                     if (scId != 0)
                     {
-                    toAdd.Active = true;
+                    toAdd.Active = false;
                     toAdd.Schedule = scId;
                     var added = await client.InsertRequestAsync(toAdd);
                         if (added)
