@@ -116,7 +116,7 @@ namespace Workforce.Logic.Felice.Rest.Controllers
 
       var callbackUrl = new Uri(Url.Link("ConfirmEmailRoute", new { userId = user.Id, code = code }));
 
-      await this.AppUserManager.SendEmailAsync(user.Id, "Confirm Your Account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+      await this.AppUserManager.SendEmailAsync(user.Id, "Confirm Your Account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a> <br/> Your password is: " + createUserModel.Password);
 
       Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
 
