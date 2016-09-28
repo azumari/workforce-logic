@@ -25,12 +25,15 @@ namespace Workforce.Logic.Grace.Tests
     {
       HousingDataDto dataDto = new HousingDataDto()
       {
-        AssociateID = 0,
-        RoomID = 52
+        AssociateID = 107,
+        RoomID = null,
+        StatusID = 3,
+         MoveInDate = DateTime.Now,
+         MoveOutDate = DateTime.Now
       };
       bool passed = await logicHelper.UpdateHousingData(dataDto);
 
-      Assert.True(true);
+      Assert.True(passed);
     }
     /// <summary>
     /// 

@@ -25,11 +25,13 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       //FIND THE APARTMENT
       ApartmentDto aptDto = (await logicHelper.ApartmentsGetAll()).Find(id => id.RoomID.Equals(associate.RoomId));
 
+      List<HousingDataDto> tt = await logicHelper.HousingDataGetAll();
+
       HousingDataDto data = new HousingDataDto()
       {
         AssociateID = assoc.AssociateID,
-        MoveInDate = DateTime.Now,
-        MoveOutDate = DateTime.Now,
+        MoveInDate = associate.MoveInDate,
+        MoveOutDate = associate.MoveOutDate,
         RoomID = associate.RoomId,
         StatusID = 1
       };
@@ -42,9 +44,23 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       {
         return false;
       }
-
-      bool passed = await logicHelper.UpdateApartment(aptDto);
-      bool passed2 = await logicHelper.AddHousingData(data);
+      bool passed = false;
+      bool passed2 = false;
+      if (tt.Exists(id => id.AssociateID.Equals(data.AssociateID)))
+      {
+        passed2 = await logicHelper.UpdateHousingData(data);
+      }
+      else
+      {
+        passed2 = await logicHelper.AddHousingData(data);
+      }
+      //bool passed2 = await logicHelper.AddHousingData(data);
+      if (passed2)
+      {
+        passed = await logicHelper.UpdateApartment(aptDto);
+      }
+      //bool passed = await logicHelper.UpdateApartment(aptDto);
+      //bool passed2 = await logicHelper.AddHousingData(data);
 
       return (passed && passed2);
     }
@@ -73,10 +89,14 @@ namespace Workforce.Logic.Grace.Domain.Helpers
       {
         return false;
       }
-      bool passed = await logicHelper.UpdateApartment(aptDto);
-      bool passed2 = await logicHelper.UpdateHousingData(data);
 
-      return (passed && passed2);
+      data.RoomID = null;
+
+      bool passed = await logicHelper.UpdateApartment(aptDto);
+     // bool passed2 = await logicHelper.UpdateHousingData(data);
+      bool passed3 = await logicHelper.UpdateHousingData(data);
+
+      return (passed &&  passed3);
     }
 
     /// <summary>
@@ -84,7 +104,7 @@ namespace Workforce.Logic.Grace.Domain.Helpers
     /// </summary>
     /// <returns></returns>
     public async Task<List<AssociateDto>> AssociatesGetRoomless()
-    {
+    { 
       List<AssociateDto> assDto = await consumerHelper.ConsumeAssociatesFromAPI();
 
       List<HousingDataDto> dataDto = await logicHelper.HousingDataGetAll();
@@ -117,6 +137,8 @@ namespace Workforce.Logic.Grace.Domain.Helpers
 
       //now the above list has housingDatas with the same roomid and with different AssociateIds so we will return a list of all the
       //associate dtos were thier id is equal to the housing data
+      
+      
       dataDto.RemoveAll(x => x.StatusID.Equals(3));
 
       List<AssociateDto> returnList = new List<AssociateDto>();

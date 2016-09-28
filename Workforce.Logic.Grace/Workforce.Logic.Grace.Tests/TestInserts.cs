@@ -29,7 +29,7 @@ namespace Workforce.Logic.Grace.Tests
         CurrentCapacity = 0,
         ActiveBit = true,
         GenderID = 2,
-        HotelID =  68,
+        HotelID =  87,
         RoomID = 1432,
         MaxCapacity = 6,
         RoomNumber = 3234

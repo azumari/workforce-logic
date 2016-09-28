@@ -10,5 +10,7 @@ namespace Workforce.Logic.Grace.Domain.TransferModels.Dtos
   {
     public int RoomId { get; set; }
     public int AssociateId { get; set; }
+    public DateTime MoveInDate { get; set; }
+    public DateTime MoveOutDate { get; set; }
   }
 }
