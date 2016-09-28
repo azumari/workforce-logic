@@ -316,30 +316,37 @@ namespace Workforce.Logic.Charlie.Domain
         /// <summary>
         /// Match a new request to join an existing ride 
         /// </summary>
-        /// <param name="ride"></param>
-        /// <param name="req"></param>
+        /// <param name="match"></param>
         /// <returns></returns>
-        public async Task<bool> JoinRide(RideDto ride, RequestDto req)
+        public async Task<bool> JoinRide(MatchDto match)
         {
-            //validate ride, req
-            var toAdd = reqModel.MapToSoap(req);
-            var scId = 0;
+            //validate 
+            var toAdd = new RequestDao()
+            {
+                RequestID = 0,
+                Associate = await AssocByEmail(match.ReqEmail),
+            };
                 try
                 {
                     var allSched = await client.GetScheduleAsync();
-                    scId = allSched.Last(sc => sc.DepartureLoc == ride.DepartureLoc &&
-                                                sc.DepartureTime == ride.DepartureTime &&
-                                                sc.DestinationLoc == ride.DestinationLoc).ScheduleID;
+                    var scId = allSched.Last(sc => sc.DepartureLoc == match.DeptLoc &&
+                                                sc.DepartureTime == match.DeptTime &&
+                                                sc.DestinationLoc == match.DestLoc).ScheduleID;
                     if (scId != 0)
                     {
-                        toAdd.Schedule = scId;
-                        toAdd.Active = true;
-                        ride.SeatsAvailable = ride.SeatsAvailable - 1;
-                        if (await client.InsertRequestAsync(toAdd))
+                    toAdd.Active = true;
+                    toAdd.Schedule = scId;
+                    var added = await client.InsertRequestAsync(toAdd);
+                        if (added)
                         {
-                            var decremented = rideModel.MapToSoap(ride);
-                            decremented.Schedule = scId;
-                            decremented.Active = true;
+                            var decremented = new RideDao()
+                            {
+                                RideID = match.RideId,
+                                Associate = await AssocByEmail(match.RideEmail),
+                                SeatsAvailable = match.Seats - 1,
+                                Schedule = scId,
+                                Active = true,
+                            };
                             return await client.UpdateRideAsync(decremented);
                         }
                         else
@@ -361,26 +368,44 @@ namespace Workforce.Logic.Charlie.Domain
         /// <summary>
         /// Create a new ride to answer an existing request
         /// </summary>
-        /// <param name="req"></param>
-        /// <param name="ride"></param>
+        /// <param name="match"></param>
         /// <returns></returns>
-        public async Task<bool> InviteToRide(RequestDto req, RideDto ride)
+        public async Task<bool> InviteToRide(MatchDto match)
         {
             //validate ride, req
-            var toAdd = rideModel.MapToSoap(ride);
-            var scId = 0;
+            var toAdd = new RideDao()
+            {
+                RideID = 0,
+                Associate = await AssocByEmail(match.RideEmail),
+                Active = true,
+                SeatsAvailable = match.Seats - 1,
+                Schedule = 0,
+            };
                 try
                 {
                     var allSched = await client.GetScheduleAsync();
-                    scId = allSched.Last(sc => sc.DepartureLoc == req.DepartureLoc &&
-                                            sc.DepartureTime == req.DepartureTime &&
-                                            sc.DestinationLoc == req.DestinationLoc).ScheduleID;
+                    var scId = allSched.Last(sc => sc.DepartureLoc == match.DeptLoc &&
+                                            sc.DepartureTime == match.DeptTime &&
+                                            sc.DestinationLoc == match.DestLoc).ScheduleID;
                 if (scId != 0)
                 {
                     toAdd.Schedule = scId;
-                    toAdd.Active = true;
-                    toAdd.SeatsAvailable = ride.SeatsAvailable - 1;
-                    return await client.InsertRideAsync(toAdd);
+                    var added = await client.InsertRideAsync(toAdd);
+                    if (added)
+                    {
+                        var met = new RequestDao()
+                        {
+                            RequestID = match.ReqId,
+                            Associate = await AssocByEmail(match.RideEmail),
+                            Schedule = scId,
+                            Active = false,
+                        };
+                        return await client.UpdateRequestAsync(met);
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
                 else
                 {
@@ -433,6 +458,16 @@ namespace Workforce.Logic.Charlie.Domain
             {
                 return 0;
             }
+        }
+
+        /// <summary>
+        /// Returns an associate id corresponding to given email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public async Task<int> AssocByEmail(string email)
+        {
+            return 9;
         }
 
         #endregion

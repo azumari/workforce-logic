@@ -268,10 +268,7 @@ namespace Workforce.Logic.Felice.Domain.WorkforceServiceReference {
         private string StateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ZipCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Zipcode1Field;
+        private string ZipcodeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -388,27 +385,14 @@ namespace Workforce.Logic.Felice.Domain.WorkforceServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ZipCode {
+        public string Zipcode {
             get {
-                return this.ZipCodeField;
+                return this.ZipcodeField;
             }
             set {
-                if ((object.ReferenceEquals(this.ZipCodeField, value) != true)) {
-                    this.ZipCodeField = value;
-                    this.RaisePropertyChanged("ZipCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="Zipcode")]
-        public string Zipcode1 {
-            get {
-                return this.Zipcode1Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Zipcode1Field, value) != true)) {
-                    this.Zipcode1Field = value;
-                    this.RaisePropertyChanged("Zipcode1");
+                if ((object.ReferenceEquals(this.ZipcodeField, value) != true)) {
+                    this.ZipcodeField = value;
+                    this.RaisePropertyChanged("Zipcode");
                 }
             }
         }
@@ -670,13 +654,10 @@ namespace Workforce.Logic.Felice.Domain.WorkforceServiceReference {
         private bool ActiveField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int BatchField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FirstNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int InstructorIDField;
+        private int InstructorIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LastNameField;
@@ -705,19 +686,6 @@ namespace Workforce.Logic.Felice.Domain.WorkforceServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Batch {
-            get {
-                return this.BatchField;
-            }
-            set {
-                if ((this.BatchField.Equals(value) != true)) {
-                    this.BatchField = value;
-                    this.RaisePropertyChanged("Batch");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string FirstName {
             get {
                 return this.FirstNameField;
@@ -731,14 +699,14 @@ namespace Workforce.Logic.Felice.Domain.WorkforceServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int InstructorID {
+        public int InstructorId {
             get {
-                return this.InstructorIDField;
+                return this.InstructorIdField;
             }
             set {
-                if ((this.InstructorIDField.Equals(value) != true)) {
-                    this.InstructorIDField = value;
-                    this.RaisePropertyChanged("InstructorID");
+                if ((this.InstructorIdField.Equals(value) != true)) {
+                    this.InstructorIdField = value;
+                    this.RaisePropertyChanged("InstructorId");
                 }
             }
         }

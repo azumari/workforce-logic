@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Workforce.Logic.Charlie.Domain;
 using Workforce.Logic.Charlie.Domain.BusinessModels;
 using Workforce.Logic.Charlie.Domain.TransferModels;
+using Workforce.Logic.Charlie.Domain.WorkforceService;
 using Xunit;
 
 namespace Workforce.Logic.Charlie.Tests
@@ -15,6 +16,7 @@ namespace Workforce.Logic.Charlie.Tests
         #region test inserts
 
         private readonly LogicHelper logicHelper = new LogicHelper();
+        CharlieServiceClient client = new CharlieServiceClient();
 
         /// <summary>
         ///  Test method to insert location
@@ -83,16 +85,24 @@ namespace Workforce.Logic.Charlie.Tests
         [Fact]
         public async Task Test_InsertRequest()
         {
-            var reqDto = new RequestDto()
+            //var reqDto = new RequestDto()
+            //{
+            //    DepartureLoc = 18,
+            //    DestinationLoc = 30,
+            //    DepartureTime = new DateTime(2016, 9, 29, 15, 45, 0),
+            //    AssociateEmail = "me@iamsocool.com",
+            //    AssociateFirst = "David",
+            //    AssociateLast = "Bowie"
+            //};
+            var reqDao = new RequestDao()
             {
-                DepartureLoc = 18,
-                DestinationLoc = 30,
-                DepartureTime = new DateTime(2016, 9, 28, 15, 45, 0),
-                AssociateEmail = "me@iamsocool.com",
-                AssociateFirst = "David",
-                AssociateLast = "Bowie"
+                RequestID = 0,
+                Active = true,
+                Schedule = 109,
+                Associate = 9
             };
-            bool passed = await logicHelper.InsertRequest(reqDto);
+            //bool passed = await logicHelper.InsertRequest(reqDto);
+            bool passed = await client.InsertRequestAsync(reqDao);
             Assert.True(passed);
         }
 
@@ -299,29 +309,19 @@ namespace Workforce.Logic.Charlie.Tests
         [Fact]
         public async Task Test_JoinRide()
         {
-            var ride = new RideDto()
+            var match = new MatchDto()
             {
                 RideId = 39,
-                AssociateEmail = "",
-                AssociateFirst = "",
-                AssociateLast = "",
-                DepartureLoc = 18,
-                DestinationLoc = 19,
-                DepartureTime = new DateTime(2016,9,24,13,51,51),
-                SeatsAvailable = 4
-            };
-            var req = new RequestDto()
-            {
-                RequestId = 0,
-                AssociateEmail = "",
-                AssociateFirst = "",
-                AssociateLast = "",
-                DepartureLoc = 18,
-                DestinationLoc = 19,
-                DepartureTime = new DateTime(2016, 9, 24, 13, 51, 51),
+                ReqEmail = "yolo@swag.com",
+                RideEmail = "scrum@master.com",
+                ReqId = 0,
+                DeptLoc = 18,
+                DestLoc = 19,
+                DeptTime = new DateTime(2016,9,24,13,51,51),
+                Seats = 5
             };
 
-            bool passed = await logicHelper.JoinRide(ride,req);
+            bool passed = await logicHelper.JoinRide(match);
             Assert.True(passed);
         }
 
@@ -332,29 +332,20 @@ namespace Workforce.Logic.Charlie.Tests
         [Fact]
         public async Task Test_InviteToRide()
         {
-            var ride = new RideDto()
+            var match = new MatchDto()
             {
+                ReqId = 94,
                 RideId = 0,
-                DepartureLoc = 18,
-                DestinationLoc = 30,
-                DepartureTime = new DateTime(2016, 9, 28, 15, 45, 0),
-                AssociateEmail = "me@iamsocool.com",
-                AssociateFirst = "David",
-                AssociateLast = "Bowie",
-                SeatsAvailable = 4
-            };
-            var reqDto = new RequestDto()
-            {
-                RequestId = 94,
-                DepartureLoc = 18,
-                DestinationLoc = 30,
-                DepartureTime = new DateTime(2016, 9, 28, 15, 45, 0),
-                AssociateEmail = "me@iamsocool.com",
-                AssociateFirst = "David",
-                AssociateLast = "Bowie"
+                Seats = 4,
+                DeptLoc = 18,
+                DestLoc = 30,
+                DeptTime = new DateTime(2016, 9, 28, 15, 45, 0),
+                RideEmail = "me@iamsocool.com",
+                ReqEmail = "David@bowie.com"
+                
             };
 
-            bool passed = await logicHelper.InviteToRide(reqDto,ride);
+            bool passed = await logicHelper.InviteToRide(match);
             Assert.True(passed);
         }
         #endregion
