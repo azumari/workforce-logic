@@ -10,7 +10,7 @@ namespace Workforce.Logic.Felice.Domain.DomainModels
    public class GenderDto
    {
       public int GenderID { get; set; }
-      [Required]
+      [Required, RegularExpression("/^[A-Za-Z]+$/")]
       public string Name { get; set; }
    }
 }

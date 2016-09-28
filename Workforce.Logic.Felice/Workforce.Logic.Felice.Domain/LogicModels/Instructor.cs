@@ -14,14 +14,25 @@ namespace Workforce.Logic.Felice.Domain
    {
       private readonly MapperConfiguration instructorMapper = new MapperConfiguration(i => i.CreateMap<InstructorDao, InstructorDto>().ForMember(i1 => i1.InstructorID, m => m.MapFrom(i2 => i2.InstructorId)));
       private readonly MapperConfiguration instructorReverseMapper = new MapperConfiguration(i => i.CreateMap<InstructorDto, InstructorDao>().ForMember(i1 => i1.InstructorId, m => m.MapFrom(i2 => i2.InstructorID)));
+      private CoreValidator val = new CoreValidator();
 
       /// <summary>
       /// Validates the data coming in from the data layer
       /// </summary>
       public bool ValidateSoapData(InstructorDao instructor)
       {
-         //reserved for validating information coming from the Data Layer
-         return true;
+         int maxName = 50;
+
+         if (val.ValidateInt(instructor.InstructorId)
+            && val.ValidateRequiredString(instructor.FirstName, maxName)
+            && val.ValidateRequiredString(instructor.LastName, maxName))
+         {
+            return true;
+         }
+         else
+         {
+            return false;
+         }
       }
 
       /// <summary>
